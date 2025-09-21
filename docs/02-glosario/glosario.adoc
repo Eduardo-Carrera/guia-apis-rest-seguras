@@ -1,0 +1,55 @@
+== Glosario
+
+El glosario es un recurso fundamental dentro de esta guía, ya que permite unificar y aclarar el significado de los términos técnicos y conceptuales utilizados a lo largo del documento. La seguridad en el diseño de sistemas involucra conceptos que, aunque pueden resultar familiares, suelen tener interpretaciones distintas según el contexto o la experiencia del lector. Por ello, contar con un glosario asegura que todos los usuarios de la guía compartan un entendimiento común, evitando confusiones y favoreciendo la correcta aplicación de las recomendaciones.
+
+Este apartado está pensado para servir como referencia rápida durante la lectura, permitiendo al lector consultar definiciones de manera ágil cada vez que surja una duda. Se espera que el glosario sea utilizado como una herramienta de apoyo que facilite la comprensión de los contenidos, estandarice el lenguaje empleado y fortalezca la claridad y consistencia de la guía en su conjunto.
+
+=== Abreviaturas
+* API: Application Programming Interface
+* REST: Representational State Transfer
+* JWT: JSON Web Token
+* TLS: Transport Layer Security
+* HTTP: Hypertext Transfer Protocol
+* HTTPS: Hypertext Transfer Protocol Secure
+* STRIDE: Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege
+* CORS: Cross-Origin Resource Sharing
+* OWASP: Open Worldwide Application Security Project
+* NIST: Instituto Nacional de Estándares y Tecnología
+
+=== Definición de términos técnicos
+* Amenaza: Estado del sistema o del entorno del sistema que puede conducir a efectos adversos (ISO/IEC/IEEE 24765a:2011).
+* Antipatrón de diseño:  Un antipatrón es un proceso repetible que produce resultados negativos (Richards & Ford, 2020).
+* API web: una API es una frontera entre una parte de un sistema de software y otra. Define un conjunto de operaciones que un componente ofrece para que otras partes del sistema u otros sistemas las utilicen (Madden, 2020)
+* Autenticación: es el proceso de verificar que un individuo, entidad o sitio web sea quien o lo que afirma ser, determinando la validez de uno o más autenticadores (como contraseñas, huellas digitales o tokens de seguridad) que se utilizan para respaldar dicha afirmación. (Building Generative AI Services with FastAPI Alireza Parandeh)
+* Autorización: La autorización es el mecanismo mediante el cual se asigna, a partir de un principal, la acción que se le permite realizar. A menudo, cuando un principal está autenticado, se nos proporciona información sobre él que nos ayuda a decidir qué acciones se le deben permitir. Por ejemplo, se nos podría indicar en qué departamento u oficina trabaja, información que nuestro sistema puede usar para determinar lo que el principal puede y no puede hacer (Newman, 2021).
+* Debilidad: Se trata de una imperfección en el código, diseño, arquitectura o despliegue del software que se convierte en una vulnerabilidad o contribuye a una vulnerabilidad. La debilidad puede ser un fallo físico o digital (en el código) en la aplicación, el sistema operativo o el hardware (Copeland, 2017).
+* Diseño Seguro: el enfoque del diseño seguro es la proactividad de incluirlo desde el inicio del proceso de desarrollo, en lugar de añadirlo como una capa adicional. Este enfoque ayuda a evitar la necesidad corregir tardíamente y aumentar los costos en el desarrollo (Deogun et al, 2019).
+* Endpoint: un endpoint es un URI específico que permite a los clientes interactuar con un servidor a través de una API para realizar una función determinada. Representa una operación que puede ejecutarse utilizando una ruta única y el método HTTP correspondiente. (Mastering RESTful Web Services with Java Marián Varga, Pedro Henrique Pereira de Andrade, Silvio de Morais, Thiago Bomfim, Igor Avancini Fraga)
+* HTTPS: HTTPS Significa HyperText Transfer Protocol Secure, el protocolo que tu navegador web utiliza para acceder a los sitios web. Más precisamente, HTTPS es una versión cifrada de HTTP, por lo que protege tu privacidad mientras usas internet. (Sweigart, 2025)
+* Modelado de amenazas: los métodos de modelado de amenazas se utilizan para crear una abstracción del sistema; perfiles de posibles atacantes, incluidos sus objetivos y métodos; y un catálogo de posibles amenazas que puedan surgir. Se han desarrollado muchos métodos de modelado de amenazas. No todos son exhaustivos; algunos se centran en la abstracción y fomentan la granularidad, mientras que otros se enfocan más en las personas. Algunos métodos se centran específicamente en riesgos o preocupaciones de privacidad. Los métodos de modelado de amenazas pueden combinarse para crear una visión más sólida y completa de las posibles amenazas. (Shevchenko, et. al 2018)
+* OWASP: Fundación sin fines de lucro dedicada a mejorar la seguridad de software. Coordina una serie de proyectos de software de código abierto liderados por la comunidad, así como conferencias educativas y de capacitación reconocidas en la industria. Los proyectos, herramientas, documentos, foros y capítulos de la organización son gratuitos y accesibles para cualquier persona interesada en mejorar la seguridad de las aplicaciones.
+* Patrón de diseño: los patrones de diseño son soluciones habituales a problemas que ocurren con frecuencia en el diseño de software. Son como planos prefabricados que se pueden personalizar para resolver un problema de diseño recurrente en tu código (Shvets, 2018). 
+* REST: este estilo fue desarrollado por Roy Fielding para describir los principios que llevaron al éxito del HTTP y la web, y posteriormente se adaptó como un conjunto de principios para el diseño de APIs. A diferencia de RPC, las APIs RESTful enfatizan el uso de formatos estándar de mensajes y un pequeño número de operaciones genéricas para reducir el acoplamiento entre un cliente y una API específica. El uso de hipervínculos para navegar por la API reduce el riesgo de que los clientes fallen a medida que la API evoluciona con el tiempo
+* STRIDE: STRIDE es actualmente el método de modelado de amenazas más maduro. Inventado por Loren Kohnfelder y Praerit Garg en 1999, y adoptado por Microsoft en 2002, STRIDE ha evolucionado con el tiempo para incluir nuevas tablas específicas de amenazas y las variantes STRIDE-per-Element y STRIDE-per-Interaction (Shevchenko, et. al 2018).
+* Token de acceso: es una credencial que permite al cliente solicitar recursos protegidos del servidor de recursos en nombre del usuario. Generalmente tiene una corta duración por razones de seguridad, lo que garantiza que su impacto sea mínimo incluso si el token llega a verse comprometido. (Xesquevixos, 2025)
+* Vulnerabilidad: Las vulnerabilidades son fallos o descuidos específicos en un programa informático que permiten a los atacantes hacer algo malicioso exponer o alterar información sensible, perturbar o destruir un sistema o el control de un sistema o programa informático (Dowd, McDonald y Schuh, 2006).
+
+=== Advertencia sobre mal entendidos comunes
+
+Existen conceptos que, para quienes no son expertos en seguridad, pueden resultar confusos o dar lugar a interpretaciones equivocadas. Por esta razón, se aclaran errores frecuentes o confusiones que los diseñadores podrían tener.
+
+* Autenticación vs. Autorización  
+
+Si bien la autenticación y la autorización son dos puntos clave para la seguridad de una API web, y suelen estar relacionados. La autenticación verifica quién es el que accede, mientras que la autorización proporciona al usuario el nivel adecuado de acceso a los recursos del sistema (Kosinski, 2024).
+
+* HTTP y HTTPS
+
+Aunque HTTPS ofrece mayor seguridad que HTTP, no garantiza por sí solo la protección total del sistema. Las solicitudes y respuestas en HTTP se transmiten en texto plano, lo que permite que puedan ser interceptadas. Para resolverlo, HTTPS añade un nivel de encriptación y verificación: emplea TLS para cifrar y firmar digitalmente las peticiones y respuestas. (Cloudfare, 2025)
+
+* Debilidad, vulnerabilidad y amenaza son sinónimos 
+
+En realidad, no son sinónimos, aunque con frecuencia se confunden. Cada término representa un elemento distinto dentro del proceso de comprometer un sistema. Una debilidad es un defecto o fallo presente en el sistema, aún sin ser explotado. Una vulnerabilidad surge cuando dicha debilidad es identificada y puede ser utilizada para causar un daño. Finalmente, una amenaza es cualquier agente o circunstancia que intenta aprovechar esa vulnerabilidad, y no necesariamente debe ser de origen humano.
+
+* Patrones vs Antipatrones  
+
+Tanto patrones como antipatrones no sólo se limitan al ámbito del código, esto debido a que existen tantos patrones como antipatrones para la arquitectura. Un ejemplo ampliamente utilizado de patrón de arquitectura es REST (Representational State Transfer), el cual define principios y restricciones que permiten construir APIs escalables, interoperables y fáciles de mantener (Richards & Ford, 2020, Shvets, 2018).
