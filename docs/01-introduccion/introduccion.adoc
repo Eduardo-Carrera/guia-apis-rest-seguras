@@ -4,23 +4,3 @@ Las APIs constituyen un componente esencial en la comunicación entre sistemas d
 Se presenta una guía de diseño orientada a la seguridad de APIs REST, cuyo propósito es ofrecer un recurso práctico a aquellos que asumen el rol de diseñadores sin contar necesariamente con una formación especializada en seguridad. Para lograrlo, la guía integra métodos, prácticas, técnicas, patrones de diseño y herramientas que permiten incorporar la seguridad desde etapas tempranas del ciclo de vida del software.
 
 La estructura del documento se organiza conforme a las fases del desarrollo, de manera que pueda consultarse de forma secuencial o puntual, según las necesidades del lector. Los elementos incluidos fueron identificados a partir de una revisión sistemática de la literatura (RSL), complementada con literatura gris, lo que asegura la validez de las recomendaciones.
-
-== Propósito de la guía
-El propósito de esta guía es apoyar la incorporación de medidas de seguridad desde la etapa de diseño de APIs web REST. Está dirigida a un público que puede no ser especialista en seguridad, pero que requiere orientaciones claras y prácticas para reducir riesgos en sus proyectos.
-
-La guía se enfoca únicamente en la arquitectura REST, dado que constituye la más utilizada en la actualidad, y no aborda otros enfoques como SOAP o GraphQL. Su intención es servir como una referencia práctica y accesible que facilite la prevención de vulnerabilidades comunes y contribuya a la construcción de sistemas más seguros.
-
-== Alcance y limitaciones
-
-=== Alcances
-* Se centra en el diseño seguro de APIs web REST y no aborda otros estilos de API.
-* Proporciona listas de verificación, ejemplos prácticos y escenarios de referencia para facilitar su aplicación.
-* Se enfoca en las primeras etapas del ciclo de vida del desarrollo de software, desde la planeación hasta el diseño.
-
-=== Limitaciones
-* No sustituye la necesidad de contar con expertos en seguridad para revisiones o auditorías en proyectos críticos.
-
-== Uso previsto
-La guía funciona como un catálogo de elementos que incluyen prácticas, técnicas, métodos, herramientas y patrones de diseño orientados a mejorar la seguridad de APIs REST. Cada elemento está asociado a la fase del ciclo de vida del desarrollo de software en la que puede aplicarse, de modo que pueda consultarse de manera puntual según las necesidades de un proyecto.
-
-El propósito de presentar los elementos de esta forma es brindar flexibilidad: se pueden seleccionar únicamente aquellos que resulten pertinentes para un contexto específico de diseño. Cabe señalar que la correcta implementación depende de las características del proyecto y del conocimiento del equipo, por lo que la aplicación incompleta o inadecuada no garantiza la invulnerabilidad de la API frente a amenazas de seguridad.
