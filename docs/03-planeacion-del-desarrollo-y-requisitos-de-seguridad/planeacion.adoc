@@ -1,0 +1,154 @@
+= Planeación del desarrollo y requisitos de seguridad
+
+La planeación constituye la fase inicial del ciclo de vida del desarrollo de una API. En esta etapa, se establece el propósito de la API, así como los casos de uso y los recursos necesarios para su construcción. Se realiza la definición de los requisitos operativos, de negocio y de seguridad, y se identifican los equipos encargados de guiar la API a lo largo de las fases posteriores (Postman, 2023).
+
+Según Swagger (2022), una planeación adecuada comprende el mapeo de recursos, operaciones y escenarios de negocio antes de la implementación. Por su parte, Akamai (2022) resalta la importancia de incluir la estrategia de la API, las decisiones arquitectónicas de alto nivel y la creación de contratos que describan el comportamiento esperado de la misma.
+
+Esta etapa abarca los requisitos tanto funcionales (las funcionalidades que la API debe ofrecer) como los no funcionales (atributos de calidad que determinan su comportamiento). En este último grupo, la seguridad desempeña un papel crítico, al requerir la identificación de posibles riesgos, el establecimiento de mecanismos de autenticación y autorización, el cumplimiento normativo, la selección de herramientas y demás prácticas que acompañan el ciclo de desarrollo.
+
+Las prácticas reportadas en la literatura para esta fase se presentan en la siguiente tabla:
+
+
+[cols="1,2,1", options="header"]
+|===
+|Nombre |Descripción |Referencia
+
+|Análisis del inventario
+|Revisión de las APIs existentes en la organización con el objetivo de verificar el cumplimiento de los requerimientos del nuevo proyecto. Esta práctica permite evitar el desarrollo de funcionalidades redundantes y minimizar la complejidad innecesaria dentro del ecosistema de APIs.
+|Guba, 2025
+
+|Análisis de público objetivo
+|Identificación de los usuarios previstos de la API y de los problemas específicos que se pretende resolver. Este análisis facilita la definición de casos de uso claros y asegura la alineación entre los objetivos técnicos y los objetivos de negocio.
+|Guba, 2025
+
+|Viabilidad técnica
+|Evaluación de los recursos, tecnologías e infraestructura necesarios para el desarrollo, implementación, mantenimiento y operación a largo plazo de la API.
+|Guba, 2025
+
+|Definir políticas y responsabilidades
+|Establecimiento de lineamientos que regulen la seguridad, gobernanza y cumplimiento normativo en el diseño y uso de la API, incluyendo la asignación de responsabilidades a los distintos actores involucrados en su ciclo de vida.
+|Guba, 2025
+
+|Definición de requisites
+|Documentación clara de los casos de uso y de los usuarios previstos de la API, asegurando que esta incorpore únicamente las funcionalidades necesarias y evitando tanto la sobrecarga como omisiones críticas.
+|(Varga, Pereira de Andrade, de Morais, Bomfim, & Avancini Fraga, 2025)
+
+|Definición inicial de requisitos y preparación del entorno de trabajo
+|Determinación de los requisitos operativos, de negocio y de seguridad de la API, así como identificación de los integrantes del equipo responsables de su desarrollo a lo largo de las fases del ciclo de vida. Esta práctica incluye la recomendación de establecer un entorno de colaboración desde el inicio, como un espacio de trabajo dedicado y un repositorio en GitHub conectado a un pipeline de integración continua (CI).
+|Postman (s.f)
+|===
+
+== Evaluación organizacional y su relación con la seguridad
+
+La seguridad de una API no depende exclusivamente de mecanismos técnicos, sino también de la cultura organizacional que sustenta su desarrollo y operación. La cultura de seguridad se entiende como el conjunto de valores que determinan la forma en que los individuos perciben y abordan la seguridad dentro de la organización. Esta cultura se ve influida por las metas institucionales, la estructura organizativa, las políticas, los procesos y el liderazgo, así como por las relaciones con socios, proveedores y otros actores externos (NCSC, 2021).
+
+La cultura de ciberseguridad abarca asimismo las actitudes, conocimientos, normas y valores de los empleados en relación con la seguridad. Su efectividad no depende únicamente de políticas o procesos, sino de la alineación entre factores organizacionales (liderazgo, procesos, normas) y factores individuales (actitudes, conocimientos, comportamientos). La inversión en una cultura sólida fortalece la seguridad técnica de las APIs, genera confianza digital, mejora la reputación organizacional y promueve la adopción de comportamientos seguros en el trabajo cotidiano (PA Consulting, s.f.).
+
+En entornos con una cultura de seguridad consolidada, los equipos perciben la seguridad como un esfuerzo colectivo y colaborativo que respalda las actividades diarias. Según el NCSC (2021), los principales beneficios incluyen:
+* Mayor propensión de los empleados a identificar problemas y proponer mejoras, fortaleciendo la resiliencia.
+* Facilita la comunicación abierta sobre incidentes sin temor a represalias.
+* Mejora del bienestar y la retención del personal, al fomentar la inclusión y explicar claramente el propósito de las medidas de seguridad.
+
+Para consolidar esta cultura, se recomienda complementar las prácticas organizacionales con certificaciones reconocidas, tales como ISO 27001 y Cyber Essentials, que establecen estándares, procesos y políticas destinados a incrementar la resiliencia cibernética de la organización.
+
+Un enfoque complementario es la estrategia de seguridad Zero Trust, basada en la premisa de que ninguna persona o dispositivo, tanto dentro como fuera de la red organizacional, debe considerarse de confianza de manera automática. Este modelo se fundamenta en tres principios esenciales (Akamai, s.f.):
+* Verificación de la confianza de todas las entidades.
+* Aplicación del principio de privilegios mínimos.
+* Implementación de una supervisión continua de la seguridad.
+
+Estas prácticas organizacionales y modelos, como Zero Trust, resultan especialmente relevantes en el diseño y operación de APIs REST, dado que la exposición directa a internet incrementa la superficie de ataque y exige la alineación entre los aspectos técnicos y humanos dentro de una misma estrategia de seguridad.
+
+== Identificación de amenazas y riesgos
+
+La identificación de amenazas y riesgos constituye una etapa crítica en el desarrollo seguro de APIs. Una amenaza se define como un evento o conjunto de circunstancias que puede comprometer los objetivos de seguridad de la API. Por ejemplo, un atacante que obtiene nombres y direcciones de la base de datos de clientes representa una amenaza para la confidencialidad de la información (Madden, 2020).
+
+Las APIs se enfrentan a una amplia variedad de amenazas de seguridad, que incluyen ataques deliberados y fugas de datos involuntarias. Los usuarios no autorizados pueden explotar vulnerabilidades para acceder a datos confidenciales, interrumpir servicios o secuestrar sistemas. 
+
+Entre las amenazas más frecuentes se encuentran los ataques de inyección, los ataques de tipo "man-in-the-middle" (MITM) y los ataques de denegación de servicio distribuido (DDoS), diseñados para sobrecargar una API con tráfico malicioso (Akamai, s.f.). Aunque el tipo y la frecuencia de las amenazas pueden variar según el modelo de API, los ataques más comunes deben considerarse para cualquier API que se diseñe o utilice (Chapple & Seidl, 2022).
+
+La identificación de amenazas implica determinar los riesgos potenciales mediante herramientas y estrategias como listas de verificación, trazabilidad, análisis de puntos de entrada y evaluación de vulnerabilidades (ScienceDirect, s.f.). Este proceso permite relacionar los componentes del sistema con los elementos de la amenaza para su posterior validación y verificación.
+
+Además de la identificación, la búsqueda activa de amenazas, conocida como threat hunting, consiste en la detección proactiva de amenazas desconocidas o previamente no detectadas dentro de la red de una organización. A diferencia del monitoreo de seguridad tradicional, que se enfoca en la detección y respuesta a amenazas conocidas mediante herramientas automatizadas, la búsqueda de amenazas persigue anticiparse a riesgos emergentes, permitiendo mitigarlos antes de que puedan generar daños significativos (Akamai, s.f.).
+
+Por lo tanto, la labor del diseñador de una API no se limita a garantizar el cumplimiento de sus funciones requeridas, sino que también incluye una vigilancia constante del panorama de seguridad, con el objetivo de prevenir y mitigar posibles amenazas que puedan comprometer la integridad del sistema (Lalonchera, 2025).
+
+== Referencias normativas y técnicas de seguridad para API
+
+Los estándares de seguridad de API constituyen marcos y pautas diseñados para garantizar la protección de las APIs frente a posibles amenazas y vulnerabilidades. Estos estándares permiten a las organizaciones implementar medidas de seguridad consistentes y efectivas (PubNub, 2024).
+
+Estos marcos de seguridad abarcan diversos aspectos, incluyendo autenticación, autorización, cifrado de datos y gestión de sesiones. Su aplicación asegura que la comunicación a través de la API se adhiera a principios de seguridad, previniendo accesos no autorizados y posibles violaciones de datos (Pynt, 2024).
+
+Por otra parte, los protocolos de API definen los mecanismos de transmisión y protección de datos en la red. Establecen un lenguaje común y procedimientos que deben seguir tanto el emisor como el receptor, garantizando un intercambio seguro de información. Esto incluye el manejo seguro de tokens, cifrado de mensajes y validación de credenciales de identidad (Pynt, 2024).
+
+A continuación, se describen algunos de los principales estándares utilizados en la industria. Se aclara que la lista no es exhaustiva, y la selección del estándar adecuado dependerá del contexto, las necesidades de la aplicación y los requerimientos de la organización.
+
+=== **OAuth 2.0**
+
+OAuth 2.0 es uno de los marcos de autorización más utilizados para APIs web. Su objetivo principal es permitir que un usuario otorgue a una aplicación de terceros acceso limitado a sus recursos, sin necesidad de compartir sus credenciales. Este modelo se ha convertido en un estándar en la autorización de APIs y es ampliamente adoptado en entornos web, móviles y en la nube (Varga et al., 2025).
+
+El funcionamiento básico de OAuth 2.0 consiste en que el usuario se autentica con un proveedor de identidad (por ejemplo, Google o Facebook) y concede permisos a la aplicación de terceros. Posteriormente, la aplicación obtiene un token de acceso, el cual se emplea para realizar solicitudes autorizadas a la API en nombre del usuario. Dicho token contiene scopes o alcances, que determinan el nivel de acceso permitido, como lectura o escritura sobre determinados recursos.
+
+==== Consideraciones de seguridad
+
+Al implementar OAuth 2.0, se deben tener en cuenta medidas de seguridad específicas para mitigar riesgos comunes asociados al manejo de tokens:
+
+* Utilizar exclusivamente conexiones seguras (HTTPS) para la transmisión de tokens.
+* Preferir tokens de corta duración acompañados de refresh tokens, a fin de reducir el riesgo en caso de robo de un token.
+* Implementar mecanismos de revocación para invalidar tokens cuando sea necesario.
+
+==== Ventajas
+
+* Permite el acceso delegado sin necesidad de compartir credenciales del usuario.  
+* Su amplia adopción promueve la estandarización en diversos servicios.  
+* Facilita la integración entre aplicaciones heterogéneas (web, móviles y cloud).
+
+==== Desventajas
+
+* Requiere mecanismos seguros de almacenamiento y transmisión de tokens.  
+* Introduce cierta complejidad en la gestión de tokens, especialmente con refresh tokens y su expiración.  
+* Puede implicar sobrecarga en entornos con múltiples integraciones.
+
+[TIP]
+====
+Se recomienda el uso de OAuth 2.0 en escenarios donde se requiera interacción con aplicaciones de terceros o integración con proveedores de identidad externos, así como en sistemas que manejen datos sensibles y deban delegar autorización sin exponer credenciales.  
+
+Sin embargo, para aplicaciones internas o entornos con bajo riesgo de exposición, puede considerarse un mecanismo más simple, como autenticación mediante API keys o tokens firmados localmente.
+====
+
+
+* **JSON Web Token (JWT)**  
+
+Estándar industrial adoptado para transmitir información de manera segura entre partes mediante un formato compacto y verificable. Facilita incluir datos de autenticación y autorización en las solicitudes y respuestas de la API, sin requerir almacenamiento adicional en el servidor. En este modelo, el cliente envía un token firmado en el encabezado de autorización HTTP, y el servidor verifica el token para extraer los datos de autenticación y autorización del usuario (EP-03).
+
+* **Seguridad de la capa de transporte (TLS)**  
+
+Protocolo criptográfico que proporciona comunicación segura a través de redes informáticas. TLS garantiza la confidencialidad e integridad de los datos, así como la autenticación de las partes implicadas en la comunicación (PubNub, 2024).
+
+* **Platform-Agnostic Security Tokens (PASETO)**  
+Formato alternativo a JOSE y JWT que permite generar objetos JSON firmados o cifrados de forma simétrica autenticada. Cada versión utiliza un conjunto fijo de algoritmos criptográficos, reduciendo la complejidad de implementación y limitando la superficie de ataque (Madden, 2020).
+
+* **Sistema de gestión de identidades entre dominios (SCIM)**  
+Proporciona herramientas para controlar el tráfico entrante y saliente, incluyendo la limitación de la cantidad de recursos y atributos devueltos, así como la restricción de operaciones masivas (EP-28).
+
+* **Intercambio de recursos entre orígenes (CORS)**  
+Estándar de seguridad que permite a aplicaciones web realizar solicitudes a dominios distintos del de origen. Permite especificar los dominios autorizados para acceder a los recursos, previniendo solicitudes de origen cruzado no autorizadas y posibles fugas de datos (Pynt, 2024).
+
+* **Pautas de seguridad de la API del NIST (NIST SP 800-204)**  
+Proporciona estrategias de seguridad para aplicaciones basadas en microservicios, que dividen aplicaciones grandes en componentes pequeños, independientes y comunicantes entre sí mediante APIs (National Institute of Standards and Technology, 2019).
+
+* **OWASP API Security Top 10**  
+Listado de los diez riesgos de seguridad más críticos para APIs, publicado por el Open Web Application Security Project (OWASP). Facilita la identificación y mitigación de vulnerabilidades comunes en el diseño e implementación de APIs (OWASP, 2023).
+
+* **FAPI (API de grado financiero)**  
+Conjunto de estándares técnicos de seguridad desarrollado por la Fundación OpenID para APIs del sector financiero. Garantiza un intercambio de datos seguro e interoperable en servicios financieros (PubNub, 2024).
+
+* **FIDO Standard**  
+Estándar abierto de autenticación compatible con la especificación de autenticación web del W3C y con el protocolo cliente-autenticador (CTAP). Permite a los usuarios autenticarse mediante datos biométricos, claves de seguridad o PIN, ofreciendo mayor seguridad en comparación con las contraseñas. FIDO2 proporciona un mecanismo seguro y fácil de usar para la autenticación (Chapple & Seidl, 2023; Santos, 2024).
+
+== Modelado de amenazas
+
+== Requisitos funcionales
+
+== Requisitos de seguridad asociados
+
+== Validación y trazabilidad de requisitos
