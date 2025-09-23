@@ -20,5 +20,6 @@
 :warning-caption: Advertencia
 
 include::01-introduccion/introduccion.adoc[]
+include::01-introduccion/proposito.adoc[]
 include::02-glosario/glosario.adoc[]
 include::03-planeacion-del-desarrollo-y-requisitos-de-seguridad/planeacion.adoc[]
