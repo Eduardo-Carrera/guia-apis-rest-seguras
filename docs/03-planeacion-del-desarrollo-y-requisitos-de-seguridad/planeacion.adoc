@@ -82,7 +82,7 @@ Por otra parte, los protocolos de API definen los mecanismos de transmisión y p
 
 A continuación, se describen algunos de los principales estándares utilizados en la industria. Se aclara que la lista no es exhaustiva, y la selección del estándar adecuado dependerá del contexto, las necesidades de la aplicación y los requerimientos de la organización.
 
-=== **OAuth 2.0**
+=== OAuth 2.0
 
 OAuth 2.0 es uno de los marcos de autorización más utilizados para APIs web. Su objetivo principal es permitir que un usuario otorgue a una aplicación de terceros acceso limitado a sus recursos, sin necesidad de compartir sus credenciales. Este modelo se ha convertido en un estándar en la autorización de APIs y es ampliamente adoptado en entornos web, móviles y en la nube (Varga et al., 2025).
 
