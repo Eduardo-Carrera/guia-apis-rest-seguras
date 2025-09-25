@@ -49,3 +49,4 @@ Estos términos no son sinónimos, aunque suelen utilizarse de manera indistinta
 
 * *Patrones vs. Antipatrones*  
 Los patrones y antipatrones no se restringen únicamente al ámbito del código, sino que también se aplican al diseño arquitectónico. Un ejemplo ampliamente difundido de patrón arquitectónico es REST (Representational State Transfer), el cual establece principios y restricciones que permiten la construcción de APIs escalables, interoperables y mantenibles (Richards & Ford, 2020; Shvets, 2018).
+
