@@ -17,3 +17,4 @@ La guía se enfoca únicamente en la arquitectura REST, dado que constituye la m
 La guía funciona como un catálogo de elementos que incluyen prácticas, técnicas, métodos, herramientas y patrones de diseño orientados a mejorar la seguridad de APIs REST. Cada elemento está asociado a la fase del ciclo de vida del desarrollo de software en la que puede aplicarse, de modo que pueda consultarse de manera puntual según las necesidades de un proyecto.
 
 El propósito de presentar los elementos de esta forma es brindar flexibilidad: se pueden seleccionar únicamente aquellos que resulten pertinentes para un contexto específico de diseño. Cabe señalar que la correcta implementación depende de las características del proyecto y del conocimiento del equipo, por lo que la aplicación incompleta o inadecuada no garantiza la invulnerabilidad de la API frente a amenazas de seguridad.
+
