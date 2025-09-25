@@ -140,7 +140,7 @@ A continuación se presenta un ejemplo de un JWT que podría ser utilizado en un
 }
 ----
 
-En este token, las claims incluidas son `iss`, `sub`, `aud`, `exp`, `nbf`, `iat` y `jti`. Estas son *claims* reservadas definidas en el RFC de JWT. Aunque no son obligatorias, proporcionan un conjunto mínimo de información útil para la autenticación y autorización.
+En este token, las claims incluidas son `iss`, `sub`, `aud`, `exp`, `nbf`, `iat` y `jti`. Estas son claims reservadas definidas en el RFC de JWT. Aunque no son obligatorias, proporcionan un conjunto mínimo de información útil para la autenticación y autorización.
 
 * `iss` (Issuer): Autoridad que emite el token, normalmente un proveedor de identidad.  
 * `sub` (Subject): Identificador único del sujeto al que representa el token, por ejemplo, un usuario o una aplicación.  
@@ -152,7 +152,7 @@ En este token, las claims incluidas son `iss`, `sub`, `aud`, `exp`, `nbf`, `iat`
 
 ===== Ventajas
 
-* La autenticación sin estado (*stateless*) escala adecuadamente en sistemas distribuidos.  
+* La autenticación sin estado (stateless) escala adecuadamente en sistemas distribuidos.  
 * No requiere almacenar información de sesión en el servidor.  
 * Permite control granular de los derechos de acceso mediante las claims del token.  
 * Facilita la interoperabilidad entre servicios y aplicaciones heterogéneas.
@@ -162,6 +162,7 @@ En este token, las claims incluidas son `iss`, `sub`, `aud`, `exp`, `nbf`, `iat`
 * Si un token es robado, puede ser utilizado para suplantar al usuario.  
 * La gestión de la expiración de tokens y los ciclos de renovación añade complejidad a la aplicación, tanto en frontend como en backend.  
 * Se requiere cuidado en la implementación de la validación y revocación de tokens para evitar vulnerabilidades.
+
 
 
 * **Seguridad de la capa de transporte (TLS)**  
