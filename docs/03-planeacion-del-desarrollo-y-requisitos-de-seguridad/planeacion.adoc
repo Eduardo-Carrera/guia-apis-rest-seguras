@@ -142,14 +142,27 @@ A continuación se presenta un ejemplo de un JWT que podría ser utilizado en un
 
 En este token, las claims incluidas son `iss`, `sub`, `aud`, `exp`, `nbf`, `iat` y `jti`. Estas son *claims* reservadas definidas en el RFC de JWT. Aunque no son obligatorias, proporcionan un conjunto mínimo de información útil para la autenticación y autorización.
 
-* `iss` (Issuer): Autoridad que emite el token, normalmente un proveedor de identidad.
-* `sub` (Subject): Identificador único del sujeto al que representa el token, por ejemplo, un usuario o una aplicación.
-* `aud` (Audience): Destinatario o servicio para el cual el token está destinado.
-* `exp` (Expiration time): Fecha y hora de expiración del token.
-* `nbf` (Not before): Momento a partir del cual el token es válido.
-* `iat` (Issued at): Fecha y hora de emisión del token.
+* `iss` (Issuer): Autoridad que emite el token, normalmente un proveedor de identidad.  
+* `sub` (Subject): Identificador único del sujeto al que representa el token, por ejemplo, un usuario o una aplicación.  
+* `aud` (Audience): Destinatario o servicio para el cual el token está destinado.  
+* `exp` (Expiration time): Fecha y hora de expiración del token.  
+* `nbf` (Not before): Momento a partir del cual el token es válido.  
+* `iat` (Issued at): Fecha y hora de emisión del token.  
 * `jti` (JWT ID): Identificador único del token, útil para evitar la reutilización.
- 
+
+===== Ventajas
+
+* La autenticación sin estado (*stateless*) escala adecuadamente en sistemas distribuidos.  
+* No requiere almacenar información de sesión en el servidor.  
+* Permite control granular de los derechos de acceso mediante las claims del token.  
+* Facilita la interoperabilidad entre servicios y aplicaciones heterogéneas.
+
+===== Desventajas
+
+* Si un token es robado, puede ser utilizado para suplantar al usuario.  
+* La gestión de la expiración de tokens y los ciclos de renovación añade complejidad a la aplicación, tanto en frontend como en backend.  
+* Se requiere cuidado en la implementación de la validación y revocación de tokens para evitar vulnerabilidades.
+
 
 * **Seguridad de la capa de transporte (TLS)**  
 
