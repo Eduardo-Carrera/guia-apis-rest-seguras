@@ -4,3 +4,4 @@ Las APIs constituyen un componente esencial en la comunicación entre sistemas d
 Se presenta una guía de diseño orientada a la seguridad de APIs REST, cuyo propósito es ofrecer un recurso práctico a aquellos que asumen el rol de diseñadores sin contar necesariamente con una formación especializada en seguridad. Para lograrlo, la guía integra métodos, prácticas, técnicas, patrones de diseño y herramientas que permiten incorporar la seguridad desde etapas tempranas del ciclo de vida del software.
 
 La estructura del documento se organiza conforme a las fases del desarrollo, de manera que pueda consultarse de forma secuencial o puntual, según las necesidades del lector. Los elementos incluidos fueron identificados a partir de una revisión sistemática de la literatura (RSL), complementada con literatura gris, lo que asegura la validez de las recomendaciones.
+
