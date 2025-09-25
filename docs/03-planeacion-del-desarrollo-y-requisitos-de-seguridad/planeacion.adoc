@@ -149,12 +149,6 @@ En este token, las claims incluidas son `iss`, `sub`, `aud`, `exp`, `nbf`, `iat`
 * `nbf` (Not before): Momento a partir del cual el token es válido.
 * `iat` (Issued at): Fecha y hora de emisión del token.
 * `jti` (JWT ID): Identificador único del token, útil para evitar la reutilización.
-
-[NOTE]
-====
-Este ejemplo ilustra cómo un JWT puede incluir información esencial para la autenticación y autorización en APIs REST de manera segura, manteniendo la integridad y la confidencialidad de los datos transmitidos.
-====
-
  
 
 * **Seguridad de la capa de transporte (TLS)**  
