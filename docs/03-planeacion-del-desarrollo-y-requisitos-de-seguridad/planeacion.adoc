@@ -118,8 +118,6 @@ Sin embargo, para aplicaciones internas o entornos con bajo riesgo de exposició
 
 ==== JSON Web Token (JWT) 
 
-== JSON Web Tokens (JWT)
-
 Los JSON Web Tokens (JWT) constituyen un formato de token estandarizado por RFC, ampliamente utilizado en protocolos de autorización como OAuth 2.0. Un JWT contiene claims, que son declaraciones con valores asociados, y está estructurado y codificado según estándares que garantizan que el token no pueda ser modificado y que pueda cifrarse adicionalmente (Mastering API Architecture).
 
 [TIP]
@@ -151,12 +149,6 @@ En este token, las claims incluidas son `iss`, `sub`, `aud`, `exp`, `nbf`, `iat`
 * `nbf` (Not before): Momento a partir del cual el token es válido.
 * `iat` (Issued at): Fecha y hora de emisión del token.
 * `jti` (JWT ID): Identificador único del token, útil para evitar la reutilización.
-
-[NOTE]
-====
-Este ejemplo ilustra cómo un JWT puede incluir información esencial para la autenticación y autorización en APIs REST de manera segura, manteniendo la integridad y la confidencialidad de los datos transmitidos.
-====
-
  
 
 * **Seguridad de la capa de transporte (TLS)**  
