@@ -1,4 +1,4 @@
-= Planeación del desarrollo y requisitos de seguridad
+== Planeación del desarrollo y requisitos de seguridad
 
 La planeación constituye la fase inicial del ciclo de vida del desarrollo de una API. En esta etapa, se establece el propósito de la API, así como los casos de uso y los recursos necesarios para su construcción. Se realiza la definición de los requisitos operativos, de negocio y de seguridad, y se identifican los equipos encargados de guiar la API a lo largo de las fases posteriores (Postman, 2023).
 
@@ -38,7 +38,7 @@ Las prácticas reportadas en la literatura para esta fase se presentan en la sig
 |Postman (s.f)
 |===
 
-== Evaluación organizacional y su relación con la seguridad
+=== Evaluación organizacional y su relación con la seguridad
 
 La seguridad de una API no depende exclusivamente de mecanismos técnicos, sino también de la cultura organizacional que sustenta su desarrollo y operación. La cultura de seguridad se entiende como el conjunto de valores que determinan la forma en que los individuos perciben y abordan la seguridad dentro de la organización. Esta cultura se ve influida por las metas institucionales, la estructura organizativa, las políticas, los procesos y el liderazgo, así como por las relaciones con socios, proveedores y otros actores externos (NCSC, 2021).
 
@@ -58,7 +58,7 @@ Un enfoque complementario es la estrategia de seguridad Zero Trust, basada en la
 
 Estas prácticas organizacionales y modelos, como Zero Trust, resultan especialmente relevantes en el diseño y operación de APIs REST, dado que la exposición directa a internet incrementa la superficie de ataque y exige la alineación entre los aspectos técnicos y humanos dentro de una misma estrategia de seguridad.
 
-== Identificación de amenazas y riesgos
+=== Identificación de amenazas y riesgos
 
 La identificación de amenazas y riesgos constituye una etapa crítica en el desarrollo seguro de APIs. Una amenaza se define como un evento o conjunto de circunstancias que puede comprometer los objetivos de seguridad de la API. Por ejemplo, un atacante que obtiene nombres y direcciones de la base de datos de clientes representa una amenaza para la confidencialidad de la información (Madden, 2020).
 
@@ -72,7 +72,7 @@ Además de la identificación, la búsqueda activa de amenazas, conocida como th
 
 Por lo tanto, la labor del diseñador de una API no se limita a garantizar el cumplimiento de sus funciones requeridas, sino que también incluye una vigilancia constante del panorama de seguridad, con el objetivo de prevenir y mitigar posibles amenazas que puedan comprometer la integridad del sistema (Lalonchera, 2025).
 
-== Referencias normativas y técnicas de seguridad para API
+=== Referencias normativas y técnicas de seguridad para API
 
 Los estándares de seguridad de API constituyen marcos y pautas diseñados para garantizar la protección de las APIs frente a posibles amenazas y vulnerabilidades. Estos estándares permiten a las organizaciones implementar medidas de seguridad consistentes y efectivas (PubNub, 2024).
 
@@ -82,13 +82,13 @@ Por otra parte, los protocolos de API definen los mecanismos de transmisión y p
 
 A continuación, se describen algunos de los principales estándares utilizados en la industria. Se aclara que la lista no es exhaustiva, y la selección del estándar adecuado dependerá del contexto, las necesidades de la aplicación y los requerimientos de la organización.
 
-=== OAuth 2.0
+==== OAuth 2.0
 
 OAuth 2.0 es uno de los marcos de autorización más utilizados para APIs web. Su objetivo principal es permitir que un usuario otorgue a una aplicación de terceros acceso limitado a sus recursos, sin necesidad de compartir sus credenciales. Este modelo se ha convertido en un estándar en la autorización de APIs y es ampliamente adoptado en entornos web, móviles y en la nube (Varga et al., 2025).
 
 El funcionamiento básico de OAuth 2.0 consiste en que el usuario se autentica con un proveedor de identidad (por ejemplo, Google o Facebook) y concede permisos a la aplicación de terceros. Posteriormente, la aplicación obtiene un token de acceso, el cual se emplea para realizar solicitudes autorizadas a la API en nombre del usuario. Dicho token contiene scopes o alcances, que determinan el nivel de acceso permitido, como lectura o escritura sobre determinados recursos.
 
-==== Consideraciones de seguridad
+===== Consideraciones de seguridad
 
 Al implementar OAuth 2.0, se deben tener en cuenta medidas de seguridad específicas para mitigar riesgos comunes asociados al manejo de tokens:
 
@@ -96,13 +96,13 @@ Al implementar OAuth 2.0, se deben tener en cuenta medidas de seguridad específ
 * Preferir tokens de corta duración acompañados de refresh tokens, a fin de reducir el riesgo en caso de robo de un token.
 * Implementar mecanismos de revocación para invalidar tokens cuando sea necesario.
 
-==== Ventajas
+===== Ventajas
 
 * Permite el acceso delegado sin necesidad de compartir credenciales del usuario.  
 * Su amplia adopción promueve la estandarización en diversos servicios.  
 * Facilita la integración entre aplicaciones heterogéneas (web, móviles y cloud).
 
-==== Desventajas
+===== Desventajas
 
 * Requiere mecanismos seguros de almacenamiento y transmisión de tokens.  
 * Introduce cierta complejidad en la gestión de tokens, especialmente con refresh tokens y su expiración.  
@@ -116,9 +116,48 @@ Sin embargo, para aplicaciones internas o entornos con bajo riesgo de exposició
 ====
 
 
-* **JSON Web Token (JWT)**  
+==== JSON Web Token (JWT) 
 
-Estándar industrial adoptado para transmitir información de manera segura entre partes mediante un formato compacto y verificable. Facilita incluir datos de autenticación y autorización en las solicitudes y respuestas de la API, sin requerir almacenamiento adicional en el servidor. En este modelo, el cliente envía un token firmado en el encabezado de autorización HTTP, y el servidor verifica el token para extraer los datos de autenticación y autorización del usuario (EP-03).
+== JSON Web Tokens (JWT)
+
+Los JSON Web Tokens (JWT) constituyen un formato de token estandarizado por RFC, ampliamente utilizado en protocolos de autorización como OAuth 2.0. Un JWT contiene claims, que son declaraciones con valores asociados, y está estructurado y codificado según estándares que garantizan que el token no pueda ser modificado y que pueda cifrarse adicionalmente (Mastering API Architecture).
+
+[TIP]
+====
+Este tipo de tokens resulta especialmente útil para la transferencia de información en entornos con restricciones de espacio, como los encabezados de autorización HTTP.
+====
+
+A continuación se presenta un ejemplo de un JWT que podría ser utilizado en una API web REST para autenticar a un usuario:
+
+[source,json]
+----
+{
+    "iss": "http://miapi/identidad",
+    "sub": "123e4567-e89b-12d3-a456-426614174000",
+    "aud": "Servicio-Usuarios",
+    "exp": 1735689600,
+    "nbf": 1735686000,
+    "iat": 1735686000,
+    "jti": "abc12345-6789-4567-890a-bcdef1234567"
+}
+----
+
+En este token, las claims incluidas son `iss`, `sub`, `aud`, `exp`, `nbf`, `iat` y `jti`. Estas son *claims* reservadas definidas en el RFC de JWT. Aunque no son obligatorias, proporcionan un conjunto mínimo de información útil para la autenticación y autorización.
+
+* `iss` (Issuer): Autoridad que emite el token, normalmente un proveedor de identidad.
+* `sub` (Subject): Identificador único del sujeto al que representa el token, por ejemplo, un usuario o una aplicación.
+* `aud` (Audience): Destinatario o servicio para el cual el token está destinado.
+* `exp` (Expiration time): Fecha y hora de expiración del token.
+* `nbf` (Not before): Momento a partir del cual el token es válido.
+* `iat` (Issued at): Fecha y hora de emisión del token.
+* `jti` (JWT ID): Identificador único del token, útil para evitar la reutilización.
+
+[NOTE]
+====
+Este ejemplo ilustra cómo un JWT puede incluir información esencial para la autenticación y autorización en APIs REST de manera segura, manteniendo la integridad y la confidencialidad de los datos transmitidos.
+====
+
+ 
 
 * **Seguridad de la capa de transporte (TLS)**  
 
@@ -145,10 +184,12 @@ Conjunto de estándares técnicos de seguridad desarrollado por la Fundación Op
 * **FIDO Standard**  
 Estándar abierto de autenticación compatible con la especificación de autenticación web del W3C y con el protocolo cliente-autenticador (CTAP). Permite a los usuarios autenticarse mediante datos biométricos, claves de seguridad o PIN, ofreciendo mayor seguridad en comparación con las contraseñas. FIDO2 proporciona un mecanismo seguro y fácil de usar para la autenticación (Chapple & Seidl, 2023; Santos, 2024).
 
-== Modelado de amenazas
+=== Modelado de amenazas
 
-== Requisitos funcionales
+=== Requisitos funcionales
 
-== Requisitos de seguridad asociados
+=== Requisitos de seguridad asociados
 
-== Validación y trazabilidad de requisitos
+=== Validación y trazabilidad de requisitos
+
+
