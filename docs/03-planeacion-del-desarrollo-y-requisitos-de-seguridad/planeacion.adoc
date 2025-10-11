@@ -272,22 +272,76 @@ En cuanto al desempeño, estudios comparativos han demostrado que JWT presenta u
 PASETO representa una evolución hacia mecanismos de autenticación más seguros en APIs RESTful. Si bien su rendimiento es inferior, su diseño restringido y predecible lo convierte en una opción recomendable para sistemas que priorizan la seguridad sobre la eficiencia, especialmente en el manejo de datos sensibles o en arquitecturas distribuidas.
 ====
 
+==== CORS
+
+Cross-Origin Resource Sharing (CORS) es un estándar que permite que aplicaciones web realicen solicitudes a APIs alojadas en dominios distintos al de la aplicación cliente. Este mecanismo surge como extensión controlada de la política del mismo origen (Same-Origin Policy), la cual bloquea solicitudes entre dominios diferentes para proteger contra ataques como Cross-Site Request Forgery (CSRF). Lock, A. (2022). ASP.NET Core in Action (2nd ed.). Manning Publications.  
+
+La política del mismo origen considera que dos recursos comparten origen únicamente si coinciden en esquema (HTTP o HTTPS), dominio y puerto. Por ejemplo:
+
+* `http://tienda.com/home` y `http://tienda.com/assets/style.css` tienen el mismo origen.  
+* `https://tienda.com` no comparte origen con `http://tienda.com` debido a la diferencia de esquema.  
+* `http://api.tienda.com` no comparte origen con `http://tienda.com` por ser un subdominio distinto.  
+* `http://tienda.com:8080` no comparte origen con `http://tienda.com` porque usan puertos diferentes.  
+
+CORS funciona mediante encabezados HTTP especiales que el servidor devuelve para indicar qué orígenes están autorizados, qué métodos HTTP se permiten y si se pueden enviar credenciales (cookies o cabeceras de autorización). En algunos casos, el navegador realiza primero una solicitud preliminar (preflight request) usando el método OPTIONS para verificar que la solicitud real está permitida. Si el servidor responde con los encabezados correctos, se ejecuta la solicitud principal.  
+
+Este estándar permite configurar políticas de CORS a nivel global para toda la aplicación o de manera selectiva por endpoint. Las políticas pueden definir qué dominios, métodos y cabeceras están permitidos, manteniendo la seguridad de la política del mismo origen al tiempo que habilitan la interoperabilidad entre aplicaciones y servicios en distintos dominios.  
+
+===== Ventajas
+
+* Habilita de forma controlada la comunicación entre dominios distintos.  
+* Mantiene la protección de la política del mismo origen.  
+* Permite configurar políticas específicas por dominio, método o endpoint.  
+
+===== Desventajas
+
+* Configuraciones inadecuadas pueden exponer la API a riesgos de seguridad.  
+* Requiere comprender correctamente los encabezados y el flujo de CORS.  
+* Puede añadir complejidad en la configuración de aplicaciones distribuidas.  
+
+[TIP]
+====
+Es recomendable habilitar CORS únicamente cuando sea necesario, configurando políticas específicas y evitando permitir cualquier origen de manera global. Por ejemplo, solo permitir que `https://app.tienda.com` acceda a `http://api.tienda.com`.
+====
+
+==== Implementación de CORS en Python
+
+A continuación se muestra cómo habilitar CORS en un API REST desarrollada con FastAPI:
+
+[source,python]
+----
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI(title="Tienda API")
+
+# Lista de dominios permitidos para acceder a la API
+origins = [
+    "https://app.tienda.com",
+    "https://admin.tienda.com"
+]
+
+# Agregar el middleware de CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,  # solo los dominios especificados
+    allow_credentials=True,  # permite enviar cookies o cabeceras de autorización
+    allow_methods=["GET", "POST", "PUT", "DELETE"],  # métodos HTTP permitidos
+    allow_headers=["Authorization", "Content-Type"],  # cabeceras permitidas
+)
+----
+
+[TIP]
+====
+Evita habilitar CORS de forma global con `allow_origins=["*"]` en producción, ya que esto permite que cualquier dominio haga solicitudes a tu API, incrementando el riesgo de ataques.
+====
+
 
 * **Sistema de gestión de identidades entre dominios (SCIM)**  
 Proporciona herramientas para controlar el tráfico entrante y saliente, incluyendo la limitación de la cantidad de recursos y atributos devueltos, así como la restricción de operaciones masivas (EP-28).
 
-* **Intercambio de recursos entre orígenes (CORS)**  
-Estándar de seguridad que permite a aplicaciones web realizar solicitudes a dominios distintos del de origen. Permite especificar los dominios autorizados para acceder a los recursos, previniendo solicitudes de origen cruzado no autorizadas y posibles fugas de datos (Pynt, 2024).
-
 * **Pautas de seguridad de la API del NIST (NIST SP 800-204)**  
 Proporciona estrategias de seguridad para aplicaciones basadas en microservicios, que dividen aplicaciones grandes en componentes pequeños, independientes y comunicantes entre sí mediante APIs (National Institute of Standards and Technology, 2019).
-
-
-* **FAPI (API de grado financiero)**  
-Conjunto de estándares técnicos de seguridad desarrollado por la Fundación OpenID para APIs del sector financiero. Garantiza un intercambio de datos seguro e interoperable en servicios financieros (PubNub, 2024).
-
-* **FIDO Standard**  
-Estándar abierto de autenticación compatible con la especificación de autenticación web del W3C y con el protocolo cliente-autenticador (CTAP). Permite a los usuarios autenticarse mediante datos biométricos, claves de seguridad o PIN, ofreciendo mayor seguridad en comparación con las contraseñas. FIDO2 proporciona un mecanismo seguro y fácil de usar para la autenticación (Chapple & Seidl, 2023; Santos, 2024).
 
 === Modelado de amenazas
 
