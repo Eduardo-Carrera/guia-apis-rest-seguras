@@ -130,7 +130,7 @@ A continuación se presenta un ejemplo de un JWT que podría ser utilizado en un
 [source,json]
 ----
 {
-    "iss": "http://miapi/identidad",
+    "iss": "http://secure/identity-provider",
     "sub": "123e4567-e89b-12d3-a456-426614174000",
     "aud": "Servicio-Usuarios",
     "exp": 1735689600,
@@ -163,14 +163,115 @@ En este token, las claims incluidas son `iss`, `sub`, `aud`, `exp`, `nbf`, `iat`
 * La gestión de la expiración de tokens y los ciclos de renovación añade complejidad a la aplicación, tanto en frontend como en backend.  
 * Se requiere cuidado en la implementación de la validación y revocación de tokens para evitar vulnerabilidades.
 
+==== OpenID Connect (OIDC)
+
+OAuth 2.0 proporciona un mecanismo para que el cliente acceda a APIs utilizando autenticación y autorización. Sin embargo, un requerimiento común es que el cliente también pueda conocer la identidad del propietario del recurso. Este es el propósito de OpenID Connect (OIDC): añadir una capa de identidad sobre OAuth 2.0.  
+
+OIDC amplía el servidor de autorización OAuth 2.0 para que actúe también como proveedor de identidad, entregando al cliente un *ID token* (un JWT con claims sobre el usuario) cuando se utiliza el scope especial `openid`. Además, se pueden incluir scopes adicionales como `profile`, `email`, `address` o `phone`, permitiendo obtener información más completa sobre el usuario (Gough, Bryant & Auburn, 2022).
+
+Los flujos definidos por OIDC son tres: Authorization Code Flow, Implicit Flow y Hybrid Flow. El recomendado es el Authorization Code Flow junto con PKCE, ya que ofrece mayor seguridad.
+
+[TIP]
+====
+OIDC y OAuth 2.0 no son lo mismo. OAuth 2.0 gestiona autorización para acceder a recursos, mientras que OIDC proporciona información de identidad del usuario. Ambos son complementarios.
+====
+
+[WARNING]
+====
+Nunca se deben usar los *ID tokens* como si fueran *access tokens*. Los *ID tokens* son de mayor duración y están diseñados únicamente para proporcionar información de identidad, no para acceder a recursos.
+====
+
+===== Ventajas
+
+* Añade una capa de identidad estándar sobre OAuth 2.0.  
+* Permite obtener información verificada del usuario mediante scopes adicionales.  
+* Compatible con JWT, lo que facilita la interoperabilidad.  
+* Amplia adopción en entornos web y móviles.  
+
+===== Desventajas
+
+* Introduce complejidad adicional respecto a OAuth 2.0 puro.  
+* Requiere que el proveedor de identidad soporte explícitamente OIDC.  
+* Una implementación incorrecta puede dar lugar a filtración de datos sensibles.  
 
 
-* **Seguridad de la capa de transporte (TLS)**  
+==== SAML 2.0
 
-Protocolo criptográfico que proporciona comunicación segura a través de redes informáticas. TLS garantiza la confidencialidad e integridad de los datos, así como la autenticación de las partes implicadas en la comunicación (PubNub, 2024).
+En entornos empresariales es común el uso de SAML 2.0 (Security Assertion Markup Language), un estándar abierto que transfiere *assertions* de identidad. Es ampliamente utilizado en escenarios de *single sign-on (SSO)*, permitiendo que empleados accedan a aplicaciones externas mediante sus credenciales corporativas.  
 
-* **Platform-Agnostic Security Tokens (PASETO)**  
-Formato alternativo a JOSE y JWT que permite generar objetos JSON firmados o cifrados de forma simétrica autenticada. Cada versión utiliza un conjunto fijo de algoritmos criptográficos, reduciendo la complejidad de implementación y limitando la superficie de ataque (Madden, 2020).
+Aunque SAML no está diseñado para usarse directamente en APIs REST, existe una extensión llamada *SAML 2.0 Profile for OAuth 2.0 Client Authentication and Authorization Grants*, la cual permite a un cliente solicitar un *access token* usando SAML, siempre que el servidor de autorización tenga soporte para esta funcionalidad (Gough, Bryant & Auburn, 2022).  
+
+===== Ventajas
+
+* Muy utilizado en entornos corporativos para SSO.  
+* Permite federación de identidad entre organizaciones.  
+* Estándar maduro y con amplio soporte en sistemas empresariales.  
+
+===== Desventajas
+
+* No está alineado con el diseño de APIs REST modernas.  
+* Mayor complejidad en comparación con OIDC.  
+* Requiere integración específica con servidores que soporten el perfil SAML-OAuth2.  
+
+[TIP]
+====
+SAML sigue siendo relevante en migraciones hacia OAuth 2.0 y OIDC, especialmente en organizaciones con infraestructuras legadas o en procesos de federación de identidad.
+====
+
+
+==== Transport Layer Security (TLS)
+
+Transport Layer Security (TLS) es un protocolo que opera sobre TCP/IP y proporciona funciones de seguridad esenciales para permitir la comunicación segura entre un cliente y un servidor. TLS garantiza la confidencialidad, integridad y autenticidad de los datos transmitidos, protegiendo las comunicaciones frente a ataques de tipo man-in-the-middle (MITM) (Madden, s.f.; Chun et al., 2024; Brikman, 2025).
+
+TLS se implementa mediante un handshake inicial en el que el cliente autentica al servidor, garantizando que se conecta a la entidad correcta y no a un atacante. Durante este proceso, se negocian las versiones del protocolo y los algoritmos criptográficos a utilizar, así como las claves de cifrado que se emplearán para el resto de la sesión. La información transmitida posteriormente se cifra y autentica utilizando estas claves, asegurando que no pueda ser leída ni modificada por terceros (Madden, s.f.; Brikman, 2025).
+
+TLS es ampliamente utilizado en protocolos de API basados en HTTP, incluyendo REST y SOAP, para cifrar la comunicación entre clientes y servidores. En algunos casos, además del cifrado de canal que proporciona TLS, puede ser necesario aplicar cifrado adicional a nivel de payload para proteger datos sensibles de manera más granular (Chun et al., 2024).
+
+===== Ventajas
+
+* Garantiza confidencialidad de los datos transmitidos mediante cifrado de canal.  
+* Asegura la integridad y autenticidad de los mensajes, previniendo modificaciones y suplantación de identidad.  
+* Protege contra ataques de intermediario (*MITM*).  
+* Amplia compatibilidad con protocolos web y de API modernos.  
+* Puede implementarse con autenticación mutua (*mTLS*) en arquitecturas de microservicios para validar ambos extremos de la comunicación.
+
+===== Desventajas
+
+* Requiere configuración cuidadosa de versiones de protocolo y algoritmos criptográficos.  
+* Puede generar sobrecarga en términos de rendimiento, especialmente con cifrado fuerte o en entornos de alto tráfico.  
+* La gestión de certificados y autoridades de certificación (CAs) añade complejidad administrativa.  
+* Implementaciones incorrectas o uso de versiones obsoletas pueden introducir vulnerabilidades.
+
+
+==== PASETO
+
+El estándar Platform-Agnostic Security Tokens (PASETO) surge como una alternativa moderna y más segura a JSON Web Tokens (JWT) dentro de los esquemas de autenticación basados en tokens. PASETO fue diseñado para evitar los errores comunes y vulnerabilidades derivados del uso de JSON Object Signing and Encryption (JOSE), ofreciendo un formato más predecible, seguro y menos propenso a configuraciones inseguras (Madden, 2020).  
+
+A diferencia de JWT, que permite al desarrollador seleccionar entre una amplia variedad de algoritmos criptográficos, PASETO restringe esta elección y define un conjunto fijo de algoritmos por versión. La versión 1 utiliza algoritmos ampliamente adoptados como AES y RSA, mientras que la versión 2 emplea algoritmos modernos y más robustos, como Ed25519 para la firma digital y XChaCha20-Poly1305 para el cifrado autenticado. Este diseño elimina las posibilidades de que un atacante explote configuraciones débiles o confusas, incrementando la fiabilidad criptográfica del token (Madden, 2020).  
+
+Asimismo, PASETO admite tanto cifrado simétrico autenticado como firma con clave pública, cubriendo los mismos casos de uso que JWT, pero con una arquitectura más estricta y segura. Los algoritmos y bibliotecas empleados son conocidos únicamente por el servidor emisor del token, lo que dificulta los intentos de falsificación o manipulación. Además, cada versión del protocolo establece su propio conjunto de reglas y algoritmos, promoviendo la interoperabilidad y la previsibilidad en la implementación (Nugraha, Kabetta, Buana & Hadiprakoso, 2023).  
+
+En cuanto al desempeño, estudios comparativos han demostrado que JWT presenta una mejor eficiencia en tiempo de generación y tamaño de token; sin embargo, PASETO ofrece una resistencia significativamente superior frente a vulnerabilidades críticas. Según Nugraha et al. (2023), las pruebas de seguridad realizadas evidenciaron que JWT es susceptible a ataques como Broken User Authentication y explotación de encabezados, mientras que PASETO mostró solidez ante las principales vulnerabilidades documentadas en el OWASP API Security Top 10 (2019).
+
+===== Ventajas
+
+* Su diseño prioriza la seguridad desde la definición de sus algoritmos y versiones.  
+* Define algoritmos criptográficos fijos por versión, eliminando opciones inseguras.  
+* Resistente frente a vulnerabilidades comunes en JWT (por ejemplo, manipulación del encabezado de algoritmo).  
+* Ofrece autenticación basada en cifrado simétrico o en firma asimétrica.  
+* Proporciona mayor previsibilidad y control criptográfico.  
+
+===== Desventajas
+
+* Menor rendimiento en comparación con JWT en la generación y transferencia de tokens.  
+* Tamaño de token superior, lo que puede impactar en entornos con restricciones de ancho de banda.  
+* Adopción limitada y menor disponibilidad de bibliotecas en comparación con JWT.  
+
+[TIP]
+====
+PASETO representa una evolución hacia mecanismos de autenticación más seguros en APIs RESTful. Si bien su rendimiento es inferior, su diseño restringido y predecible lo convierte en una opción recomendable para sistemas que priorizan la seguridad sobre la eficiencia, especialmente en el manejo de datos sensibles o en arquitecturas distribuidas.
+====
+
 
 * **Sistema de gestión de identidades entre dominios (SCIM)**  
 Proporciona herramientas para controlar el tráfico entrante y saliente, incluyendo la limitación de la cantidad de recursos y atributos devueltos, así como la restricción de operaciones masivas (EP-28).
@@ -181,8 +282,6 @@ Estándar de seguridad que permite a aplicaciones web realizar solicitudes a dom
 * **Pautas de seguridad de la API del NIST (NIST SP 800-204)**  
 Proporciona estrategias de seguridad para aplicaciones basadas en microservicios, que dividen aplicaciones grandes en componentes pequeños, independientes y comunicantes entre sí mediante APIs (National Institute of Standards and Technology, 2019).
 
-* **OWASP API Security Top 10**  
-Listado de los diez riesgos de seguridad más críticos para APIs, publicado por el Open Web Application Security Project (OWASP). Facilita la identificación y mitigación de vulnerabilidades comunes en el diseño e implementación de APIs (OWASP, 2023).
 
 * **FAPI (API de grado financiero)**  
 Conjunto de estándares técnicos de seguridad desarrollado por la Fundación OpenID para APIs del sector financiero. Garantiza un intercambio de datos seguro e interoperable en servicios financieros (PubNub, 2024).
