@@ -45,6 +45,7 @@ La seguridad de una API no depende exclusivamente de mecanismos técnicos, sino 
 La cultura de ciberseguridad abarca asimismo las actitudes, conocimientos, normas y valores de los empleados en relación con la seguridad. Su efectividad no depende únicamente de políticas o procesos, sino de la alineación entre factores organizacionales (liderazgo, procesos, normas) y factores individuales (actitudes, conocimientos, comportamientos). La inversión en una cultura sólida fortalece la seguridad técnica de las APIs, genera confianza digital, mejora la reputación organizacional y promueve la adopción de comportamientos seguros en el trabajo cotidiano (PA Consulting, s.f.).
 
 En entornos con una cultura de seguridad consolidada, los equipos perciben la seguridad como un esfuerzo colectivo y colaborativo que respalda las actividades diarias. Según el NCSC (2021), los principales beneficios incluyen:
+
 * Mayor propensión de los empleados a identificar problemas y proponer mejoras, fortaleciendo la resiliencia.
 * Facilita la comunicación abierta sobre incidentes sin temor a represalias.
 * Mejora del bienestar y la retención del personal, al fomentar la inclusión y explicar claramente el propósito de las medidas de seguridad.
@@ -52,6 +53,7 @@ En entornos con una cultura de seguridad consolidada, los equipos perciben la se
 Para consolidar esta cultura, se recomienda complementar las prácticas organizacionales con certificaciones reconocidas, tales como ISO 27001 y Cyber Essentials, que establecen estándares, procesos y políticas destinados a incrementar la resiliencia cibernética de la organización.
 
 Un enfoque complementario es la estrategia de seguridad Zero Trust, basada en la premisa de que ninguna persona o dispositivo, tanto dentro como fuera de la red organizacional, debe considerarse de confianza de manera automática. Este modelo se fundamenta en tres principios esenciales (Akamai, s.f.):
+
 * Verificación de la confianza de todas las entidades.
 * Aplicación del principio de privilegios mínimos.
 * Implementación de una supervisión continua de la seguridad.
@@ -560,46 +562,37 @@ Su nombre proviene del acrónimo de seis categorías de amenazas, que ayudan a l
 | Auditoría, bitácoras de eventos, firmas digitales y uso de frameworks de logging.
 
 | **I**nformation Disclosure (Divulgación de información)
-| Fuga de datos sensibles hacia partes no autorizadas.
-| Exponer datos personales en respuestas de API.
-| Cifrado, control de acceso, minimización de datos.
+| Fuga de datos confidenciales hacia partes no autorizadas.
+| Puede manifestarse cuando los atacantes espían las comunicaciones de la red, acceden a archivos no protegidos o aprovechan vulnerabilidades para obtener acceso no autorizado a los datos.
+| Cifrado de datos, control de acceso, procesos de clasificación y manejo de datos.
 
 | **D**enial of Service (Denegación de servicio)
-| Ataques que impiden el funcionamiento legítimo del sistema.
-| Saturación de peticiones en una API REST.
-| Limitación de tasa (rate limiting), balanceo, detección de anomalías.
+| Su objetivo es hacer que un sistema o servicio no esté disponible para sus usuarios previstos.
+| Saturación con tráfico excesivo o explotación de vulnerabilidades para provocar su caída.
+| Limitación de tasa (rate limiting), uso de WAF, diseñar sistemas con capacidad de redundancia y recuperación ante fallos.
 
 | **E**levation of Privilege (Elevación de privilegios)
-| Un usuario gana permisos que no debería tener.
-| Usuario regular que ejecuta operaciones administrativas.
-| Separación de funciones, controles de acceso y validación de roles.
+| Un atacante obtiene permisos superiores a los que debería tener, lo que le permite realizar acciones no autorizadas.
+| Usuario aprovecha una vulnerabilidad para obtener privilegios administrativos podría tener acceso sin restricciones a datos confidenciales o funciones críticas del sistema.
+| Principio del mínimo privilegio, auditorías periodicas de privilegios y corrección de vulnerabilidades.
 |===
 
-====== Ejemplo práctico (según Green, 2022)
+====== Ventajas de STRIDE
 
-Green (2022) ilustra STRIDE con un ejemplo de un *portal de servicios web*, que puede adaptarse fácilmente al contexto de una API REST.  
-Supongamos una API que gestiona información de clientes y sus pedidos.  
-Al analizarla bajo STRIDE:
+Una de las ventajas más significativas del modelo STRIDE es su simplicidad y versatilidad, lo que lo hace aplicable a una amplia variedad de sistemas y servicios. Los equipos de seguridad y los desarrolladores pueden utilizar STRIDE para realizar análisis de amenazas de manera sistemática durante la fase de diseño, ayudándoles a comprender y anticipar posibles riesgos.  
+Al categorizar las amenazas mediante STRIDE, los arquitectos de seguridad pueden asegurar una evaluación integral de las preocupaciones de seguridad, abordando desde los mecanismos de autenticación hasta la integridad y disponibilidad de los datos (Green, 2022).
 
-* **S – Spoofing:** Un atacante podría falsificar un token JWT para acceder como otro usuario.  
-  *Mitigación:* emplear firmas HMAC o RSA y validación de expiración de tokens.  
+====== Uso de STRIDE en el modelado de amenazas
 
-* **T – Tampering:** Modificar el cuerpo JSON de una solicitud PUT para alterar el monto del pedido.  
-  *Mitigación:* aplicar validaciones del lado servidor y controles de integridad sobre los datos.  
+En la práctica, el modelado de amenazas utilizando STRIDE normalmente comienza con la comprensión de la arquitectura del sistema que se está analizando.  
+Los profesionales de seguridad elaboran diagramas de flujo de datos (DFD) para visualizar cómo fluye la información a través del sistema, identificando componentes clave como almacenes de datos, procesos y canales de comunicación.  
+Cada elemento del DFD se evalúa luego empleando el modelo STRIDE para identificar amenazas potenciales.  
 
-* **R – Repudiation:** Un usuario modifica información y luego niega haberlo hecho.  
-  *Mitigación:* mantener auditorías firmadas digitalmente o logs inmutables.  
-
-* **I – Information Disclosure:** La API responde con más información de la necesaria (por ejemplo, datos de tarjeta).  
-  *Mitigación:* aplicar *output encoding* y filtrado estricto de respuestas.  
-
-* **D – Denial of Service:** Se envían peticiones masivas para agotar recursos del servidor.  
-  *Mitigación:* implementar *rate limiting*, *circuit breakers* y control de concurrencia.  
-
-* **E – Elevation of Privilege:** Un usuario básico logra acceder a endpoints administrativos.  
-  *Mitigación:* aplicar control de acceso basado en roles (RBAC) y validaciones de permisos en cada endpoint.
-
-Este análisis evidencia cómo STRIDE guía la identificación de amenazas específicas y orienta las decisiones de diseño seguro dentro del ciclo de desarrollo de APIs (Green, 2022).
+[TIP]
+====
+El uso del modelo STRIDE permite a los equipos de seguridad comprender y anticipar los riesgos de manera estructurada.  
+Su aplicación facilita una evaluación holística de los problemas de seguridad y fomenta la integración temprana de controles de protección durante la fase de diseño (Green, 2022).
+====
 
 ===== Paso 3: Determinar las contramedidas y la mitigación
 
@@ -621,12 +614,131 @@ Al concluir cualquier proyecto o tarea, es crucial hacerse una pregunta fundamen
 Este paso implica realizar una actividad retrospectiva, analizando de manera detallada y honesta la calidad de los resultados y la viabilidad de las soluciones implementadas.  
 Este proceso de revisión fomenta la mejora continua en la práctica del modelado de amenazas (OWASP, s.f.).
 
-=== Referencias
 
-Green, J. (2022). *Security Architecture*. BCS, The Chartered Institute for IT.  
-Threat Modeling Manifesto. (2020). *Threat Modeling Manifesto*. Recuperado de https://www.threatmodelingmanifesto.org  
-OWASP. (s.f.). *OWASP Threat Modeling*. Recuperado de https://owasp.org/www-community/Threat_Modeling
+===== Ejemplo práctico
 
+A continuación, se presenta un ejemplo simplificado de modelado de amenazas utilizando la metodología STRIDE para una API REST del área de la salud que maneja datos de pacientes, permite el acceso a historiales médicos y facilita la programación de citas médicas.
+Existen diversas herramientas que pueden ayudar a documentar el moodelado de amenazas, como las siguientes:
+
+* OWASP Threat Dragon
+* Microsoft Threat Modeling Tool
+* IriusRisk
+* ThreatModeler
+* SecuriCAD
+
+==== Paso 1 — Alcance del trabajo
+
+En esta etapa se define el alcance del sistema y se descompone la aplicación para entender su funcionamiento general.  
+El sistema analizado se compone de los siguientes elementos principales:
+
+Nombre del sistema: **HealthAPI**
+Versión: 1.0
+Descripción: API REST para la gestión de datos de pacientes, historiales médicos y citas en una clínica.
+Propietario del documento: Propietario del documento de modelado de amenazas
+Participantes: Nombres de los involucrados en el modelado de amenazas
+Revisor: Nombre del revisor del documento
+Fecha de creación: Fecha de creación del documento
+
+Dependencias externas: Suelen ser elementos externos al código de la aplicación y que representan una amenaza potencial.
+
+TODO: Tabla en donde se documenten las dependencias externas del sistema con ID y descripción.
+
+Puntos de entrada: Son los lugares donde un atacante puede interactuar con el sistema.
+TODO: Tabla en donde se documenten los puntos de entrada del sistema con ID, nombre, descripción y nivel de confianza.
+
+Puntos de salida: Son los lugares donde el sistema envía datos o respuestas a los usuarios o sistemas externos.
+
+TODO: Tabla en donde se documenten los puntos de salida del sistema con ID, nombre, descripción y nivel de confianza.
+
+Activos: Son los elementos valiosos que requieren protección, como datos sensibles, propiedad intelectual, funcionalidades críticas o la privacidad del usuario.
+TODO: Tabla en donde se documenten los activos del sistema con ID, nombre, descripción y nivel de importancia.
+
+Niveles de confianza: Se identifican los diferentes niveles de confianza dentro del sistema, como usuarios autenticados, administradores, servicios internos y externos.
+TODO: Tabla en donde se documenten los niveles de confianza del sistema con ID, nombre y descripción.
+
+Diagramas de flujo de datos (DFD)
+TODO: Explicar sobre el DFD y su importancia en el modelado de amenazas.
+
+TODO: Mostrar diagrama DFD del ejemplo.
+
+
+==== Paso 2 — Determinar las amenazas (Aplicación de STRIDE)
+
+Con base en la descomposición anterior, se analizan las amenazas aplicando las categorías de STRIDE sobre los componentes más relevantes.
+
+TODO: Explicar cómo se identificaron las amenazas, en este caso se siguió STRIDE y ya está más o menos explicado qué pasa en cada categoria, después es necesario analizar las amenazas para determinar el riesgo (explicar cómo sacar el riesgo) (Para cada elemento del DFD se analizan las posibles amenazas aplicando STRIDE), aplicar el arbol de amenazas. Entonces ya se presentan las amenazas identificadas en una tabla con el elemento (del DFD, por ejemplo un web response que es un flujo de datos), el riesgo, lla categoria de stride, amenaza, descripcion.
+
+[cols="1,2,2,2"]
+|===
+| Recurso | Amenaza (STRIDE) | Ejemplo de escenario | Contramedida propuesta
+
+| `POST /auth/login`
+| **Spoofing**
+| Un atacante usa credenciales robadas para autenticarse como un paciente.
+| Implementar autenticación multifactor (MFA), limitar intentos de inicio de sesión y registrar patrones de acceso sospechosos.
+
+| `GET /patients/{id}`
+| **Information Disclosure**
+| Un usuario con token válido accede a información de otro paciente mediante un ID manipulado.
+| Verificar el propietario del recurso, aplicar controles de acceso a nivel de campo y cifrar la información sensible.
+
+| `POST /appointments`
+| **Tampering**
+| Modificación del contenido de una solicitud para cambiar la fecha o el costo de una cita.
+| Usar HTTPS, validar datos del lado del servidor y firmar los mensajes si se requiere integridad adicional.
+
+| `GET /records`
+| **Denial of Service (DoS)**
+| Solicitudes masivas a los historiales médicos que saturan el servidor.
+| Implementar *rate limiting*, caching y estrategias de escalado.
+
+| `PUT /patients/{id}`
+| **Elevation of Privilege**
+| Un usuario estándar intenta modificar información administrativa.
+| Aplicar controles RBAC y validar los privilegios en cada solicitud.
+
+|===
+
+[TIP]
+====
+Aplicar STRIDE sobre los componentes del sistema permite identificar amenazas específicas y asignar contramedidas claras desde las primeras etapas del diseño.
+====
+
+==== Paso 3 — Determinar contramedidas y mitigación
+
+Una vez identificadas las amenazas, se definen las contramedidas apropiadas.
+
+TODO: Explicar que a veces como ya están categorizadas con STRIDE, ya se pueden ir pensando en las contramedidas típicas de cada categoría. Y finalmente se pueden derivar amenazas no mitigadas, parciales o mitigadas.
+
+Por ejemplo:
+
+* **Spoofing:** aplicar autenticación fuerte, MFA y validación de tokens.  
+* **Tampering:** cifrar datos en tránsito y validar integridad.  
+* **Repudiation:** habilitar registro de auditoría con trazabilidad.  
+* **Information Disclosure:** implementar controles de acceso y clasificación de datos.  
+* **Denial of Service:** limitar la tasa de peticiones y usar sistemas de detección de anomalías.  
+* **Elevation of Privilege:** revisar roles, permisos y aplicar el principio de mínimo privilegio.
+
+Estas contramedidas se documentan junto con la justificación de su elección, considerando el costo, el impacto y la probabilidad del ataque.
+
+TODO: Ahora sí se podrían incluir las contramedidas en la tabla del Paso 2. 
+
+TODO: Una vez que se tienen esselementos, se puede crear el modelo con una herramienta como OWASP Threat Dragon o Microsoft Threat Modeling Tool. En nuestro caso, se usará OWASP Threat Dragon así que hay que incluir capturas.
+
+==== Paso 4 — Evaluar el trabajo
+
+Finalmente, se realiza una evaluación del modelo de amenazas y las mitigaciones propuestas:
+
+* Verificar si se han cubierto todos los componentes y flujos críticos.
+* Revisar la coherencia entre las amenazas identificadas y las contramedidas aplicadas.
+* Comprobar que las medidas propuestas son viables técnica y económicamente.
+* Planificar revisiones periódicas del modelo conforme evolucione la arquitectura del sistema.
+
+
+[TIP]
+====
+El modelo de amenazas debe mantenerse como un artefacto vivo que se actualice junto con los cambios de diseño. Su revisión periódica permite detectar nuevos riesgos antes de la fase de implementación.
+====
 
 
 === Requisitos funcionales
