@@ -336,12 +336,119 @@ app.add_middleware(
 Evita habilitar CORS de forma global con `allow_origins=["*"]` en producción, ya que esto permite que cualquier dominio haga solicitudes a tu API, incrementando el riesgo de ataques.
 ====
 
+==== ISO/IEC 27001: Information Security Management
 
-* **Sistema de gestión de identidades entre dominios (SCIM)**  
-Proporciona herramientas para controlar el tráfico entrante y saliente, incluyendo la limitación de la cantidad de recursos y atributos devueltos, así como la restricción de operaciones masivas (EP-28).
+ISO/IEC 27001 es un estándar internacionalmente reconocido para la gestión de la seguridad de la información. Proporciona un enfoque sistemático para administrar información sensible de la organización, garantizando que se mantenga segura. Esto incluye desde datos financieros, propiedad intelectual y detalles de empleados hasta información confiada por terceros (Edwards & Weaver, 2023).
 
-* **Pautas de seguridad de la API del NIST (NIST SP 800-204)**  
-Proporciona estrategias de seguridad para aplicaciones basadas en microservicios, que dividen aplicaciones grandes en componentes pequeños, independientes y comunicantes entre sí mediante APIs (National Institute of Standards and Technology, 2019).
+El estándar establece la base para un *Information Security Management System (ISMS)*, exigiendo que la organización diseñe e implemente un conjunto coherente y completo de controles de seguridad de la información. Los controles no son prescriptivos, lo que permite a cada organización adaptarlos según sus necesidades y contexto. Entre los aspectos cubiertos se incluyen evaluación de riesgos, políticas de seguridad, gestión de activos, control de accesos y seguridad física y ambiental (Staveley, 2023).
+
+ISO/IEC 27001 puede aplicarse a cualquier organización, independientemente de su tamaño o industria, aunque resulta especialmente relevante en sectores que manejan información altamente sensible, como instituciones financieras. Su implementación proporciona un marco estructurado para proteger la información, reducir riesgos y demostrar un compromiso con las mejores prácticas de seguridad.
+
+===== Beneficios de aplicar ISO/IEC 27001 en APIs
+
+* **Gestión integral de la seguridad:** Permite establecer un marco consistente para proteger las APIs y la información que manejan (Staveley, 2023).  
+* **Flexibilidad:** Los controles pueden adaptarse a la complejidad de la organización y a las particularidades de sus servicios API (Edwards & Weaver, 2023).  
+* **Reducción de riesgos:** Al incluir evaluaciones periódicas de riesgo y controles de seguridad, se disminuye la probabilidad de incidentes de seguridad (Staveley, 2023).  
+* **Mejora continua:** El estándar promueve la revisión constante y la actualización de medidas de seguridad, manteniendo las APIs seguras frente a nuevas amenazas (Edwards & Weaver, 2023).  
+* **Confianza y reputación:** Aplicar ISO/IEC 27001 demuestra a clientes y socios un enfoque profesional y estructurado en la protección de datos (Staveley, 2023).  
+
+[TIP]
+====
+Al implementar APIs seguras dentro de un marco ISO/IEC 27001, las organizaciones no solo protegen la información, sino que también facilitan la interoperabilidad segura y el cumplimiento normativo, fortaleciendo la confianza de usuarios y socios comerciales.
+====
+=== NIST SP 800-228: Directrices para la protección de APIs en sistemas *cloud-native*
+
+El *NIST Special Publication 800-228* (_Guidelines for API Protection for Cloud-Native Systems_) establece lineamientos específicos para la protección y aseguramiento de APIs en entornos empresariales modernos. 
+Este estándar reconoce que las APIs son el medio principal de comunicación e integración entre sistemas en arquitecturas nativas de la nube, por lo que su seguridad resulta esencial para la postura de seguridad general de las organizaciones (Chandramouli & Butcher, 2025).
+
+El documento propone un modelo de protección integral del ciclo de vida de las APIs, basado en los principios de *DevSecOps* y el paradigma de *Zero Trust*, considerando controles tanto *previos a la ejecución (pre-runtime)* como *durante la ejecución (runtime)*. 
+Estos controles se clasifican en *básicos* y *avanzados*, lo que permite su adopción de forma incremental y basada en el riesgo, de acuerdo con la madurez de la organización.
+
+Entre sus principales aportaciones destacan:
+
+* Identificación de factores de riesgo y vulnerabilidades que pueden introducirse durante el desarrollo o despliegue de APIs.
+* Controles y medidas de protección recomendadas que abarcan desde la fase de diseño hasta la ejecución de peticiones.
+* Patrones de implementación con análisis de ventajas y desventajas, que orientan a los profesionales de seguridad en la selección de enfoques adecuados a su ecosistema tecnológico.
+* Clasificación de APIs y su relación con las fases del ciclo DevSecOps, facilitando la integración de la seguridad como parte del desarrollo continuo.
+
+Este estándar resulta relevante para las guías de diseño seguro de APIs REST, ya que ofrece un marco actualizado para mitigar vulnerabilidades desde la concepción y el diseño, reforzando la seguridad mediante controles expresados en términos de recursos (nombres) y operaciones (verbos), en coherencia con los principios REST.
+
+==== Regulaciones de protección de datos y privacidad
+
+Además de los estándares técnicos y normativos como ISO/IEC 27001 y NIST SP 800-228, existen marcos legales que complementan la seguridad de las APIs desde la perspectiva de la protección de datos personales y la privacidad. Estas regulaciones buscan garantizar que las organizaciones gestionen la información sensible de manera responsable, transparente y conforme a los derechos de los individuos.  
+
+Entre las más relevantes se encuentran el *Reglamento General de Protección de Datos (GDPR)* en la Unión Europea, la *California Consumer Privacy Act (CCPA)* en Estados Unidos y la *Personal Information Protection and Electronic Documents Act (PIPEDA)* en Canadá. Todas ellas establecen obligaciones como obtener consentimiento para el tratamiento de datos, aplicar medidas técnicas de seguridad y permitir a los usuarios ejercer derechos sobre su información (Staveley, 2023).
+
+===== GDPR: Reglamento General de Protección de Datos (Unión Europea)
+
+El Reglamento General de Protección de Datos (GDPR) representa el marco más influyente en materia de privacidad a nivel mundial. Su objetivo es proteger los datos personales de los ciudadanos y residentes europeos, fortaleciendo sus derechos y unificando las regulaciones entre los Estados miembros.  
+
+El GDPR establece principios fundamentales de transparencia, responsabilidad y minimización de datos, los cuales pueden integrarse de forma natural en el diseño y operación de APIs REST seguras.  
+Entre sus disposiciones más destacadas se incluyen:
+
+* **Derechos de los interesados:** acceso, rectificación, eliminación (*derecho al olvido*) y portabilidad de datos personales.  
+* **Consentimiento informado:** las organizaciones deben obtener autorización clara y explícita antes de procesar datos personales.  
+* **Seguridad y confidencialidad:** uso obligatorio de controles técnicos como cifrado, autenticación, control de accesos, auditorías y gestión de incidentes.  
+* **Minimización de datos:** procesar solo la información estrictamente necesaria para los fines declarados.  
+* **Responsabilidad y documentación:** mantener registros detallados de las actividades de tratamiento y, cuando corresponda, designar un Delegado de Protección de Datos (DPO).
+
+El incumplimiento del GDPR puede acarrear sanciones severas, de hasta 20 millones de euros o el 4 % de la facturación anual global, además de un daño reputacional considerable.  
+
+Por ello, el cumplimiento de esta regulación se considera una práctica esencial en el diseño y operación de APIs que gestionen información personal o sensible.
+
+===== Consideraciones del GDPR aplicadas a la seguridad de APIs
+
+Para alinear el diseño de APIs REST con los principios del GDPR, se recomiendan las siguientes buenas prácticas:
+
+* **Minimización de datos:** limitar los datos transmitidos a lo estrictamente necesario.  
+* **Gestión del consentimiento:** implementar mecanismos para obtener, registrar y revocar el consentimiento de los usuarios.  
+* **Cifrado:** proteger la información personal mediante cifrado de extremo a extremo en tránsito y en reposo.  
+* **Control de acceso:** restringir el uso de las APIs únicamente a usuarios o sistemas autenticados y autorizados.  
+* **Derechos de los interesados:** habilitar endpoints que permitan ejercer derechos como acceso, rectificación o eliminación de datos.  
+* **Evaluaciones de impacto (DPIA):** analizar riesgos asociados al tratamiento de datos personales mediante APIs.  
+* **Acuerdos de procesamiento de datos:** definir responsabilidades y obligaciones contractuales entre las partes que procesan datos.  
+* **Notificación de brechas:** establecer procedimientos para detectar, registrar y notificar incidentes de seguridad.  
+* **Transferencias internacionales:** garantizar que los datos transferidos fuera del Espacio Económico Europeo cuenten con mecanismos adecuados de protección.  
+* **Gestión de proveedores:** verificar que los terceros o servicios de API cumplan también con los requisitos del GDPR.  
+* **Transparencia y documentación:** mantener información clara sobre el uso y tratamiento de los datos a través de las APIs.  
+* **Capacitación y sensibilización:** formar a los equipos de desarrollo y operación sobre los principios de privacidad y protección de datos.
+
+La integración de estas consideraciones en el ciclo de vida de las APIs refuerza la confianza de los usuarios y contribuye al cumplimiento normativo, alineándose con el enfoque de seguridad desde el diseño.
+
+==== Regulaciones legales relacionadas con la seguridad en APIs
+
+Además de los estándares técnicos, existen regulaciones legales que establecen requisitos específicos para la protección de datos y la ciberseguridad. Estas regulaciones suelen exigir la implementación de medidas que prevengan el acceso no autorizado, la divulgación indebida o el uso inapropiado de la información.  
+
+Entre las más relevantes se encuentran la *Health Insurance Portability and Accountability Act (HIPAA)* en Estados Unidos y la *Cybersecurity Law* de la República Popular de China, que obligan a las organizaciones a implementar controles de seguridad y reportar incidentes relacionados con la protección de datos y sistemas (U.S. Department of Health & Human Services, 2023; National People’s Congress, 2017).
+
+===== HIPAA (Health Insurance Portability and Accountability Act)
+
+La HIPAA es una regulación estadounidense que establece estándares para la protección de la información médica sensible, conocida como *Protected Health Information (PHI)*. Su objetivo es garantizar la confidencialidad, integridad y disponibilidad de la PHI, al mismo tiempo que facilita la portabilidad del seguro médico y la eficiencia del sistema de salud (U.S. Department of Health & Human Services, 2023).
+
+Uno de los pilares de la HIPAA es la *Privacy Rule*, que otorga a los pacientes derechos sobre su información médica, incluyendo el acceso, modificación y obtención de registros de uso. Por su parte, la *Security Rule* define salvaguardas administrativas, físicas y técnicas que las entidades deben aplicar para proteger la PHI electrónica (*ePHI*), tales como controles de acceso, cifrado, auditorías y planes de contingencia.
+
+Asimismo, la HIPAA requiere que las entidades cubiertas establezcan acuerdos con sus asociados comerciales (*Business Associate Agreements – BAA*) para asegurar el cumplimiento de las normas de privacidad y seguridad, siendo ambos responsables ante las autoridades reguladoras.
+
+El incumplimiento de la HIPAA puede derivar en sanciones económicas severas, además de planes obligatorios de acción correctiva supervisados por la *Office for Civil Rights (OCR)* del *U.S. Department of Health & Human Services*.
+
+===== Consideraciones de la HIPAA en el diseño de APIs
+
+Al desarrollar o integrar APIs que manejen información médica o datos sensibles, deben observarse los siguientes principios para cumplir con la HIPAA:
+
+* **Cifrado de datos:** Utilizar protocolos como TLS para proteger la transmisión de datos.  
+* **Control de acceso:** Implementar mecanismos de autenticación y autorización (por ejemplo, OAuth 2.0).  
+* **Registros de auditoría:** Mantener trazabilidad de accesos y transacciones realizadas mediante la API.  
+* **Minimización de datos:** Limitar la transmisión y exposición de PHI únicamente a lo necesario.  
+* **Comunicación segura:** Emplear canales protegidos para evitar interceptaciones o alteraciones.  
+* **Verificación de autorización:** Comprobar permisos en cada endpoint antes de exponer recursos.  
+* **Almacenamiento seguro:** Proteger los datos almacenados mediante cifrado y controles de acceso.  
+* **Documentación de cumplimiento:** Registrar políticas, controles y medidas de seguridad adoptadas.  
+
+[TIP]
+====
+La HIPAA es especialmente relevante en APIs del sector salud o aquellas que gestionen información personal sensible.  
+Aunque su aplicación es obligatoria solo en Estados Unidos, sus principios pueden servir como guía de buenas prácticas internacionales.
+====
 
 === Modelado de amenazas
 
