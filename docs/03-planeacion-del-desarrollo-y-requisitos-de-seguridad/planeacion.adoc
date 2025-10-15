@@ -356,13 +356,13 @@ ISO/IEC 27001 puede aplicarse a cualquier organización, independientemente de s
 ====
 Al implementar APIs seguras dentro de un marco ISO/IEC 27001, las organizaciones no solo protegen la información, sino que también facilitan la interoperabilidad segura y el cumplimiento normativo, fortaleciendo la confianza de usuarios y socios comerciales.
 ====
-=== NIST SP 800-228: Directrices para la protección de APIs en sistemas *cloud-native*
+==== NIST SP 800-228: Directrices para la protección de APIs en sistemas cloud-native
 
-El *NIST Special Publication 800-228* (_Guidelines for API Protection for Cloud-Native Systems_) establece lineamientos específicos para la protección y aseguramiento de APIs en entornos empresariales modernos. 
+El NIST Special Publication 800-228 (_Guidelines for API Protection for Cloud-Native Systems_) establece lineamientos específicos para la protección y aseguramiento de APIs en entornos empresariales modernos. 
 Este estándar reconoce que las APIs son el medio principal de comunicación e integración entre sistemas en arquitecturas nativas de la nube, por lo que su seguridad resulta esencial para la postura de seguridad general de las organizaciones (Chandramouli & Butcher, 2025).
 
-El documento propone un modelo de protección integral del ciclo de vida de las APIs, basado en los principios de *DevSecOps* y el paradigma de *Zero Trust*, considerando controles tanto *previos a la ejecución (pre-runtime)* como *durante la ejecución (runtime)*. 
-Estos controles se clasifican en *básicos* y *avanzados*, lo que permite su adopción de forma incremental y basada en el riesgo, de acuerdo con la madurez de la organización.
+El documento propone un modelo de protección integral del ciclo de vida de las APIs, basado en los principios de DevSecOps y el paradigma de Zero Trust, considerando controles tanto previos a la ejecución (pre-runtime) como durante la ejecución (runtime). 
+Estos controles se clasifican en básicos y avanzados, lo que permite su adopción de forma incremental y basada en el riesgo, de acuerdo con la madurez de la organización.
 
 Entre sus principales aportaciones destacan:
 
@@ -377,7 +377,7 @@ Este estándar resulta relevante para las guías de diseño seguro de APIs REST,
 
 Además de los estándares técnicos y normativos como ISO/IEC 27001 y NIST SP 800-228, existen marcos legales que complementan la seguridad de las APIs desde la perspectiva de la protección de datos personales y la privacidad. Estas regulaciones buscan garantizar que las organizaciones gestionen la información sensible de manera responsable, transparente y conforme a los derechos de los individuos.  
 
-Entre las más relevantes se encuentran el *Reglamento General de Protección de Datos (GDPR)* en la Unión Europea, la *California Consumer Privacy Act (CCPA)* en Estados Unidos y la *Personal Information Protection and Electronic Documents Act (PIPEDA)* en Canadá. Todas ellas establecen obligaciones como obtener consentimiento para el tratamiento de datos, aplicar medidas técnicas de seguridad y permitir a los usuarios ejercer derechos sobre su información (Staveley, 2023).
+Entre las más relevantes se encuentran el Reglamento General de Protección de Datos (GDPR) en la Unión Europea, la California Consumer Privacy Act (CCPA) en Estados Unidos y la Personal Information Protection and Electronic Documents Act (PIPEDA) en Canadá. Todas ellas establecen obligaciones como obtener consentimiento para el tratamiento de datos, aplicar medidas técnicas de seguridad y permitir a los usuarios ejercer derechos sobre su información (Staveley, 2023).
 
 ===== GDPR: Reglamento General de Protección de Datos (Unión Europea)
 
@@ -392,9 +392,13 @@ Entre sus disposiciones más destacadas se incluyen:
 * **Minimización de datos:** procesar solo la información estrictamente necesaria para los fines declarados.  
 * **Responsabilidad y documentación:** mantener registros detallados de las actividades de tratamiento y, cuando corresponda, designar un Delegado de Protección de Datos (DPO).
 
+[WARNING]
+====
+
 El incumplimiento del GDPR puede acarrear sanciones severas, de hasta 20 millones de euros o el 4 % de la facturación anual global, además de un daño reputacional considerable.  
 
 Por ello, el cumplimiento de esta regulación se considera una práctica esencial en el diseño y operación de APIs que gestionen información personal o sensible.
+====
 
 ===== Consideraciones del GDPR aplicadas a la seguridad de APIs
 
@@ -413,23 +417,29 @@ Para alinear el diseño de APIs REST con los principios del GDPR, se recomiendan
 * **Transparencia y documentación:** mantener información clara sobre el uso y tratamiento de los datos a través de las APIs.  
 * **Capacitación y sensibilización:** formar a los equipos de desarrollo y operación sobre los principios de privacidad y protección de datos.
 
+[TIP]
+====
 La integración de estas consideraciones en el ciclo de vida de las APIs refuerza la confianza de los usuarios y contribuye al cumplimiento normativo, alineándose con el enfoque de seguridad desde el diseño.
+====
 
 ==== Regulaciones legales relacionadas con la seguridad en APIs
 
 Además de los estándares técnicos, existen regulaciones legales que establecen requisitos específicos para la protección de datos y la ciberseguridad. Estas regulaciones suelen exigir la implementación de medidas que prevengan el acceso no autorizado, la divulgación indebida o el uso inapropiado de la información.  
 
-Entre las más relevantes se encuentran la *Health Insurance Portability and Accountability Act (HIPAA)* en Estados Unidos y la *Cybersecurity Law* de la República Popular de China, que obligan a las organizaciones a implementar controles de seguridad y reportar incidentes relacionados con la protección de datos y sistemas (U.S. Department of Health & Human Services, 2023; National People’s Congress, 2017).
+Entre las más relevantes se encuentran la Health Insurance Portability and Accountability Act (HIPAA) en Estados Unidos y la Cybersecurity Law de la República Popular de China, que obligan a las organizaciones a implementar controles de seguridad y reportar incidentes relacionados con la protección de datos y sistemas (U.S. Department of Health & Human Services, 2023; National People’s Congress, 2017).
 
 ===== HIPAA (Health Insurance Portability and Accountability Act)
 
-La HIPAA es una regulación estadounidense que establece estándares para la protección de la información médica sensible, conocida como *Protected Health Information (PHI)*. Su objetivo es garantizar la confidencialidad, integridad y disponibilidad de la PHI, al mismo tiempo que facilita la portabilidad del seguro médico y la eficiencia del sistema de salud (U.S. Department of Health & Human Services, 2023).
+La HIPAA es una regulación estadounidense que establece estándares para la protección de la información médica sensible, conocida como Protected Health Information (PHI). Su objetivo es garantizar la confidencialidad, integridad y disponibilidad de la PHI, al mismo tiempo que facilita la portabilidad del seguro médico y la eficiencia del sistema de salud (U.S. Department of Health & Human Services, 2023).
 
-Uno de los pilares de la HIPAA es la *Privacy Rule*, que otorga a los pacientes derechos sobre su información médica, incluyendo el acceso, modificación y obtención de registros de uso. Por su parte, la *Security Rule* define salvaguardas administrativas, físicas y técnicas que las entidades deben aplicar para proteger la PHI electrónica (*ePHI*), tales como controles de acceso, cifrado, auditorías y planes de contingencia.
+Uno de los pilares de la HIPAA es la Privacy Rule, que otorga a los pacientes derechos sobre su información médica, incluyendo el acceso, modificación y obtención de registros de uso. Por su parte, la Security Rule define salvaguardas administrativas, físicas y técnicas que las entidades deben aplicar para proteger la PHI electrónica (ePHI), tales como controles de acceso, cifrado, auditorías y planes de contingencia.
 
-Asimismo, la HIPAA requiere que las entidades cubiertas establezcan acuerdos con sus asociados comerciales (*Business Associate Agreements – BAA*) para asegurar el cumplimiento de las normas de privacidad y seguridad, siendo ambos responsables ante las autoridades reguladoras.
+Asimismo, la HIPAA requiere que las entidades cubiertas establezcan acuerdos con sus asociados comerciales para asegurar el cumplimiento de las normas de privacidad y seguridad, siendo ambos responsables ante las autoridades reguladoras.
 
-El incumplimiento de la HIPAA puede derivar en sanciones económicas severas, además de planes obligatorios de acción correctiva supervisados por la *Office for Civil Rights (OCR)* del *U.S. Department of Health & Human Services*.
+[WARNING]
+====
+El incumplimiento de la HIPAA puede derivar en sanciones económicas severas, además de planes obligatorios de acción correctiva supervisados por la Office for Civil Rights (OCR) del U.S. Department of Health & Human Services.
+====
 
 ===== Consideraciones de la HIPAA en el diseño de APIs
 
@@ -449,8 +459,175 @@ Al desarrollar o integrar APIs que manejen información médica o datos sensible
 La HIPAA es especialmente relevante en APIs del sector salud o aquellas que gestionen información personal sensible.  
 Aunque su aplicación es obligatoria solo en Estados Unidos, sus principios pueden servir como guía de buenas prácticas internacionales.
 ====
-
 === Modelado de amenazas
+
+El modelado de amenazas es un enfoque de seguridad proactivo y estructurado que se utiliza para identificar, evaluar y mitigar posibles riesgos dentro de la arquitectura de un sistema antes de que puedan ser explotados. Permite visualizar cómo un atacante podría aprovechar vulnerabilidades mediante la identificación de activos críticos, como datos sensibles; la evaluación de vectores de ataque; el análisis de posibles actores de amenaza; y la definición de estrategias de mitigación para cada riesgo.
+
+Como práctica clave, garantiza que las consideraciones de seguridad se integren desde las etapas iniciales de diseño hasta la implementación y operación, en consonancia con los principios de Shift Left y Secure by Design. Al anticipar vulnerabilidades de forma temprana, ayuda a tomar decisiones de diseño informadas, reducir costos de retrabajo y fomentar la creación de sistemas inherentemente seguros.
+
+==== Importancia del modelado de amenazas
+
+Pero ¿por qué deberíamos realizar el modelado de amenazas?  
+El Manifiesto de Modelado de Amenazas señala que este proceso permite reconocer lo que puede salir mal en un sistema. Además, ayuda a identificar problemas de diseño e implementación que requieren mitigación, ya sea desde el inicio o a lo largo de la vida útil del sistema.  
+El resultado de este análisis —las amenazas— sirve como insumo clave para guiar las decisiones en las fases posteriores de diseño, desarrollo, pruebas y mantenimiento (Threat Modeling Manifesto, 2020).
+
+==== Propósito del modelado de amenazas
+
+El principal objetivo del modelado de amenazas es proporcionar un marco sistemático que permita identificar, comprender, priorizar y mitigar posibles riesgos (Green, 2022).  
+A través de este enfoque, las organizaciones pueden anticipar cómo los atacantes podrían explotar debilidades, entender las motivaciones y capacidades de los actores de amenaza, y establecer estrategias de defensa adecuadas (Green, 2022).
+
+* **Identificar:** Descubrir posibles amenazas, vulnerabilidades y debilidades en el sistema o aplicación (Green, 2022).  
+* **Comprender:** Analizar cómo estas amenazas pueden afectar el sistema, incluyendo las motivaciones, capacidades y posibles vectores de ataque (Green, 2022).  
+* **Priorizar:** Evaluar y clasificar las amenazas identificadas según su gravedad, probabilidad de ocurrencia e impacto potencial (Green, 2022).  
+* **Mitigar:** Desarrollar e implementar estrategias para reducir o eliminar los riesgos detectados, lo cual puede implicar rediseñar componentes, fortalecer defensas o establecer mecanismos de monitoreo y respuesta (Green, 2022).
+
+==== Cuándo realizar el modelado de amenazas
+
+El modelado de amenazas debe integrarse como parte del ciclo de vida del desarrollo de software (SDLC), preferentemente desde las fases tempranas de diseño o definición de requisitos (Green, 2022).  
+Esto permite detectar vulnerabilidades potenciales antes de que se vuelvan costosas o difíciles de corregir.  
+
+Sin embargo, también se recomienda revisarlo y actualizarlo cuando se presenten cambios significativos en la arquitectura, se descubran nuevas amenazas o el sistema migre a una infraestructura diferente (Green, 2022).
+
+==== Elementos fundamentales del modelado de amenazas
+
+El proceso de modelado de amenazas abarca varios componentes esenciales (Green, 2022):
+
+* **Activos:** Representan los elementos valiosos que requieren protección, como datos sensibles, propiedad intelectual, funcionalidades críticas o la privacidad del usuario.  
+* **Actores de amenaza:** Son individuos o grupos que podrían intentar explotar vulnerabilidades del sistema, como cibercriminales, hacktivistas, actores estatales o amenazas internas.  
+* **Amenazas:** Acciones o eventos potencialmente negativos que podrían comprometer un activo, como brechas de datos, ataques DoS o campañas de phishing.  
+* **Vulnerabilidades:** Debilidades o fallos en el diseño, implementación o configuración del sistema que pueden ser explotados.  
+* **Vectores de ataque:** Rutas o métodos empleados por un atacante para obtener acceso o explotar una vulnerabilidad, como correos de phishing, puertos abiertos o bibliotecas comprometidas.  
+* **Contramedidas:** Controles o mecanismos implementados para mitigar o eliminar las amenazas identificadas, que pueden ser técnicos (cifrado, autenticación), procedimentales (políticas de seguridad, capacitación) o físicos (acceso restringido a servidores).
+
+[TIP]
+====
+El modelado de amenazas debe verse como un proceso iterativo y vivo: se adapta con el sistema, sus usuarios y su entorno.  
+Actualizarlo regularmente es una práctica esencial para mantener la resiliencia y la seguridad de los sistemas frente a nuevas amenazas (Green, 2022).
+====
+
+==== Proceso de modelado de amenazas
+De igual forma, OWASP menciona que el proceso de modelado de amenazas se puede descomponer en cuatro pasos de alto nivel.  
+Cada paso se documenta a medida que se lleva a cabo. Esto nos da como resultado un documento, el cual es el modelado de amenazas para la aplicación.  
+Se debe tener en cuenta que el trabajo de modelado de amenazas y el trabajo de crear documentos de modelado de amenazas son distintos (OWASP, s.f.).
+
+Los cuatro pasos propuestos por OWASP son:
+
+1. Paso 1: Alcance de su trabajo.  
+2. Paso 2: Determinar las amenazas.  
+3. Paso 3: Determinar las contramedidas y la mitigación.  
+4. Paso 4: Evaluar su trabajo.  
+
+===== Paso 1: Alcance de su trabajo
+
+A este primer paso también se le conoce como “descomponer la aplicación”, el cual es un enfoque que se utiliza para realizar una revisión del modelo de amenazas o de la arquitectura. Este paso se refiere a entender la manera en la que funciona el sistema.  
+Para ello, se deben seguir los siguientes puntos:
+
+* Dibujar diagramas.  
+* Identificar puntos de entrada.  
+* Identificar activos.  
+* Identificar los niveles de confianza.  
+* Leer o crear historias de usuario.
+
+Esta descomposición se lleva a cabo realizando *diagramas de flujo de datos (DFD)* con la información obtenida a partir de los pasos anteriores. Estos diagramas muestran las diferentes rutas a través del sistema, resaltando los límites de privilegios o confianzas.
+
+===== Paso 2: Determinar las amenazas
+
+Este paso es una actividad de investigación para encontrar las principales amenazas que pueden dañar el sistema.  
+Para poder identificarlas es fundamental utilizar una metodología de categorización, como STRIDE, PASTA, VAST o SQUARE (OWASP, s.f.; Green, 2022).  
+
+====== Metodología STRIDE
+
+La metodología **STRIDE** fue desarrollada por Microsoft y es una de las más utilizadas para modelar amenazas.  
+Su nombre proviene del acrónimo de seis categorías de amenazas, que ayudan a los diseñadores a pensar como un atacante e identificar debilidades específicas (Green, 2022):
+
+
+|===
+| Categoría | Descripción | Ejemplo de ataque | Contramedida típica
+
+| **S**poofing (Suplantación de identidad)
+| Ocurre cuando un atacante se hace pasar por alguien o algo que no es para obtener acceso no autorizado a los recursos.
+| Robo de credenciales de inicio de sesión para suplantar a un usuario legítimo o la creación de un sitio web falso que engaña a las víctimas para que revelen información confidencial.
+| Autenticación fuerte, MFA, validación de identidad.
+
+| **T**ampering (Manipulación de datos)
+| Modificación no autorizada de datos, ya sea en tránsito o en reposo.
+| Interceptar y modificar las comunicaciones entre sistemas o alterar datos almacenados.
+| Cifrado de datos, uso de hash en archivos y datos, controles de acceso robustos para garantizar la integridad de los datos.
+
+| **R**epudiation (Repudio)
+| Un usuario niega haber realizado una acción y el sistema carece de la capacidad de demostrar lo contrario.
+| Un usuario niega haber realizado una transacción financiera.
+| Auditoría, bitácoras de eventos, firmas digitales y uso de frameworks de logging.
+
+| **I**nformation Disclosure (Divulgación de información)
+| Fuga de datos sensibles hacia partes no autorizadas.
+| Exponer datos personales en respuestas de API.
+| Cifrado, control de acceso, minimización de datos.
+
+| **D**enial of Service (Denegación de servicio)
+| Ataques que impiden el funcionamiento legítimo del sistema.
+| Saturación de peticiones en una API REST.
+| Limitación de tasa (rate limiting), balanceo, detección de anomalías.
+
+| **E**levation of Privilege (Elevación de privilegios)
+| Un usuario gana permisos que no debería tener.
+| Usuario regular que ejecuta operaciones administrativas.
+| Separación de funciones, controles de acceso y validación de roles.
+|===
+
+====== Ejemplo práctico (según Green, 2022)
+
+Green (2022) ilustra STRIDE con un ejemplo de un *portal de servicios web*, que puede adaptarse fácilmente al contexto de una API REST.  
+Supongamos una API que gestiona información de clientes y sus pedidos.  
+Al analizarla bajo STRIDE:
+
+* **S – Spoofing:** Un atacante podría falsificar un token JWT para acceder como otro usuario.  
+  *Mitigación:* emplear firmas HMAC o RSA y validación de expiración de tokens.  
+
+* **T – Tampering:** Modificar el cuerpo JSON de una solicitud PUT para alterar el monto del pedido.  
+  *Mitigación:* aplicar validaciones del lado servidor y controles de integridad sobre los datos.  
+
+* **R – Repudiation:** Un usuario modifica información y luego niega haberlo hecho.  
+  *Mitigación:* mantener auditorías firmadas digitalmente o logs inmutables.  
+
+* **I – Information Disclosure:** La API responde con más información de la necesaria (por ejemplo, datos de tarjeta).  
+  *Mitigación:* aplicar *output encoding* y filtrado estricto de respuestas.  
+
+* **D – Denial of Service:** Se envían peticiones masivas para agotar recursos del servidor.  
+  *Mitigación:* implementar *rate limiting*, *circuit breakers* y control de concurrencia.  
+
+* **E – Elevation of Privilege:** Un usuario básico logra acceder a endpoints administrativos.  
+  *Mitigación:* aplicar control de acceso basado en roles (RBAC) y validaciones de permisos en cada endpoint.
+
+Este análisis evidencia cómo STRIDE guía la identificación de amenazas específicas y orienta las decisiones de diseño seguro dentro del ciclo de desarrollo de APIs (Green, 2022).
+
+===== Paso 3: Determinar las contramedidas y la mitigación
+
+Después de haber identificado las amenazas, se deben definir las contramedidas adecuadas para mitigar los riesgos y evitar que el sistema se vea comprometido.  
+
+Una vulnerabilidad puede mitigarse mediante la implementación de una contramedida. Dichas contramedidas se pueden identificar mediante listas de asignación de amenazas-contramedidas.  
+Los factores que se incluyen en esta selección son la probabilidad de ataque, el daño potencial y el costo o complejidad de la mitigación (OWASP, s.f.).  
+
+Las opciones para abordar el riesgo incluyen:
+
+* **Aceptar:** el impacto es aceptable.  
+* **Eliminar:** se eliminan los componentes que originan la vulnerabilidad.  
+* **Mitigar:** se agregan controles o comprobaciones que reduzcan el impacto.  
+* **Transferir:** el riesgo se transfiere a un tercero (aseguradora, cliente, etc.).
+
+===== Paso 4: Evaluar su trabajo
+
+Al concluir cualquier proyecto o tarea, es crucial hacerse una pregunta fundamental: ¿hicimos un trabajo lo suficientemente bueno?  
+Este paso implica realizar una actividad retrospectiva, analizando de manera detallada y honesta la calidad de los resultados y la viabilidad de las soluciones implementadas.  
+Este proceso de revisión fomenta la mejora continua en la práctica del modelado de amenazas (OWASP, s.f.).
+
+=== Referencias
+
+Green, J. (2022). *Security Architecture*. BCS, The Chartered Institute for IT.  
+Threat Modeling Manifesto. (2020). *Threat Modeling Manifesto*. Recuperado de https://www.threatmodelingmanifesto.org  
+OWASP. (s.f.). *OWASP Threat Modeling*. Recuperado de https://owasp.org/www-community/Threat_Modeling
+
+
 
 === Requisitos funcionales
 
