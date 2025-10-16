@@ -614,7 +614,7 @@ Al concluir cualquier proyecto o tarea, es crucial hacerse una pregunta fundamen
 Este paso implica realizar una actividad retrospectiva, analizando de manera detallada y honesta la calidad de los resultados y la viabilidad de las soluciones implementadas.  
 Este proceso de revisión fomenta la mejora continua en la práctica del modelado de amenazas (OWASP, s.f.).
 
-===== Ejemplo práctico
+==== Ejemplo práctico
 
 A continuación, se presenta un ejemplo simplificado de modelado de amenazas utilizando la metodología STRIDE para una API REST del área de la salud que maneja datos de pacientes, permite el acceso a historiales médicos y facilita la programación de citas médicas.
 
@@ -846,29 +846,136 @@ Los niveles de confianza se documentan en el modelo de amenazas de la siguiente 
 |===
 
 
-Diagramas de flujo de datos (DFD)
-//TODO: Explicar sobre el DFD y su importancia en el modelado de amenazas.
+====== Diagramas de Flujo de Datos (DFD)
+
+El modelado de amenazas de sistemas de software se ha realizado históricamente utilizando **diagramas de flujo de datos (DFDs)**. Los DFDs capturan los aspectos dinámicos del sistema, mostrando cómo la información fluye entre componentes. Son fáciles de entender y permiten identificar claramente cómo los datos se mueven a través del sistema, lo que facilita la detección de posibles vulnerabilidades y amenazas.
+
+Los **DFDs permiten**:
+
+* Comprender la aplicación mediante una representación visual de cómo se procesan los datos.
+* Identificar componentes afectados a través de puntos críticos, como la entrada o salida de datos y su almacenamiento.
+* Analizar el flujo de control dentro de los componentes.
+* Decomponer la aplicación en subsistemas y subprocesos, desde un nivel alto hasta niveles más detallados, clarificando el alcance de la aplicación y los procesos específicos involucrados.
+
+Los componentes principales de un DFD son:
+
+* **Entidades externas**: Aplicaciones o servicios que no forman parte de nuestro sistema. En nuestro caso, esto sería la **aplicación móvil**.
+* **Procesos**: Una aplicación o tarea dentro de nuestro dominio, como el **API Gateway**.
+* **Múltiples procesos**: Representan un conjunto de subprocesos que pueden descomponerse en otro DFD de menor nivel.
+* **Almacenes de datos**: Lugares donde se guarda la información. En nuestro caso, sería la **base de datos**.
+* **Flujos de datos**: Conexiones que representan el movimiento de información, por ejemplo, de la **aplicación móvil al API Gateway**.
+* **Límites de privilegio / confianza**: Fronteras que muestran un cambio en los niveles de acceso. Para este caso de estudio, sería la **frontera de Internet entre la aplicación móvil y el API Gateway**.
+
+
+.Símbolos utilizados en DFDs para modelado de amenazas
+[cols="1,2", options="header"]
+|===
+| Nombre | Descripción
+
+| Entidad Externa | Representa cualquier entidad fuera de la aplicación que interactúa con ella mediante un punto de entrada.
+
+| Proceso | Representa una tarea que maneja datos dentro de la aplicación. El proceso puede modificar o procesar los datos.
+
+| Múltiples Procesos | Representa un conjunto de subprocesos que pueden descomponerse en otro DFD de menor nivel.
+
+| Almacén de Datos | Representa ubicaciones donde se almacenan datos. No modifica los datos, solo los guarda.
+
+| Flujo de Datos | Representa el movimiento de datos dentro de la aplicación. La dirección del flujo se indica con la flecha.
+
+| Límite de Privilegio / Confianza | Representa un cambio de nivel de confianza a medida que los datos fluyen a través de la aplicación.
+|===
+
+.Símbolo para representar una entidad externa
+image::images/external_entity.png[Entidad Externa]
+
+.Símbolo para representar un proceso
+image::images/process.png[Proceso]
+
+.Símbolo para representar múltiples procesos
+image::images/multiple_process.png[Múltiples Procesos]
+
+.Símbolo para representar un almacén de datos
+image::images/data_store.png[Almacén de Datos]
+
+.Símbolo para representar un flujo de datos
+image::images/data_flow.png[Flujo de Datos]
+
+.Símbolo para representar un límite de privilegio / confianza
+image::images/privilege_boundary.png[Límite de Privilegio / Confianza]
+
+A continuación se muestra un ejemplo de un Diagrama de Flujo de Datos (DFD) para la API REST del sistema de salud descrito anteriormente.
 
 //TODO: Mostrar diagrama DFD del ejemplo.
 
+===== Paso 2 — Determinar las amenazas (Aplicación de STRIDE)
 
-==== Paso 2 — Determinar las amenazas (Aplicación de STRIDE)
+A partir de la descomposición realizada en el paso anterior, se identifican y analizan las amenazas aplicando las categorías de STRIDE sobre los componentes más relevantes del sistema.
 
-Con base en la descomposición anterior, se analizan las amenazas aplicando las categorías de STRIDE sobre los componentes más relevantes.
+Aunque en este caso se utiliza STRIDE, se puede optar por cualquier otra taxonomía de amenazas que se considere adecuada.
 
-//TODO: Explicar cómo se identificaron las amenazas, en este caso se siguió STRIDE y ya está más o menos explicado qué pasa en cada categoria, después es necesario analizar las amenazas para determinar el riesgo (explicar cómo sacar el riesgo) (Para cada elemento del DFD se analizan las posibles amenazas aplicando STRIDE), aplicar el arbol de amenazas. Entonces ya se presentan las amenazas identificadas en una tabla con el elemento (del DFD, por ejemplo un web response que es un flujo de datos), el riesgo, la categoria de stride, amenaza, descripcion.
+====== Análisis de amenazas
 
+El análisis de amenazas consiste en la identificación de amenazas para la aplicación, e implica examinar cada aspecto de la funcionalidad, arquitectura y diseño de la misma. Es importante identificar y clasificar posibles debilidades que podrían ser explotadas.
+
+Desde la perspectiva defensiva, la identificación de amenazas basada en la categorización de controles de seguridad permite al analista enfocarse en vulnerabilidades específicas. Típicamente, el proceso de identificación de amenazas involucra ciclos iterativos en los cuales, inicialmente, se evalúan todas las amenazas posibles de la lista de amenazas que se aplican a cada componente.
+
+====== Árbol de amenazas
+
+El árbol de amenazas es un método estructurado y sistemático para analizar y comprender posibles amenazas de seguridad. Se utiliza ampliamente en ciberseguridad, evaluación de riesgos y modelado de amenazas para identificar cómo un atacante podría comprometer un sistema y para determinar las estrategias de mitigación más efectivas.
+
+En este enfoque, las amenazas se representan de manera jerárquica en forma de árbol. El nodo principal, o nodo raíz, corresponde al objetivo general del ataque, mientras que las ramas representan diferentes ataques potenciales. Cada rama puede dividirse en sub-ramas, detallando escenarios más específicos o pasos de ataque adicionales. Cada nodo o sub-rama del árbol representa un ataque potencial que podría afectar al sistema.
+
+Este método proporciona una visión integral de los posibles vectores de ataque y facilita la planificación de medidas de mitigación apropiadas, contribuyendo a un análisis de amenazas más completo y sistemático.
+
+A continuación se muestra un ejemplo simplificado de un árbol de amenazas para la API REST del sistema de salud:
+
+//TODO: Incluir un ejemplo de árbol de amenazas para el caso de estudio.
+
+A partir del análisis de amenazas y el árbol de amenazas, se documentan las amenazas identificadas en una tabla como la siguiente:
+
+//TODO: Incluir tabla de amenazas identificadas para el caso de estudio con el elemento del DFD, el riesgo, la categoría de STRIDE, la amenaza y su descripción.
+
+====== Valoración de amenazas
+
+La valoración de amenazas permite priorizar las amenazas identificadas en función de su riesgo y apoyar la estrategia de mitigación. Según OWASP, se pueden clasificar las amenazas usando factores de riesgo cualitativos como probabilidad, impacto y facilidad de explotación.
+
+Los pasos para valorar cada amenaza son los siguientes:
+
+. **Evaluar la facilidad de explotación**
+- Determinar si un atacante puede explotar la amenaza de manera remota.
+- Verificar si se requiere autenticación o privilegios especiales.
+- Evaluar si el ataque puede automatizarse.
+- Clasificación cualitativa: Baja / Media / Alta
+
+. **Evaluar el impacto**
+- Determinar el daño potencial si la amenaza se materializa.
+- Considerar qué componentes del sistema se verían afectados.
+- Preguntas guía:
+  * ¿Puede el atacante tomar control total del sistema?
+  * ¿Puede obtener información sensible como datos personales?
+  * ¿Puede causar caída o interrupción del servicio?
+- Clasificación cualitativa: Bajo / Medio / Alto
+
+. **Evaluar el número de componentes afectados**
+- Analizar cuántos sistemas o capas del sistema pueden ser impactados por la amenaza.
+- Esto ayuda a dimensionar la extensión del daño potencial.
+- Clasificación cualitativa: Bajo / Medio / Alto
+
+. **Determinar el nivel de riesgo**
+- El nivel de riesgo se determina tras evaluar los factores anteriores, considerando cuántos bajos, medios o altos hay en cada uno.
+
+En nuestro ejemplo, se tiene la siguiente valoración de amenazas:
+//TODO: Incluir tabla de amenazas con valoración de riesgo (Alta, Media, Baja)
+
+
+===== Paso 3 — Determinar contramedidas y mitigación
+
+Una vez identificadas las amenazas, se definen las contramedidas apropiadas. El propósito de la identificación de contramedidas es determinar si existe algún tipo de medida de protección (por ejemplo, controles de seguridad, políticas) que pueda prevenir que una amenaza se materialice.
 
 [TIP]
 ====
 Aplicar STRIDE sobre los componentes del sistema permite identificar amenazas específicas y asignar contramedidas claras desde las primeras etapas del diseño.
 ====
-
-==== Paso 3 — Determinar contramedidas y mitigación
-
-Una vez identificadas las amenazas, se definen las contramedidas apropiadas.
-
-//TODO: Explicar que a veces como ya están categorizadas con STRIDE, ya se pueden ir pensando en las contramedidas típicas de cada categoría. Y finalmente se pueden derivar amenazas no mitigadas, parciales o mitigadas.
 
 Por ejemplo:
 
@@ -879,13 +986,25 @@ Por ejemplo:
 * **Denial of Service:** limitar la tasa de peticiones y usar sistemas de detección de anomalías.  
 * **Elevation of Privilege:** revisar roles, permisos y aplicar el principio de mínimo privilegio.
 
-Estas contramedidas se documentan junto con la justificación de su elección, considerando el costo, el impacto y la probabilidad del ataque.
+Una vez que se han identificado las amenazas y las contramedidas correspondientes, es posible derivar un perfil de amenazas con los siguientes criterios:
+
+* **Amenazas no mitigadas**: Amenazas que no cuentan con contramedidas y representan vulnerabilidades que pueden ser explotadas completamente, causando un impacto.
+
+* **Amenazas parcialmente mitigadas**: Amenazas que están parcialmente mitigadas por una o más contramedidas y que solo pueden ser explotadas de manera parcial, causando un impacto limitado.
+
+* **Amenazas totalmente mitigadas**: Amenazas que tienen contramedidas adecuadas implementadas y no exponen vulnerabilidades.
+
+Siguiendo con el ejemplo, se tiene la siguiente tabla de contramedidas para las amenazas identificadas:
 
 //TODO: Ahora sí se podrían incluir las contramedidas en la tabla del Paso 2. 
 
-//TODO: Una vez que se tienen esselementos, se puede crear el modelo con una herramienta como OWASP Threat Dragon o Microsoft Threat Modeling Tool. En nuestro caso, se usará OWASP Threat Dragon así que hay que incluir capturas.
+Una vez que se han identificado y documentado todo lo anterior, se procede a crear el modelo de amenazas con una herramienta especializada. En nuestro caso, se usará OWASP Threat Dragon.
 
-==== Paso 4 — Evaluar el trabajo
+//TODO: Uso de OWASP Threat Dragon para crear el modelo de amenazas del caso de estudio. Y mostrar capturas de pantalla de la herramienta.
+
+//TODO: Incluir enlace al modelo de amenazas creado en OWASP Threat Dragon.
+
+===== Paso 4 — Evaluar el trabajo
 
 Finalmente, se realiza una evaluación del modelo de amenazas y las mitigaciones propuestas:
 
