@@ -38,6 +38,19 @@ Las prácticas reportadas en la literatura para esta fase se presentan en la sig
 |Postman (s.f)
 |===
 
+=== Requisitos funcionales
+
+Los requisitos funcionales constituyen la especificación del comportamiento que un sistema debe exhibir bajo condiciones determinadas. Es decir, definen las funcionalidades que el producto debe implementar para permitir que los usuarios realicen sus tareas, satisfaciendo así los objetivos y necesidades del negocio.
+
+Estos requisitos se redactan típicamente en forma de declaraciones tradicionales utilizando el verbo «deberá». Por ejemplo: «El pasajero deberá poder imprimir las tarjetas de embarque de todos los tramos de vuelo para los que haya facturado». 
+
+En el contexto de seguridad, un ejemplo de requisito funcional sería: «El cliente de la API deberá poder autenticarse mediante un token de acceso válido antes de consumir cualquier recurso protegido» (Wieger & Beatty, 2013).
+
+
+=== Requisitos de seguridad asociados
+
+=== Validación y trazabilidad de requisitos
+
 === Evaluación organizacional y su relación con la seguridad
 
 La seguridad de una API no depende exclusivamente de mecanismos técnicos, sino también de la cultura organizacional que sustenta su desarrollo y operación. La cultura de seguridad se entiende como el conjunto de valores que determinan la forma en que los individuos perciben y abordan la seguridad dentro de la organización. Esta cultura se ve influida por las metas institucionales, la estructura organizativa, las políticas, los procesos y el liderazgo, así como por las relaciones con socios, proveedores y otros actores externos (NCSC, 2021).
@@ -470,12 +483,14 @@ Como práctica clave, garantiza que las consideraciones de seguridad se integren
 ==== Importancia del modelado de amenazas
 
 Pero ¿por qué deberíamos realizar el modelado de amenazas?  
-El Manifiesto de Modelado de Amenazas señala que este proceso permite reconocer lo que puede salir mal en un sistema. Además, ayuda a identificar problemas de diseño e implementación que requieren mitigación, ya sea desde el inicio o a lo largo de la vida útil del sistema.  
+El Manifiesto de Modelado de Amenazas señala que este proceso permite reconocer lo que puede salir mal en un sistema. Además, ayuda a identificar problemas de diseño e implementación que requieren mitigación, ya sea desde el inicio o a lo largo de la vida útil del sistema. 
+
 El resultado de este análisis —las amenazas— sirve como insumo clave para guiar las decisiones en las fases posteriores de diseño, desarrollo, pruebas y mantenimiento (Threat Modeling Manifesto, 2020).
 
 ==== Propósito del modelado de amenazas
 
-El principal objetivo del modelado de amenazas es proporcionar un marco sistemático que permita identificar, comprender, priorizar y mitigar posibles riesgos (Green, 2022).  
+El principal objetivo del modelado de amenazas es proporcionar un marco sistemático que permita identificar, comprender, priorizar y mitigar posibles riesgos (Green, 2022).
+
 A través de este enfoque, las organizaciones pueden anticipar cómo los atacantes podrían explotar debilidades, entender las motivaciones y capacidades de los actores de amenaza, y establecer estrategias de defensa adecuadas (Green, 2022).
 
 * **Identificar:** Descubrir posibles amenazas, vulnerabilidades y debilidades en el sistema o aplicación (Green, 2022).  
@@ -485,7 +500,8 @@ A través de este enfoque, las organizaciones pueden anticipar cómo los atacant
 
 ==== Cuándo realizar el modelado de amenazas
 
-El modelado de amenazas debe integrarse como parte del ciclo de vida del desarrollo de software (SDLC), preferentemente desde las fases tempranas de diseño o definición de requisitos (Green, 2022).  
+El modelado de amenazas debe integrarse como parte del ciclo de vida del desarrollo de software (SDLC), preferentemente desde las fases tempranas de diseño o definición de requisitos (Green, 2022).
+
 Esto permite detectar vulnerabilidades potenciales antes de que se vuelvan costosas o difíciles de corregir.  
 
 Sin embargo, también se recomienda revisarlo y actualizarlo cuando se presenten cambios significativos en la arquitectura, se descubran nuevas amenazas o el sistema migre a una infraestructura diferente (Green, 2022).
@@ -508,8 +524,10 @@ Actualizarlo regularmente es una práctica esencial para mantener la resiliencia
 ====
 
 ==== Proceso de modelado de amenazas
-De igual forma, OWASP menciona que el proceso de modelado de amenazas se puede descomponer en cuatro pasos de alto nivel.  
+De igual forma, OWASP menciona que el proceso de modelado de amenazas se puede descomponer en cuatro pasos de alto nivel.
+
 Cada paso se documenta a medida que se lleva a cabo. Esto nos da como resultado un documento, el cual es el modelado de amenazas para la aplicación.  
+
 Se debe tener en cuenta que el trabajo de modelado de amenazas y el trabajo de crear documentos de modelado de amenazas son distintos (OWASP, s.f.).
 
 Los cuatro pasos propuestos por OWASP son:
@@ -1018,12 +1036,5 @@ Finalmente, se realiza una evaluación del modelo de amenazas y las mitigaciones
 ====
 El modelo de amenazas debe mantenerse como un artefacto vivo que se actualice junto con los cambios de diseño. Su revisión periódica permite detectar nuevos riesgos antes de la fase de implementación.
 ====
-
-
-=== Requisitos funcionales
-
-=== Requisitos de seguridad asociados
-
-=== Validación y trazabilidad de requisitos
 
 
