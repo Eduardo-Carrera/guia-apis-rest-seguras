@@ -614,90 +614,245 @@ Al concluir cualquier proyecto o tarea, es crucial hacerse una pregunta fundamen
 Este paso implica realizar una actividad retrospectiva, analizando de manera detallada y honesta la calidad de los resultados y la viabilidad de las soluciones implementadas.  
 Este proceso de revisión fomenta la mejora continua en la práctica del modelado de amenazas (OWASP, s.f.).
 
-
 ===== Ejemplo práctico
 
 A continuación, se presenta un ejemplo simplificado de modelado de amenazas utilizando la metodología STRIDE para una API REST del área de la salud que maneja datos de pacientes, permite el acceso a historiales médicos y facilita la programación de citas médicas.
+
 Existen diversas herramientas que pueden ayudar a documentar el moodelado de amenazas, como las siguientes:
 
-* OWASP Threat Dragon
-* Microsoft Threat Modeling Tool
-* IriusRisk
-* ThreatModeler
-* SecuriCAD
+* OWASP Threat Dragon: Aplicación gratuita, de código abierto y multiplataforma para crear modelos de amenazas basados en diagramas de flujo de datos (DFD). https://www.threatdragon.com/#/
 
-==== Paso 1 — Alcance del trabajo
+* Microsoft Threat Modeling Tool: Herramienta oficial del Microsoft Security Development Lifecycle (SDL) diseñada para ayudar a arquitectos y desarrolladores a identificar y mitigar posibles problemas de seguridad desde las primeras etapas del diseño, cuando aún son fáciles y económicos de resolver. https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool 
+
+* IriusRisk: Plataforma abierta de modelado de amenazas que automatiza y apoya la creación de modelos de amenaza desde la etapa de diseño. Incluye recomendaciones sobre cómo abordar los riesgos e integra la gestión de riesgos de seguridad durante todo el ciclo de vida del desarrollo de software (SDLC). https://iriusrisk.com/
+
+* ThreatModeler: Plataforma continua de modelado de amenazas que automatiza la identificación de riesgos desde la etapa de diseño, integrando la seguridad en el ciclo de desarrollo. Permite generar modelos automáticamente, gestionar requisitos de mitigación e integrarse con herramientas como Jira o Azure DevOps. https://threatmodeler.com/
+
+En este caso, se utilizará OWASP Threat Dragon para ilustrar el proceso de modelado de amenazas debido a que es una herramienta gratuita y fácil de usar.
+
+===== Paso 1 — Alcance del trabajo
 
 En esta etapa se define el alcance del sistema y se descompone la aplicación para entender su funcionamiento general.  
-El sistema analizado se compone de los siguientes elementos principales:
+
+Comunmente el documento de modelado de amenazas contiene los siguientes elementos:
+
+* Nombre del sistema: Nombre del sistema o aplicación que se está examinando.
+* Versión: Versión del sistema o aplicación.
+* Descripción: Breve descripción del sistema, explicando de manera general.
+* Propietario del documento: Dueño o responsable del documento de modelado de amenazas.
+* Participantes: Nombres de las personas que participaron en el modelado de amenazas.
+* Revisor: Nombre de la persona que revisó el documento.
+
+En nuestro ejemplo, se tiene la siguiente información:
 
 Nombre del sistema: **HealthAPI**
 Versión: 1.0
 Descripción: API REST para la gestión de datos de pacientes, historiales médicos y citas en una clínica.
-Propietario del documento: Propietario del documento de modelado de amenazas
-Participantes: Nombres de los involucrados en el modelado de amenazas
-Revisor: Nombre del revisor del documento
-Fecha de creación: Fecha de creación del documento
+Propietario del documento: Eduardo Carrera Colorado
+Participantes: Aneth Michelle Tamariz Moreno
+Revisor: Juan Carlos Pérez Arriaga
 
-Dependencias externas: Suelen ser elementos externos al código de la aplicación y que representan una amenaza potencial.
+====== Dependencias externas
 
-TODO: Tabla en donde se documenten las dependencias externas del sistema con ID y descripción.
+Las dependencias externas son elementos ajenos al código de la aplicación que pueden representar una amenaza para ella. Estos elementos suelen estar bajo el control de la organización, aunque posiblemente no bajo el control directo del equipo de desarrollo.
 
-Puntos de entrada: Son los lugares donde un atacante puede interactuar con el sistema.
-TODO: Tabla en donde se documenten los puntos de entrada del sistema con ID, nombre, descripción y nivel de confianza.
+Un aspecto a considerar cuando se analizan las dependencias externas es el entorno de producción y sus requisitos. Por ejemplo, si se espera que la aplicación se ejecute en un servidor y que esté detrás de un firewall, esta información debe documentarse en esta sección (OWASP, s.f.).
 
-Puntos de salida: Son los lugares donde el sistema envía datos o respuestas a los usuarios o sistemas externos.
+Las dependencias externas deben documentarse de la siguiente manera:
 
-TODO: Tabla en donde se documenten los puntos de salida del sistema con ID, nombre, descripción y nivel de confianza.
+* ID: Un identificador único asignado a la dependencia externa.
 
-Activos: Son los elementos valiosos que requieren protección, como datos sensibles, propiedad intelectual, funcionalidades críticas o la privacidad del usuario.
-TODO: Tabla en donde se documenten los activos del sistema con ID, nombre, descripción y nivel de importancia.
+* Descripción: Una descripción textual de la dependencia externa.
 
-Niveles de confianza: Se identifican los diferentes niveles de confianza dentro del sistema, como usuarios autenticados, administradores, servicios internos y externos.
-TODO: Tabla en donde se documenten los niveles de confianza del sistema con ID, nombre y descripción.
+En nuestro ejemplo, se tienen las siguientes dependencias externas:
+
+.Dependencias Externas (Ejemplo)
+[cols="1,4", options="header"]
+|===
+| ID | Descripción
+
+| DE-1 | La API REST del sistema de salud se ejecutará en un servidor Linux con Nginx. El servidor será reforzado conforme a la línea base de seguridad de la organización, incluyendo la instalación de los parches más recientes del sistema operativo y de seguridad de aplicaciones.
+| DE-2 | El servidor de base de datos usará PostgreSQL y se ejecutará en una instancia Linux separada. Será reforzado siguiendo el estándar de seguridad de la organización e incluirá actualizaciones periódicas y monitoreo de la actividad de la base de datos.
+| DE-3 | La comunicación entre el servidor de la API y el servidor de base de datos se realizará a través de una red privada, aislada de Internet pública.
+| DE-4 | La API dependerá de un proveedor externo de autenticación (OAuth 2.0) para la gestión segura del acceso de usuarios. La integración se realizará mediante HTTPS y autenticación basada en tokens.
+| DE-5 | El servidor web que aloja la puerta de enlace (API Gateway) se encuentra detrás de un firewall, y toda comunicación externa está restringida únicamente a conexiones TLS (HTTPS).
+|===
+
+====== Puntos de entrada
+
+Los puntos de entrada definen las interfaces a través de las cuales los usuarios o sistemas externos interactúan con la aplicación. Estos puntos son críticos, ya que representan las vías por las que un atacante podría intentar acceder o explotar el sistema.
+
+Los puntos de entrada muestran dónde se ingresan los datos al sistema, por ejemplo, los campos de entrada en un formulario web, los endpoints de una API REST o las interfaces de usuario.
+
+Los puntos de entrada deben documentarse de la siguiente manera:
+
+* ID: Un identificador único asignado al punto de entrada. Este se utilizará para hacer referencia cruzada entre el punto de entrada y cualquier amenaza o vulnerabilidad identificada. En el caso de puntos de entrada organizados en capas, se debe usar una notación mayor.menor.
+
+* Nombre: Un nombre descriptivo que identifique el punto de entrada y su propósito.
+
+* Descripción: Una descripción textual que detalle la interacción o el procesamiento que ocurre en el punto de entrada.
+
+* Niveles de confianza: El nivel de acceso requerido en el punto de entrada. Estos se referenciarán con los niveles de confianza definidos más adelante en el documento.
+
+En nuestro ejemplo, se tienen los siguientes puntos de entrada:
+
+.Puntos de Entrada (Ejemplo)
+[cols="1,1,3,1", options="header"]
+|===
+| ID | Nombre | Descripción | Nivel de confianza
+
+| PE-1 | Endpoint de autenticación (`/auth/login`) | Punto de entrada donde los usuarios envían sus credenciales (correo electrónico y contraseña) para autenticarse mediante el proveedor externo OAuth 2.0. Los datos son enviados mediante una conexión HTTPS segura y procesados por el servidor de autenticación. | Público autenticado
+
+| PE-2 | Endpoint de registro de paciente (`/patients/register`) | Permite a personal autorizado registrar nuevos pacientes en el sistema de salud. Requiere token de autenticación válido emitido por el servicio OAuth 2.0. | Personal médico
+
+| PE-3 | Endpoint de consulta de información del paciente (`/patients/{id}`) | Proporciona acceso a la información clínica de un paciente. Solo puede ser accedido por usuarios autenticados con rol autorizado. | Personal médico
+
+| PE-4 | Endpoint de actualización de expediente clínico (`/records/update`) | Permite actualizar la información médica de un paciente. Requiere autenticación y privilegios elevados (médico o administrador del sistema). | Alta confianza
+
+| PE-5 | Endpoint de monitoreo del sistema (`/health/status`) | Permite verificar el estado operativo de la API REST (disponibilidad y estado de servicios). Es utilizado por el sistema de monitoreo interno y no expuesto al público. | Interno
+
+| PE-6 | Interfaz administrativa web | Panel de control accesible únicamente por administradores del sistema para la gestión de usuarios, roles y configuraciones. Protegido mediante autenticación multifactor. | Alta confianza
+|===  
+
+====== Puntos de salida
+
+Mientras que los puntos de entrads muestran dónde se ingresan los datos al sistema, los puntos de salida indican dónde los datos salen del sistema. Estos puntos son igualmente críticos, ya que al momento de atacar el lado del cliente, las vulnerabilidades de cross-site scripting (XSS) y las de divulgación de información requieren un punto de salida para que el ataque se complete.
+
+En muchos casos, las amenazas habilitadas por los puntos de salida están relacionadas con las amenazas de los correspondientes puntos de entrada. En el ejemplo del inicio de sesión, los mensajes de error devueltos al usuario a través del punto de salida (la página de inicio de sesión) podrían permitir ataques en el punto de entrada, como recolección de cuentas (por ejemplo, “nombre de usuario no encontrado”).
+
+Al documentar los puntos de salida se deben considerar los mismos elementos que en los puntos de entrada, tal como se muestra en el siguiente ejemplo:
+
+.Puntos de Salida (Ejemplo)
+[cols="1,1,3,1", options="header"]
+|===
+| ID | Nombre | Descripción | Nivel de confianza
+
+| PS-1 | Respuesta del endpoint `/patients/{id}` | Salida que devuelve la información clínica del paciente (JSON) al cliente. Contiene datos sensibles —por ejemplo, diagnóstico, medicamentos— por lo que su formato, encoding y encabezados de respuesta deben asegurar confidencialidad e integridad. Riesgos: divulgación de información, falta de encriptado en tránsito, exposición por errores en serialización. | Alta confianza
+
+| PS-2 | Respuesta del endpoint `/records/update` | Mensajes de confirmación y/o datos devueltos tras actualizar un expediente clínico. Debe evitarse la exposición innecesaria de datos y proporcionar mensajes genéricos en caso de error para no facilitar recolección de cuentas o inyección. | Alta confianza
+
+| PS-3 | Mensajes de error en `/auth/login` | Salidas que muestran errores de autenticación al usuario (por ejemplo: "usuario no encontrado", "contraseña incorrecta"). Mensajes demasiado verbales pueden facilitar ataques de enumeración de cuentas o revelar detalles de implementación. Riesgos: account harvesting, info leakage. | Público / No autenticado
+
+| PS-4 | Registros del sistema (logs) | Salida interna donde se almacenan eventos (logs de acceso, errores, trazas). Si los logs contienen datos personales sin enmascarar, pueden provocar divulgación si se accede a ellos indebidamente. Deben definirse políticas de retención, acceso y enmascaramiento. | Interno
+
+| PS-5 | Notificaciones externas (email/SMS) | Mensajes y payloads enviados a proveedores de correo o SMS para notificaciones de pacientes/usuarios (p. ej. citas, restablecimiento de contraseña). Riesgos: fuga de información a terceros, exposición por integraciones inseguras. | Proveedor externo
+
+| PS-6 | Respuesta del endpoint `/health/status` | Información de estado del servicio devuelta a sistemas de monitoreo. Debe evitarse incluir datos sensibles o detalles de configuración que puedan ayudar a un atacante. | Interno / Monitorización
+|===
+
+
+====== Activos
+
+Los activos pueden ser tanto físicos como abstractos. Suelen ser elementos o áreas de interes para un atacante.
+
+Por ejemplo, un activo físico podría ser la lista de registros de pacientes, mientras que un activo abstracto podría ser la reputación de la organización. En ambos casos, los activos son valiosos y deben protegerse.
+
+Los activos deben documentarse de la siguiente manera:
+
+* ID: Se asigna un identificador único a cada activo. Este ID se usa para hacer referencias cruzadas con las amenazas o vulnerabilidades identificadas.
+
+* Nombre: Un nombre descriptivo que identifique claramente el activo.
+
+* Descripción: Una descripción textual que explique qué es el activo y por qué necesita protección.
+
+* Niveles de confianza: El nivel de acceso requerido para acceder al activo se documenta aquí. Estos se cruzarán con los niveles de confianza definidos en el siguiente paso.
+
+En nuestro ejemplo, se tienen los siguientes activos:
+
+.Activos del Sistema de Salud (Ejemplo)
+[cols="1,1,3,1", options="header"]
+|===
+| ID | Nombre | Descripción | Niveles de confianza
+
+| A-1 | Usuarios del Sistema | Activos relacionados con pacientes, médicos, enfermeros y administradores. |
+
+| A-1.1 | Credenciales de Pacientes | Credenciales utilizadas por los pacientes para autenticarse en la API REST del sistema de salud. | (1) Paciente autenticado
+(2) Médico autorizado
+(3) Administrador del sistema
+
+| A-1.2 | Credenciales de Personal Médico | Credenciales utilizadas por médicos y enfermeros para acceder a la API. | (2) Médico autorizado
+(3) Administrador del sistema
+
+| A-1.3 | Datos Personales de Pacientes | Información sensible como historial clínico, diagnósticos, tratamientos y datos de contacto. | (2) Médico autorizado
+(3) Administrador del sistema
+(4) Sistema de respaldo seguro
+
+| A-2 | Sistema | Activos relacionados con la infraestructura y los servicios del sistema de salud. |
+
+| A-2.1 | Disponibilidad de la API REST | La API debe estar disponible 24/7 para usuarios autorizados y personal médico. | (3) Administrador del sistema
+(4) Servicio de monitoreo
+
+| A-2.2 | Capacidad de ejecutar código en el servidor | Permite ejecutar código en el servidor de la API bajo usuario del servidor web. | (3) Administrador del sistema
+
+| A-2.3 | Capacidad de ejecutar consultas SQL en la base de datos | Permite realizar select sobre la base de datos para acceder a información clínica. | (3) Administrador del sistema
+(4) Usuario de lectura en BD
+
+| A-2.4 | Capacidad de ejecutar SQL con permisos de lectura/escritura | Permite modificar y consultar cualquier información en la base de datos. | (3) Administrador del sistema
+(5) Usuario de lectura/escritura en BD
+
+| A-3 | API y Servicios | Activos relacionados con el funcionamiento de la API y la interacción de los usuarios. |
+
+| A-3.1 | Sesión de Usuario | La sesión activa de un paciente, médico o administrador en la API. | (1) Paciente autenticado
+(2) Médico autorizado
+(3) Administrador del sistema
+
+| A-3.2 | Acceso a la base de datos | Acceso al servidor de base de datos para administración y consulta de datos. | (3) Administrador del sistema
+
+| A-3.3 | Capacidad de crear usuarios | Permite a administradores crear nuevos usuarios (pacientes, médicos, personal). | (3) Administrador del sistema
+
+| A-3.4 | Acceso a registros de auditoría | Permite revisar eventos auditables del sistema: login, modificaciones de datos y acciones críticas. | (3) Administrador del sistema
+|===
+
+
+====== Niveles de confianza
+
+Los niveles de confianza representan los derechos de acceso que la aplicación otorgará a entidades externas. Los niveles de confianza se referencian con los puntos de entrada y los activos. Esto nos permite definir los derechos o privilegios de acceso requeridos en cada punto de entrada, así como los necesarios para interactuar con cada activo.
+
+Los niveles de confianza se documentan en el modelo de amenazas de la siguiente manera:
+
+* ID: Se asigna un número único a cada nivel de confianza. Este se utiliza para hacer referencia cruzada con los puntos de entrada y los activos.
+
+* Nombre: Un nombre descriptivo que permite identificar las entidades externas a las que se les ha otorgado este nivel de confianza.
+
+* Descripción: Una descripción textual del nivel de confianza que detalla la entidad externa que ha recibido dicho nivel.
+
+.Niveles de Confianza (Ejemplo)
+[cols="1,1,3", options="header"]
+|===
+| ID | Nombre | Descripción
+
+| NC-1 | Usuario Anónimo | Usuario que se conecta a la API REST pero no ha proporcionado credenciales válidas. Acceso limitado a endpoints públicos.  
+
+| NC-2 | Paciente Autenticado | Paciente que ha iniciado sesión con credenciales válidas y puede acceder a sus propios datos clínicos y solicitudes autorizadas.  
+
+| NC-3 | Usuario con Credenciales Inválidas | Usuario que intenta autenticarse con credenciales incorrectas. Riesgo potencial de ataques de fuerza bruta o enumeración de cuentas.  
+
+| NC-4 | Personal Médico | Médicos y enfermeros autorizados que pueden acceder a datos de pacientes, actualizar expedientes y registrar procedimientos.  
+
+| NC-5 | Administrador de Base de Datos | Administrador del servidor de base de datos con permisos de lectura/escritura sobre la base de datos de pacientes y registros clínicos.  
+
+| NC-6 | Administrador del Sistema | Responsable de la configuración, mantenimiento y despliegue de la API REST y sus servicios asociados.  
+
+| NC-7 | Proceso del Servidor Web | Usuario/proceso bajo el cual el servidor web ejecuta código y se autentica contra la base de datos.  
+
+| NC-8 | Usuario de Lectura en BD | Cuenta de base de datos utilizada únicamente para consultas (SELECT) de información clínica.  
+
+| NC-9 | Usuario de Lectura/Escritura en BD | Cuenta de base de datos utilizada para consultas y modificaciones (SELECT, INSERT, UPDATE) de datos clínicos y administrativos.  
+|===
+
 
 Diagramas de flujo de datos (DFD)
-TODO: Explicar sobre el DFD y su importancia en el modelado de amenazas.
+//TODO: Explicar sobre el DFD y su importancia en el modelado de amenazas.
 
-TODO: Mostrar diagrama DFD del ejemplo.
+//TODO: Mostrar diagrama DFD del ejemplo.
 
 
 ==== Paso 2 — Determinar las amenazas (Aplicación de STRIDE)
 
 Con base en la descomposición anterior, se analizan las amenazas aplicando las categorías de STRIDE sobre los componentes más relevantes.
 
-TODO: Explicar cómo se identificaron las amenazas, en este caso se siguió STRIDE y ya está más o menos explicado qué pasa en cada categoria, después es necesario analizar las amenazas para determinar el riesgo (explicar cómo sacar el riesgo) (Para cada elemento del DFD se analizan las posibles amenazas aplicando STRIDE), aplicar el arbol de amenazas. Entonces ya se presentan las amenazas identificadas en una tabla con el elemento (del DFD, por ejemplo un web response que es un flujo de datos), el riesgo, lla categoria de stride, amenaza, descripcion.
+//TODO: Explicar cómo se identificaron las amenazas, en este caso se siguió STRIDE y ya está más o menos explicado qué pasa en cada categoria, después es necesario analizar las amenazas para determinar el riesgo (explicar cómo sacar el riesgo) (Para cada elemento del DFD se analizan las posibles amenazas aplicando STRIDE), aplicar el arbol de amenazas. Entonces ya se presentan las amenazas identificadas en una tabla con el elemento (del DFD, por ejemplo un web response que es un flujo de datos), el riesgo, la categoria de stride, amenaza, descripcion.
 
-[cols="1,2,2,2"]
-|===
-| Recurso | Amenaza (STRIDE) | Ejemplo de escenario | Contramedida propuesta
-
-| `POST /auth/login`
-| **Spoofing**
-| Un atacante usa credenciales robadas para autenticarse como un paciente.
-| Implementar autenticación multifactor (MFA), limitar intentos de inicio de sesión y registrar patrones de acceso sospechosos.
-
-| `GET /patients/{id}`
-| **Information Disclosure**
-| Un usuario con token válido accede a información de otro paciente mediante un ID manipulado.
-| Verificar el propietario del recurso, aplicar controles de acceso a nivel de campo y cifrar la información sensible.
-
-| `POST /appointments`
-| **Tampering**
-| Modificación del contenido de una solicitud para cambiar la fecha o el costo de una cita.
-| Usar HTTPS, validar datos del lado del servidor y firmar los mensajes si se requiere integridad adicional.
-
-| `GET /records`
-| **Denial of Service (DoS)**
-| Solicitudes masivas a los historiales médicos que saturan el servidor.
-| Implementar *rate limiting*, caching y estrategias de escalado.
-
-| `PUT /patients/{id}`
-| **Elevation of Privilege**
-| Un usuario estándar intenta modificar información administrativa.
-| Aplicar controles RBAC y validar los privilegios en cada solicitud.
-
-|===
 
 [TIP]
 ====
@@ -708,7 +863,7 @@ Aplicar STRIDE sobre los componentes del sistema permite identificar amenazas es
 
 Una vez identificadas las amenazas, se definen las contramedidas apropiadas.
 
-TODO: Explicar que a veces como ya están categorizadas con STRIDE, ya se pueden ir pensando en las contramedidas típicas de cada categoría. Y finalmente se pueden derivar amenazas no mitigadas, parciales o mitigadas.
+//TODO: Explicar que a veces como ya están categorizadas con STRIDE, ya se pueden ir pensando en las contramedidas típicas de cada categoría. Y finalmente se pueden derivar amenazas no mitigadas, parciales o mitigadas.
 
 Por ejemplo:
 
@@ -721,9 +876,9 @@ Por ejemplo:
 
 Estas contramedidas se documentan junto con la justificación de su elección, considerando el costo, el impacto y la probabilidad del ataque.
 
-TODO: Ahora sí se podrían incluir las contramedidas en la tabla del Paso 2. 
+//TODO: Ahora sí se podrían incluir las contramedidas en la tabla del Paso 2. 
 
-TODO: Una vez que se tienen esselementos, se puede crear el modelo con una herramienta como OWASP Threat Dragon o Microsoft Threat Modeling Tool. En nuestro caso, se usará OWASP Threat Dragon así que hay que incluir capturas.
+//TODO: Una vez que se tienen esselementos, se puede crear el modelo con una herramienta como OWASP Threat Dragon o Microsoft Threat Modeling Tool. En nuestro caso, se usará OWASP Threat Dragon así que hay que incluir capturas.
 
 ==== Paso 4 — Evaluar el trabajo
 
