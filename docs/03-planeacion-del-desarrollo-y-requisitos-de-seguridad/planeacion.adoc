@@ -645,12 +645,17 @@ Comunmente el documento de modelado de amenazas contiene los siguientes elemento
 
 En nuestro ejemplo, se tiene la siguiente información:
 
-Nombre del sistema: **HealthAPI**
-Versión: 1.0
-Descripción: API REST para la gestión de datos de pacientes, historiales médicos y citas en una clínica.
-Propietario del documento: Eduardo Carrera Colorado
-Participantes: Aneth Michelle Tamariz Moreno
-Revisor: Juan Carlos Pérez Arriaga
+* Nombre del sistema: **HealthAPI**
+
+* Versión: 1.0
+
+* Descripción: API REST para la gestión de datos de pacientes, historiales médicos y citas en una clínica.
+
+* Propietario del documento: Eduardo Carrera Colorado
+
+* Participantes: Aneth Michelle Tamariz Moreno
+
+* Revisor: Juan Carlos Pérez Arriaga
 
 ====== Dependencias externas
 
