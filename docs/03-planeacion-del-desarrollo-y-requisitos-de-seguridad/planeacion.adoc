@@ -91,6 +91,38 @@ A continuación, se presentan ejemplos de requisitos funcionales y su correspond
 
 ==== Documentación de requisitos
 
+La documentación de requisitos constituye un componente esencial del desarrollo de software, ya que describe de manera detallada lo que el sistema planificado deberá hacer y el modo en que se espera que funcione. Su propósito es servir como una referencia integral para todas las etapas del ciclo de vida del software. Esta documentación puede presentarse en forma de un documento de Especificación de Requisitos de Software (Software Requirements Specification, SRS).
+
+===== Especificación de requisitos de software (SRS)
+
+La Especificación de Requisitos de Software (SRS) también puede denominarse especificación funcional, especificación del producto, documento de requisitos o especificación del sistema, aunque estos términos no siempre se emplean de manera uniforme en todas las organizaciones.
+
+El SRS establece con precisión las funciones, capacidades y restricciones que debe cumplir un sistema de software. Este documento constituye la base para la planificación, el diseño, la codificación, las pruebas del sistema y la elaboración de la documentación para los usuarios. Su contenido debe describir de manera completa el comportamiento del sistema bajo distintas condiciones, evitando incluir detalles de diseño, implementación, pruebas o gestión del proyecto, excepto cuando se trate de restricciones conocidas (Wiegers & Beatty, 2013).
+
+Diversos actores dentro del proceso de desarrollo se benefician del SRS:
+
+* Los clientes, el área de marketing y el personal de ventas lo utilizan para conocer el producto que se espera entregar.  
+* Los gerentes de proyecto lo emplean para estimar el calendario, el esfuerzo y los recursos necesarios.  
+* El equipo de desarrollo lo usa como guía principal para la construcción del sistema.  
+* El equipo de pruebas lo utiliza para diseñar planes, casos y procedimientos de prueba.  
+* El personal de mantenimiento y soporte recurre al SRS para comprender el propósito y las funciones de cada componente del sistema.  
+* Los redactores técnicos basan los manuales de usuario y las guías de ayuda en el SRS y en el diseño de la interfaz de usuario.  
+* El personal de capacitación emplea el SRS y la documentación de usuario para elaborar materiales educativos.  
+* El área legal asegura que los requisitos cumplan con las leyes y regulaciones aplicables.  
+* Los subcontratistas basan su trabajo en el SRS y pueden ser legalmente responsables de cumplirlo.  
+
+Como repositorio principal de los requisitos del producto, el SRS debe ser exhaustivo. Ni los desarrolladores ni los clientes deben asumir la existencia de funcionalidades o atributos que no estén explícitamente documentados en el SRS, ya que solo los requisitos acordados deben considerarse comprometidos para su implementación.
+
+No es necesario completar el SRS de todo el producto antes de iniciar el desarrollo; sin embargo, es fundamental documentar los requisitos correspondientes a cada incremento antes de construirlo. El desarrollo incremental resulta apropiado cuando los interesados no pueden identificar todos los requisitos desde el inicio o cuando es prioritario entregar funcionalidad al usuario en etapas tempranas.
+
+[TIP]
+====
+Trabajar a partir de un conjunto de requisitos acordado reduce la posibilidad de malentendidos y de reprocesos innecesarios (Wiegers & Beatty, 2013).
+
+====
+
+//TODO: Incluir enlace a ejemplo de SRS de nuestro caso de estudio
+
 ==== Validación y trazabilidad de requisitos
 
 La trazabilidad de los requisitos constituye un elemento fundamental dentro del aseguramiento de la calidad y la gestión de proyectos de software. Según Wiegers, un requisito trazable puede vincularse tanto hacia atrás, hacia su origen, como hacia adelante, hacia los requisitos derivados, los elementos de diseño, el código que lo implementa y las pruebas que verifican su correcta implementación. 
@@ -164,6 +196,8 @@ La identificación de amenazas implica determinar los riesgos potenciales median
 Además de la identificación, la búsqueda activa de amenazas, conocida como threat hunting, consiste en la detección proactiva de amenazas desconocidas o previamente no detectadas dentro de la red de una organización. A diferencia del monitoreo de seguridad tradicional, que se enfoca en la detección y respuesta a amenazas conocidas mediante herramientas automatizadas, la búsqueda de amenazas persigue anticiparse a riesgos emergentes, permitiendo mitigarlos antes de que puedan generar daños significativos (Akamai, s.f.).
 
 Por lo tanto, la labor del diseñador de una API no se limita a garantizar el cumplimiento de sus funciones requeridas, sino que también incluye una vigilancia constante del panorama de seguridad, con el objetivo de prevenir y mitigar posibles amenazas que puedan comprometer la integridad del sistema (Lalonchera, 2025).
+
+En secciones posteriores se describen metodologías específicas para el modelado de amenazas, las cuales facilitan la identificación y análisis sistemático de riesgos en el contexto del desarrollo de APIs REST seguras.
 
 === Referencias normativas y técnicas de seguridad para API
 
@@ -552,6 +586,7 @@ Al desarrollar o integrar APIs que manejen información médica o datos sensible
 La HIPAA es especialmente relevante en APIs del sector salud o aquellas que gestionen información personal sensible.  
 Aunque su aplicación es obligatoria solo en Estados Unidos, sus principios pueden servir como guía de buenas prácticas internacionales.
 ====
+
 === Modelado de amenazas
 
 El modelado de amenazas es un enfoque de seguridad proactivo y estructurado que se utiliza para identificar, evaluar y mitigar posibles riesgos dentro de la arquitectura de un sistema antes de que puedan ser explotados. Permite visualizar cómo un atacante podría aprovechar vulnerabilidades mediante la identificación de activos críticos, como datos sensibles; la evaluación de vectores de ataque; el análisis de posibles actores de amenaza; y la definición de estrategias de mitigación para cada riesgo.
