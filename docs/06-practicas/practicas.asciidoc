@@ -1,0 +1,9 @@
+== Prácticas para seguridad en APIs REST
+
+=== Spoofing
+=== Tampering
+=== Repudiation
+=== Information Disclosure
+=== Denial of Service
+=== Elevation of Privilege
+

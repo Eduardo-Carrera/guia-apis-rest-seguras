@@ -1,1 +1,12 @@
 == Vulnerabilidades en APIs REST
+
+Para poder hablar de las vulnerabilidades, primero, debemos definir lo que es una vulnerabilidad. Una vulnerabilidad es una falla o debilidad potencial en el diseño o la implementación de software que puede ejercerse (activarse accidentalmente o explotarse intencionalmente) y provocar daños en el sistema (Search Results). Ahora, la vulnerabilidad en sí misma no representa el peligro inminente. Más bien, la vulnerabilidad es la puerta de entrada a un exploit. El hecho de que nuestro sistema contenga alguna vulnerabilidad significa que tenemos una puerta de entrada para que una amenaza pueda explotarnos (CompTIA Security+ SY0-701 Sari Greene). 
+
+=== Principales vulnerabilidades en APIs 
+
+Existen diversos tipos de vulnerabilidades que, si no se previenen adecuadamente, pueden comprometer la seguridad, la disponibilidad y la integridad de un sistema. Estas debilidades pueden ser aprovechadas por atacantes para obtener acceso no autorizado, manipular datos, interrumpir servicios o incluso tomar control de recursos críticos.
+Con el fin de proporcionar una guía clara y estandarizada sobre las amenazas más relevantes en el ámbito de las interfaces de programación de aplicaciones, la Open Web Application Security Project (OWASP) publica periódicamente el API Security Top 10, un listado que concentra las principales vulnerabilidades que afectan a las APIs. Dicho documento se ha convertido en una referencia esencial para desarrolladores, arquitectos y profesionales de seguridad, ya que permite comprender cuáles son los riesgos más frecuentes y cómo abordarlos desde las fases tempranas del diseño hasta la operación del sistema.
+
+A continuación, se presentan las principales vulnerabilidades identificadas en el OWASP API Security Top 10, las cuales deben ser consideradas como prioritarias.
+
+=== Código vulnerable
