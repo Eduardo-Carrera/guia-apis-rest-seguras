@@ -125,41 +125,63 @@ Trabajar a partir de un conjunto de requisitos acordado reduce la posibilidad de
 
 ==== Validación y trazabilidad de requisitos
 
-La trazabilidad de los requisitos constituye un elemento fundamental dentro del aseguramiento de la calidad y la gestión de proyectos de software. Según Wiegers, un requisito trazable puede vincularse tanto hacia atrás, hacia su origen, como hacia adelante, hacia los requisitos derivados, los elementos de diseño, el código que lo implementa y las pruebas que verifican su correcta implementación. 
+La trazabilidad de los requisitos constituye un elemento esencial dentro del aseguramiento de la calidad y la gestión de proyectos de software. Según Wiegers (2013), un requisito trazable puede vincularse tanto hacia atrás —hacia su origen— como hacia adelante —hacia los requisitos derivados, los elementos de diseño, el código que lo implementa y las pruebas que verifican su correcta implementación—.  
 
-Los requisitos trazables se identifican mediante identificadores únicos y persistentes y se redactan de manera estructurada y granular, evitando combinaciones de múltiples requisitos en un solo enunciado, ya que cada requisito puede corresponder a diferentes componentes de desarrollo. Si bien no es posible lograr una especificación perfecta en la que todos los requisitos cumplan estas características, considerar estos principios durante la redacción y revisión contribuye a producir especificaciones más claras y completas, favoreciendo un desarrollo de software alineado con los objetivos del proyecto (Wiegers, 2013).
+Los requisitos trazables se identifican mediante identificadores únicos y persistentes, y se redactan de manera estructurada y granular. Es recomendable evitar la combinación de múltiples requisitos en un solo enunciado, dado que cada requisito puede estar asociado a distintos componentes del desarrollo. Aunque lograr una especificación perfecta es improbable, aplicar estos principios durante la redacción y revisión de requisitos contribuye a generar especificaciones más claras, completas y alineadas con los objetivos del proyecto (Wiegers, 2013).  
 
-Los siguientes son algunos beneficios potenciales de seguimiento de requisitos de implementación:
+===== Beneficios de la trazabilidad de requisitos
 
-*	Detección de requisitos innecesarios. Busca cualquier requisito funcional que no se relacione con requisitos de usuario o de negocio y que, por lo tanto, podría no ser necesario.
-*	Certificación y cumplimiento. Puedes utilizar la información de trazabilidad al certificar un producto crítico para la seguridad, para demostrar que todos los requisitos fueron implementados (aunque eso no confirma que se hayan implementado correctamente). La información de trazabilidad demuestra que los requisitos exigidos para el cumplimiento normativo han sido incluidos y atendidos, como suele ser necesario en aplicaciones para compañía de salud y de servicios financieros. 
-*	Análisis de impacto de cambios. Sin la información de trazabilidad, existe una alta probabilidad de pasar por alto un elemento del sistema que se veía afectado si se añade, elimina o modifica un requisito en particular-
-*	Mantenimiento. La información de trazabilidad confiable facilita la capacidad de realizar cambios de forma correcta y completa durante el mantenimiento. Cuando cambian las políticas corporativas o las regulaciones gubernamentales, los sistemas de software a menudo deben actualizarse. Una tabla que muestre dónde se abordó cada regla de negocio aplicable en los requisitos funcionales, los diseños y el código hace más sencillo realizar los cambios necesarios de manera adecuada.
-*	Seguimiento de proyecto. Si registras los datos de trazabilidad durante el desarrollo, tendrás un registro preciso del estado de implementación de la funcionalidad planificada. Los enlaces ausentes indican productos de trabajo que aún no se han creado.
-*	Reingeniería. Puedes listar las funciones en un sistema existente que estás reemplazando y trazarlas hacia dónde se abordan en los requisitos del nuevo sistema y en los componentes de software.
-*	Reutilización. La información de trazabilidad facilita la reutilización de componentes del producto al identificar paquetes de requisitos, diseños, código y pruebas relacionados.
-*	Pruebas. Cuando una prueba falla, los enlaces entre las pruebas, los requisitos y el código orientan a los desarrolladores hacia las áreas probables que deben examinarse para encontrar el defecto.
+El seguimiento de los requisitos a lo largo del ciclo de vida del proyecto ofrece múltiples beneficios, entre los que destacan los siguientes:
 
-Muchos de estos son beneficios a largo plazo, ya que reducen los costos generales del ciclo de vida del producto, pero aumentan el costo de desarrollo por el esfuerzo invertido en recopilar y gestionar la información de trazabilidad. Considera la trazabilidad de requisitos como una inversión que aumenta las probabilidades de entregar un producto mantenible que satisfaga todos los requisitos establecidos por el cliente. Esta inversión dará frutos cada vez que tengas que modificar, ampliar o reemplazar el producto. Establecer las trazas no implica mucho trabajo si recopilas la información conforme avanza el desarrollo, pero resulta tedioso y costoso hacerlo sobre un sistema ya terminado (Wiegers, 2013).
+* *Detección de requisitos innecesarios:* permite identificar requisitos funcionales que no se relacionan con los requisitos de usuario o de negocio y, por lo tanto, podrían resultar innecesarios.  
+* *Certificación y cumplimiento:* la información de trazabilidad puede emplearse para certificar productos críticos en materia de seguridad, demostrando que todos los requisitos fueron implementados. Asimismo, facilita evidenciar el cumplimiento de normativas aplicables, especialmente en sectores como salud y servicios financieros.  
+* *Análisis de impacto de cambios:* la trazabilidad permite identificar los elementos del sistema afectados por la adición, modificación o eliminación de un requisito específico, reduciendo el riesgo de omisiones.  
+* *Mantenimiento:* disponer de información de trazabilidad confiable facilita la actualización del sistema frente a cambios en políticas corporativas o regulaciones. Una tabla que muestre la relación entre reglas de negocio, requisitos, diseño y código simplifica la implementación de modificaciones de forma correcta y completa.  
+* *Seguimiento del proyecto:* el registro de datos de trazabilidad durante el desarrollo proporciona una visión clara del estado de implementación de la funcionalidad planificada. Los enlaces ausentes indican productos de trabajo pendientes.  
+* *Reingeniería:* la trazabilidad permite mapear las funciones de un sistema existente hacia los requisitos y componentes del nuevo sistema que lo reemplazará.  
+* *Reutilización:* la trazabilidad facilita la identificación de paquetes de requisitos, diseños, código y pruebas relacionados, promoviendo la reutilización de componentes.  
+* *Pruebas:* cuando una prueba falla, los vínculos entre los casos de prueba, los requisitos y el código permiten orientar a los desarrolladores hacia las áreas más probables donde se origina el defecto.  
 
-En este contexto, existen herramientas que permiten relacionar cada requisito del producto con su origen, siendo la matriz de trazabilidad una opción. Esta matriz es una cuadrícula que vincula los requisitos del producto desde su origen hasta los entregables que los satisfacen. 
+Si bien muchos de estos beneficios se manifiestan a largo plazo, su implementación contribuye a reducir los costos globales del ciclo de vida del producto. No obstante, también puede incrementar los costos iniciales de desarrollo debido al esfuerzo requerido para recopilar y mantener la información de trazabilidad. En este sentido, la trazabilidad de requisitos debe considerarse una inversión que incrementa la probabilidad de entregar un producto mantenible y conforme a los requisitos del cliente.  
 
-La implementación de una matriz de trazabilidad de requisitos ayuda a garantizar que cada requisito agregue valor comercial al vincularlo con los objetivos comerciales y del proyecto. Proporciona un medio para realizar un seguimiento de los requisitos a lo largo del ciclo de vida del proyecto, lo que ayuda a garantizar que los requisitos aprobados en la documentación de requisitos se entreguen al final del proyecto. Por último, proporciona una estructura para gestionar los cambios en el alcance del producto.
+El esfuerzo necesario para establecer la trazabilidad es menor cuando la información se recopila de manera progresiva durante el desarrollo. En cambio, realizar este proceso sobre un sistema ya finalizado puede resultar considerablemente más costoso y laborioso (Wiegers, 2013).  
 
-Los requisitos de rastreo incluyen, entre otros:
+===== Matriz de trazabilidad de requisitos
 
-*	Necesidades, oportunidades, metas y objetivos comerciales;
-*	Objetivos del proyecto;
-*	Alcance del proyecto y entregables de WBS;
-*	Diseño de productos;
-*	Desarrollo de productos;
-*	Estrategia de prueba y escenarios de prueba;
-*	Requisitos de alto nivel a requisitos más detallados.
+En este contexto, existen diversas herramientas que permiten establecer relaciones entre cada requisito del producto y su origen. Una de las más utilizadas es la matriz de trazabilidad de requisitos, la cual constituye una cuadrícula que vincula los requisitos del producto con los entregables que los satisfacen.  
 
-Los atributos asociados a cada requisito se pueden registrar en la matriz de trazabilidad de requisitos. Estos atributos ayudan a definir información clave sobre el requisito. Los atributos típicos utilizados en la matriz de trazabilidad de requisitos pueden incluir: un identificador único, una descripción textual del requisito, la justificación de la inclusión, el propietario, la fuente, la prioridad, la versión, el estado actual (activo, cancelado, diferido, agregado, aprobado, asignado, completo) y la fecha de estado. Los atributos adicionales para garantizar que el requisito haya cumplido con la satisfacción de las partes interesadas pueden incluir criterios de estabilidad, complejidad y aceptación. 
+La implementación de una matriz de trazabilidad permite garantizar que cada requisito aporte valor al negocio, al vincularlo directamente con los objetivos comerciales y del proyecto. Asimismo, proporciona un medio estructurado para realizar el seguimiento de los requisitos a lo largo del ciclo de vida del proyecto, asegurando que los requisitos aprobados en la documentación inicial se vean reflejados en el producto final.  
 
-ref: (A guide to the PROJECT MANAGEMENT BODY OF KNOWLEDGE (PMBOK Guide) Project Management Institute)
+De igual manera, la matriz ofrece un marco para gestionar los cambios en el alcance del producto, manteniendo la coherencia y trazabilidad entre los elementos del sistema (Project Management Institute, PMBOK Guide).  
 
+Los elementos que pueden ser objeto de trazabilidad incluyen, entre otros:
+
+* Necesidades, oportunidades, metas y objetivos comerciales;  
+* Objetivos del proyecto;  
+* Alcance del proyecto y entregables de la estructura de desglose del trabajo (Work Breakdown Structure, WBS);  
+* Diseño del producto;  
+* Desarrollo del producto;  
+* Estrategia y escenarios de prueba;  
+* Requisitos de alto nivel y sus correspondientes requisitos detallados.  
+
+Los atributos asociados a cada requisito pueden registrarse dentro de la matriz de trazabilidad. Estos atributos aportan información clave sobre el requisito, tales como:  
+
+* Identificador único;  
+* Descripción textual del requisito;  
+* Justificación de su inclusión;  
+* Propietario o responsable;  
+* Fuente;  
+* Prioridad;  
+* Versión;  
+* Estado actual (activo, cancelado, diferido, agregado, aprobado, asignado, completo);  
+* Fecha de actualización del estado.  
+
+Adicionalmente, pueden incluirse atributos que contribuyan a verificar la satisfacción de las partes interesadas, tales como los criterios de estabilidad, complejidad y aceptación.
+
+//TODO: Incluir ejemplo de matriz de trazabilidad
+
+ref: Wiegers, K. & Beatty, J. (2013). *Software Requirements*. Microsoft Press.  
+ref: Project Management Institute (PMI). *A Guide to the Project Management Body of Knowledge (PMBOK Guide)*.  
 
 === Evaluación organizacional y su relación con la seguridad
 
