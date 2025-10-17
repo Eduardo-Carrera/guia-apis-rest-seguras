@@ -29,7 +29,7 @@ Las prácticas reportadas en la literatura para esta fase se presentan en la sig
 |Establecimiento de lineamientos que regulen la seguridad, gobernanza y cumplimiento normativo en el diseño y uso de la API, incluyendo la asignación de responsabilidades a los distintos actores involucrados en su ciclo de vida.
 |Guba, 2025
 
-|Definición de requisites
+|Definición de requisitos
 |Documentación clara de los casos de uso y de los usuarios previstos de la API, asegurando que esta incorpore únicamente las funcionalidades necesarias y evitando tanto la sobrecarga como omisiones críticas.
 |(Varga, Pereira de Andrade, de Morais, Bomfim, & Avancini Fraga, 2025)
 
@@ -38,6 +38,151 @@ Las prácticas reportadas en la literatura para esta fase se presentan en la sig
 |Postman (s.f)
 |===
 
+=== Elicitación y definición de requisitos
+
+La elicitación de requisitos es el proceso mediante el cual se identifican las necesidades y restricciones de los distintos actores involucrados en un sistema de software. Este proceso implica descubrir lo que el cliente necesita y desea mediante enfoques bien definidos. Se trata de una actividad activa orientada a extraer los requisitos desde las partes interesadas, lo que puede implicar la formulación de preguntas y la aplicación de escucha activa.
+
+[TIP]
+====
+El objetivo principal de la elicitación de requisitos es recopilar información que permita definir requisitos claros, concisos, verificables, consistentes, completos y trazables.
+====
+
+Existen diversas técnicas que pueden emplearse para la elicitación de requisitos, tales como entrevistas, talleres, encuestas y observación directa. La elección de la técnica más adecuada depende del contexto del proyecto y de las características de los actores involucrados. Asimismo, pueden utilizarse herramientas como los casos de uso, las historias de usuario y las especificaciones funcionales, las cuales permiten capturar los requisitos de manera estructurada y facilitar su posterior análisis y validación.
+
+ref: A Guide to the Project Management Body of Knowledge (PMBOK® Guide) – Seventh Edition and The Standard for Project Management (ENGLISH)
+
+==== Requisitos funcionales
+
+Los requisitos funcionales constituyen la especificación del comportamiento que un sistema debe exhibir bajo determinadas condiciones. En otras palabras, describen las funcionalidades que el producto debe implementar para permitir que los usuarios realicen sus tareas, satisfaciendo así los objetivos y necesidades del negocio.
+
+Estos requisitos suelen redactarse en forma de declaraciones utilizando el verbo «deberá». Por ejemplo: «El pasajero deberá poder imprimir las tarjetas de embarque de todos los tramos de vuelo para los que haya realizado la facturación».
+
+En el contexto de la seguridad, un ejemplo de requisito funcional sería: «El cliente de la API deberá poder autenticarse mediante un token de acceso válido antes de consumir cualquier recurso protegido» (Wiegers & Beatty, 2013).
+
+==== Requisitos no funcionales
+
+Además de los requisitos funcionales, existen los requisitos no funcionales, también conocidos como atributos o factores de calidad, requisitos de calidad de servicio o restricciones. Estos describen las características del producto en diversas dimensiones que resultan relevantes tanto para los usuarios como para los desarrolladores y el personal de mantenimiento. Entre estas dimensiones se incluyen el rendimiento, la seguridad, la disponibilidad y la portabilidad, entre otros (Wiegers & Beatty, 2013).
+
+===== Requisitos de seguridad asociados
+
+Los requisitos de seguridad forman parte de los requisitos no funcionales. Un requisito de seguridad se define como una declaración que especifica una funcionalidad necesaria para garantizar que se satisfaga alguna de las propiedades de seguridad del software, tales como confidencialidad, integridad o disponibilidad.
+
+Estos requisitos suelen derivarse de estándares de la industria, normativas legales y del análisis de vulnerabilidades previamente identificadas. Los requisitos de seguridad establecen nuevas características o amplían las existentes con el propósito de mitigar riesgos específicos o eliminar posibles vulnerabilidades (OWASP, s.f.).
+
+Asimismo, los requisitos de seguridad proporcionan una base sólida de funcionalidad validada, que permite estandarizar los controles y las buenas prácticas de protección en el desarrollo de aplicaciones. Este enfoque favorece la reutilización de mecanismos de seguridad probados, en lugar de diseñar soluciones ad hoc para cada proyecto.
+
+Entre los estándares disponibles, destaca el Application Security Verification Standard (ASVS) de OWASP, el cual ofrece un catálogo estructurado de requisitos y criterios de verificación de seguridad. Dicho estándar puede emplearse como una fuente de referencia para definir requisitos de seguridad detallados durante el desarrollo de software.
+
+A continuación, se presentan ejemplos de requisitos funcionales y su correspondiente relación con requisitos de seguridad.
+
+[cols="1,1", options="header"]
+|===
+| Requisito funcional | Requisitos de seguridad
+
+| Los usuarios podrán registrarse en la plataforma proporcionando su correo electrónico y contraseña.
+| Las contraseñas deben almacenarse cifradas (ej. bcrypt) y la comunicación durante el registro debe ser vía HTTPS.
+
+| Los usuarios podrán consultar su historial de transacciones financieras.
+| Solo usuarios autenticados pueden acceder a su historial; se debe implementar control de acceso basado en roles y cifrado de datos en reposo.
+
+| Los usuarios podrán descargar reportes en formato PDF desde el sistema.
+| Los archivos PDF deben generarse de forma segura, sin incluir información de otros usuarios, y la descarga debe realizarse sobre HTTPS.
+|===
+
+==== Documentación de requisitos
+
+La documentación de requisitos constituye un componente esencial del desarrollo de software, ya que describe de manera detallada lo que el sistema planificado deberá hacer y el modo en que se espera que funcione. Su propósito es servir como una referencia integral para todas las etapas del ciclo de vida del software. Esta documentación puede presentarse en forma de un documento de Especificación de Requisitos de Software (Software Requirements Specification, SRS).
+
+===== Especificación de requisitos de software (SRS)
+
+La Especificación de Requisitos de Software (SRS) también puede denominarse especificación funcional, especificación del producto, documento de requisitos o especificación del sistema, aunque estos términos no siempre se emplean de manera uniforme en todas las organizaciones.
+
+El SRS establece con precisión las funciones, capacidades y restricciones que debe cumplir un sistema de software. Este documento constituye la base para la planificación, el diseño, la codificación, las pruebas del sistema y la elaboración de la documentación para los usuarios. Su contenido debe describir de manera completa el comportamiento del sistema bajo distintas condiciones, evitando incluir detalles de diseño, implementación, pruebas o gestión del proyecto, excepto cuando se trate de restricciones conocidas (Wiegers & Beatty, 2013).
+
+Diversos actores dentro del proceso de desarrollo se benefician del SRS:
+
+* Los clientes, el área de marketing y el personal de ventas lo utilizan para conocer el producto que se espera entregar.  
+* Los gerentes de proyecto lo emplean para estimar el calendario, el esfuerzo y los recursos necesarios.  
+* El equipo de desarrollo lo usa como guía principal para la construcción del sistema.  
+* El equipo de pruebas lo utiliza para diseñar planes, casos y procedimientos de prueba.  
+* El personal de mantenimiento y soporte recurre al SRS para comprender el propósito y las funciones de cada componente del sistema.  
+* Los redactores técnicos basan los manuales de usuario y las guías de ayuda en el SRS y en el diseño de la interfaz de usuario.  
+* El personal de capacitación emplea el SRS y la documentación de usuario para elaborar materiales educativos.  
+* El área legal asegura que los requisitos cumplan con las leyes y regulaciones aplicables.  
+* Los subcontratistas basan su trabajo en el SRS y pueden ser legalmente responsables de cumplirlo.  
+
+Como repositorio principal de los requisitos del producto, el SRS debe ser exhaustivo. Ni los desarrolladores ni los clientes deben asumir la existencia de funcionalidades o atributos que no estén explícitamente documentados en el SRS, ya que solo los requisitos acordados deben considerarse comprometidos para su implementación.
+
+No es necesario completar el SRS de todo el producto antes de iniciar el desarrollo; sin embargo, es fundamental documentar los requisitos correspondientes a cada incremento antes de construirlo. El desarrollo incremental resulta apropiado cuando los interesados no pueden identificar todos los requisitos desde el inicio o cuando es prioritario entregar funcionalidad al usuario en etapas tempranas.
+
+[TIP]
+====
+Trabajar a partir de un conjunto de requisitos acordado reduce la posibilidad de malentendidos y de reprocesos innecesarios (Wiegers & Beatty, 2013).
+
+====
+
+//TODO: Incluir enlace a ejemplo de SRS de nuestro caso de estudio
+
+==== Validación y trazabilidad de requisitos
+
+La trazabilidad de los requisitos constituye un elemento esencial dentro del aseguramiento de la calidad y la gestión de proyectos de software. Según Wiegers (2013), un requisito trazable puede vincularse tanto hacia atrás —hacia su origen— como hacia adelante —hacia los requisitos derivados, los elementos de diseño, el código que lo implementa y las pruebas que verifican su correcta implementación—.  
+
+Los requisitos trazables se identifican mediante identificadores únicos y persistentes, y se redactan de manera estructurada y granular. Es recomendable evitar la combinación de múltiples requisitos en un solo enunciado, dado que cada requisito puede estar asociado a distintos componentes del desarrollo. Aunque lograr una especificación perfecta es improbable, aplicar estos principios durante la redacción y revisión de requisitos contribuye a generar especificaciones más claras, completas y alineadas con los objetivos del proyecto (Wiegers, 2013).  
+
+===== Beneficios de la trazabilidad de requisitos
+
+El seguimiento de los requisitos a lo largo del ciclo de vida del proyecto ofrece múltiples beneficios, entre los que destacan los siguientes:
+
+* *Detección de requisitos innecesarios:* permite identificar requisitos funcionales que no se relacionan con los requisitos de usuario o de negocio y, por lo tanto, podrían resultar innecesarios.  
+* *Certificación y cumplimiento:* la información de trazabilidad puede emplearse para certificar productos críticos en materia de seguridad, demostrando que todos los requisitos fueron implementados. Asimismo, facilita evidenciar el cumplimiento de normativas aplicables, especialmente en sectores como salud y servicios financieros.  
+* *Análisis de impacto de cambios:* la trazabilidad permite identificar los elementos del sistema afectados por la adición, modificación o eliminación de un requisito específico, reduciendo el riesgo de omisiones.  
+* *Mantenimiento:* disponer de información de trazabilidad confiable facilita la actualización del sistema frente a cambios en políticas corporativas o regulaciones. Una tabla que muestre la relación entre reglas de negocio, requisitos, diseño y código simplifica la implementación de modificaciones de forma correcta y completa.  
+* *Seguimiento del proyecto:* el registro de datos de trazabilidad durante el desarrollo proporciona una visión clara del estado de implementación de la funcionalidad planificada. Los enlaces ausentes indican productos de trabajo pendientes.  
+* *Reingeniería:* la trazabilidad permite mapear las funciones de un sistema existente hacia los requisitos y componentes del nuevo sistema que lo reemplazará.  
+* *Reutilización:* la trazabilidad facilita la identificación de paquetes de requisitos, diseños, código y pruebas relacionados, promoviendo la reutilización de componentes.  
+* *Pruebas:* cuando una prueba falla, los vínculos entre los casos de prueba, los requisitos y el código permiten orientar a los desarrolladores hacia las áreas más probables donde se origina el defecto.  
+
+Si bien muchos de estos beneficios se manifiestan a largo plazo, su implementación contribuye a reducir los costos globales del ciclo de vida del producto. No obstante, también puede incrementar los costos iniciales de desarrollo debido al esfuerzo requerido para recopilar y mantener la información de trazabilidad. En este sentido, la trazabilidad de requisitos debe considerarse una inversión que incrementa la probabilidad de entregar un producto mantenible y conforme a los requisitos del cliente.  
+
+El esfuerzo necesario para establecer la trazabilidad es menor cuando la información se recopila de manera progresiva durante el desarrollo. En cambio, realizar este proceso sobre un sistema ya finalizado puede resultar considerablemente más costoso y laborioso (Wiegers, 2013).  
+
+===== Matriz de trazabilidad de requisitos
+
+En este contexto, existen diversas herramientas que permiten establecer relaciones entre cada requisito del producto y su origen. Una de las más utilizadas es la matriz de trazabilidad de requisitos, la cual constituye una cuadrícula que vincula los requisitos del producto con los entregables que los satisfacen.  
+
+La implementación de una matriz de trazabilidad permite garantizar que cada requisito aporte valor al negocio, al vincularlo directamente con los objetivos comerciales y del proyecto. Asimismo, proporciona un medio estructurado para realizar el seguimiento de los requisitos a lo largo del ciclo de vida del proyecto, asegurando que los requisitos aprobados en la documentación inicial se vean reflejados en el producto final.  
+
+De igual manera, la matriz ofrece un marco para gestionar los cambios en el alcance del producto, manteniendo la coherencia y trazabilidad entre los elementos del sistema (Project Management Institute, PMBOK Guide).  
+
+Los elementos que pueden ser objeto de trazabilidad incluyen, entre otros:
+
+* Necesidades, oportunidades, metas y objetivos comerciales;  
+* Objetivos del proyecto;  
+* Alcance del proyecto y entregables de la estructura de desglose del trabajo (Work Breakdown Structure, WBS);  
+* Diseño del producto;  
+* Desarrollo del producto;  
+* Estrategia y escenarios de prueba;  
+* Requisitos de alto nivel y sus correspondientes requisitos detallados.  
+
+Los atributos asociados a cada requisito pueden registrarse dentro de la matriz de trazabilidad. Estos atributos aportan información clave sobre el requisito, tales como:  
+
+* Identificador único;  
+* Descripción textual del requisito;  
+* Justificación de su inclusión;  
+* Propietario o responsable;  
+* Fuente;  
+* Prioridad;  
+* Versión;  
+* Estado actual (activo, cancelado, diferido, agregado, aprobado, asignado, completo);  
+* Fecha de actualización del estado.  
+
+Adicionalmente, pueden incluirse atributos que contribuyan a verificar la satisfacción de las partes interesadas, tales como los criterios de estabilidad, complejidad y aceptación.
+
+//TODO: Incluir ejemplo de matriz de trazabilidad
+
+ref: Wiegers, K. & Beatty, J. (2013). *Software Requirements*. Microsoft Press.  
+ref: Project Management Institute (PMI). *A Guide to the Project Management Body of Knowledge (PMBOK Guide)*.  
+
 === Evaluación organizacional y su relación con la seguridad
 
 La seguridad de una API no depende exclusivamente de mecanismos técnicos, sino también de la cultura organizacional que sustenta su desarrollo y operación. La cultura de seguridad se entiende como el conjunto de valores que determinan la forma en que los individuos perciben y abordan la seguridad dentro de la organización. Esta cultura se ve influida por las metas institucionales, la estructura organizativa, las políticas, los procesos y el liderazgo, así como por las relaciones con socios, proveedores y otros actores externos (NCSC, 2021).
@@ -45,6 +190,7 @@ La seguridad de una API no depende exclusivamente de mecanismos técnicos, sino 
 La cultura de ciberseguridad abarca asimismo las actitudes, conocimientos, normas y valores de los empleados en relación con la seguridad. Su efectividad no depende únicamente de políticas o procesos, sino de la alineación entre factores organizacionales (liderazgo, procesos, normas) y factores individuales (actitudes, conocimientos, comportamientos). La inversión en una cultura sólida fortalece la seguridad técnica de las APIs, genera confianza digital, mejora la reputación organizacional y promueve la adopción de comportamientos seguros en el trabajo cotidiano (PA Consulting, s.f.).
 
 En entornos con una cultura de seguridad consolidada, los equipos perciben la seguridad como un esfuerzo colectivo y colaborativo que respalda las actividades diarias. Según el NCSC (2021), los principales beneficios incluyen:
+
 * Mayor propensión de los empleados a identificar problemas y proponer mejoras, fortaleciendo la resiliencia.
 * Facilita la comunicación abierta sobre incidentes sin temor a represalias.
 * Mejora del bienestar y la retención del personal, al fomentar la inclusión y explicar claramente el propósito de las medidas de seguridad.
@@ -52,6 +198,7 @@ En entornos con una cultura de seguridad consolidada, los equipos perciben la se
 Para consolidar esta cultura, se recomienda complementar las prácticas organizacionales con certificaciones reconocidas, tales como ISO 27001 y Cyber Essentials, que establecen estándares, procesos y políticas destinados a incrementar la resiliencia cibernética de la organización.
 
 Un enfoque complementario es la estrategia de seguridad Zero Trust, basada en la premisa de que ninguna persona o dispositivo, tanto dentro como fuera de la red organizacional, debe considerarse de confianza de manera automática. Este modelo se fundamenta en tres principios esenciales (Akamai, s.f.):
+
 * Verificación de la confianza de todas las entidades.
 * Aplicación del principio de privilegios mínimos.
 * Implementación de una supervisión continua de la seguridad.
@@ -71,6 +218,8 @@ La identificación de amenazas implica determinar los riesgos potenciales median
 Además de la identificación, la búsqueda activa de amenazas, conocida como threat hunting, consiste en la detección proactiva de amenazas desconocidas o previamente no detectadas dentro de la red de una organización. A diferencia del monitoreo de seguridad tradicional, que se enfoca en la detección y respuesta a amenazas conocidas mediante herramientas automatizadas, la búsqueda de amenazas persigue anticiparse a riesgos emergentes, permitiendo mitigarlos antes de que puedan generar daños significativos (Akamai, s.f.).
 
 Por lo tanto, la labor del diseñador de una API no se limita a garantizar el cumplimiento de sus funciones requeridas, sino que también incluye una vigilancia constante del panorama de seguridad, con el objetivo de prevenir y mitigar posibles amenazas que puedan comprometer la integridad del sistema (Lalonchera, 2025).
+
+En secciones posteriores se describen metodologías específicas para el modelado de amenazas, las cuales facilitan la identificación y análisis sistemático de riesgos en el contexto del desarrollo de APIs REST seguras.
 
 === Referencias normativas y técnicas de seguridad para API
 
@@ -459,6 +608,7 @@ Al desarrollar o integrar APIs que manejen información médica o datos sensible
 La HIPAA es especialmente relevante en APIs del sector salud o aquellas que gestionen información personal sensible.  
 Aunque su aplicación es obligatoria solo en Estados Unidos, sus principios pueden servir como guía de buenas prácticas internacionales.
 ====
+
 === Modelado de amenazas
 
 El modelado de amenazas es un enfoque de seguridad proactivo y estructurado que se utiliza para identificar, evaluar y mitigar posibles riesgos dentro de la arquitectura de un sistema antes de que puedan ser explotados. Permite visualizar cómo un atacante podría aprovechar vulnerabilidades mediante la identificación de activos críticos, como datos sensibles; la evaluación de vectores de ataque; el análisis de posibles actores de amenaza; y la definición de estrategias de mitigación para cada riesgo.
@@ -468,12 +618,14 @@ Como práctica clave, garantiza que las consideraciones de seguridad se integren
 ==== Importancia del modelado de amenazas
 
 Pero ¿por qué deberíamos realizar el modelado de amenazas?  
-El Manifiesto de Modelado de Amenazas señala que este proceso permite reconocer lo que puede salir mal en un sistema. Además, ayuda a identificar problemas de diseño e implementación que requieren mitigación, ya sea desde el inicio o a lo largo de la vida útil del sistema.  
+El Manifiesto de Modelado de Amenazas señala que este proceso permite reconocer lo que puede salir mal en un sistema. Además, ayuda a identificar problemas de diseño e implementación que requieren mitigación, ya sea desde el inicio o a lo largo de la vida útil del sistema. 
+
 El resultado de este análisis —las amenazas— sirve como insumo clave para guiar las decisiones en las fases posteriores de diseño, desarrollo, pruebas y mantenimiento (Threat Modeling Manifesto, 2020).
 
 ==== Propósito del modelado de amenazas
 
-El principal objetivo del modelado de amenazas es proporcionar un marco sistemático que permita identificar, comprender, priorizar y mitigar posibles riesgos (Green, 2022).  
+El principal objetivo del modelado de amenazas es proporcionar un marco sistemático que permita identificar, comprender, priorizar y mitigar posibles riesgos (Green, 2022).
+
 A través de este enfoque, las organizaciones pueden anticipar cómo los atacantes podrían explotar debilidades, entender las motivaciones y capacidades de los actores de amenaza, y establecer estrategias de defensa adecuadas (Green, 2022).
 
 * **Identificar:** Descubrir posibles amenazas, vulnerabilidades y debilidades en el sistema o aplicación (Green, 2022).  
@@ -483,7 +635,8 @@ A través de este enfoque, las organizaciones pueden anticipar cómo los atacant
 
 ==== Cuándo realizar el modelado de amenazas
 
-El modelado de amenazas debe integrarse como parte del ciclo de vida del desarrollo de software (SDLC), preferentemente desde las fases tempranas de diseño o definición de requisitos (Green, 2022).  
+El modelado de amenazas debe integrarse como parte del ciclo de vida del desarrollo de software (SDLC), preferentemente desde las fases tempranas de diseño o definición de requisitos (Green, 2022).
+
 Esto permite detectar vulnerabilidades potenciales antes de que se vuelvan costosas o difíciles de corregir.  
 
 Sin embargo, también se recomienda revisarlo y actualizarlo cuando se presenten cambios significativos en la arquitectura, se descubran nuevas amenazas o el sistema migre a una infraestructura diferente (Green, 2022).
@@ -506,8 +659,10 @@ Actualizarlo regularmente es una práctica esencial para mantener la resiliencia
 ====
 
 ==== Proceso de modelado de amenazas
-De igual forma, OWASP menciona que el proceso de modelado de amenazas se puede descomponer en cuatro pasos de alto nivel.  
+De igual forma, OWASP menciona que el proceso de modelado de amenazas se puede descomponer en cuatro pasos de alto nivel.
+
 Cada paso se documenta a medida que se lleva a cabo. Esto nos da como resultado un documento, el cual es el modelado de amenazas para la aplicación.  
+
 Se debe tener en cuenta que el trabajo de modelado de amenazas y el trabajo de crear documentos de modelado de amenazas son distintos (OWASP, s.f.).
 
 Los cuatro pasos propuestos por OWASP son:
@@ -560,46 +715,37 @@ Su nombre proviene del acrónimo de seis categorías de amenazas, que ayudan a l
 | Auditoría, bitácoras de eventos, firmas digitales y uso de frameworks de logging.
 
 | **I**nformation Disclosure (Divulgación de información)
-| Fuga de datos sensibles hacia partes no autorizadas.
-| Exponer datos personales en respuestas de API.
-| Cifrado, control de acceso, minimización de datos.
+| Fuga de datos confidenciales hacia partes no autorizadas.
+| Puede manifestarse cuando los atacantes espían las comunicaciones de la red, acceden a archivos no protegidos o aprovechan vulnerabilidades para obtener acceso no autorizado a los datos.
+| Cifrado de datos, control de acceso, procesos de clasificación y manejo de datos.
 
 | **D**enial of Service (Denegación de servicio)
-| Ataques que impiden el funcionamiento legítimo del sistema.
-| Saturación de peticiones en una API REST.
-| Limitación de tasa (rate limiting), balanceo, detección de anomalías.
+| Su objetivo es hacer que un sistema o servicio no esté disponible para sus usuarios previstos.
+| Saturación con tráfico excesivo o explotación de vulnerabilidades para provocar su caída.
+| Limitación de tasa (rate limiting), uso de WAF, diseñar sistemas con capacidad de redundancia y recuperación ante fallos.
 
 | **E**levation of Privilege (Elevación de privilegios)
-| Un usuario gana permisos que no debería tener.
-| Usuario regular que ejecuta operaciones administrativas.
-| Separación de funciones, controles de acceso y validación de roles.
+| Un atacante obtiene permisos superiores a los que debería tener, lo que le permite realizar acciones no autorizadas.
+| Usuario aprovecha una vulnerabilidad para obtener privilegios administrativos podría tener acceso sin restricciones a datos confidenciales o funciones críticas del sistema.
+| Principio del mínimo privilegio, auditorías periodicas de privilegios y corrección de vulnerabilidades.
 |===
 
-====== Ejemplo práctico (según Green, 2022)
+====== Ventajas de STRIDE
 
-Green (2022) ilustra STRIDE con un ejemplo de un *portal de servicios web*, que puede adaptarse fácilmente al contexto de una API REST.  
-Supongamos una API que gestiona información de clientes y sus pedidos.  
-Al analizarla bajo STRIDE:
+Una de las ventajas más significativas del modelo STRIDE es su simplicidad y versatilidad, lo que lo hace aplicable a una amplia variedad de sistemas y servicios. Los equipos de seguridad y los desarrolladores pueden utilizar STRIDE para realizar análisis de amenazas de manera sistemática durante la fase de diseño, ayudándoles a comprender y anticipar posibles riesgos.  
+Al categorizar las amenazas mediante STRIDE, los arquitectos de seguridad pueden asegurar una evaluación integral de las preocupaciones de seguridad, abordando desde los mecanismos de autenticación hasta la integridad y disponibilidad de los datos (Green, 2022).
 
-* **S – Spoofing:** Un atacante podría falsificar un token JWT para acceder como otro usuario.  
-  *Mitigación:* emplear firmas HMAC o RSA y validación de expiración de tokens.  
+====== Uso de STRIDE en el modelado de amenazas
 
-* **T – Tampering:** Modificar el cuerpo JSON de una solicitud PUT para alterar el monto del pedido.  
-  *Mitigación:* aplicar validaciones del lado servidor y controles de integridad sobre los datos.  
+En la práctica, el modelado de amenazas utilizando STRIDE normalmente comienza con la comprensión de la arquitectura del sistema que se está analizando.  
+Los profesionales de seguridad elaboran diagramas de flujo de datos (DFD) para visualizar cómo fluye la información a través del sistema, identificando componentes clave como almacenes de datos, procesos y canales de comunicación.  
+Cada elemento del DFD se evalúa luego empleando el modelo STRIDE para identificar amenazas potenciales.  
 
-* **R – Repudiation:** Un usuario modifica información y luego niega haberlo hecho.  
-  *Mitigación:* mantener auditorías firmadas digitalmente o logs inmutables.  
-
-* **I – Information Disclosure:** La API responde con más información de la necesaria (por ejemplo, datos de tarjeta).  
-  *Mitigación:* aplicar *output encoding* y filtrado estricto de respuestas.  
-
-* **D – Denial of Service:** Se envían peticiones masivas para agotar recursos del servidor.  
-  *Mitigación:* implementar *rate limiting*, *circuit breakers* y control de concurrencia.  
-
-* **E – Elevation of Privilege:** Un usuario básico logra acceder a endpoints administrativos.  
-  *Mitigación:* aplicar control de acceso basado en roles (RBAC) y validaciones de permisos en cada endpoint.
-
-Este análisis evidencia cómo STRIDE guía la identificación de amenazas específicas y orienta las decisiones de diseño seguro dentro del ciclo de desarrollo de APIs (Green, 2022).
+[TIP]
+====
+El uso del modelo STRIDE permite a los equipos de seguridad comprender y anticipar los riesgos de manera estructurada.  
+Su aplicación facilita una evaluación holística de los problemas de seguridad y fomenta la integración temprana de controles de protección durante la fase de diseño (Green, 2022).
+====
 
 ===== Paso 3: Determinar las contramedidas y la mitigación
 
@@ -621,18 +767,409 @@ Al concluir cualquier proyecto o tarea, es crucial hacerse una pregunta fundamen
 Este paso implica realizar una actividad retrospectiva, analizando de manera detallada y honesta la calidad de los resultados y la viabilidad de las soluciones implementadas.  
 Este proceso de revisión fomenta la mejora continua en la práctica del modelado de amenazas (OWASP, s.f.).
 
-=== Referencias
+==== Ejemplo práctico
 
-Green, J. (2022). *Security Architecture*. BCS, The Chartered Institute for IT.  
-Threat Modeling Manifesto. (2020). *Threat Modeling Manifesto*. Recuperado de https://www.threatmodelingmanifesto.org  
-OWASP. (s.f.). *OWASP Threat Modeling*. Recuperado de https://owasp.org/www-community/Threat_Modeling
+A continuación, se presenta un ejemplo simplificado de modelado de amenazas utilizando la metodología STRIDE para una API REST del área de la salud que maneja datos de pacientes, permite el acceso a historiales médicos y facilita la programación de citas médicas.
+
+Existen diversas herramientas que pueden ayudar a documentar el moodelado de amenazas, como las siguientes:
+
+* OWASP Threat Dragon: Aplicación gratuita, de código abierto y multiplataforma para crear modelos de amenazas basados en diagramas de flujo de datos (DFD). https://www.threatdragon.com/#/
+
+* Microsoft Threat Modeling Tool: Herramienta oficial del Microsoft Security Development Lifecycle (SDL) diseñada para ayudar a arquitectos y desarrolladores a identificar y mitigar posibles problemas de seguridad desde las primeras etapas del diseño, cuando aún son fáciles y económicos de resolver. https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool 
+
+* IriusRisk: Plataforma abierta de modelado de amenazas que automatiza y apoya la creación de modelos de amenaza desde la etapa de diseño. Incluye recomendaciones sobre cómo abordar los riesgos e integra la gestión de riesgos de seguridad durante todo el ciclo de vida del desarrollo de software (SDLC). https://iriusrisk.com/
+
+* ThreatModeler: Plataforma continua de modelado de amenazas que automatiza la identificación de riesgos desde la etapa de diseño, integrando la seguridad en el ciclo de desarrollo. Permite generar modelos automáticamente, gestionar requisitos de mitigación e integrarse con herramientas como Jira o Azure DevOps. https://threatmodeler.com/
+
+En este caso, se utilizará OWASP Threat Dragon para ilustrar el proceso de modelado de amenazas debido a que es una herramienta gratuita y fácil de usar.
+
+===== Paso 1 — Alcance del trabajo
+
+En esta etapa se define el alcance del sistema y se descompone la aplicación para entender su funcionamiento general.  
+
+Comunmente el documento de modelado de amenazas contiene los siguientes elementos:
+
+* Nombre del sistema: Nombre del sistema o aplicación que se está examinando.
+* Versión: Versión del sistema o aplicación.
+* Descripción: Breve descripción del sistema, explicando de manera general.
+* Propietario del documento: Dueño o responsable del documento de modelado de amenazas.
+* Participantes: Nombres de las personas que participaron en el modelado de amenazas.
+* Revisor: Nombre de la persona que revisó el documento.
+
+En nuestro ejemplo, se tiene la siguiente información:
+
+* Nombre del sistema: **HealthAPI**
+
+* Versión: 1.0
+
+* Descripción: API REST para la gestión de datos de pacientes, historiales médicos y citas en una clínica.
+
+* Propietario del documento: Eduardo Carrera Colorado
+
+* Participantes: Aneth Michelle Tamariz Moreno
+
+* Revisor: Juan Carlos Pérez Arriaga
+
+====== Dependencias externas
+
+Las dependencias externas son elementos ajenos al código de la aplicación que pueden representar una amenaza para ella. Estos elementos suelen estar bajo el control de la organización, aunque posiblemente no bajo el control directo del equipo de desarrollo.
+
+Un aspecto a considerar cuando se analizan las dependencias externas es el entorno de producción y sus requisitos. Por ejemplo, si se espera que la aplicación se ejecute en un servidor y que esté detrás de un firewall, esta información debe documentarse en esta sección (OWASP, s.f.).
+
+Las dependencias externas deben documentarse de la siguiente manera:
+
+* ID: Un identificador único asignado a la dependencia externa.
+
+* Descripción: Una descripción textual de la dependencia externa.
+
+En nuestro ejemplo, se tienen las siguientes dependencias externas:
+
+.Dependencias Externas (Ejemplo)
+[cols="1,4", options="header"]
+|===
+| ID | Descripción
+
+| DE-1 | La API REST del sistema de salud se ejecutará en un servidor Linux con Nginx. El servidor será reforzado conforme a la línea base de seguridad de la organización, incluyendo la instalación de los parches más recientes del sistema operativo y de seguridad de aplicaciones.
+| DE-2 | El servidor de base de datos usará PostgreSQL y se ejecutará en una instancia Linux separada. Será reforzado siguiendo el estándar de seguridad de la organización e incluirá actualizaciones periódicas y monitoreo de la actividad de la base de datos.
+| DE-3 | La comunicación entre el servidor de la API y el servidor de base de datos se realizará a través de una red privada, aislada de Internet pública.
+| DE-4 | La API dependerá de un proveedor externo de autenticación (OAuth 2.0) para la gestión segura del acceso de usuarios. La integración se realizará mediante HTTPS y autenticación basada en tokens.
+| DE-5 | El servidor web que aloja la puerta de enlace (API Gateway) se encuentra detrás de un firewall, y toda comunicación externa está restringida únicamente a conexiones TLS (HTTPS).
+|===
+
+====== Puntos de entrada
+
+Los puntos de entrada definen las interfaces a través de las cuales los usuarios o sistemas externos interactúan con la aplicación. Estos puntos son críticos, ya que representan las vías por las que un atacante podría intentar acceder o explotar el sistema.
+
+Los puntos de entrada muestran dónde se ingresan los datos al sistema, por ejemplo, los campos de entrada en un formulario web, los endpoints de una API REST o las interfaces de usuario.
+
+Los puntos de entrada deben documentarse de la siguiente manera:
+
+* ID: Un identificador único asignado al punto de entrada. Este se utilizará para hacer referencia cruzada entre el punto de entrada y cualquier amenaza o vulnerabilidad identificada. En el caso de puntos de entrada organizados en capas, se debe usar una notación mayor.menor.
+
+* Nombre: Un nombre descriptivo que identifique el punto de entrada y su propósito.
+
+* Descripción: Una descripción textual que detalle la interacción o el procesamiento que ocurre en el punto de entrada.
+
+* Niveles de confianza: El nivel de acceso requerido en el punto de entrada. Estos se referenciarán con los niveles de confianza definidos más adelante en el documento.
+
+En nuestro ejemplo, se tienen los siguientes puntos de entrada:
+
+.Puntos de Entrada (Ejemplo)
+[cols="1,1,3,1", options="header"]
+|===
+| ID | Nombre | Descripción | Nivel de confianza
+
+| PE-1 | Endpoint de autenticación (`/auth/login`) | Punto de entrada donde los usuarios envían sus credenciales (correo electrónico y contraseña) para autenticarse mediante el proveedor externo OAuth 2.0. Los datos son enviados mediante una conexión HTTPS segura y procesados por el servidor de autenticación. | Público autenticado
+
+| PE-2 | Endpoint de registro de paciente (`/patients/register`) | Permite a personal autorizado registrar nuevos pacientes en el sistema de salud. Requiere token de autenticación válido emitido por el servicio OAuth 2.0. | Personal médico
+
+| PE-3 | Endpoint de consulta de información del paciente (`/patients/{id}`) | Proporciona acceso a la información clínica de un paciente. Solo puede ser accedido por usuarios autenticados con rol autorizado. | Personal médico
+
+| PE-4 | Endpoint de actualización de expediente clínico (`/records/update`) | Permite actualizar la información médica de un paciente. Requiere autenticación y privilegios elevados (médico o administrador del sistema). | Alta confianza
+
+| PE-5 | Endpoint de monitoreo del sistema (`/health/status`) | Permite verificar el estado operativo de la API REST (disponibilidad y estado de servicios). Es utilizado por el sistema de monitoreo interno y no expuesto al público. | Interno
+
+| PE-6 | Interfaz administrativa web | Panel de control accesible únicamente por administradores del sistema para la gestión de usuarios, roles y configuraciones. Protegido mediante autenticación multifactor. | Alta confianza
+|===  
+
+====== Puntos de salida
+
+Mientras que los puntos de entrads muestran dónde se ingresan los datos al sistema, los puntos de salida indican dónde los datos salen del sistema. Estos puntos son igualmente críticos, ya que al momento de atacar el lado del cliente, las vulnerabilidades de cross-site scripting (XSS) y las de divulgación de información requieren un punto de salida para que el ataque se complete.
+
+En muchos casos, las amenazas habilitadas por los puntos de salida están relacionadas con las amenazas de los correspondientes puntos de entrada. En el ejemplo del inicio de sesión, los mensajes de error devueltos al usuario a través del punto de salida (la página de inicio de sesión) podrían permitir ataques en el punto de entrada, como recolección de cuentas (por ejemplo, “nombre de usuario no encontrado”).
+
+Al documentar los puntos de salida se deben considerar los mismos elementos que en los puntos de entrada, tal como se muestra en el siguiente ejemplo:
+
+.Puntos de Salida (Ejemplo)
+[cols="1,1,3,1", options="header"]
+|===
+| ID | Nombre | Descripción | Nivel de confianza
+
+| PS-1 | Respuesta del endpoint `/patients/{id}` | Salida que devuelve la información clínica del paciente (JSON) al cliente. Contiene datos sensibles —por ejemplo, diagnóstico, medicamentos— por lo que su formato, encoding y encabezados de respuesta deben asegurar confidencialidad e integridad. Riesgos: divulgación de información, falta de encriptado en tránsito, exposición por errores en serialización. | Alta confianza
+
+| PS-2 | Respuesta del endpoint `/records/update` | Mensajes de confirmación y/o datos devueltos tras actualizar un expediente clínico. Debe evitarse la exposición innecesaria de datos y proporcionar mensajes genéricos en caso de error para no facilitar recolección de cuentas o inyección. | Alta confianza
+
+| PS-3 | Mensajes de error en `/auth/login` | Salidas que muestran errores de autenticación al usuario (por ejemplo: "usuario no encontrado", "contraseña incorrecta"). Mensajes demasiado verbales pueden facilitar ataques de enumeración de cuentas o revelar detalles de implementación. Riesgos: account harvesting, info leakage. | Público / No autenticado
+
+| PS-4 | Registros del sistema (logs) | Salida interna donde se almacenan eventos (logs de acceso, errores, trazas). Si los logs contienen datos personales sin enmascarar, pueden provocar divulgación si se accede a ellos indebidamente. Deben definirse políticas de retención, acceso y enmascaramiento. | Interno
+
+| PS-5 | Notificaciones externas (email/SMS) | Mensajes y payloads enviados a proveedores de correo o SMS para notificaciones de pacientes/usuarios (p. ej. citas, restablecimiento de contraseña). Riesgos: fuga de información a terceros, exposición por integraciones inseguras. | Proveedor externo
+
+| PS-6 | Respuesta del endpoint `/health/status` | Información de estado del servicio devuelta a sistemas de monitoreo. Debe evitarse incluir datos sensibles o detalles de configuración que puedan ayudar a un atacante. | Interno / Monitorización
+|===
 
 
+====== Activos
 
-=== Requisitos funcionales
+Los activos pueden ser tanto físicos como abstractos. Suelen ser elementos o áreas de interes para un atacante.
 
-=== Requisitos de seguridad asociados
+Por ejemplo, un activo físico podría ser la lista de registros de pacientes, mientras que un activo abstracto podría ser la reputación de la organización. En ambos casos, los activos son valiosos y deben protegerse.
 
-=== Validación y trazabilidad de requisitos
+Los activos deben documentarse de la siguiente manera:
+
+* ID: Se asigna un identificador único a cada activo. Este ID se usa para hacer referencias cruzadas con las amenazas o vulnerabilidades identificadas.
+
+* Nombre: Un nombre descriptivo que identifique claramente el activo.
+
+* Descripción: Una descripción textual que explique qué es el activo y por qué necesita protección.
+
+* Niveles de confianza: El nivel de acceso requerido para acceder al activo se documenta aquí. Estos se cruzarán con los niveles de confianza definidos en el siguiente paso.
+
+En nuestro ejemplo, se tienen los siguientes activos:
+
+.Activos del Sistema de Salud (Ejemplo)
+[cols="1,1,3,1", options="header"]
+|===
+| ID | Nombre | Descripción | Niveles de confianza
+
+| A-1 | Usuarios del Sistema | Activos relacionados con pacientes, médicos, enfermeros y administradores. |
+
+| A-1.1 | Credenciales de Pacientes | Credenciales utilizadas por los pacientes para autenticarse en la API REST del sistema de salud. | (1) Paciente autenticado
+(2) Médico autorizado
+(3) Administrador del sistema
+
+| A-1.2 | Credenciales de Personal Médico | Credenciales utilizadas por médicos y enfermeros para acceder a la API. | (2) Médico autorizado
+(3) Administrador del sistema
+
+| A-1.3 | Datos Personales de Pacientes | Información sensible como historial clínico, diagnósticos, tratamientos y datos de contacto. | (2) Médico autorizado
+(3) Administrador del sistema
+(4) Sistema de respaldo seguro
+
+| A-2 | Sistema | Activos relacionados con la infraestructura y los servicios del sistema de salud. |
+
+| A-2.1 | Disponibilidad de la API REST | La API debe estar disponible 24/7 para usuarios autorizados y personal médico. | (3) Administrador del sistema
+(4) Servicio de monitoreo
+
+| A-2.2 | Capacidad de ejecutar código en el servidor | Permite ejecutar código en el servidor de la API bajo usuario del servidor web. | (3) Administrador del sistema
+
+| A-2.3 | Capacidad de ejecutar consultas SQL en la base de datos | Permite realizar select sobre la base de datos para acceder a información clínica. | (3) Administrador del sistema
+(4) Usuario de lectura en BD
+
+| A-2.4 | Capacidad de ejecutar SQL con permisos de lectura/escritura | Permite modificar y consultar cualquier información en la base de datos. | (3) Administrador del sistema
+(5) Usuario de lectura/escritura en BD
+
+| A-3 | API y Servicios | Activos relacionados con el funcionamiento de la API y la interacción de los usuarios. |
+
+| A-3.1 | Sesión de Usuario | La sesión activa de un paciente, médico o administrador en la API. | (1) Paciente autenticado
+(2) Médico autorizado
+(3) Administrador del sistema
+
+| A-3.2 | Acceso a la base de datos | Acceso al servidor de base de datos para administración y consulta de datos. | (3) Administrador del sistema
+
+| A-3.3 | Capacidad de crear usuarios | Permite a administradores crear nuevos usuarios (pacientes, médicos, personal). | (3) Administrador del sistema
+
+| A-3.4 | Acceso a registros de auditoría | Permite revisar eventos auditables del sistema: login, modificaciones de datos y acciones críticas. | (3) Administrador del sistema
+|===
+
+
+====== Niveles de confianza
+
+Los niveles de confianza representan los derechos de acceso que la aplicación otorgará a entidades externas. Los niveles de confianza se referencian con los puntos de entrada y los activos. Esto nos permite definir los derechos o privilegios de acceso requeridos en cada punto de entrada, así como los necesarios para interactuar con cada activo.
+
+Los niveles de confianza se documentan en el modelo de amenazas de la siguiente manera:
+
+* ID: Se asigna un número único a cada nivel de confianza. Este se utiliza para hacer referencia cruzada con los puntos de entrada y los activos.
+
+* Nombre: Un nombre descriptivo que permite identificar las entidades externas a las que se les ha otorgado este nivel de confianza.
+
+* Descripción: Una descripción textual del nivel de confianza que detalla la entidad externa que ha recibido dicho nivel.
+
+.Niveles de Confianza (Ejemplo)
+[cols="1,1,3", options="header"]
+|===
+| ID | Nombre | Descripción
+
+| NC-1 | Usuario Anónimo | Usuario que se conecta a la API REST pero no ha proporcionado credenciales válidas. Acceso limitado a endpoints públicos.  
+
+| NC-2 | Paciente Autenticado | Paciente que ha iniciado sesión con credenciales válidas y puede acceder a sus propios datos clínicos y solicitudes autorizadas.  
+
+| NC-3 | Usuario con Credenciales Inválidas | Usuario que intenta autenticarse con credenciales incorrectas. Riesgo potencial de ataques de fuerza bruta o enumeración de cuentas.  
+
+| NC-4 | Personal Médico | Médicos y enfermeros autorizados que pueden acceder a datos de pacientes, actualizar expedientes y registrar procedimientos.  
+
+| NC-5 | Administrador de Base de Datos | Administrador del servidor de base de datos con permisos de lectura/escritura sobre la base de datos de pacientes y registros clínicos.  
+
+| NC-6 | Administrador del Sistema | Responsable de la configuración, mantenimiento y despliegue de la API REST y sus servicios asociados.  
+
+| NC-7 | Proceso del Servidor Web | Usuario/proceso bajo el cual el servidor web ejecuta código y se autentica contra la base de datos.  
+
+| NC-8 | Usuario de Lectura en BD | Cuenta de base de datos utilizada únicamente para consultas (SELECT) de información clínica.  
+
+| NC-9 | Usuario de Lectura/Escritura en BD | Cuenta de base de datos utilizada para consultas y modificaciones (SELECT, INSERT, UPDATE) de datos clínicos y administrativos.  
+|===
+
+
+====== Diagramas de Flujo de Datos (DFD)
+
+El modelado de amenazas de sistemas de software se ha realizado históricamente utilizando **diagramas de flujo de datos (DFDs)**. Los DFDs capturan los aspectos dinámicos del sistema, mostrando cómo la información fluye entre componentes. Son fáciles de entender y permiten identificar claramente cómo los datos se mueven a través del sistema, lo que facilita la detección de posibles vulnerabilidades y amenazas.
+
+Los **DFDs permiten**:
+
+* Comprender la aplicación mediante una representación visual de cómo se procesan los datos.
+* Identificar componentes afectados a través de puntos críticos, como la entrada o salida de datos y su almacenamiento.
+* Analizar el flujo de control dentro de los componentes.
+* Decomponer la aplicación en subsistemas y subprocesos, desde un nivel alto hasta niveles más detallados, clarificando el alcance de la aplicación y los procesos específicos involucrados.
+
+Los componentes principales de un DFD son:
+
+* **Entidades externas**: Aplicaciones o servicios que no forman parte de nuestro sistema. En nuestro caso, esto sería la **aplicación móvil**.
+* **Procesos**: Una aplicación o tarea dentro de nuestro dominio, como el **API Gateway**.
+* **Múltiples procesos**: Representan un conjunto de subprocesos que pueden descomponerse en otro DFD de menor nivel.
+* **Almacenes de datos**: Lugares donde se guarda la información. En nuestro caso, sería la **base de datos**.
+* **Flujos de datos**: Conexiones que representan el movimiento de información, por ejemplo, de la **aplicación móvil al API Gateway**.
+* **Límites de privilegio / confianza**: Fronteras que muestran un cambio en los niveles de acceso. Para este caso de estudio, sería la **frontera de Internet entre la aplicación móvil y el API Gateway**.
+
+
+.Símbolos utilizados en DFDs para modelado de amenazas
+[cols="1,2", options="header"]
+|===
+| Nombre | Descripción
+
+| Entidad Externa | Representa cualquier entidad fuera de la aplicación que interactúa con ella mediante un punto de entrada.
+
+| Proceso | Representa una tarea que maneja datos dentro de la aplicación. El proceso puede modificar o procesar los datos.
+
+| Múltiples Procesos | Representa un conjunto de subprocesos que pueden descomponerse en otro DFD de menor nivel.
+
+| Almacén de Datos | Representa ubicaciones donde se almacenan datos. No modifica los datos, solo los guarda.
+
+| Flujo de Datos | Representa el movimiento de datos dentro de la aplicación. La dirección del flujo se indica con la flecha.
+
+| Límite de Privilegio / Confianza | Representa un cambio de nivel de confianza a medida que los datos fluyen a través de la aplicación.
+|===
+
+.Símbolo para representar una entidad externa
+image::images/external_entity.png[Entidad Externa]
+
+.Símbolo para representar un proceso
+image::images/process.png[Proceso]
+
+.Símbolo para representar múltiples procesos
+image::images/multiple_process.png[Múltiples Procesos]
+
+.Símbolo para representar un almacén de datos
+image::images/data_store.png[Almacén de Datos]
+
+.Símbolo para representar un flujo de datos
+image::images/data_flow.png[Flujo de Datos]
+
+.Símbolo para representar un límite de privilegio / confianza
+image::images/privilege_boundary.png[Límite de Privilegio / Confianza]
+
+A continuación se muestra un ejemplo de un Diagrama de Flujo de Datos (DFD) para la API REST del sistema de salud descrito anteriormente.
+
+//TODO: Mostrar diagrama DFD del ejemplo.
+
+===== Paso 2 — Determinar las amenazas (Aplicación de STRIDE)
+
+A partir de la descomposición realizada en el paso anterior, se identifican y analizan las amenazas aplicando las categorías de STRIDE sobre los componentes más relevantes del sistema.
+
+Aunque en este caso se utiliza STRIDE, se puede optar por cualquier otra taxonomía de amenazas que se considere adecuada.
+
+====== Análisis de amenazas
+
+El análisis de amenazas consiste en la identificación de amenazas para la aplicación, e implica examinar cada aspecto de la funcionalidad, arquitectura y diseño de la misma. Es importante identificar y clasificar posibles debilidades que podrían ser explotadas.
+
+Desde la perspectiva defensiva, la identificación de amenazas basada en la categorización de controles de seguridad permite al analista enfocarse en vulnerabilidades específicas. Típicamente, el proceso de identificación de amenazas involucra ciclos iterativos en los cuales, inicialmente, se evalúan todas las amenazas posibles de la lista de amenazas que se aplican a cada componente.
+
+====== Árbol de amenazas
+
+El árbol de amenazas es un método estructurado y sistemático para analizar y comprender posibles amenazas de seguridad. Se utiliza ampliamente en ciberseguridad, evaluación de riesgos y modelado de amenazas para identificar cómo un atacante podría comprometer un sistema y para determinar las estrategias de mitigación más efectivas.
+
+En este enfoque, las amenazas se representan de manera jerárquica en forma de árbol. El nodo principal, o nodo raíz, corresponde al objetivo general del ataque, mientras que las ramas representan diferentes ataques potenciales. Cada rama puede dividirse en sub-ramas, detallando escenarios más específicos o pasos de ataque adicionales. Cada nodo o sub-rama del árbol representa un ataque potencial que podría afectar al sistema.
+
+Este método proporciona una visión integral de los posibles vectores de ataque y facilita la planificación de medidas de mitigación apropiadas, contribuyendo a un análisis de amenazas más completo y sistemático.
+
+A continuación se muestra un ejemplo simplificado de un árbol de amenazas para la API REST del sistema de salud:
+
+//TODO: Incluir un ejemplo de árbol de amenazas para el caso de estudio.
+
+A partir del análisis de amenazas y el árbol de amenazas, se documentan las amenazas identificadas en una tabla como la siguiente:
+
+//TODO: Incluir tabla de amenazas identificadas para el caso de estudio con el elemento del DFD, el riesgo, la categoría de STRIDE, la amenaza y su descripción.
+
+====== Valoración de amenazas
+
+La valoración de amenazas permite priorizar las amenazas identificadas en función de su riesgo y apoyar la estrategia de mitigación. Según OWASP, se pueden clasificar las amenazas usando factores de riesgo cualitativos como probabilidad, impacto y facilidad de explotación.
+
+Los pasos para valorar cada amenaza son los siguientes:
+
+. **Evaluar la facilidad de explotación**
+- Determinar si un atacante puede explotar la amenaza de manera remota.
+- Verificar si se requiere autenticación o privilegios especiales.
+- Evaluar si el ataque puede automatizarse.
+- Clasificación cualitativa: Baja / Media / Alta
+
+. **Evaluar el impacto**
+- Determinar el daño potencial si la amenaza se materializa.
+- Considerar qué componentes del sistema se verían afectados.
+- Preguntas guía:
+  * ¿Puede el atacante tomar control total del sistema?
+  * ¿Puede obtener información sensible como datos personales?
+  * ¿Puede causar caída o interrupción del servicio?
+- Clasificación cualitativa: Bajo / Medio / Alto
+
+. **Evaluar el número de componentes afectados**
+- Analizar cuántos sistemas o capas del sistema pueden ser impactados por la amenaza.
+- Esto ayuda a dimensionar la extensión del daño potencial.
+- Clasificación cualitativa: Bajo / Medio / Alto
+
+. **Determinar el nivel de riesgo**
+- El nivel de riesgo se determina tras evaluar los factores anteriores, considerando cuántos bajos, medios o altos hay en cada uno.
+
+En nuestro ejemplo, se tiene la siguiente valoración de amenazas:
+//TODO: Incluir tabla de amenazas con valoración de riesgo (Alta, Media, Baja)
+
+
+===== Paso 3 — Determinar contramedidas y mitigación
+
+Una vez identificadas las amenazas, se definen las contramedidas apropiadas. El propósito de la identificación de contramedidas es determinar si existe algún tipo de medida de protección (por ejemplo, controles de seguridad, políticas) que pueda prevenir que una amenaza se materialice.
+
+[TIP]
+====
+Aplicar STRIDE sobre los componentes del sistema permite identificar amenazas específicas y asignar contramedidas claras desde las primeras etapas del diseño.
+====
+
+Por ejemplo:
+
+* **Spoofing:** aplicar autenticación fuerte, MFA y validación de tokens.  
+* **Tampering:** cifrar datos en tránsito y validar integridad.  
+* **Repudiation:** habilitar registro de auditoría con trazabilidad.  
+* **Information Disclosure:** implementar controles de acceso y clasificación de datos.  
+* **Denial of Service:** limitar la tasa de peticiones y usar sistemas de detección de anomalías.  
+* **Elevation of Privilege:** revisar roles, permisos y aplicar el principio de mínimo privilegio.
+
+Una vez que se han identificado las amenazas y las contramedidas correspondientes, es posible derivar un perfil de amenazas con los siguientes criterios:
+
+* **Amenazas no mitigadas**: Amenazas que no cuentan con contramedidas y representan vulnerabilidades que pueden ser explotadas completamente, causando un impacto.
+
+* **Amenazas parcialmente mitigadas**: Amenazas que están parcialmente mitigadas por una o más contramedidas y que solo pueden ser explotadas de manera parcial, causando un impacto limitado.
+
+* **Amenazas totalmente mitigadas**: Amenazas que tienen contramedidas adecuadas implementadas y no exponen vulnerabilidades.
+
+Siguiendo con el ejemplo, se tiene la siguiente tabla de contramedidas para las amenazas identificadas:
+
+//TODO: Ahora sí se podrían incluir las contramedidas en la tabla del Paso 2. 
+
+Una vez que se han identificado y documentado todo lo anterior, se procede a crear el modelo de amenazas con una herramienta especializada. En nuestro caso, se usará OWASP Threat Dragon.
+
+//TODO: Uso de OWASP Threat Dragon para crear el modelo de amenazas del caso de estudio. Y mostrar capturas de pantalla de la herramienta.
+
+//TODO: Incluir enlace al modelo de amenazas creado en OWASP Threat Dragon.
+
+===== Paso 4 — Evaluar el trabajo
+
+Finalmente, se realiza una evaluación del modelo de amenazas y las mitigaciones propuestas:
+
+* Verificar si se han cubierto todos los componentes y flujos críticos.
+* Revisar la coherencia entre las amenazas identificadas y las contramedidas aplicadas.
+* Comprobar que las medidas propuestas son viables técnica y económicamente.
+* Planificar revisiones periódicas del modelo conforme evolucione la arquitectura del sistema.
+
+
+[TIP]
+====
+El modelo de amenazas debe mantenerse como un artefacto vivo que se actualice junto con los cambios de diseño. Su revisión periódica permite detectar nuevos riesgos antes de la fase de implementación.
+====
 
 
