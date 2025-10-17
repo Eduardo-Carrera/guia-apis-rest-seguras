@@ -29,7 +29,7 @@ Las prácticas reportadas en la literatura para esta fase se presentan en la sig
 |Establecimiento de lineamientos que regulen la seguridad, gobernanza y cumplimiento normativo en el diseño y uso de la API, incluyendo la asignación de responsabilidades a los distintos actores involucrados en su ciclo de vida.
 |Guba, 2025
 
-|Definición de requisites
+|Definición de requisitos
 |Documentación clara de los casos de uso y de los usuarios previstos de la API, asegurando que esta incorpore únicamente las funcionalidades necesarias y evitando tanto la sobrecarga como omisiones críticas.
 |(Varga, Pereira de Andrade, de Morais, Bomfim, & Avancini Fraga, 2025)
 
@@ -38,18 +38,96 @@ Las prácticas reportadas en la literatura para esta fase se presentan en la sig
 |Postman (s.f)
 |===
 
-=== Requisitos funcionales
+=== Elicitación y definición de requisitos
 
-Los requisitos funcionales constituyen la especificación del comportamiento que un sistema debe exhibir bajo condiciones determinadas. Es decir, definen las funcionalidades que el producto debe implementar para permitir que los usuarios realicen sus tareas, satisfaciendo así los objetivos y necesidades del negocio.
+La elicitación de requisitos es el proceso mediante el cual se identifican las necesidades y restricciones de los distintos actores involucrados en un sistema de software. Este proceso implica descubrir lo que el cliente necesita y desea mediante enfoques bien definidos. Se trata de una actividad activa orientada a extraer los requisitos desde las partes interesadas, lo que puede implicar la formulación de preguntas y la aplicación de escucha activa.
 
-Estos requisitos se redactan típicamente en forma de declaraciones tradicionales utilizando el verbo «deberá». Por ejemplo: «El pasajero deberá poder imprimir las tarjetas de embarque de todos los tramos de vuelo para los que haya facturado». 
+[TIP]
+====
+El objetivo principal de la elicitación de requisitos es recopilar información que permita definir requisitos claros, concisos, verificables, consistentes, completos y trazables.
+====
 
-En el contexto de seguridad, un ejemplo de requisito funcional sería: «El cliente de la API deberá poder autenticarse mediante un token de acceso válido antes de consumir cualquier recurso protegido» (Wieger & Beatty, 2013).
+Existen diversas técnicas que pueden emplearse para la elicitación de requisitos, tales como entrevistas, talleres, encuestas y observación directa. La elección de la técnica más adecuada depende del contexto del proyecto y de las características de los actores involucrados. Asimismo, pueden utilizarse herramientas como los casos de uso, las historias de usuario y las especificaciones funcionales, las cuales permiten capturar los requisitos de manera estructurada y facilitar su posterior análisis y validación.
 
+ref: A Guide to the Project Management Body of Knowledge (PMBOK® Guide) – Seventh Edition and The Standard for Project Management (ENGLISH)
 
-=== Requisitos de seguridad asociados
+==== Requisitos funcionales
 
-=== Validación y trazabilidad de requisitos
+Los requisitos funcionales constituyen la especificación del comportamiento que un sistema debe exhibir bajo determinadas condiciones. En otras palabras, describen las funcionalidades que el producto debe implementar para permitir que los usuarios realicen sus tareas, satisfaciendo así los objetivos y necesidades del negocio.
+
+Estos requisitos suelen redactarse en forma de declaraciones utilizando el verbo «deberá». Por ejemplo: «El pasajero deberá poder imprimir las tarjetas de embarque de todos los tramos de vuelo para los que haya realizado la facturación».
+
+En el contexto de la seguridad, un ejemplo de requisito funcional sería: «El cliente de la API deberá poder autenticarse mediante un token de acceso válido antes de consumir cualquier recurso protegido» (Wiegers & Beatty, 2013).
+
+==== Requisitos no funcionales
+
+Además de los requisitos funcionales, existen los requisitos no funcionales, también conocidos como atributos o factores de calidad, requisitos de calidad de servicio o restricciones. Estos describen las características del producto en diversas dimensiones que resultan relevantes tanto para los usuarios como para los desarrolladores y el personal de mantenimiento. Entre estas dimensiones se incluyen el rendimiento, la seguridad, la disponibilidad y la portabilidad, entre otros (Wiegers & Beatty, 2013).
+
+===== Requisitos de seguridad asociados
+
+Los requisitos de seguridad forman parte de los requisitos no funcionales. Un requisito de seguridad se define como una declaración que especifica una funcionalidad necesaria para garantizar que se satisfaga alguna de las propiedades de seguridad del software, tales como confidencialidad, integridad o disponibilidad.
+
+Estos requisitos suelen derivarse de estándares de la industria, normativas legales y del análisis de vulnerabilidades previamente identificadas. Los requisitos de seguridad establecen nuevas características o amplían las existentes con el propósito de mitigar riesgos específicos o eliminar posibles vulnerabilidades (OWASP, s.f.).
+
+Asimismo, los requisitos de seguridad proporcionan una base sólida de funcionalidad validada, que permite estandarizar los controles y las buenas prácticas de protección en el desarrollo de aplicaciones. Este enfoque favorece la reutilización de mecanismos de seguridad probados, en lugar de diseñar soluciones ad hoc para cada proyecto.
+
+Entre los estándares disponibles, destaca el Application Security Verification Standard (ASVS) de OWASP, el cual ofrece un catálogo estructurado de requisitos y criterios de verificación de seguridad. Dicho estándar puede emplearse como una fuente de referencia para definir requisitos de seguridad detallados durante el desarrollo de software.
+
+A continuación, se presentan ejemplos de requisitos funcionales y su correspondiente relación con requisitos de seguridad.
+
+[cols="1,1", options="header"]
+|===
+| Requisito funcional | Requisitos de seguridad
+
+| Los usuarios podrán registrarse en la plataforma proporcionando su correo electrónico y contraseña.
+| Las contraseñas deben almacenarse cifradas (ej. bcrypt) y la comunicación durante el registro debe ser vía HTTPS.
+
+| Los usuarios podrán consultar su historial de transacciones financieras.
+| Solo usuarios autenticados pueden acceder a su historial; se debe implementar control de acceso basado en roles y cifrado de datos en reposo.
+
+| Los usuarios podrán descargar reportes en formato PDF desde el sistema.
+| Los archivos PDF deben generarse de forma segura, sin incluir información de otros usuarios, y la descarga debe realizarse sobre HTTPS.
+|===
+
+==== Documentación de requisitos
+
+==== Validación y trazabilidad de requisitos
+
+La trazabilidad de los requisitos constituye un elemento fundamental dentro del aseguramiento de la calidad y la gestión de proyectos de software. Según Wiegers, un requisito trazable puede vincularse tanto hacia atrás, hacia su origen, como hacia adelante, hacia los requisitos derivados, los elementos de diseño, el código que lo implementa y las pruebas que verifican su correcta implementación. 
+
+Los requisitos trazables se identifican mediante identificadores únicos y persistentes y se redactan de manera estructurada y granular, evitando combinaciones de múltiples requisitos en un solo enunciado, ya que cada requisito puede corresponder a diferentes componentes de desarrollo. Si bien no es posible lograr una especificación perfecta en la que todos los requisitos cumplan estas características, considerar estos principios durante la redacción y revisión contribuye a producir especificaciones más claras y completas, favoreciendo un desarrollo de software alineado con los objetivos del proyecto (Wiegers, 2013).
+
+Los siguientes son algunos beneficios potenciales de seguimiento de requisitos de implementación:
+
+*	Detección de requisitos innecesarios. Busca cualquier requisito funcional que no se relacione con requisitos de usuario o de negocio y que, por lo tanto, podría no ser necesario.
+*	Certificación y cumplimiento. Puedes utilizar la información de trazabilidad al certificar un producto crítico para la seguridad, para demostrar que todos los requisitos fueron implementados (aunque eso no confirma que se hayan implementado correctamente). La información de trazabilidad demuestra que los requisitos exigidos para el cumplimiento normativo han sido incluidos y atendidos, como suele ser necesario en aplicaciones para compañía de salud y de servicios financieros. 
+*	Análisis de impacto de cambios. Sin la información de trazabilidad, existe una alta probabilidad de pasar por alto un elemento del sistema que se veía afectado si se añade, elimina o modifica un requisito en particular-
+*	Mantenimiento. La información de trazabilidad confiable facilita la capacidad de realizar cambios de forma correcta y completa durante el mantenimiento. Cuando cambian las políticas corporativas o las regulaciones gubernamentales, los sistemas de software a menudo deben actualizarse. Una tabla que muestre dónde se abordó cada regla de negocio aplicable en los requisitos funcionales, los diseños y el código hace más sencillo realizar los cambios necesarios de manera adecuada.
+*	Seguimiento de proyecto. Si registras los datos de trazabilidad durante el desarrollo, tendrás un registro preciso del estado de implementación de la funcionalidad planificada. Los enlaces ausentes indican productos de trabajo que aún no se han creado.
+*	Reingeniería. Puedes listar las funciones en un sistema existente que estás reemplazando y trazarlas hacia dónde se abordan en los requisitos del nuevo sistema y en los componentes de software.
+*	Reutilización. La información de trazabilidad facilita la reutilización de componentes del producto al identificar paquetes de requisitos, diseños, código y pruebas relacionados.
+*	Pruebas. Cuando una prueba falla, los enlaces entre las pruebas, los requisitos y el código orientan a los desarrolladores hacia las áreas probables que deben examinarse para encontrar el defecto.
+
+Muchos de estos son beneficios a largo plazo, ya que reducen los costos generales del ciclo de vida del producto, pero aumentan el costo de desarrollo por el esfuerzo invertido en recopilar y gestionar la información de trazabilidad. Considera la trazabilidad de requisitos como una inversión que aumenta las probabilidades de entregar un producto mantenible que satisfaga todos los requisitos establecidos por el cliente. Esta inversión dará frutos cada vez que tengas que modificar, ampliar o reemplazar el producto. Establecer las trazas no implica mucho trabajo si recopilas la información conforme avanza el desarrollo, pero resulta tedioso y costoso hacerlo sobre un sistema ya terminado (Wiegers, 2013).
+
+En este contexto, existen herramientas que permiten relacionar cada requisito del producto con su origen, siendo la matriz de trazabilidad una opción. Esta matriz es una cuadrícula que vincula los requisitos del producto desde su origen hasta los entregables que los satisfacen. 
+
+La implementación de una matriz de trazabilidad de requisitos ayuda a garantizar que cada requisito agregue valor comercial al vincularlo con los objetivos comerciales y del proyecto. Proporciona un medio para realizar un seguimiento de los requisitos a lo largo del ciclo de vida del proyecto, lo que ayuda a garantizar que los requisitos aprobados en la documentación de requisitos se entreguen al final del proyecto. Por último, proporciona una estructura para gestionar los cambios en el alcance del producto.
+
+Los requisitos de rastreo incluyen, entre otros:
+
+*	Necesidades, oportunidades, metas y objetivos comerciales;
+*	Objetivos del proyecto;
+*	Alcance del proyecto y entregables de WBS;
+*	Diseño de productos;
+*	Desarrollo de productos;
+*	Estrategia de prueba y escenarios de prueba;
+*	Requisitos de alto nivel a requisitos más detallados.
+
+Los atributos asociados a cada requisito se pueden registrar en la matriz de trazabilidad de requisitos. Estos atributos ayudan a definir información clave sobre el requisito. Los atributos típicos utilizados en la matriz de trazabilidad de requisitos pueden incluir: un identificador único, una descripción textual del requisito, la justificación de la inclusión, el propietario, la fuente, la prioridad, la versión, el estado actual (activo, cancelado, diferido, agregado, aprobado, asignado, completo) y la fecha de estado. Los atributos adicionales para garantizar que el requisito haya cumplido con la satisfacción de las partes interesadas pueden incluir criterios de estabilidad, complejidad y aceptación. 
+
+ref: (A guide to the PROJECT MANAGEMENT BODY OF KNOWLEDGE (PMBOK Guide) Project Management Institute)
+
 
 === Evaluación organizacional y su relación con la seguridad
 
