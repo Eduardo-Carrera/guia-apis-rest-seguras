@@ -1,1 +1,45 @@
 == Vulnerabilidades en APIs REST
+
+Para poder hablar de las vulnerabilidades, primero, debemos definir lo que es una vulnerabilidad. Una vulnerabilidad es una falla o debilidad potencial en el diseño o la implementación de software que puede ejercerse (activarse accidentalmente o explotarse intencionalmente) y provocar daños en el sistema (Search Results). Ahora, la vulnerabilidad en sí misma no representa el peligro inminente. Más bien, la vulnerabilidad es la puerta de entrada a un exploit. El hecho de que nuestro sistema contenga alguna vulnerabilidad significa que tenemos una puerta de entrada para que una amenaza pueda explotarnos (CompTIA Security+ SY0-701 Sari Greene). 
+
+=== Principales vulnerabilidades en APIs 
+
+Existen diversos tipos de vulnerabilidades que, si no se previenen adecuadamente, pueden comprometer la seguridad, la disponibilidad y la integridad de un sistema. Estas debilidades pueden ser aprovechadas por atacantes para obtener acceso no autorizado, manipular datos, interrumpir servicios o incluso tomar control de recursos críticos.
+Con el fin de proporcionar una guía clara y estandarizada sobre las amenazas más relevantes en el ámbito de las interfaces de programación de aplicaciones, la Open Web Application Security Project (OWASP) publica periódicamente el API Security Top 10, un listado que concentra las principales vulnerabilidades que afectan a las APIs. Dicho documento se ha convertido en una referencia esencial para desarrolladores, arquitectos y profesionales de seguridad, ya que permite comprender cuáles son los riesgos más frecuentes y cómo abordarlos desde las fases tempranas del diseño hasta la operación del sistema.
+
+A continuación, se presentan las principales vulnerabilidades identificadas en el OWASP API Security Top 10, las cuales deben ser consideradas como prioritarias.
+
+[cols="1,4", options="header"]
+|===
+| Riesgo | Descripción
+
+| Broken Object Level Authorization
+| Las APIs tienden a exponer los puntos finales que manejan identificadores de objetos, creando una amplia superficie de ataque de problemas de control de acceso a nivel de objeto. Las comprobaciones de autorización a nivel de objeto deben tenerse en cuenta en cada función que acceda a un origen de datos mediante un ID del usuario.
+
+| Broken Authentication
+| Los mecanismos de autenticación a menudo se implementan incorrectamente, lo que permite a los atacantes comprometer los tokens de autenticación o explotar las fallas de implementación para asumir las identidades de otros usuarios de forma temporal o permanente. Comprometer la capacidad de un sistema para identificar al cliente/usuario, compromete la seguridad de la API en general.
+
+| Broken Object Property Level Authorization
+| La falta de validación de autorización o validación incorrecta en el nivel de propiedad del objeto. Esto conduce a la exposición o manipulación de la información por parte de partes no autorizadas.
+
+| Unrestricted Resource Consumption
+| Satisfacer las solicitudes de API requiere recursos como ancho de banda de red, CPU, memoria y almacenamiento. Otros recursos, como correos electrónicos/SMS/llamadas telefónicas o validación biométrica, están disponibles por los proveedores de servicios a través de integraciones de API y se pagan por solicitud. Los ataques exitosos pueden conducir a la denegación de servicio o a un aumento de los costos operativos.
+
+| Broken Function Level Authorization
+| Las políticas de control de acceso complejas con diferentes jerarquías, grupos y roles, y una separación poco clara entre las funciones administrativas y regulares, tienden a conducir a fallas de autorización. Al explotar estos problemas, los atacantes pueden obtener acceso a los recursos y/o funciones administrativas de otros usuarios.
+
+| Unrestricted Access to Sensitive Business Flows
+| Las API vulnerables a este riesgo exponen un flujo comercial, como comprar un boleto o publicar un comentario, sin compensar cómo la funcionalidad podría dañar el negocio si se usa excesivamente de manera automatizada. Esto no proviene necesariamente de errores de implementación.
+
+| Server Side Request Forgery
+| Las fallas de falsificación de solicitudes del lado del servidor (SSRF) pueden ocurrir cuando una API obtiene un recurso remoto sin validar el URI proporcionado por el usuario. Esto permite a un atacante forzar a la aplicación para que envíe una solicitud manipulada a un destino inesperado, incluso cuando está protegida por un firewall o una VPN.
+
+| Security Misconfiguration
+| Las API y los sistemas que las soportan suelen contener configuraciones complejas, destinadas a hacer que las API sean más personalizables. Los ingenieros de software y DevOps pueden pasar por alto estas configuraciones o no seguir las mejores prácticas de seguridad en lo que respecta a la configuración, lo que abre la puerta a diferentes tipos de ataques.
+
+| Improper Inventory Management
+| Las API tienden a exponer más puntos finales que las aplicaciones web tradicionales, lo que hace que la documentación adecuada y actualizada sea muy importante. Un inventario adecuado de hosts y versiones de API implementadas también es importante para mitigar problemas como versiones de API obsoletas y puntos de conexión de depuración expuestos.
+
+| Unsafe Consumption of APIs
+| Los desarrolladores tienden a confiar más en los datos recibidos de las API de terceros que en la entrada del usuario, por lo que tienden a adoptar estándares de seguridad más débiles. Para comprometer las API, los atacantes buscan servicios integrados de terceros en lugar de intentar comprometer la API de destino directamente.
+|===

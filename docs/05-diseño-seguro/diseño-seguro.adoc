@@ -1,0 +1,23 @@
+== Diseño seguro en APIs REST
+
+=== Zero Trust
+
+=== Principio de menor privilegio
+
+=== Datos sensibles
+
+=== Triada CIA
+
+=== Validación y saneamiento de entradas
+
+=== Disponibilidad: rate limiting
+
+=== Consistencia en el diseño de los endpoints y los contratos
+
+=== Versionado de APIs
+
+=== Patrones de diseño
+
+=== Antipatrones
+
+=== Casos de uso y casos de abuso
