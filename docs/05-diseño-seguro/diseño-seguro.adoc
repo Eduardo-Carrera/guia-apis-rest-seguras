@@ -2,22 +2,469 @@
 
 === Zero Trust
 
+También llamada seguridad de red sin perímetro es un concepto que, cuando se aplica a las operaciones de conectividad, significa que no se confía en ningún usuario o dispositivo, incluso si se han autenticado previamente. Cada solicitud de acceso a los datos debe autenticarse dinámicamente para garantizar el acceso con privilegios mínimos a los recursos. (Lammle & Buhagiar 2024).  
+
 === Principio de menor privilegio
+
+Cada vez que un administrador concede a un usuario el derecho a hacer algo que normalmente hace el administrador, como administrar una impresora o cambiar permisos, se denomina acceso privilegiado. La concesión de todos los derechos y permisos, especialmente el acceso con privilegios mínimos a los recursos. (Lammle & Buhagiar 2024). 
 
 === Datos sensibles
 
+PII (Personally Identifiable Information) es “Cualquier información sobre un individuo mantenida por una entidad, la cual incluye”: Cualquier información que pueda usarse para distinguir o rastrear la identidad de un individuo, como el nombre, número de seguro social, fecha y lugar de nacimiento, apellido de soltera de la madre o registros biométricos; y cualquier otra información que esté vinculada o sea vinculable a un individuo, como la información médica, educativa, financiera o laboral. (McCallister et al. 2010)
+
+Distinguir a un individuo significa identificarlo. Algunos ejemplos de información que podrían identificar a una persona incluyen, entre otros, nombre completo, número de pasaporte, número de seguro social o datos biométricos. (McCallister et al. 2010)
+
+Rastrear a un individuo significa procesar suficiente información para determinar un aspecto específico de las actividades o el estado de una persona. Por ejemplo, un registro de auditoría que contenga las acciones de los usuarios podrían utilizarse para rastrear actividades las actividades de un individuo. (McCallister et al. 2010)
+
+Por otra parte, la información vinculada es aquella que trata sobre un individuo o se relaciona con él, y que está lógicamente asociada con otra información sobre esa persona. En contraste, la información vinculable es aquella que trata sobre un individuo o se relaciona con él, pero existe la posibilidad de asociarla lógicamente con otra información sobre ese mismo individuo. (McCallister et al. 2010)
+
+Por ejemplo, si dos bases de datos contienen diferentes elementos de PII, una persona con acceso a ambas podría vincular la información de las dos fuentes e identificar individuos, así como acceder a información adicional relacionada con ellos. Si la fuente de información secundaria está presente en el mismo sistema o en un sistema estrechamente relacionado y no existen controles de seguridad que separen eficazmente las fuentes de información, entonces los datos se consideran vinculados. Si la fuente de información secundaria se mantiene de forma más remota, por ejemplo: en un sistema no relacionado dentro de la organización, disponible en registros públicos o fácilmente obtenible, entonces los datos se consideran vinculables. (McCallister et al. 2010)
+
+La siguiente lista contiene ejemplos de información que puede considerarse PII
+
+* Nombre, como el nombre completo, apellido de soltera o seudónimo. 
+* Número de identificación personal, como el número de seguro social (SSN), número de pasaporte, número de licencia de conducir, número de identificación fiscal, número de paciente o número de cuenta financiera o tarjeta de crédito. 
+* Información de dirección, como dirección postal o dirección de correo electrónico. 
+* Información de activos, como la dirección de Protocolo de Internet (IP), la dirección de Control de Acceso a Medios (MAC) u otro identificador estático persistente específico del host que vincule de forma constante a una persona en particular o a un grupo pequeño y bien definido de persona. 
+* Características personales, incluyendo imagen fotográfica (especialmente del rostro u otra característica distintiva), radiografías, huellas dactilares u otra imagen o plantilla biométrica (por ejemplo, escaneo de retina, firma de voz, geometría facial).
+* Información que identifica propiedad personal, como el número de registro o título de un vehículo y la información relacionada. 
+* Información sobre un individuo que está vinculada o puede vincularse, por ejemplo, fecha de nacimiento, lugar de nacimiento, raza, religión, peso, actividades, indicadores geográficos, información laboral, médica, educativa o financiera. 
+
+Una de las mejores prácticas es clasificar los datos, lo que proporciona una manera de categorizar y controlar los datos de la organización en función de los niveles de confidencialidad. (Shrivastava et al, 2024)
+
+Según la sensibilidad de los datos, puede planificar los requisitos de protección de datos, cifrado de datos y acceso a los datos. (Shrivastava et al, 2024)
+
+Al administrar la clasificación de datos según los requisitos de carga de trabajo de su sistema, puede crear los controles de datos y el nivel de acceso necesarios para los datos. Por ejemplo, el contenido, como la calificación y la reseña de un usuario, suele ser público, y está bien proporcionar acceso público, pero la información de la tarjeta de crédito del usuario es un dato altamente confidencial que debe cifrarse y someterse a un acceso muy restringido. (Shrivastava et al, 2024)
+
+En un nivel alto, puede clasificar los datos en las siguientes categorías:
+
+* Datos restringidos: Contiene información que podría perjudicar directamente al cliente si se viera comprometido. El mal manejo de datos restringidos puede dañar la reputación de una empresa y afectar negativamente a un negocio. Los datos restringidos pueden incluir datos de PII del cliente, como números de seguro social, detalles de pasaporte, números de tarjetas de crédito e información de pago. (Shrivastava et al, 2024)
+* Datos privados: los datos se pueden clasificar como privados si contienen información confidencial del cliente que un atacante puede usar para planificar la obtención de sus datos restringidos. Los datos privados pueden incluir ID de correo electrónico de clientes, números de teléfono, nombres completos y direcciones. (Shrivastava et al, 2024)
+* Datos públicos: están disponibles y accesibles para todos y requieren una protección mínima, por ejemplo, las calificaciones y reseñas de los clientes, la ubicación del cliente y el nombre de usuario del cliente si el usuario lo hizo público. (Shrivastava et al, 2024)
+
+
 === Triada CIA
 
-=== Validación y saneamiento de entradas
+La triada de la CIA es un modelo fundamental en seguridad que describe los tres principios básicos de la seguridad de la información: Confidencialidad, integridad y disponibilidad. (Chow, 2024).
+La tríada de la CIA sirve como marco de referencia para que las organizaciones desarrollen e implementen políticas y prácticas de seguridad efectivas. Estos tres principios ayudan a las organizaciones a crear un enfoque integral para la seguridad de la información y proteger el negocio de diversas amenazas y vulnerabilidades. (Chow, 2024).
+
+==== Confidencialidad
+
+El primer principio de la Tríada de la CIA es la confidencialidad. La confidencialidad es el concepto de las medidas utilizadas para garantizar la protección del secreto de los datos, objetos o recursos. El objetivo de la protección de la confidencialidad es prevenir o minimizar el acceso no autorizado a los datos. Las protecciones de confidencialidad evitan la divulgación al tiempo que protegen el acceso autorizado. (Chapple et al. 2024)
+
+Garantiza que la información confidencial solo sea accesible para personas o sistemas autorizados. Esto incluye mantener los datos alejados de los malos actores con intenciones maliciosas. Las personas dentro de una organización también están sujetas a límites en Acceso a los datos. (Chow, 2024).
+
+Las violaciones de la confidencialidad no se limitan a los ataques intencionales dirigidos. Muchos casos de divulgación no autorizada de información sensible o confidencial son el resultado de un error humano, descuido o ineptitud. Las violaciones de confidencialidad pueden resultar de las acciones de un usuario final o un administrador del sistema. También pueden ocurrir debido a un descuido en una política de seguridad o un control de seguridad mal configurado. (Chapple et al. 2024)
+
+Numerosas contramedidas pueden ayudar a garantizar la confidencialidad frente a posibles amenazas. Estos incluyen cifrado, relleno de tráfico de red, control de acceso estricto, procedimientos de autenticación rigurosos, clasificación de datos y amplia capacitación del personal. (Chapple et al. 2024)
+
+Los métodos comunes para mantener la confidencialidad incluyen. (Chapple et al. 2024)
+
+* Autenticación 
+* Autorización 
+* Cifrado 
+* Redacción. 
+
+Los conceptos, condiciones y aspectos de la confidencialidad incluyen los siguientes: (Chow, 2024).
+
+* Sensibilidad: La sensibilidad se refiere a la calidad de la información que podría causar daño o perjuicio si se divulga.
+* Discreción: La discreción es una decisión en la que un operador puede influir o controlar la divulgación para minimizar el daño o el daño.
+* Criticidad: El nivel en el que la información es crítica para la misión es su medida de criticidad. Cuanto mayor sea el nivel de criticidad, más probable será la necesidad de mantener la confidencialidad de la información.
+* Ocultación: La ocultación es el acto de ocultar o evitar la divulgación. El ocultamiento a menudo se ve como un medio de cobertura, ofuscación o distracción. Un concepto relacionado con el ocultamiento es la seguridad a través de la oscuridad, que intenta obtener protección a través del ocultamiento, el silencio o el secreto.
+* Secreto: El secreto es el acto de mantener algo en secreto o evitar la divulgación de información.
+* Privacidad: La privacidad se refiere a mantener la confidencialidad de la información que es personalmente identificable o que podría causar daño, vergüenza o desgracia a alguien si se revela.
+* Aislamiento: El aislamiento implica almacenar algo en un lugar apartado, probablemente con estrictos controles de acceso.
+* Aislamiento: El aislamiento es el acto de mantener algo separado de los demás.
+
+==== Integridad
+
+La integridad es el concepto de proteger la confiabilidad y corrección de los datos. La protección de la integridad evita alteraciones no autorizadas de los datos. La protección de integridad implementada correctamente proporciona un medio para realizar cambios autorizados al tiempo que protege contra actividades no autorizadas intencionadas y maliciosas (como virus e intrusiones) y errores cometidos por usuarios autorizados (como accidentes o descuidos). (Chapple et al. 2024)
+
+De igual forma, la integridad se refiere a la precisión y consistencia de los datos a lo largo de su ciclo de vida. Este principio garantiza que la información no sea alterada o manipulada por usuarios no autorizados y que siga siendo precisa, confiable y fidedigna. (Chow, 2024).
+La integridad se puede examinar desde tres perspectivas:
+
+* Evitar que sujetos no autorizados realicen modificaciones. (Chapple et al. 2024)
+* Evitar que los sujetos autorizados realicen modificaciones no autorizadas, como errores. (Chapple et al. 2024)
+
+* Mantener la coherencia interna y externa de los objetos para que sus datos sean un reflejo correcto y verdadero del mundo real y cualquier relación con cualquier otro objeto sea válida, coherente y verificable (Chapple et al. 2024)
+
+Las técnicas comunes para garantizar la integridad incluyen: 
+
+* Sumas de comprobación y funciones hash: Una cadena de longitud fija calculada a partir de los datos por un algoritmo. Las sumas de comprobación o los valores hash suelen venir con los propios datos. Cualquier manipulación de los datos produciría una suma de comprobación (o valor hash) diferente de la suma de comprobación original, por lo que el sistema la detecat como datos dañados.  (Chow, 2024).
+
+* Firmas digitales: Un documento está firmado por un valor hash generado por una clave privada del remitente. El destinatario recibe el documento junto con la firma digital. El destinatario calcula el valor hash del documento utilizando el mismo algoritmo. El destinatario descifra la firma digital utilizando la clave pública del remitente y recupera el valor hash original. Dos valores hash idénticos confirman que el documento no ha sido modificado. Las claves privada y pública del remitente forman un par, mientras que la clave privada solo es conocida por el remitente y la clave pública está disponible para cualquiera. (Chow, 2024).
+
+Para que se mantenga la integridad en un sistema, deben existir controles para restringir el acceso a datos, objetos y recursos. Mantener y validar la integridad de los objetos en el almacenamiento, el transporte y el procesamiento requiere numerosas variaciones de controles y supervisión. (Chapple et al. 2024)
+
+Numerosos ataques se centran en la violación de la integridad. Estos incluyen virus, bombas lógicas, acceso no autorizado, errores en la codificación y las aplicaciones, modificación maliciosa, reemplazo intencional y puertas traseras del sistema. (Chapple et al. 2024)
+
+El error humano, la supervisión o la ineptitud representan muchos casos de alteración no autorizada de información confidencial. También pueden ocurrir debido a un descuido en una política de seguridad o un control de seguridad mal configurado. (Chapple et al. 2024)
+
+
+==== Disponibilidad
+
+La disponibilidad significa que los sujetos autorizados tienen acceso oportuno e ininterrumpido a los objetos. A menudo, los controles de protección de disponibilidad admiten suficiente ancho de banda y puntualidad de procesamiento según lo considere necesario la organización o la situación. La disponibilidad incluye un acceso eficiente e interrumpido a los objetos y la prevención de ataques de denegación de servicio. La disponibilidad también implica que la infraestructura de soporte, incluidos los servicios de red, las comunicaciones y los mecanismos de control de acceso, sea funcional y permita que los usuarios autorizados obtengan acceso. (Chapple et al. 2024)
+
+Garantiza que la información y los recursos sean accesible para los usuarios autorizados cuando sea necesario. Este principio se centra en mantener la funcionalidad del sistema y minimizar el tiempo de inactividad debido a ataques, fallas u otras interrupciones. (Chow, 2024).
+
+Las estrategias para mejorar la disponibilidad incluyen los siguientes. 
+
+*	Redundancia: evite un único punto de falla al tener componentes adicionales y rutas alternativas para garantizar las operaciones continuas y la integridad de los datos en caso de falla. 
+*	Equilibrio de carga: distribuya el tráfico entrante entre varios servidores para garantizar que se atiendan las solicitudes entrantes. 
+*	Copias de seguridad periódicas: mantenga copias de base de datos, el almacenamiento de archivos y el almacén de mensajería en varios servidores o ubicaciones para garantizar la disponibilidad de los datos y recuperarse de los problemas de datos. 
+*	Planificación y simulacros de recuperación ante desastres: describa los pasos específicos a seguir durante un desastre para que el sistema vuelva a funcionar y funcione. (Chow, 2024).
+
+Para que se mantenga la disponibilidad en un sistema, deben existir controles para garantizar el acceso autorizado y un nivel aceptable de rendimiento, para manejar rápidamente las interrupciones, proporcionar redundancia, mantener copias de seguridad confiables y evitar la pérdida o destrucción de datos. (Chapple et al. 2024)
+
+Existen numerosas amenazas a la disponibilidad. Estos incluyen fallas en el dispositivo, errores de software y problemas ambientales (calor, electricidad estática, inundaciones, pérdida de energía, etc.). Algunas formas de ataque se centran en la violación de la disponibilidad, incluidos los ataques DoS, la destrucción de objetos y las interrupciones de la comunicación. (Chapple et al. 2024)
+
+Muchas infracciones de disponibilidad son causadas por errores humanos, descuido o ineptitud. También pueden ocurrir debido a un descuido en una política de seguridad o un control de seguridad mal configurado. (Chapple et al. 2024)
+
+Los conceptos, condiciones y aspectos de la disponibilidad incluyen los siguientes:
+
+
+*	Usabilidad: El estado de ser fácil de usar o aprender o poder ser entendido y controlado por un sujeto
+*	Accesibilidad: La garantía de que la más amplia gama de sujetos puede interactuar con un recurso independientemente de sus capacidades o limitaciones
+*	Puntualidad: Ser rápido, puntual, dentro de un plazo razonable o proporcionar una respuesta de baja latencia (Chapple et al. 2024)
+
+
+=== Cómo validar entradas
+
+Los profesionales de la ciberseguridad y los desarrolladores de aplicaciones tienen varias herramientas a su disposición para ayudar a protegerse contra las vulnerabilidades de las aplicaciones. Uno de los más importantes es la validación de entradas. Las aplicaciones que permiten la entrada del usuario deben realizar la validación de esa entrada para reducir la probabilidad de que contenga un ataque. Las prácticas inadecuadas de manejo de entradas pueden exponer las aplicaciones a ataques de inyección, ataques de secuencias de comandos entre sitios y otras vulnerabilidades. (McCallister et al. 2010)
+
+La forma más efectiva de Validación de entrada Utiliza la lista de permitidos, en la que el desarrollador describe el tipo exacto de entrada que se espera del usuario y, a continuación, comprueba que la entrada coincide con esa especificación antes de pasar la entrada a otros procesos o servidores. Por ejemplo, si un formulario de entrada solicita a un usuario que introduzca su edad, la lista de permitidos podría comprobar que el usuario ha proporcionado un valor entero dentro del intervalo de 0 a 125. A continuación, la aplicación rechazaría cualquier valor fuera de ese intervalo. (McCallister et al. 2010)
+
+Recuerda que Validación de entrada ayuda a prevenir una amplia gama de problemas, desde secuencias de comandos entre sitios (XSS) hasta ataques de inyección SQL. (McCallister et al. 2010)
+
+Al realizar Validación de entrada, es muy importante asegurarse de que la validación se produce en el lado del servidor en lugar de dentro del navegador del cliente. La validación del lado cliente es útil para proporcionar a los usuarios comentarios sobre su entrada, pero nunca se debe confiar en ella como un control de seguridad. Es fácil para los piratas informáticos y los probadores de penetración eludir los navegadores entrada validación. (McCallister et al. 2010)
+
 
 === Disponibilidad: rate limiting
 
+La disponibilidad es uno de los pilares fundamentales de la seguridad en APIs REST, asegurando que los usuarios autorizados puedan acceder a los recursos de manera oportuna y continua. Una estrategia crítica para mantener la disponibilidad es la limitación de la tasa de solicitudes (rate limiting), la cual controla la frecuencia de interacción de un usuario o cliente con la API dentro de un intervalo de tiempo determinado. Esta medida previene la sobrecarga de los recursos del sistema y protege contra ataques de denegación de servicio (DoS) y fuerza bruta (Preuveneers, 2019; Abdurrahman & Husni, 2024).
+
+==== Conceptos Fundamentales
+
+El rate limiting es un mecanismo que restringe el número máximo de solicitudes que un usuario, cliente o dirección IP puede realizar durante un período de tiempo definido. En caso de excederse el límite, la API devuelve un error 429 (Too Many Requests). Este control garantiza un uso equitativo de los recursos y contribuye a la estabilidad del sistema (Building Generative AI Services with FastAPI, 2024; Mastering API Architecture, 2022).
+
+Por otro lado, el throttling es una técnica complementaria que reduce temporalmente la velocidad de procesamiento de solicitudes para estabilizar el rendimiento del servidor cuando la demanda se aproxima a su capacidad máxima (Building Generative AI Services with FastAPI, 2024).
+
+==== Beneficios del Rate Limiting
+
+1. Prevención de abusos: Impide que usuarios maliciosos o bots saturen la API mediante scraping de datos o ataques de fuerza bruta.  
+2. Equidad en el acceso: Asegura que la capacidad del servidor se distribuya de manera justa entre todos los usuarios, evitando que unos pocos consuman desproporcionadamente los recursos.  
+3. Estabilidad del sistema: Regula el tráfico entrante para mantener un rendimiento consistente y reducir la probabilidad de fallas durante picos de carga (Building Generative AI Services with FastAPI, 2024).
+
+==== Implementación
+
+* La limitación de solicitudes se puede implementar en frameworks como Spring Boot, utilizando bibliotecas como Resilience4J (Abdurrahman, 2024).  
+* En arquitecturas modernas, es recomendable aplicar el rate limiting en el API Gateway, identificando al origen de las solicitudes mediante propiedades tales como dirección IP, geolocalización o client ID (Mastering API Architecture, 2022).  
+* Es fundamental definir políticas de fail open o fail closed de acuerdo con la criticidad del servicio. Por ejemplo, APIs financieras suelen requerir fail closed, mientras que servicios públicos de información pueden optar por fail open (Mastering API Architecture, 2022).
+
+==== Consideraciones
+
+* Realizar pruebas de carga permite identificar límites operativos, puntos de falla y el comportamiento del sistema frente a picos de tráfico (Mastering API Architecture, 2022).  
+* La implementación de rate limiting también es recomendable para llamadas internas de APIs, ya que sistemas internos pueden generar accidentalmente condiciones de DoS debido a dependencias circulares (Mastering API Architecture, 2022).  
+* Los límites de interacción deben ajustarse en función de los requisitos del negocio, equilibrando la protección del sistema con la experiencia del usuario (Abdurrahman 2024).
+
+
 === Consistencia en el diseño de los endpoints y los contratos
+
+La consistencia en el diseño de endpoints de una API REST es fundamental para garantizar que todos los consumidores puedan interpretar, usar y mantener la API de manera efectiva. Una API consistente permite:
+
+* Reducir errores de integración y malentendidos sobre la funcionalidad de los endpoints.
+* Facilitar la automatización de pruebas, documentación y generación de clientes.
+* Mejorar la mantenibilidad y escalabilidad del sistema, especialmente en sistemas distribuidos.
+
+El diseño consistente de endpoints no solo implica nombrar correctamente las rutas, sino también mapear de manera uniforme operaciones, ubicación de datos, status codes y recursos, considerando tanto operaciones típicas (CRUD) como operaciones “do” o no-CRUD derivadas de casos de uso específicos.
+
+==== Recursos y operaciones CRUD
+
+Cada recurso en una API REST debe representarse mediante un path único, que indique claramente su identidad y relación jerárquica con otros recursos. Por ejemplo:
+
+----
+/products/{productId}/reviews/{reviewId}
+/orders/{orderId}/items/{itemId}
+----
+
+===== Operaciones CRUD y mapeo a métodos HTTP
+
+El patrón más común y ampliamente aceptado consiste en mapear operaciones CRUD a métodos HTTP específicos:
+
+[cols="1,1,1,1,1", options="header"]
+|===
+|Operación |Método HTTP |Path típico |Entrada |Salida
+|Crear |POST |/resources |Representación del recurso en el body |Recurso creado en body + URL en Location header (201 Created)
+|Leer un recurso |GET |/resources/{id} |Path parameter |Recurso en body (200 OK)
+|Buscar recursos |GET |/resources?filter=value |Query parameters |Lista de recursos o lista vacía en body (200 OK)
+|Actualizar |PUT / PATCH |/resources/{id} |Representación parcial o completa del recurso |Recurso actualizado en body (200 OK)
+|Eliminar |DELETE |/resources/{id} |Path parameter |Ningún contenido (204 No Content)
+|===
+
+Este mapeo uniforme permite a los consumidores predecir el comportamiento de cada endpoint según el método HTTP y la estructura del path.
+
+==== Casos de uso y mapeo a endpoints
+
+Los casos de uso representan la interacción del usuario o sistema con la API, y deben traducirse a recursos y métodos HTTP de forma consistente.
+
+===== Ejemplos con casos de uso
+
+. Agregar un producto al catálogo
+** Método:** `POST /products`  
+** Entrada:** representación del producto en body  
+** Salida:** producto creado en body + Location header (/products/{productId})  
+** Status code:** `201 Created`
+
+. Modificar un producto existente
+** Método:** `PUT /products/{productId}`  
+** Entrada:** representación actualizada en body  
+** Salida:** producto modificado en body  
+** Status code:** `200 OK`
+
+. Buscar productos
+** Método:** `GET /products?type=book&available=true`  
+** Entrada:** filtros en query parameters  
+** Salida:** lista de productos o lista vacía en body  
+** Status code:** `200 OK`
+
+. Eliminar un producto
+** Método:** `DELETE /products/{productId}`  
+** Entrada:** path parameter  
+** Salida:** sin contenido  
+** Status code:** `204 No Content`
+
+. Operaciones “do” no-CRUD (p.ej., Checkout)
+
+Estas operaciones no encajan en CRUD clásico, pero pueden representarse de tres maneras:
+
+**Como acción (action resource):**
+----
+POST /check-out
+----
+* Body: datos necesarios para ejecutar la acción  
+* Respuesta: datos resultantes + Location header del recurso creado
+
+**Nominalización del verbo (business concept):**
+----
+POST /checkouts
+GET /checkouts
+----
+* Permite extender la funcionalidad y realizar búsquedas filtradas de checkouts.
+
+**Foco en el resultado (resource result):**
+----
+POST /orders
+----
+* El recurso resultante es la entidad clave (Order), retornando sus datos y URL para recuperación posterior.
+
+==== Ubicación consistente de los datos
+
+*Datos de entrada:*
+* Path parameters: identificadores únicos de recurso (`/products/{id}`)
+* Query parameters: filtros o modificadores que no identifican recursos
+* Body: representación completa o parcial de recursos para crear o actualizar
+* Headers: información estándar (autenticación, tipo de contenido)
+
+*Datos de salida:*
+* Body: representa recursos, listas de recursos, resultados de operaciones y errores
+* Headers: solo para metadatos estándar (Location en `201 Created`)
+* Errores: siempre en body, con status code según la responsabilidad
+
+[cols="1,1", options="header"]
+|===
+|Tipo de error |Código HTTP
+|Error de cliente |4XX (400 Bad Request, 404 Not Found)
+|Error de servidor |5XX (500 Internal Server Error)
+|===
+
+==== Nomenclatura uniforme
+
+* Plurales para colecciones: `/products`, `/orders`
+* Singular para recursos individuales: `/products/{id}`
+* Nominalización de acciones no-CRUD:
+** `/checkouts` en lugar de `/check-out`
+** Sufijos sugeridos si no hay sustantivo: `/doings`, `/executions`, `/results`
+
+==== Beneficios de mantener la consistencia
+
+. Claridad y predictibilidad: los consumidores saben cómo interactuar con cualquier recurso.  
+. Automatización y herramientas: pruebas, documentación y generación de clientes son más simples.  
+. Escalabilidad y mantenimiento: cambios futuros siguen patrones definidos, reduciendo errores y esfuerzo.  
+. Adherencia a principios REST: client/server separation, statelessness, uniform interface, cache y código bajo demanda opcional.
+
 
 === Versionado de APIs
 
+El desarrollo de software y las API web requieren cambios constantes, pero modificarlas sin afectar a los usuarios es un desafío. Dado que las API son públicas y difíciles de alterar de forma segura, nunca cambiarla no es una opción viable, especialmente ante problemas legales o de seguridad. Por ello, se introduce el concepto de versionado de API, que permite realizar modificaciones controladas mediante distintas estrategias que equilibran la evolución y la compatibilidad.
+
+Implemente el control de versiones en sus API. Si se detecta un problema de seguridad en una versión de la API, se puede abordar sin afectar a otras versiones, lo que garantiza la continuidad del servicio para las aplicaciones que utilizan las versiones no afectadas. Por ejemplo, supongamos que tiene una aplicación móvil que se basa en una API para obtener datos de usuario. Al implementar el control de versiones (por ejemplo, v1, v2, v3), si se descubre una vulnerabilidad de seguridad en v2, puede abordar rápidamente el problema en esa versión mientras las versiones anteriores (v1) y más recientes (v3) continúan funcionando de forma segura y sin interrupciones. Este enfoque permite a su equipo de desarrollo aplicar parches o actualizar versiones específicas de la API, minimizando el impacto en los usuarios finales. (Shrivastava et al, 2024)
+
+El control de versiones en una API permite realizar cambios sin afectar a los usuarios existentes, creando versiones separadas para nuevas implementaciones. No obstante, va más allá de solo etiquetar versiones: implica decidir en qué nivel aplicarlo (cliente, servidor o protocolo) y qué política seguir. No existe una única forma correcta, ya que depende de las necesidades de los desarrolladores y usuarios. Su objetivo principal es maximizar la funcionalidad y minimizar los inconvenientes, garantizando compatibilidad entre versiones.
+
+Al diseñar una API, es importante decidir si las versiones existentes podrán ampliarse con nuevas funcionalidades o si deben mantenerse completamente estables. Esta decisión depende del tipo de usuarios: algunos, como los bancos, pueden requerir versiones congeladas, mientras que otros, como startups, pueden priorizar las nuevas características.
+
+Si se permiten cambios dentro de una versión, deben evaluarse sus impactos: agregar campos puede afectar a sistemas con recursos limitados, como dispositivos IoT; nuevos recursos o métodos pueden generar incompatibilidades o dependencias inesperadas.
+
+No existen reglas absolutas: cada caso requiere análisis y políticas claras sobre qué se considera un cambio compatible. En última instancia, la gestión de nuevas funcionalidades y correcciones de errores en una API es más un arte de equilibrio entre innovación y estabilidad que una ciencia exacta.
+
+Definir qué cambios son compatibles con versiones anteriores es solo el primer paso en la gestión del versionado de una API. Cuando se introducen cambios incompatibles, es necesario decidir cómo crear y nombrar nuevas versiones, cuánto tiempo se mantendrán activas y cuándo se considerarán obsoletas. Estas decisiones requieren establecer políticas claras de ciclo de vida y comunicación con los usuarios. Existen diversas estrategias de control de versiones, cada una con ventajas, limitaciones y grados de flexibilidad según las políticas de compatibilidad que se adopten.
+
+==== Estabilidad perpetua
+
+La estrategia de estabilidad perpetua consiste en mantener cada versión de la API estable de forma indefinida, creando una nueva versión solo cuando se introducen cambios incompatibles. En este modelo, los cambios menores o compatibles se agregan a la versión actual, mientras que las modificaciones que rompen compatibilidad se reservan para la siguiente versión (v2, v3, etc.).
+
+Este enfoque ofrece alta estabilidad y facilidad de adopción para la mayoría de los usuarios, especialmente cuando los cambios compatibles están bien controlados. Sin embargo, puede generar demasiadas versiones si se considera que casi todo cambio es incompatible, o problemas de rendimiento en entornos con requisitos estrictos, como dispositivos IoT. Aun así, es una estrategia común y efectiva utilizada por grandes proveedores como Google Cloud Platform.
+
+==== Inestabilidad ágil
+
+La estrategia de inestabilidad ágil utiliza una ventana deslizante de versiones activas para equilibrar la entrega rápida de nuevas funciones con un mantenimiento controlado. Cada versión pasa por un ciclo de vida claro:
+
+*	Vista previa: versión inestable y sujeta a cambios constantes.
+*	Actual: versión estable utilizada por los clientes, que solo recibe parches o correcciones críticas.
+*	Obsoleta: versión reemplazada por una nueva y con fecha definida de eliminación.
+*	Eliminada: versión retirada definitivamente.
+
+Este enfoque favorece la innovación continua y la agilidad, aunque requiere que los usuarios actualicen con frecuencia sus integraciones. Funciona mejor con comunidades activas y colaborativas que aceptan la rápida evolución de la API a cambio de acceso temprano a nuevas funcionalidades.
+
+==== Control de versiones semántico
+
+El control de versiones semántico (SemVer) es una de las estrategias más usadas para gestionar cambios en APIs. Utiliza una cadena de tres números (por ejemplo, 1.0.0) que comunican el tipo de modificación realizada:
+
+*	Versión principal (1.x.x): cambios incompatibles con versiones anteriores.
+*	Versión secundaria (x.1.x): nuevas funcionalidades compatibles con versiones previas.
+*	Versión de parche (x.x.1): correcciones o mejoras menores sin afectar la compatibilidad.
+
+Este sistema ofrece claridad y equilibrio entre estabilidad y evolución, permitiendo a los usuarios elegir cuándo actualizar según sus necesidades. Sin embargo, puede generar muchas versiones activas, lo que complica el mantenimiento. Para mitigar esto, se recomienda aplicar una política de obsolescencia y apoyarse en tecnologías como Kubernetes o microservicios. En general, SemVer proporciona una forma estructurada y flexible de versionar APIs, satisfaciendo tanto a usuarios que buscan estabilidad como a los que requieren innovación constante.
+
+
 === Patrones de diseño
+
+Si observamos que el diseño de software se refiere a la estructura o el diseño de algún código escrito para resolver un problema, entonces un patrón de diseño de software es lo que sucede cuando un diseño en particular se puede aplicar una y otra vez a muchos problemas de software similares, con solo ajustes menores para adaptarse a diferentes escenarios. Esto significa que el patrón no es una biblioteca preconstruida que usamos para resolver un problema individual, sino más bien un modelo para resolver problemas estructurados de manera similar. 
+
+Por lo cual, un patrón de diseño de API es simplemente un patrón de diseño de software aplicado a una API en lugar de a todo el software en general. Esto significa que los patrones de diseño de API, al igual que los patrones de diseño regulares, son simplemente planos para formas de diseñar y estructurar API. Dado que la atención se centra en la interfaz en lugar de la implementación, en la mayoría de los casos, un patrón de diseño de API se centrará exclusivamente en la interfaz, sin necesariamente construir la implementación. Si bien la mayoría de los patrones de diseño de API a menudo permanecerán en silencio sobre la implementación subyacente de esas interfaces, a veces dictan ciertos aspectos del comportamiento del API. 
+
+Por otra parte las API son interfaces rígidas y públicas, lo que dificulta realizar cambios sin afectar a sus usuarios. A diferencia de las interfaces gráficas, incluso una pequeña modificación puede causar fallos. Por eso, aplicar un enfoque ágil resulta complicado. Los patrones de diseño de API ayudan a planificar y estructurar mejor desde el inicio, reduciendo problemas al modificar o escalar la API.
+
+A continuación se mostrarán algunos patrones de diseño que pueden ser aplicados en APIs. 
+
+==== Deduplicación de solicitudes
+
+En un mundo en el que no podemos garantizar que todas las solicitudes y respuestas completen sus recorridos según lo previsto, inevitablemente tendremos que volver a intentar las solicitudes a medida que se produzcan errores. Esto no es un problema para los métodos de API que son idempotentes; sin embargo, necesitaremos una forma de reintentar solicitudes de forma segura sin causar trabajo duplicado Este patrón presenta un mecanismo para reintentar solicitudes de forma segura ante fallas en una API web, independientemente de la idempotencia del método.
+
+Las redes modernas son inherentemente poco confiables, lo que también afecta a las API web. Las solicitudes pueden perderse antes de llegar al servidor o las respuestas pueden no llegar al cliente, y el problema se agrava con el uso de redes inalámbricas y dispositivos móviles.
+
+Cuando una solicitud no obtiene respuesta, puede deberse a que el servidor nunca la recibió (situación segura para reintentar) o a que sí la procesó, pero la respuesta se perdió (riesgo de ejecutar la acción dos veces). Dado que el cliente no puede distinguir entre ambos casos, es necesario un mecanismo que evite solicitudes duplicadas, especialmente en métodos no idempotentes. Este es el propósito del patrón: permitir reintentos seguros sin riesgo de ejecutar una operación más de una vez.
+
+Este patrón consiste en asignar un identificador único a cada solicitud para garantizar que se procese solo una vez, incluso si se reintenta. Así, el servidor puede detectar solicitudes duplicadas y evitar ejecutar la misma operación varias veces.
+
+Cuando se identifica un duplicado, lo ideal no es devolver un error, sino responder con el mismo resultado que se generó en la solicitud original. Para lograrlo, el servidor puede almacenar en caché la respuesta asociada al identificador de la solicitud, permitiendo reenviar la misma respuesta en caso de reintento y asegurando consistencia sin duplicación.
+
+Lo que se necesita para que este patrón funcione es una definición de un campo de identificador de solicitud para que podamos usarlo al determinar si la API ha recibido y procesado una solicitud. Este campo estaría presente en cualquier interfaz de solicitud que los clientes envíen para cualquier método que requiera deduplicación.
+
+==== Solicitud de validación
+
+Las API pueden ser confusas. A veces pueden ser confusos hasta el punto en que no está claro cuál será el resultado de una llamada API determinada. Para métodos seguros, tenemos una solución simple para averiguar el resultado: simplemente pruébalo. Sin embargo, para los métodos inseguros, esa solución obviamente no funcionará. En este patrón, exploraremos un campo especial que podemos agregar a las interfaces de solicitud, que actuará como un mecanismo mediante el cual podemos ver qué habría sucedido si se ejecutara la solicitud, sin ejecutar realmente la solicitud.
+
+En entornos reales no es raro probar y volver a intentar llamadas a una API hasta que todo funcione, pero ese enfoque de ensayo y error es peligroso en producción. Aunque al principio podemos juguetear con métodos seguros, no podemos experimentar de la misma forma con operaciones peligrosas (por ejemplo, un DeleteAllDataAndExplode()).
+
+Además, verificar manualmente que tenemos permisos y configuraciones correctas implica muchas dependencias humanas y errores posibles: documentación, credenciales, y controles del sistema pueden fallar en cualquier punto. En resumen: necesitamos una forma más segura y controlada de probar incluso las operaciones arriesgadas, porque confiar únicamente en el ensayo y error humano puede causar graves daños en producción.
+
+Este patrón propone permitir que los usuarios realicen solicitudes de validación a la API, es decir, peticiones que se procesan casi por completo pero sin aplicar cambios reales en el sistema. Al marcar una solicitud como “solo validación”, la API debe ejecutar todas las verificaciones posibles —permisos, integridad de datos, referencias a otros recursos, requisitos únicos, etc.— y devolver los mismos errores que aparecerían si la operación se ejecutara realmente.
+
+Aunque no siempre se puede simular completamente (por dependencias externas o limitaciones del sistema), el objetivo es que la validación ofrezca una vista previa fiel del resultado real, permitiendo a los usuarios probar sus solicitudes sin riesgo de modificar el entorno.
+
+Este patrón establece que las solicitudes de validación deben activarse mediante un campo booleano (por ejemplo, validateOnly: true), dejando como comportamiento predeterminado la ejecución normal de la API. Al marcar una solicitud como de validación, la API debe verificar todos los aspectos posibles —permisos, integridad de datos, existencia de recursos o formato de parámetros— sin modificar información ni generar efectos secundarios.
+
+La respuesta debe reflejar con realismo lo que ocurriría en una solicitud normal: devolver errores cuando correspondan (como un 403 Forbidden) o mostrar datos simulados cuando la operación sería exitosa, aunque ciertos campos, como identificadores generados, pueden dejarse vacíos o con valores ficticios.
+
+Lo esencial es que estas solicitudes sean completamente seguras e idempotentes, es decir, que puedan repetirse sin alterar el sistema. No obstante, en algunos casos, como consultas costosas a bases de datos o dependencias externas, puede ser difícil cumplirlo totalmente, por lo que deben aplicarse con cuidado según el contexto del método.
+
+==== Revisiones de recursos
+
+Aunque los recursos cambian con el tiempo, normalmente descartamos cualquier cambio que pueda haber ocurrido en el pasado. En otras palabras, solo almacenamos el aspecto del recurso en este momento e ignoramos por completo cómo se veía el recurso antes de realizar los cambios. Este patrón proporciona un marco mediante el cual podemos realizar un seguimiento de múltiples revisiones de un solo recurso a lo largo del tiempo, preservando así el historial y habilitando una funcionalidad avanzada, como revertir a una revisión anterior.
+
+Este patrón introduce la capacidad de mantener un historial de revisiones de un recurso en una API, en lugar de limitarse a su estado actual. Esto permite registrar y consultar versiones anteriores de un recurso, lo que facilita rastrear cambios, diagnosticar errores y restaurar estados previos si es necesario. Es especialmente útil para recursos como documentos, contratos, órdenes o campañas, donde conocer la evolución a lo largo del tiempo aporta transparencia y control.
+
+Este patrón introduce el concepto de revisión de recursos, que consiste en guardar instantáneas de un recurso con un identificador único y una marca de tiempo. Cada revisión refleja el estado del recurso en un momento específico, permitiendo consultar su historial, ver versiones anteriores o revertir cambios a una versión previa.
+
+No se requiere una interfaz nueva: basta con añadir dos campos al recurso (revisionId y revisionCreateTime). Así, un mismo recurso puede tener varias revisiones, y al solicitarlo por su identificador se obtiene automáticamente la versión más reciente. Este enfoque brinda trazabilidad y control sobre la evolución de los recursos dentro de la API.
+
+
+==== Solicitar un nuevo juicio
+
+Cuando se producen errores en las API web, algunos de ellos se deben a errores del cliente, mientras que otros se deben a problemas fuera del control del cliente. A menudo, la mejor solución a este segundo grupo de errores es volver a intentar la misma solicitud en un momento posterior con la esperanza de obtener un resultado diferente. En este patrón, exploraremos un mecanismo mediante el cual los clientes pueden tener una dirección clara sobre cómo y cuándo reintentan las solicitudes que han fallado anteriormente debido a errores en el servidor de API.
+
+En las API web, algunas solicitudes inevitablemente fallarán. Los errores pueden deberse a problemas del cliente (como solicitudes inválidas o restricciones incumplidas) o a errores transitorios del servidor, que no están relacionados con la solicitud sino con fallos temporales del sistema, como sobrecarga o mantenimiento.
+
+Mientras que los errores 4xx suelen indicar fallos en la solicitud y no deben repetirse, los errores 5xx suelen ser del servidor y pueden recuperarse reintentando la operación. Este patrón propone definir una política de reintentos que indique cuándo y cómo volver a intentar una solicitud fallida, así como cuánto tiempo esperar antes de hacerlo, para mejorar la confiabilidad sin sobrecargar el sistema.
+
+El objetivo de este patrón es simple: responder a tantas solicitudes como sea posible y volver a intentar la menor cantidad posible. Para lograr esto, debemos abordar dos cuestiones. Primero, debemos proporcionar a los clientes un algoritmo a seguir para minimizar la cantidad de solicitudes que se reintentan en todo el sistema. En segundo lugar, si el servicio de API sabe algo que el cliente no sabe, y esta información conduciría a un momento específico en el que una solicitud podría reintentarse correctamente, el servicio debe tener un mecanismo para proporcionar al cliente una instrucción explícita de cuándo volver a intentar una solicitud.
+
+
+==== Solicitar autenticación
+
+En este patrón, exploraremos cómo y por qué usar el intercambio de claves público-privadas y las firmas digitales para autenticar todas las solicitudes de API entrantes. Esto garantiza que todas las solicitudes entrantes tengan garantizada la integridad y la autenticidad del origen y que el remitente no pueda repudiarlas posteriormente. Si bien las alternativas (por ejemplo, secretos compartidos y HMAC son aceptables en la mayoría de los casos, estos fallan cuando se trata de introducir terceros donde se requiere el no repudio.
+
+Para aceptar o rechazar una petición de API primero debemos asegurarnos de que sea auténtica. Aunque la decisión final es binaria (sí/no), hay tres requisitos esenciales que la sustentan:
+•	Origen: confirmar que la solicitud realmente proviene del usuario que afirma ser (p. ej., si dice ser el usuario 1234, poder verificarlo).
+•	Integridad: garantizar que el contenido de la solicitud no fue alterado o manipulado en tránsito.
+•	No repudio: permitir que terceros verifiquen posteriormente, de forma inequívoca, que la solicitud fue emitida por ese usuario (es decir, el usuario no podrá negar haberla enviado).
+
+Estos tres aspectos (origen, integridad y no repudio) son la base para decidir si una petición entrante está autorizada.
+
+Las firmas digitales son un mecanismo criptográfico ideal para autenticar solicitudes en APIs, ya que garantizan el origen, la integridad y el no repudio. Se basan en un par de claves asimétricas: una clave privada que genera la firma y una clave pública que la verifica. Esto asegura que solo el propietario de la clave privada pueda crear una firma válida y que cualquier alteración del mensaje invalide la firma.
+
+El proceso consiste en que el usuario genera un par de claves, registra su clave pública en la API y luego firma sus solicitudes con la clave privada. El servidor, por su parte, verifica la firma con la clave pública registrada, confirmando la autenticidad de la solicitud.
+
 
 === Antipatrones
 
+Por lo contrario, existen diseños o enfoques de pueden parecer bueno pero finalmente llevarnos a problemas y dificultades. Estos son conocidos como antipatrones. (Fundamental of Software Architecture, Mark Richards)
+
+A continuación se presentan algunos antipatrones comunes en el diseño de API:
+
+==== ¡No más métodos “No llames a este método”!
+
+Es común encontrar APIs que incluyen métodos marcados en la documentación con frases como “No me llames, soy parte de la implementación” o “Solo para uso interno”. Este tipo de métodos son uno de los peores antipatrones de diseño, ya que hacen que la API parezca menos profesional y distraen al usuario con detalles de implementación innecesarios.
+
+Estos métodos suelen indicar que partes de la implementación ubicadas en paquetes separados necesitan acceso privilegiado a funcionalidades del paquete principal. Precisamente para este caso fue inventado el patrón de acceso amigo (friend accessor pattern).
+
+Aunque algunos argumentan que este patrón puede ser complejo de implementar, en realidad se trata solo de un detalle interno invisible para el usuario de la API. Además, permite que los usuarios interactúen con menos métodos, reduciendo errores y promoviendo un uso más intuitivo.
+
+Por lo tanto, evita incluir métodos del tipo *“soy un detalle de implementación”* en tus APIs.
+
+ref: Practical API Design, Jaroslav Tulach. Apress.
+
+==== Antipatrón: “Una solución sirve para todos” en autenticación
+
+Este antipatrón se presenta cuando se asume que un único mecanismo de autenticación puede aplicarse de manera uniforme a todas las aplicaciones o servicios de una organización. Surge comúnmente en entornos donde existen múltiples APIs desarrolladas con distintas tecnologías, estándares y requisitos de seguridad.
+
+Un caso representativo ocurre cuando un equipo de infraestructura implementa un gateway centralizado encargado de validar los tokens de acceso y bloquear cualquier solicitud que no haya sido autenticada. Aunque este enfoque puede parecer efectivo inicialmente, en la práctica tiende a generar fallos generalizados, especialmente en ecosistemas con alta diversidad de aplicaciones y flujos de autenticación.
+
+El problema radica en que las aplicaciones suelen tener diferentes requisitos de autorización y autenticación. No todas pueden adquirir tokens de acceso de manera autónoma ni emplear el mismo flujo de OAuth u otros protocolos de seguridad. La aplicación indiscriminada de una política única de autenticación ignora estas variaciones y puede provocar fallos de interoperabilidad, interrupciones de servicio y una pérdida de flexibilidad en el diseño de las APIs.
+
+Este antipatrón evidencia los riesgos del enfoque *“una solución sirve para todos”*, particularmente en el ámbito de la seguridad y autenticación de APIs. Su aparición suele estar asociada a la falta de comunicación entre los equipos de infraestructura y desarrollo, así como a la ausencia de una estrategia de diseño colaborativa. La superación de este antipatrón requiere promover la coordinación entre equipos y adaptar los mecanismos de autenticación a las necesidades específicas de cada contexto, en lugar de imponer soluciones universales.
+
+ref: Cloud Identity Patterns and Strategies, Giuseppe Di Federico, Fabrizio Barcaroli. Packt Publishing.
+
+==== API Gateway monolítico
+
+Este antipatrón ocurre cuando el API Gateway se utiliza como capa principal de integración o composición de servicios, concentrando en él la lógica de negocio que debería distribuirse entre los microservicios. En lugar de limitarse a funciones de enrutamiento, autenticación o control de tráfico, el gateway asume responsabilidades de orquestación, agregación de datos y coordinación entre servicios, convirtiéndose en un componente monolítico dentro de una arquitectura que originalmente buscaba la independencia y escalabilidad.
+
+El problema central radica en que al incluir la lógica de integración dentro del API Gateway, se pierde la capacidad de escalar, desplegar o mantener los servicios de manera independiente. Además, se introduce un punto único de fallo que compromete la disponibilidad general del sistema y dificulta la adopción de prácticas de despliegue continuo. Este enfoque reproduce los mismos inconvenientes de las aplicaciones monolíticas tradicionales, como la falta de aislamiento de fallos, la dependencia entre componentes y la pérdida de autonomía de los equipos.
+
+Desde el punto de vista arquitectónico, la orquestación o composición de servicios debe implementarse en microservicios específicos —denominados composite services— encargados de coordinar las interacciones entre servicios de menor granularidad. El API Gateway, en cambio, debe permanecer como un componente ligero, dedicado exclusivamente a tareas de intermediación técnica.
+
+El antipatrón del API Gateway monolítico surge al sobrecargar este componente con responsabilidades de negocio que comprometen la naturaleza distribuida y desacoplada del modelo de microservicios. La solución adecuada consiste en separar claramente las funciones de integración, reservando el gateway para la gestión del tráfico y delegando la lógica de composición a servicios especializados.
+
+ref: Microservices for the Enterprise, Kasun Indrasiri, Prabath Siriwardena. Apress.
+
 === Casos de uso y casos de abuso
+
+Los casos de uso constituyen un elemento esencial en el diseño de software, ya que describen las interacciones que los usuarios legítimos realizan con el sistema para alcanzar objetivos específicos. Permiten comprender los flujos funcionales esperados, delimitando las acciones válidas dentro del contexto de operación normal del sistema.
+
+De manera complementaria, los casos de abuso (abuse cases) describen cómo un sistema podría ser utilizado de forma indebida o maliciosa. Su propósito principal es identificar y analizar posibles amenazas a la seguridad mediante la exploración de escenarios en los que un atacante podría explotar comportamientos o debilidades del sistema. Este enfoque requiere adoptar la perspectiva de un adversario para anticipar acciones potencialmente dañinas y evaluar su impacto en la confidencialidad, integridad o disponibilidad del sistema.
+
+A continuación se presentan ejemplos de casos de uso y casos de abuso diseñados en torno al API empleado como ejemplo a lo largo de este documento.
+
+//TODO: Incluir ejemplos de casos de uso y casos de abuso relacionados con el API del ejemplo.

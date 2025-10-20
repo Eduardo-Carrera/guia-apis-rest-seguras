@@ -1,9 +1,53 @@
 == Herramientas recomendadas para seguridad en APIs REST
 
-=== Herramientas para pruebas de seguridad
+A continuación, se presentan algunas herramientas recomendadas para implementar y gestionar la seguridad en APIs REST:
 
-=== Herramientas para análisis de código fuente
+|===
+|Herramienta |Fase de uso |Descripción |Licencia / Costo |Sitio oficial |Recomendada por
 
-=== Herramientas para modelado de amenazas
+|Burp Suite |Diseño / Revisión temprana |Plataforma de pruebas de seguridad en aplicaciones web que funciona como proxy de intercepción, permitiendo analizar y manipular el tráfico HTTP/HTTPS. Incluye herramientas como Spider, Intruder, Repeater y Scanner. (Santos, Lazzara, & Thurner, 2025) |Comercial / versión comunitaria gratuita |https://portswigger.net/burp | 
 
-=== Herramientas para rate limiting y protección DDoS
+|sqlmap |Diseño / Revisión temprana |Automatiza la detección y explotación de inyecciones SQL; recomendable para pruebas controladas. |Gratuito / Open Source |https://sqlmap.org/ | 
+
+|RestTestGen |Diseño / Pruebas |Crea secuencias de prueba a partir de especificaciones de la API; útil para verificar cobertura y detectar errores de diseño. |Gratuito / Open Source |https://seunivr.github.io/RestTestGen-Wiki/docs/rtg | 
+
+|Akto |Diseño / Pruebas |Identifica endpoints expuestos y riesgos de sobrecarga; requiere interpretación de resultados. |Comercial / versión gratuita limitada |https://www.akto.io/ | 
+
+|Apigee |Diseño / Planeación |Permite definir políticas de seguridad, autenticación y monitoreo del tráfico de APIs. |Comercial / Prueba gratis |https://cloud.google.com/apigee | 
+
+|ModSecurity |Diseño / Planeación |Firewall de aplicaciones web configurable con reglas personalizadas; protege contra ataques comunes como inyecciones y XSS. |Gratuito / Open Source |https://modsecurity.org | 
+
+|bBOXRT |Diseño / Pruebas |Herramienta de prueba de robustez para servicios REST que inyecta entradas inválidas o maliciosas para detectar fallos y vulnerabilidades. |Gratuito / Open Source |https://eden.dei.uc.pt/~cnl/papers/2020-access.zip | 
+
+|Fuzzapi |Diseño / Pruebas |Envía datos inesperados a la API para detectar errores de validación o manejo de excepciones; debe emplearse en entornos controlados. |Gratuito / Open Source |https://github.com/Fuzzapi/fuzzapi | 
+
+|Firebase |Diseño / Implementación |Ofrece gestión de tokens y control de acceso a recursos; requiere configuración de roles y permisos. |Gratuito / Planes pagos |https://firebase.google.com | 
+
+|Keycloak |Diseño / Implementación |Implementa OAuth2 y OpenID Connect; útil para autenticación centralizada y federada. |Gratuito / Open Source |https://www.keycloak.org | 
+
+|OWASP ZAP |Diseño / Pruebas |Herramienta mantenida por OWASP para el análisis dinámico de seguridad (DAST); automatiza pruebas contra vulnerabilidades comunes en APIs REST. |Gratuito / Open Source |https://owasp.org/www-project-zap/ |Checkmarx
+
+|Postman API Security Scanner |Diseño / Pruebas |Extensión de Postman para análisis de vulnerabilidades básicas en colecciones de API, como autenticación débil o exposición de datos. |Gratuito / Comercial (según plan) |https://www.postman.com | 
+
+|42Crunch API Security Platform |Diseño / Pruebas / Monitoreo |Valida especificaciones OpenAPI, detecta configuraciones inseguras y realiza auditorías automatizadas de políticas de seguridad. |Comercial |https://42crunch.com |OWASP API Security Project
+
+|StackHawk |Implementación / CI-CD |Integra pruebas de seguridad automáticas en pipelines CI/CD, detectando vulnerabilidades en cada despliegue. |Comercial / Prueba gratuita |https://www.stackhawk.com | 
+
+|APIsec |Pruebas / Monitoreo |Plataforma que realiza pruebas automáticas de seguridad en APIs basadas en especificaciones OpenAPI y flujos de autenticación. |Comercial |https://www.apisec.ai | 
+
+|OpenAPI-Security-Scanner |Diseño / Pruebas |Analiza definiciones OpenAPI para detectar configuraciones inseguras, endpoints sin autenticación o exposición de datos sensibles. |Gratuito / Open Source |https://github.com/IBM/openapi-security-scanner |IBM Research
+
+|OWASP Threat Dragon |Diseño / Modelado de amenazas |Aplicación gratuita y de código abierto para crear modelos de amenazas basados en diagramas de flujo de datos (DFD); facilita la identificación temprana de riesgos. |Gratuito / Open Source |https://www.threatdragon.com/#/ |OWASP Foundation
+
+|Microsoft Threat Modeling Tool |Diseño / Modelado de amenazas |Herramienta oficial del Microsoft Security Development Lifecycle (SDL) para identificar y mitigar posibles problemas de seguridad desde etapas tempranas del diseño. |Gratuito |https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool |Microsoft SDL
+
+|IriusRisk |Diseño / Modelado de amenazas |Plataforma abierta de modelado de amenazas que automatiza la creación de modelos y proporciona recomendaciones de mitigación durante el SDLC. |Comercial / versión gratuita limitada |https://iriusrisk.com/ |OWASP Member Project
+
+|ThreatModeler |Diseño / Modelado de amenazas |Plataforma continua de modelado de amenazas que automatiza la identificación de riesgos desde la etapa de diseño e integra la seguridad en el ciclo de desarrollo. |Comercial |https://threatmodeler.com/ | 
+
+|SecOps Solution |Diseño / Pruebas |Solución de seguridad para API; incluye análisis de postura y pruebas de runtime. |Comercial |https://secopssolution.com | 
+
+|Equixly |Diseño / Pruebas |Plataforma impulsada por IA para pruebas de seguridad de API. |Comercial |https://equixly.com | 
+
+|Intruder |Diseño / Pruebas |Permite subir esquemas OpenAPI/Swagger para obtener cobertura completa de los endpoints de la API. |Comercial |https://www.intruder.io | 
+|===
