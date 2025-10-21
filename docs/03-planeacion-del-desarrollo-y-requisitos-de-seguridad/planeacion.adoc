@@ -1038,23 +1038,18 @@ Los componentes principales de un DFD son:
 | Límite de Privilegio / Confianza | Representa un cambio de nivel de confianza a medida que los datos fluyen a través de la aplicación.
 |===
 
-.Símbolo para representar una entidad externa
-image::images/external_entity.png[Entidad Externa]
 
-.Símbolo para representar un proceso
-image::images/process.png[Proceso]
+image::external_entity.png[Entidad Externa]
 
-.Símbolo para representar múltiples procesos
-image::images/multiple_process.png[Múltiples Procesos]
+image::process.png[Proceso]
 
-.Símbolo para representar un almacén de datos
-image::images/data_store.png[Almacén de Datos]
+image::multiple_process.png[Múltiples Procesos]
 
-.Símbolo para representar un flujo de datos
-image::images/data_flow.png[Flujo de Datos]
+image::data_store.png[Almacén de Datos]
 
-.Símbolo para representar un límite de privilegio / confianza
-image::images/privilege_boundary.png[Límite de Privilegio / Confianza]
+image::data_flow.png[Flujo de Datos]
+
+image::privilege_boundary.png[Límite de Privilegio / Confianza]
 
 A continuación se muestra un ejemplo de un Diagrama de Flujo de Datos (DFD) para la API REST del sistema de salud descrito anteriormente.
 
