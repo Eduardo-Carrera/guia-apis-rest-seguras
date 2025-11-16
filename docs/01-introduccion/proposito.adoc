@@ -6,12 +6,22 @@ La guía se enfoca únicamente en la arquitectura REST, dado que constituye la m
 === Alcance y limitaciones
 
 ==== Alcances
-* Se centra en el diseño seguro de APIs web REST y no aborda otros estilos de API.
+Esta guía establece un conjuto de prácticas, conceptos, lineamientos y herramientas para mejorar la seguridad en el diseño de APIs REST. Su alcance se centra en los siguientes elementos:
+
+* Se centra en el diseño seguro de APIs web REST y no aborda otros estilos arquitectónicos como GraphQL, gRPC o SOAP, esto debdio a que actualmente la arquitectura REST es la más utilizada para el diseño y desarrollo de APIs web.
+* Proporciona un marco de planeación de seguridad, que incluye la identificación de requisitos, análisis organizacional, modelado de amenazas y referencias a normas y estándares aplicables.
+* Se describen las principales vulnerabilidades asociadas a APIs REST, así como, causas y riesgos. 
+* Proporciona prácticas concretas para mitigar amenazas alineadas con la categorización de STRIDE.
+* Recomienda herramientas que pueden emplearse para fortalecer el análisis, auditoria o instrumentación de la seguridad en APIs REST.  
 * Proporciona listas de verificación, ejemplos prácticos y escenarios de referencia para facilitar su aplicación.
 * Se enfoca en las primeras etapas del ciclo de vida del desarrollo de software, desde la planeación hasta el diseño.
 
 ==== Limitaciones
 * No sustituye la necesidad de contar con expertos en seguridad para revisiones o auditorías en proyectos críticos.
+* La guía se enfoca en la API, no aborda la protección de aplicaciones cliente.  
+* No analiza configuraciones específicas de infraestructura o red. La guía no ofrece instrucciones para firewalls, redes, servidores, contenedores, kubernetes, balanceadores o configuraciones de nube.
+* No garantiza la ausencia total de vulnerabilidades. Aunque proporciona herramientas de prevención y reducción de riesgos, la guía no puede asegurar ocmpleta invulnerabilidad del sistema. 
+* No está orientada a cubrir todos los aspectos regulatorios. Incluye referencias a normas, pero no constituye un documento de cumplimiento legal. 
 
 === Uso previsto
 La guía funciona como un catálogo de elementos que incluyen prácticas, técnicas, métodos, herramientas y patrones de diseño orientados a mejorar la seguridad de APIs REST. Cada elemento está asociado a la fase del ciclo de vida del desarrollo de software en la que puede aplicarse, de modo que pueda consultarse de manera puntual según las necesidades de un proyecto.
