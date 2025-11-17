@@ -1,7 +1,14 @@
-= Introducción
+== Introducción
 Las APIs constituyen un componente esencial en la comunicación entre sistemas distribuidos, mientras que, el estilo arquitectónico REST se ha consolidado como el más utilizado en los últimos años. No obstante, la amplia adopción de REST ha traído consigo un incremento en los riesgos de seguridad, entre los cuales destacan el control de acceso deficiente, los ataques de inyección y las denegaciones de servicio. Dichas vulnerabilidades, además de ser recurrentes, representan amenazas para la confiabilidad y robustez de los sistemas que consumen APIs REST.
 
 Se presenta una guía de diseño orientada a la seguridad de APIs REST, cuyo propósito es ofrecer un recurso práctico a aquellos que asumen el rol de diseñadores sin contar necesariamente con una formación especializada en seguridad. Para lograrlo, la guía integra métodos, prácticas, técnicas, patrones de diseño y herramientas que permiten incorporar la seguridad desde etapas tempranas del ciclo de vida del software.
 
 La estructura del documento se organiza conforme al ciclo del desarrollo de las APIs, permitiendo su consulta tanto de manera secuencial como puntual, según las necesidades del lector. Los elementos incluidos fueron identificados a partir de una revisión sistemática de la literatura (RSL), complementada con literatura gris, lo que asegura la validez de las recomendaciones.
 
+== Resumen Ejecutivo
+En la actualidad, muchas organizaciones dependen de sistemas digitales. Una de las tecnologías más utilizadas son las APIs, las cuales permiten el intercambio de información entre aplicaciones. Sin embargo, cuando un API no está diseañada con las medidas de seguridad adecuadas, puede convertirse en puntos vulnerables que exponen información sensible o permiten accesos no autorizados. 
+
+Se pretende ayudar a quien tome el rol de diseñador de API y que no sea experto en el área de seguridad a poder implementar la seguridad necesaria desde las primeras fases de diseño. 
+
+La guía ofrece una solución integral para mejorar la seguridad en APIs REST, proporcionando conceptos, prácticas y herramientas. Conduce al lector desde los fundamentos hasta la aplicación práctica, definiendo términos, abordando planeación y riesgos, explicando vulnerabilidades comunes y presentando principios y prácticas de diseño seguro para fortalecer la seguridad.
+Se busca reducir riesgos, fortalecer el diseño y proteger mejor la información, proporcionando a los equipos criterios claros que mejoran la calidad del software y la confianza de los usuarios.
