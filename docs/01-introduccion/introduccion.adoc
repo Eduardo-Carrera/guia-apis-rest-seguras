@@ -5,7 +5,7 @@ Se presenta una guía de diseño orientada a la seguridad de APIs REST, cuyo pro
 
 La estructura del documento se organiza conforme al ciclo del desarrollo de las APIs, permitiendo su consulta tanto de manera secuencial como puntual, según las necesidades del lector. Los elementos incluidos fueron identificados a partir de una revisión sistemática de la literatura (RSL), complementada con literatura gris, lo que asegura la validez de las recomendaciones.
 
-=== Resumen Ejecutivo
+== Resumen Ejecutivo
 En la actualidad, muchas organizaciones dependen de sistemas digitales. Una de las tecnologías más utilizadas son las APIs, las cuales permiten el intercambio de información entre aplicaciones. Sin embargo, cuando un API no está diseañada con las medidas de seguridad adecuadas, puede convertirse en puntos vulnerables que exponen información sensible o permiten accesos no autorizados. 
 
 Se pretende ayudar a quien tome el rol de diseñador de API y que no sea experto en el área de seguridad a poder implementar la seguridad necesaria desde las primeras fases de diseño. 

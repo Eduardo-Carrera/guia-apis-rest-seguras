@@ -32,3 +32,18 @@
 |¿Los códigos de estado HTTP son consistentes (ej. 401 para no autorizado, 403 para prohibido, 500 solo para fallos internos)? | | |
 |¿Se registran los errores de manera interna para auditoría, sin exponer detalles al cliente? | | |
 |===
+
+++++
+<a href="../pdfs/listas.pdf" download style="
+  display: inline-block;
+  padding: 10px 18px;
+  background-color: #0366d6;
+  color: white;
+  border-radius: 6px;
+  font-size: 14px;
+  text-decoration: none;
+  margin: 10px 0;
+">
+⬇ Descargar checklist en PDF
+</a>
+++++
