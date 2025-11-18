@@ -34,7 +34,7 @@
 |===
 
 ++++
-<a href="../pdfs/listas.pdf" download style="
+<a href='https://eduardo-carrera.github.io/guia-apis-rest-seguras/pdfs/listas.pdf' download style="
   display: inline-block;
   padding: 10px 18px;
   background-color: #0366d6;
