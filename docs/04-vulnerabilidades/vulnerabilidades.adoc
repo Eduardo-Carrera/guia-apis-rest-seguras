@@ -1,3 +1,4 @@
+
 == Vulnerabilidades en APIs REST
 
 Para poder hablar de las vulnerabilidades, primero, debemos definir lo que es una vulnerabilidad. Una vulnerabilidad es una falla o debilidad potencial en el diseño o la implementación de software que puede ejercerse (activarse accidentalmente o explotarse intencionalmente) y provocar daños en el sistema (Search Results). Ahora, la vulnerabilidad en sí misma no representa el peligro inminente. Más bien, la vulnerabilidad es la puerta de entrada a un exploit. El hecho de que nuestro sistema contenga alguna vulnerabilidad significa que tenemos una puerta de entrada para que una amenaza pueda explotarnos (CompTIA Security+ SY0-701 Sari Greene). 

@@ -1,3 +1,4 @@
+
 == Planeación del desarrollo y requisitos de seguridad
 
 La planeación constituye la fase inicial del ciclo de vida del desarrollo de una API. En esta etapa, se establece el propósito de la API, así como los casos de uso y los recursos necesarios para su construcción. Se realiza la definición de los requisitos operativos, de negocio y de seguridad, y se identifican los equipos encargados de guiar la API a lo largo de las fases posteriores (Postman, 2023).
