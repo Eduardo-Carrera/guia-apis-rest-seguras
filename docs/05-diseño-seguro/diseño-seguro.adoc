@@ -315,6 +315,25 @@ La estrategia de estabilidad perpetua consiste en mantener cada versión de la A
 
 Este enfoque ofrece alta estabilidad y facilidad de adopción para la mayoría de los usuarios, especialmente cuando los cambios compatibles están bien controlados. Sin embargo, puede generar demasiadas versiones si se considera que casi todo cambio es incompatible, o problemas de rendimiento en entornos con requisitos estrictos, como dispositivos IoT. Aun así, es una estrategia común y efectiva utilizada por grandes proveedores como Google Cloud Platform.
 
+El proceso general para implementar esta estrategia incluye:
+
+* Definir la versión actual (`Versión N`). Toda la funcionalidad existente se etiqueta como parte de esta versión. Por ejemplo, si es la primera liberación, se considera `Versión 1`.
+
+* Incorporar cambios compatibles directamente a `Versión N`. Estos incluyen mejoras que no modifican los contratos actuales de la API.  
+  Por ejemplo, en un API de salud, añadir un nuevo campo opcional `patientStatus` al recurso `/patients/{id}` sin afectar a los clientes existentes.
+
+* Identificar cualquier cambio incompatible y construirlo dentro de `Versión N+1`.  
+  Esto aplica a modificaciones que puedan romper integraciones actuales, como eliminar campos, cambiar estructuras o modificar reglas de validación.  
+  En el API de salud, un cambio incompatible sería reemplazar el campo `birthDate` por `dateOfBirth`, o cambiar el formato de respuestas del endpoint `/appointments`.
+
+* Una vez que se acumula suficiente funcionalidad incompatible para justificar una nueva versión, se libera oficialmente `Versión N+1`.  
+  Ejemplo: se publica `Versión 2` del API de salud, incorporando nuevos modelos de citas médicas y un esquema actualizado de pacientes.
+
+* De forma opcional, `Versión N` puede ser marcada como obsoleta (deprecated) en el futuro, con el fin de reducir costos de mantenimiento.  
+
+* Finalmente, el ciclo se repite desde el primer paso, permitiendo mantener estabilidad a largo plazo sin frenar la evolución de la API.
+
+
 ==== Inestabilidad ágil
 
 La estrategia de inestabilidad ágil utiliza una ventana deslizante de versiones activas para equilibrar la entrega rápida de nuevas funciones con un mantenimiento controlado. Cada versión pasa por un ciclo de vida claro:
@@ -326,6 +345,50 @@ La estrategia de inestabilidad ágil utiliza una ventana deslizante de versiones
 
 Este enfoque favorece la innovación continua y la agilidad, aunque requiere que los usuarios actualicen con frecuencia sus integraciones. Funciona mejor con comunidades activas y colaborativas que aceptan la rápida evolución de la API a cambio de acceso temprano a nuevas funcionalidades.
 
+Para ilustrar esta estrategia, consideremos el ejemplo de la API utilizada para registrar signos vitales y consultar historiales clínicos.
+
+**Fase 1 — Versión 1 en Vista previa**
+La primera versión (v1) se publica como vista previa. Solo incluye dos endpoints:
+
+- `GET /v1/patients/{id}/vitals` — obtener signos vitales.
+- `POST /v1/patients/{id}/vitals` — registrar un nuevo conjunto de signos vitales.
+
+En esta etapa, los cambios pueden ser drásticos. Por ejemplo, el formato de respuesta podría modificarse de una semana a otra sin estabilidad garantizada.
+
+**Fase 2 — Versión 1 se vuelve Actual**
+Una vez que v1 se estabiliza, se promueve a actual. Esto congela su funcionalidad:
+
+- Los clientes pueden usarla con confianza.
+- Solo se permiten parches críticos, como correcciones de seguridad o bugs severos.
+- No se agregan nuevas funciones.
+
+**Fase 3 — Creación de la Versión 2 como Vista previa**
+El equipo necesita agregar un endpoint para historial clínico detallado. Como es una adición potencialmente incompatible con el modelo previo, se crea la versión 2 como vista previa (v2-preview):
+
+- `GET /v2/patients/{id}/records` — historial clínico.
+- `PATCH /v2/patients/{id}/vitals` — nueva operación que no existía en v1.
+
+Mientras v2 está en vista previa, se realizan ajustes basados en retroalimentación.
+
+**Fase 4 — Versión 2 se vuelve Actual y v1 pasa a Obsoleta**
+Cuando v2 se consolida, se convierte en la nueva actual:
+
+- v2 ahora recibe únicamente cambios críticos.
+- v1 se marca como obsoleta, iniciando un periodo de gracia (por ejemplo, 90 días).
+
+Durante la obsolescencia, v1 sigue funcionando, pero se anuncia su fecha de eliminación.
+
+**Fase 5 — Eliminación de v1**
+Después del periodo de gracia:
+
+- v1 se retira del servidor.
+- Las solicitudes dirigidas a `/v1/...` devuelven un error estandarizado (por ejemplo, `410 Gone`).
+- Solo v2 permanece activa como versión actual.
+- Se libera v3 como nueva vista previa si corresponde.
+
+Este ciclo se repite continuamente, asegurando innovación rápida con un número mínimo de versiones activas.
+
+
 ==== Control de versiones semántico
 
 El control de versiones semántico (SemVer) es una de las estrategias más usadas para gestionar cambios en APIs. Utiliza una cadena de tres números (por ejemplo, 1.0.0) que comunican el tipo de modificación realizada:
@@ -336,6 +399,49 @@ El control de versiones semántico (SemVer) es una de las estrategias más usada
 
 Este sistema ofrece claridad y equilibrio entre estabilidad y evolución, permitiendo a los usuarios elegir cuándo actualizar según sus necesidades. Sin embargo, puede generar muchas versiones activas, lo que complica el mantenimiento. Para mitigar esto, se recomienda aplicar una política de obsolescencia y apoyarse en tecnologías como Kubernetes o microservicios. En general, SemVer proporciona una forma estructurada y flexible de versionar APIs, satisfaciendo tanto a usuarios que buscan estabilidad como a los que requieren innovación constante.
 
+
+Para ilustrar el funcionamiento de SemVer, consideremos un API de salud que permite
+consultar información de pacientes, resultados de laboratorio y programación de citas.
+
+*Versión 1.0.0 — Lanzamiento inicial*
+
+La primera versión del API incluye tres endpoints básicos:
+- GET /pacientes/{id}
+- GET /laboratorios/{id}
+- POST /citas
+
+Los clientes construyen sus integraciones utilizando esta versión.
+
+*Versión 1.1.0 — Nuevo campo compatible*
+
+El equipo decide agregar el campo opcional `alergias` a la respuesta del recurso
+`/pacientes/{id}`. Este cambio es compatible porque los clientes actuales no se rompen
+si ignoran el nuevo campo.  
+Por ello, la versión pasa de:
+
+`1.0.0 → 1.1.0`
+
+*Versión 1.1.1 — Corrección de errores*
+
+Se detecta un error menor en la validación de fechas del endpoint `/citas`.
+Como es una corrección compatible, solo se incrementa el parche:
+
+`1.1.0 → 1.1.1`
+
+*Versión 2.0.0 — Cambio incompatible*
+
+Posteriormente, se modifica la estructura del recurso de laboratorios para separar
+los resultados en secciones diferenciadas por tipo (sangre, orina, imagenología).
+Este cambio rompe integraciones existentes, por lo que corresponde incrementar la
+versión principal:
+
+`1.x.x → 2.0.0`
+
+Los clientes pueden seguir usando la versión 1 mientras migran, de acuerdo con la
+política de obsolescencia del API.
+
+Este ejemplo muestra cómo SemVer permite comunicar con claridad qué tan disruptivo es
+un cambio y facilita a los usuarios planificar actualizaciones de forma segura.
 
 === Patrones de diseño
 
