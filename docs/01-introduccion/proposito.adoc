@@ -1,3 +1,4 @@
+
 == Propósito de la guía
 El propósito de esta guía es apoyar la incorporación de medidas de seguridad desde la etapa de diseño de APIs web REST. Está dirigida a un público que puede no ser especialista en seguridad, pero que requiere orientaciones claras y prácticas para reducir riesgos en sus proyectos.
 
