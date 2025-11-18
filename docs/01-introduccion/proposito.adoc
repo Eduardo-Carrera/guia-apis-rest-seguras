@@ -4,6 +4,8 @@ El propósito de esta guía es apoyar la incorporación de medidas de seguridad 
 
 La guía se enfoca únicamente en la arquitectura REST, dado que constituye la más utilizada en la actualidad, y no aborda otros enfoques como SOAP o GraphQL. Su intención es servir como una referencia práctica y accesible que facilite la prevención de vulnerabilidades comunes y contribuya a la construcción de sistemas más seguros.
 
+A continuación se describen los alcances, limitaciones y el uso previsto de esta guía. Esta sección tiene como propósito clarificar el contexto en el que debe aplicarse el documento, delimitando aquello que sí cubre, aquello que queda fuera de su objetivo y la manera en que se espera que el lector utilice el contenido. Definir estos elementos desde el inicio permite establecer expectativas realistas, facilita la correcta aplicación de las recomendaciones y evita interpretar esta guía como un reemplazo de procesos formales de seguridad, auditoría o normativas específicas.
+
 === Alcance y limitaciones
 
 ==== Alcances

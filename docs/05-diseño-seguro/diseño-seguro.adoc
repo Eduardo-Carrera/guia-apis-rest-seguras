@@ -167,6 +167,170 @@ Por otro lado, el throttling es una técnica complementaria que reduce temporalm
 * La implementación de rate limiting también es recomendable para llamadas internas de APIs, ya que sistemas internos pueden generar accidentalmente condiciones de DoS debido a dependencias circulares (Mastering API Architecture, 2022).  
 * Los límites de interacción deben ajustarse en función de los requisitos del negocio, equilibrando la protección del sistema con la experiencia del usuario (Abdurrahman 2024).
 
+==== Algoritmos de rate limiting
+Es necesario definir cómo se calcula la tasa de solicitudes dentro del sistema. Para implementar rate limiting de forma consistente y segura, un servicio distribuido debe contar con mecanismos claros para medir y controlar el ritmo de las solicitudes realizadas por cada consumidor. 
+
+Los algoritmos de limitaciones de tasa más utilizados en arquitecturas distribuidas incluyen:
+
+- Token Bucket (Cubo de fichas o tokens)
+- Leaky Bucket (Cubo con fugas)
+- Fixed Window Counter (Contador de ventana fija)
+- Sliding Window Log (Registro de ventana deslizante / tronco de ventana deslizante)
+- Sliding Window Counter (Contador de ventana deslizante)
+
+Cada uno de estos enfoques presenta diferentes compromisos entre precisión, consumo de memoria, consistencia en entornos distribuidos y facilidad de implementación. Por ello, es importante seleccionar el algoritmo que mejor se ajuste a los requisitos de seguridad, rendimiento y disponibilidad de la API.
+
+En algunos casos, puede ser adecuado soportar múltiples algoritmos en un mismo servicio de limitación de tasa, permitiendo que cada cliente o integración seleccione el mecanismo más adecuado para su caso de uso, junto con su configuración específica. Esto resulta útil en escenarios donde diferentes consumidores requieren límites más estrictos, mayor precisión o tolerancia a ráfagas.
+
+Para efectos de claridad, las explicaciones de esta sección adoptan un ejemplo simplificado: **un límite de 10 solicitudes por cada intervalo de 10 segundos**. Este ejemplo permite ilustrar el comportamiento de cada algoritmo sin perder generalidad.
+
+La elección del algoritmo y la forma en que se calcula la tasa de solicitudes impactan directamente en la seguridad de la API, ya que una implementación inadecuada puede permitir:
+
+- Saltos del límite mediante sincronización de ráfagas.
+- Uso abusivo por parte de clientes maliciosos.
+- Inequidad en el consumo entre diferentes usuarios.
+- Sobrecarga de recursos del servidor.
+
+===== Token bucket
+El algoritmo Token Bucket se basa en una analogía de una cubo lleno de tokens. Un cubo tiene tres características:
+
+- Un número máximo de tokens.
+- El número de tokens disponible actualmente.
+- Una tasa de recarga a la que se añaden tokens al cubo.
+
+Cada vez que llega una solicitud, sacamos un token del cubo. Si no hay tokens, la solicitud es rechazada o se limita la tasa. el cubo se llena a un ritmo constante.
+
+====== Implementación
+
+1. A cada usuario se le asigna un contador de tokens (por ejemplo, máximo 10 tokens).
+2. Cada solicitud realizada consume 1 token.
+3. Si el usuario aún tiene tokens, la solicitud se permite.
+4. Si el contador llega a 0, el usuario queda limitado hasta que el sistema agregue nuevos tokens. 
+5. El sistema recarga tokens periódicamente, por ejemplo, 1 token por segundo, hasta alcanzar el máximo permitido.
+
+====== Ventajas
+
+- Bajo consumo de memoria.
+- Permite manejar ráfagas de tráfico, ya que los tokens pueden acumularse.
+
+====== Consideraciones de implementar el algoritmo Token bucket
+
+En entornos distribuidos o con almacenamiento externo, actualizar los contadores de tokens para millones de usuarios puede generar: 
+
+- Sobrecarga de red y latencia
+- Límites prácticos al actualizar demasiadas claves simultáneamentes.
+
+Es necesario un mecanismo para eliminar usuarios inactivos, ya que el algoritmo no lo hace automáticamente. 
+
+Si múltiples servidores procesan solicitudes sin sincronización inmediata, un usuario podría hacer más solicitudes de las permitidas (cada servidor podría gastar tokens localmente antes de sincronizar).
+
+===== Leaky bucket
+El algoritmo Leaky Bucket controla el flujo de solicitudes asegurando que se procesen a una tasa constante, evitando ráfagas bruscas y manteniendo un ritmo estable. 
+
+====== Implementación
+
+1. El bucket tiene una capacidad máxima (por ejemplo 10 tokens)
+2. Las solicitudes agregan un token al bucket
+3. El bucket “gotea” (se va vaciando) a una tasa fija (por ejemplo, 1 token por segundo).
+4. Si llega una solicitud y el bucket ya está lleno, la petición se rechaza o se considera que excede el límite.
+5. Cuando el bucket está vacío, deja de gotear
+
+Una implementación común usa una cola FIFO de tamaño fijo que se vacía periódicamente. 
+
+====== Ventajas
+
+- Mantiene un flujo constante de solicitudes procesadas.
+- Sencillo de entender y adecuado para limitar ráfagas.
+
+====== Consideraciones
+
+Requiere más memoria que Token Bucket ya que utiliza una cola completa por usuarrio. 
+
+En sistemas distribuidos pueden ocurrir incosistencias, por ejemplo:
+
+- Varios servidores pueden llenar la cola del mismo usuario antes de sincronizarse, permitiendo más solicitudes de lo debido.
+- Los relojes no sincronizan entre hosts pueden causar decisiones imprecisas.
+
+Es necesario un mecanismo adicional para eliminar usuarios inactivos. 
+
+Vaciar cada cola periódicamente puede ser costoso en términos de rendimiento.
+
+===== Fixed Window Counter.
+Fixed Window Counter es uno de los algoritmos más simples para aplicar rate limiting. Su funcionamiento se basa en dividir el tiempo en ventanas fijas (por ejemplo, cada minuto, cada 10 segundos, etc.) y contar cuántas solicitudes hace un cliente dentro de cada ventana. 
+
+====== Funcionamiento.
+
+1. Cada cliente tiene una clave asociada a la ventana actual. La clave puede incluir su ID y la marca de tiempo de la ventana (por ejemplo user123_1628825241)
+2. Cada vez que llega una solicitud:
+    - Si la calve existe, se incrementa su contador.
+    - Si no existe, se crea con valor 1.
+3. El servidor acepta la solicitud si el contador está dentro del límite (ejemplo: 10 solicitudes por 10 segundos). 
+    
+    La rechaza si supera ese límite. 
+    
+4. Cuando la ventana termina, todas las claves de esa ventana expiran automáticamente. 
+
+====== Consideraciones
+
+Este algoritmo puede permitir hasta el doble del límite en intervalos solapados. 
+
+Por ejemplo, si el límite es 5 solicitudes por minuto:
+
+- Un cliente puede enviar 5 solicitudes al final de un minuto.
+- Y otras 5 justo al inicio del siguiente minuto.
+
+En menos de un minuto real habrá enviado 10 solicitudes.
+
+===== Sliding Window Log 
+
+Sliding Window Log es un algortimo que ofrece una medición muy precisa de cuántas solicitudes ha realizado un cliente en un intervalo de tiempo móvil (por ejempo, los últimos 10 segundos).
+
+====== Funcionamiento.
+1. Cada cliente tiene una única clave. El valor asociado es una lista ordenada de marcas de tiempo, una por cada solicitud realizada. 
+2. Cuando llega una nueva solicitud
+    - Se agrega su marca de tiempo a la lista.
+    - Se elimina todas las marcas de tiempo que estén fuera de la ventana (por ejemplo, más de 10 segundos de antigüedad). Se hace uso de búsqueda binaria, ya que la lista está ordenada.
+3. La solicitud se acepta si la lista contiene 10 o menos marcas dentro de la ventana. Se rechaza si hay más de 10. 
+
+====== Ventajas
+
+- Es muy preciso: siempre refleja exactamente cuántas solicitudes reales ha hecho el cliente en la ventana temporal.
+- Permite medir la tasa real de solicitudes incluso después de alcanzar el límite.
+
+====== Consideraciones
+
+**Consume más memoria**, porque se almacena una marca de tiempo por solicitud.
+
+Su precisión puede verse afectada en entornos **distribuidos** debido a problemas de sincronización entre nodos.
+
+===== Sliding Window Counter
+*Sliding Window Counter* es una versión mejorada del contador de ventana fija. Divide la ventana de tiempo total (por ejemplo, 1 hora) en **múltiples ventanas pequeñas**, todas del mismo tamaño. Cada una funciona como un contador independiente.
+
+====== Funcionamiento
+
+1. La ventana completa se divide en **N subventanas** (por ejemplo, 60 subventanas de 1 minuto para una ventana de 1 hora).
+2. Cada subventana registra cuántas solicitudes ocurrieron en ese intervalo.
+3. **Para calcular la tasa actual**, se suman los contadores de las subventanas que entran en la ventana móvil de tiempo.
+4. La solicitud se acepta solo si la suma está dentro del límite configurado.
+
+====== Ventajas
+
+- Es **más preciso** que el Fixed Window Counter porque no permite picos tan altos justo en el cambio de ventana.
+- Consume menos memoria que un Sliding Window Log.
+
+====== Consideraciones
+
+Puede **subestimar ligeramente** el número real de solicitudes, ya que no se consideran las solicitudes de la subventana más antigua parcialmente superpuesta.
+
+==== Cuando no hacer rate limiting
+El *rate limiting* es una técnica fundamental para mitigar abusos y proteger la disponibilidad de una API. Sin embargo, no siempre es la solución adecuada para todos los escenarios relacionados con el uso excesivo por parte del cliente. Es importante comprender sus limitaciones para evitar aplicar mecanismos que resulten contraproducentes para la experiencia del usuario o para el cumplimiento de requisitos empresariales (Tan, 2024).
+
+En primer lugar, existen situaciones en las que el cliente necesita recibir retroalimentación explícita sobre su comportamiento. Por ejemplo, en un servicio de redes sociales donde los usuarios pueden suscribirse a notificaciones asociadas a un hashtag, es posible que un usuario realice demasiadas solicitudes de suscripción en un corto periodo. En estos casos, el servicio debe informar al usuario que ha superado el límite permitido dentro de ese intervalo. Si se aplicara *rate limiting* de forma estricta, la API simplemente descartaría las solicitudes y devolvería un código 429 (*Too Many Requests*) o incluso ninguna respuesta, lo que podría ser interpretado por el cliente como un error 500. Este comportamiento generaría una mala experiencia de usuario, especialmente en aplicaciones web o móviles que podrían ofrecer mensajes más claros y útiles si contaran con una respuesta explícita por parte del servicio (Tan, 2024).
+
+En segundo lugar, existen modelos de negocio donde los límites de uso forman parte de un esquema de suscripción. Servicios que cobran tarifas basadas en tasas de solicitudes (por ejemplo, planes que permiten 1,000 o 10,000 solicitudes por hora) requieren controlar de forma precisa cuándo un cliente ha alcanzado su cuota. Si un cliente excede el límite contratado, las solicitudes posteriores deben rechazarse hasta el siguiente intervalo de facturación. Este control de cuotas es un requerimiento empresarial y no debe delegarse en un servicio compartido de *rate limiting*, ya que este tipo de servicios está diseñado para casos simples y no para escenarios complejos donde cada cliente posee un límite personalizado (Tan, 2024).
+
+
+
 
 === Consistencia en el diseño de los endpoints y los contratos
 
