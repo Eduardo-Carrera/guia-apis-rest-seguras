@@ -1,10 +1,10 @@
-= Glosario
+== Glosario
 
 El glosario constituye un recurso destinado a unificar el significado de los términos empleados en esta guía. La inclusión de este apartado responde a la necesidad de reducir ambigüedades terminológicas, las cuales pueden derivar en interpretaciones erróneas según el contexto o la experiencia del lector.
 
 Este apartado tiene la función de servir como referencia de consulta durante la lectura. Su propósito es garantizar la consistencia terminológica en todo el documento y facilitar la correcta aplicación de las recomendaciones presentadas.
 
-== Abreviaturas
+=== Abreviaturas
 * API: Application Programming Interface
 * REST: Representational State Transfer
 * JWT: JSON Web Token
@@ -16,7 +16,7 @@ Este apartado tiene la función de servir como referencia de consulta durante la
 * OWASP: Open Worldwide Application Security Project
 * NIST: Instituto Nacional de Estándares y Tecnología
 
-== Definición de términos técnicos
+=== Definición de términos técnicos
 * *Amenaza*: Estado del sistema o del entorno del sistema que puede conducir a efectos adversos (ISO/IEC/IEEE 24765a:2011).
 * *Antipatrón de diseño*: proceso repetible que produce resultados negativos (Richards & Ford, 2020).
 * *API web*: una API es una frontera entre una parte de un sistema de software y otra. Define un conjunto de operaciones que un componente ofrece para que otras partes del sistema u otros sistemas las utilicen (Madden, 2020)
@@ -34,7 +34,7 @@ Este apartado tiene la función de servir como referencia de consulta durante la
 * *Token de acceso*: credencial que permite al cliente solicitar recursos protegidos del servidor de recursos en nombre del usuario. Generalmente tiene una corta duración por razones de seguridad, lo que garantiza que su impacto sea mínimo incluso si el token llega a verse comprometido. (Xesquevixos, 2025)
 * *Vulnerabilidad*: fallos o descuidos específicos en un programa informático que permiten a los atacantes realizar actos malicioso, exponer, alterar información sensible, perturbar, destruir un sistema, el control de un sistema o programa informático (Dowd, McDonald y Schuh, 2006).
 
-== Aclaración de conceptos frecuentemente malinterpretados
+=== Aclaración de conceptos frecuentemente malinterpretados
 
 En el ámbito de la seguridad de APIs REST existen conceptos que, para quienes no son especialistas en la materia, pueden generar confusión o dar lugar a interpretaciones erróneas. Con el fin de evitar tales situaciones, en esta sección se aclaran algunas distinciones relevantes que suelen dar lugar a errores frecuentes.
 
