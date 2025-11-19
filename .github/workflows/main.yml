@@ -36,6 +36,13 @@ jobs:
             cp -r docs/images/* build/images/
           fi
 
+      - name: Copy PDFs folder
+        run: |
+          if [ -d docs/pdfs ]; then
+            mkdir -p build/pdfs
+            cp -r docs/pdfs/* build/pdfs/
+          fi
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: build
