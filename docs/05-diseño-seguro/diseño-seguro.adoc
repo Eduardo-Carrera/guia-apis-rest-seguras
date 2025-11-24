@@ -1,5 +1,9 @@
 == Diseño seguro en APIs REST
 
+El diseño seguro constituye uno de los pilares fundamentales para garantizar la confiabilidad y resistencia de una API REST frente a amenazas internas y externas. Mientras que las etapas de planeación y análisis permiten identificar riesgos, el diseño define las decisiones arquitectónicas y los mecanismos técnicos que determinarán el nivel de protección del sistema durante toda su vida útil. Por ello, esta sección reúne los principios, enfoques y prácticas esenciales que deben incorporarse desde la concepción misma de la API para minimizar vulnerabilidades, limitar superficies de exposición y asegurar un comportamiento coherente y robusto ante escenarios adversos.
+
+A lo largo de esta sección se abordan elementos clave del diseño seguro, tales como modelos de confianza modernos (Zero Trust), principios de autorización (menor privilegio), clasificación y tratamiento de datos sensibles, y la aplicación de la tríada CIA como marco estructurante de decisiones de seguridad. Además, se incluyen lineamientos esenciales como la validación de entradas, mecanismos de disponibilidad como rate limiting, consistencia en contratos y endpoints, versionado, patrones y antipatrones de diseño, así como la identificación de casos de uso y casos de abuso.
+
 === Zero Trust
 
 También llamada seguridad de red sin perímetro es un concepto que, cuando se aplica a las operaciones de conectividad, significa que no se confía en ningún usuario o dispositivo, incluso si se han autenticado previamente. Cada solicitud de acceso a los datos debe autenticarse dinámicamente para garantizar el acceso con privilegios mínimos a los recursos. (Lammle & Buhagiar 2024).  

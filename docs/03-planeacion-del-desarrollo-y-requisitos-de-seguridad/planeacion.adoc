@@ -1,6 +1,8 @@
 
 == Planeación del desarrollo y requisitos de seguridad
 
+La presente sección reúne los elementos esenciales que deben considerarse durante la planeación del desarrollo y la definición de requisitos de seguridad. Se abordan actividades fundamentales como la elicitación de requisitos, la evaluación del contexto organizacional, la identificación de amenazas y riesgos, la consulta de marcos normativos aplicables y el uso de técnicas formales de modelado de amenazas.
+
 La planeación constituye la fase inicial del ciclo de vida del desarrollo de una API. En esta etapa, se establece el propósito de la API, así como los casos de uso y los recursos necesarios para su construcción. Se realiza la definición de los requisitos operativos, de negocio y de seguridad, y se identifican los equipos encargados de guiar la API a lo largo de las fases posteriores (Postman, 2023).
 
 Según Swagger (2022), una planeación adecuada comprende el mapeo de recursos, operaciones y escenarios de negocio antes de la implementación. Por su parte, Akamai (2022) resalta la importancia de incluir la estrategia de la API, las decisiones arquitectónicas de alto nivel y la creación de contratos que describan el comportamiento esperado de la misma.

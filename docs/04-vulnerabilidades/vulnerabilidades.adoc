@@ -3,6 +3,10 @@
 
 Para poder hablar de las vulnerabilidades, primero, debemos definir lo que es una vulnerabilidad. Una vulnerabilidad es una falla o debilidad potencial en el diseño o la implementación de software que puede ejercerse (activarse accidentalmente o explotarse intencionalmente) y provocar daños en el sistema (Search Results). Ahora, la vulnerabilidad en sí misma no representa el peligro inminente. Más bien, la vulnerabilidad es la puerta de entrada a un exploit. El hecho de que nuestro sistema contenga alguna vulnerabilidad significa que tenemos una puerta de entrada para que una amenaza pueda explotarnos (CompTIA Security+ SY0-701 Sari Greene). 
 
+Aquí se presentan los conceptos fundamentales para comprender qué constituye una vulnerabilidad y por qué su presencia abre la posibilidad de explotación por parte de amenazas. Posteriormente, se describe el conjunto de vulnerabilidades más comunes reconocido por la comunidad de seguridad, tomando como referencia el OWASP API Security Top 10, considerado el estándar principal para evaluar riesgos en interfaces de programación de aplicaciones.
+
+El objetivo de esta sección es ofrecer al lector un marco claro y actualizado sobre los riesgos prioritarios en APIs REST, de modo que pueda reconocer, anticipar y mitigar aquellas debilidades que comprometen la confidencialidad, integridad, disponibilidad y continuidad operativa de los sistemas.
+
 === Principales vulnerabilidades en APIs 
 
 Existen diversos tipos de vulnerabilidades que, si no se previenen adecuadamente, pueden comprometer la seguridad, la disponibilidad y la integridad de un sistema. Estas debilidades pueden ser aprovechadas por atacantes para obtener acceso no autorizado, manipular datos, interrumpir servicios o incluso tomar control de recursos críticos.
