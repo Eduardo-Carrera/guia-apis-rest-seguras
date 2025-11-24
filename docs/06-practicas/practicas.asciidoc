@@ -13,7 +13,7 @@ El token digital sirve como prueba de que el usuario ya tiene permiso de acceso.
 
 ==== Autenticación 
 
-*Vulnerabilidades*: Improper Access management +
+*Vulnerabilidad*: Improper Access management +
 La autenticación se utiliza para verificar la identidad personal; la verificación de identidad está relacionada con la verificación de credenciales. El plan determina si la persona es un usuario legítimo. La autorización es un mecanismo que se utiliza para determinar si un servicio concreto está disponible para los usuarios autenticados. Verifica que los usuarios tienen derecho a acceder personalmente a recursos como registros, bases de datos y archivos. Por lo general, la autorización se realiza después de la autenticación para verificar los privilegios del usuario. El cifrado utiliza un algoritmo para cifrar y encriptar los datos y, a continuación, utiliza una clave para descifrarlos, que es la información del grupo receptor. Las amenazas externas son la posibilidad de que personas ajenas al sistema utilicen software malicioso, piratería informática, interrupciones o ingeniería social para explotar las vulnerabilidades del sistema.
 
 === Tampering
@@ -30,23 +30,23 @@ La autenticación se utiliza para verificar la identidad personal; la verificaci
 
 ==== Validación de parámetros.
 
-*Vulnerabilidades*: Lack of parameter validation. +
+*Vulnerabilidad*: Lack of parameter validation. +
 El uso de esquemas formales (como JSON Schema, Zod o Pydantic) permite validar y asegurar que los parámetros de las funciones o APIs sean correctos, seguros y tengan la estructura esperada, evitando así errores, solicitudes malformadas o maliciosas. (Albada 2025)
 
 ==== Autenticación basada en firma.
 
-*Vulnerabilidades*: Lack of signature-based authentication. + 
+*Vulnerabilidad*: Lack of signature-based authentication. + 
 Una firma digital, creada combinando una función hash con cifrado de clave asimétrica, permite garantizar la integridad y autenticidad de un mensaje, asegurando que el mensaje proviene del remitente legítimo y que no ha sido modificado por terceros. (Brikman, 2025)
 
 ==== Blacklist read-only attributes and Define which HTTP parameters are allowed to be mapped.
 
-*Vulnerabilidades*: Mass assignment. +
+*Vulnerabilidad*: Mass assignment. +
 Para evitar la asignación masiva, los desarrolladores deben incluir en una lista negra los atributos de solo lectura para que no se vinculen automáticamente a la representación interna de datos de la API.
 La vinculación automática aumenta la productividad al liberar a los desarrolladores de la configuración manual de los parámetros de entrada/salida y la representación interna de los datos. Sin embargo, el uso indiscriminado de esta función suele dar lugar a vulnerabilidades de asignación masiva. Los marcos de API REST actuales ofrecen una forma de mitigar esta vulnerabilidad, ya que permiten a los desarrolladores definir explícitamente qué parámetros de entrada HTTP se pueden asignar a la representación interna de datos. No obstante, los desarrolladores deben ser conscientes de las vulnerabilidades de asignación masiva para aplicar esta mitigación correctamente. De hecho, la vulnerabilidad de asignación masiva sigue estando muy extendida y figura entre las vulnerabilidades más comunes en las API REST.
 
 ==== Sanitizing user input y validación de entradas.
 
-*Vulnerabilidad*: Poor data validation, Convertion issues, Arithmetic Overflow. +
+*Vulnerabilidades*: Poor data validation, Convertion issues, Arithmetic Overflow. +
 Los desarrolladores pueden evitar que esto suceda limpiando las entradas del usuario en la página y analizando el cuerpo de la página antes de volver a servirla. Aunque las API no tienen un lugar visible para recibir las entradas de los usuarios, los usuarios malintencionados pueden utilizar los campos del encabezado de las solicitudes HTTP como puntos de entrada para inyectar código malicioso, que a su vez puede ser ejecutado por el navegador.
 
 ==== Resource-hierarchy rule.
@@ -66,12 +66,12 @@ API Gateway actúa como un escudo para proteger la aplicación contra accesos no
 
 ==== Utilizar valores por defecto.
 
-*Vulnerabilidades*: Null References. +
+*Vulnerabilidad*: Null References. +
 El patrón decorador puede utilizarse para asignar valores predeterminados a los campos de entrada en una API RESTful, evitando así que los valores null generen comportamientos no deseados (como interpretar null como false). En lugar de añadir lógica adicional en el servidor o en la aplicación, el uso del decorador permite aplicar esta asignación de valores por defecto de forma más limpia y desacoplada del procesamiento principal de la solicitud. (Burns, 2024).
 
 ==== Definir estándares de codificación
 
-*Vulnerabilidades*: Improper code +
+*Vulnerabilidad*: Improper code +
 Los desarrolladores deben cumplir con las prácticas de seguridad y los estilos de codificación predefinidos, lo que reduce la probabilidad de errores y vulnerabilidades de seguridad. A veces se conocen como estándares de codificación. Las herramientas de linting, como ESLint para JavaScript, se utilizan para detectar y aplicar automáticamente estos estándares mediante el análisis del código a medida que se escribe. Los estándares pueden incluir, por ejemplo, saneamiento de entrada o manejo de errores. El uso de herramientas de linting ayuda a detectar problemas potenciales, como entradas no desinfectadas que podrían provocar ataques de inyección SQL. 
 Birch, M. (2025). CompTIA® SecurityX® CAS-005 Certification Guide: Master Advanced Security Strategies and Confidently Take the New CAS-005 Exam. (n.p.): Packt Publishing.
 
@@ -82,44 +82,44 @@ No se encontraron vulnerabilidades en repudation
 
 ==== Ensure the security level of service providers.
 
-*Vulnerabilidades*: Unsafe Consumption of APIs. +
+*Vulnerabilidad*: Unsafe Consumption of APIs. +
 Cuando se pretenda integrar un proveedor de servicios, hay que asegurarse de que cuenta con un nivel de seguridad adecuado
 
 ==== Inventory all integrated services
 
-*Vulnerabilidades*: Unsafe Consumption of APIs. +
+*Vulnerabilidad*: Unsafe Consumption of APIs. +
 Haga un inventario de todos los aspectos importantes de la API, como el entorno (es decir, desarrollo, puesta en escena o producción) y la versión de la API.
 
 ==== Manejador de errores
 
-*Vulnerabilidades*: Showing the stack trace of the exception. +
+*Vulnerabilidad*: Showing the stack trace of the exception. +
 Es importante que sepa qué hacer si hay un error. Esto puede incluir volver a intentar la solicitud, registrar el error o tomar medidas correctivas.
 Por ejemplo, una respuesta 400 Bad Request a menudo incluye un mensaje detallado que explica qué salió mal (por ejemplo, faltan parámetros requeridos, formatos de datos incorrectos) y solicita al usuario que corrija el formato o los datos de la solicitud. Un código de estado 401 no autorizado indica problemas con la autenticación y, por lo tanto, sugiere que el usuario debe verificar las claves de API o los tokens de autenticación. Una respuesta 503 Servicio no disponible podría implicar que el servicio está temporalmente sobrecargado o inactivo por mantenimiento, en cuyo caso el usuario normalmente implementaría la lógica de reintento con retroceso exponencial.
 Cada respuesta de error de los servicios suele ir acompañada de un cuerpo JSON que incluye un código de error y un mensaje que proporciona contexto adicional. Puede deserializar esta información para determinar la causa raíz, informar al usuario o desencadenar acciones correctivas en la aplicación. También es una buena práctica registrar estas respuestas, ya que a menudo revelan posibles vulnerabilidades de seguridad que pueden surgir durante el proceso de desarrollo y proporcionan un mecanismo para depurar directamente los problemas. (Gondosubroto, 2025). 
 
 ==== Política de masking de datos sensibles.
 
-*Vulnerabilidades*: Showing the Stack trace of the exception. +
+*Vulnerabilidad*: Showing the Stack trace of the exception. +
 El enmascaramiento de datos reemplaza los valores originales con alternativas ficticias pero realistas, que a menudo se utilizan en entornos de prueba, por ejemplo, dando a los pacientes seudónimos en los datos de ensayos médicos. (Birch, 2025)
 
 ==== Design proper exception handling logic for third-party code.
 
-*Vulnerabilidades*: Bugs in third-party code. +
+*Vulnerabilidad*: Bugs in third-party code. +
 Es recomendable que los desarrolladores que capturen el tráfico de las aplicaciones y apliquen Leif para probar las API de terceros que no sean de confianza. Además, deben diseñar una lógica adecuada para el manejo de excepciones en el código de terceros y actualizar oportunamente a las últimas versiones de las API con los errores conocidos corregidos.
 
 ====  Revisar y actualizar las configuraciones
 
-*Vulnerabilidades*: Configuration errores. +
+*Vulnerabilidad*: Configuration errores. +
 Una tarea para revisar y actualizar las configuraciones en toda la pila de API. La revisión debe incluir: archivos de orquestación, componentes de API y servicios en la nube API8:2023 Security Misconfiguration - OWASP API Security Top 10
 
 ==== Encryption
 
-*Vulnerabilidades*: Lack of encryption. +
+*Vulnerabilidad*: Lack of encryption. +
 Una API REST puede ser una puerta de enlace para transmitir o compartir datos a través de HTTP con otras aplicaciones. Por otra parte, se puede utilizar un cifrado simétrico para proteger los datos durante la transmisión, cifrando el texto sin formato en texto cifrado mediante tres claves únicas y diferentes. Al implementar este enfoque, los usuarios no autorizados o los piratas informáticos tienen dificultades para conocer el mensaje o los datos reales que ha enviado el remitente al destinatario
 
 ==== Secure connection (TLS)
 
-*Vulnerabilidades*: unsecured connection, fraudulent data exchange and data transmission leaks. +
+*Vulnerabilidad*: unsecured connection, fraudulent data exchange and data transmission leaks. +
 Asegurar de que todas las comunicaciones API desde el cliente al servidor API y cualquier componente descendente/ascendente se realicen a través de un canal de comunicación cifrado (TLS), independientemente de si se trata de una API interna o pública.
 Utilice comunicaciones cifradas, asegúrese de que todas las interacciones con la API se produzcan dentro de una ruta de comunicación segura. Esto se aplica a todos los procesos de comunicación entre el cliente y el servidor, y es especialmente importante cuando se integra un proveedor de servicios.
 
@@ -128,17 +128,17 @@ Utilice comunicaciones cifradas, asegúrese de que todas las interacciones con l
 *Vulnerabilidad*: Poor password. +
 El personal de TI ha estado tratando de obligar a los usuarios a crear y mantener contraseñas seguras utilizando políticas de contraseñas. Sin embargo, los usuarios siempre parecen encontrar una forma de eludir estas políticas, creando contraseñas que los atacantes pueden descifrar fácilmente. Como resultado, el personal de seguridad a menudo buscar nuevas soluciones. En las secciones siguientes se identifican varios componentes básicos de la directiva de contraseñas, seguidos de algunas de las recomendaciones de diferentes entidades.
 
-*Componentes de la política de contraseñas* +
+Componentes de la política de contraseñas +
 Las organizaciones suelen incluir una directiva de contraseñas escritas en la directiva de seguridad general. Luego, los profesionales de seguridad de TI aplican la política con controles técnicos, como una política de contraseña técnica que hace cumplir los requisitos de restricción de contraseña. La siguiente lista incluye algunas configuraciones comunes de directivas de contraseñas:
 
-* *Edad máxima*: Esta configuración requiere que los usuarios cambien su contraseña periódicamente, por ejemplo, cada 45 días. Algunos documentos se refieren a esto como caducidad de la contraseña.
+* Edad máxima: Esta configuración requiere que los usuarios cambien su contraseña periódicamente, por ejemplo, cada 45 días. Algunos documentos se refieren a esto como caducidad de la contraseña.
 
-* *Complejidad de la contraseña*: La complejidad de la contraseña se refiere a cuántos tipos de caracteres incluye. Los diferentes tipos de caracteres son letras minúsculas, letras mayúsculas, números y caracteres especiales. Una contraseña simple, como 123456789, contiene solo un tipo de carácter (números). Las contraseñas complejas utilizan tres o cuatro tipos de caracteres.
+* Complejidad de la contraseña: La complejidad de la contraseña se refiere a cuántos tipos de caracteres incluye. Los diferentes tipos de caracteres son letras minúsculas, letras mayúsculas, números y caracteres especiales. Una contraseña simple, como 123456789, contiene solo un tipo de carácter (números). Las contraseñas complejas utilizan tres o cuatro tipos de caracteres.
 
-* *Longitud de la contraseña*: La longitud es el número de caracteres de la contraseña, como al menos ocho caracteres. Cuando se usan los mismos tipos de caracteres en una contraseña, las contraseñas más cortas son más fáciles de descifrar y las contraseñas más largas son más difíciles de descifrar.
+* Longitud de la contraseña: La longitud es el número de caracteres de la contraseña, como al menos ocho caracteres. Cuando se usan los mismos tipos de caracteres en una contraseña, las contraseñas más cortas son más fáciles de descifrar y las contraseñas más largas son más difíciles de descifrar.
 Edad mínima Esta configuración impide que los usuarios vuelvan a cambiar su contraseña hasta que haya pasado un tiempo determinado. Las directivas de contraseñas que aplican el historial de contraseñas suelen tener una antigüedad mínima de un día.
 
-* *Historial de contraseñas*: Muchos usuarios adquieren el hábito de rotar entre dos contraseñas. Un historial de contraseñas recuerda un cierto número de contraseñas anteriores e impide que los usuarios reutilicen contraseñas. Combinado con una antigüedad mínima de uno o más días, evita que los usuarios cambien su contraseña varias veces de una sola vez hasta que vuelvan a su contraseña original.
+* Historial de contraseñas: Muchos usuarios adquieren el hábito de rotar entre dos contraseñas. Un historial de contraseñas recuerda un cierto número de contraseñas anteriores e impide que los usuarios reutilicen contraseñas. Combinado con una antigüedad mínima de uno o más días, evita que los usuarios cambien su contraseña varias veces de una sola vez hasta que vuelvan a su contraseña original.
 Recomendaciones de contraseñas autorizadas
 Las recomendaciones de contraseñas están cambiando y, hasta ahora, no hay un consenso que todos estén siguiendo. Dependiendo de la fuente que utilice, encontrará diferentes sugerencias de contraseñas. (Chapple et al, 2024)
 
@@ -152,7 +152,7 @@ El control de CCESS, o autorización, es el proceso de limitar a los usuarios pa
 
 ==== Monitoring the traffic
 
-*Vulnerabildiad*: Lack of rate limiting or not blocking malicious request. +
+*Vulnerabilidad*: Lack of rate limiting or not blocking malicious request. +
 Los ataques automatizados pueden detectarse mediante la supervisión del tráfico y el uso de la gestión de cuotas, las listas blancas y la limitación del tráfico; sin embargo, el lugar y la forma en que se realiza la solicitud pueden seguir siendo problemáticos, ya que la propia solicitud puede contener contenido no válido o malicioso.
 
 ==== Machine learning to learn the traffic and identify patterns
@@ -207,6 +207,6 @@ Un recurso que no se haya creado correctamente no debe ser accesible y no debe �
 
 ==== Authentication 
 
-*Vulnerabilidades*: Poor account lockout policy +
+*Vulnerabilidad*: Poor account lockout policy +
 La autenticación se utiliza para verificar la identidad personal; la verificación de identidad está relacionada con la verificación de credenciales. El plan determina si la persona es un usuario legítimo. La autorización es un mecanismo que se utiliza para determinar si un servicio concreto está disponible para los usuarios autenticados. Verifica que los usuarios tienen derecho a acceder personalmente a recursos como registros, bases de datos y archivos. Por lo general, la autorización se realiza después de la autenticación para verificar los privilegios del usuario. El cifrado utiliza un algoritmo para cifrar y encriptar los datos y, a continuación, utiliza una clave para descifrarlos, que es la información del grupo receptor. Las amenazas externas son la posibilidad de que personas ajenas al sistema utilicen software malicioso, piratería informática, interrupciones o ingeniería social para explotar las vulnerabilidades del sistema.
 
