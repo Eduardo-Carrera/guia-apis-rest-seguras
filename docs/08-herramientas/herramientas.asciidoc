@@ -1,53 +1,192 @@
 == Herramientas recomendadas para seguridad en APIs REST
 
-A continuación, se presentan algunas herramientas recomendadas para implementar y gestionar la seguridad en APIs REST:
+A continuación, se presentan algunas herramientas recomendadas para implementar y gestionar la seguridad en APIs REST.  
+La tabla incluye, además de su descripción y fase de uso, recomendaciones prácticas sobre cuándo utilizarlas y cuándo no hacerlo, con el fin de facilitar su selección según el contexto y necesidades del proyecto.
 
 |===
-|Herramienta |Fase de uso |Descripción |Licencia / Costo |Sitio oficial |Recomendada por
+|Herramienta |Fase de uso |Descripción |Licencia / Costo |Sitio oficial |Cuándo usarla |Cuándo no usarla
 
-|Burp Suite |Diseño / Revisión temprana |Plataforma de pruebas de seguridad en aplicaciones web que funciona como proxy de intercepción, permitiendo analizar y manipular el tráfico HTTP/HTTPS. Incluye herramientas como Spider, Intruder, Repeater y Scanner. (Santos, Lazzara, & Thurner, 2025) |Comercial / versión comunitaria gratuita |https://portswigger.net/burp | 
+|Burp Suite
+|Diseño / Revisión temprana
+|Plataforma de pruebas de seguridad en aplicaciones web que funciona como proxy de intercepción, permitiendo analizar y manipular el tráfico HTTP/HTTPS. Incluye herramientas como Spider, Intruder, Repeater y Scanner. (Santos, Lazzara, & Thurner, 2025)
+|Comercial / versión comunitaria gratuita
+|https://portswigger.net/burp
+|Cuando se requiere una inspección profunda del tráfico, pruebas manuales o validación temprana de seguridad.
+|Cuando el proyecto no permite instalar proxies o requiere pruebas completamente automatizadas.
 
-|sqlmap |Diseño / Revisión temprana |Automatiza la detección y explotación de inyecciones SQL; recomendable para pruebas controladas. |Gratuito / Open Source |https://sqlmap.org/ | 
+|sqlmap
+|Diseño / Revisión temprana
+|Automatiza la detección y explotación de inyecciones SQL; recomendable para pruebas controladas.
+|Gratuito / Open Source
+|https://sqlmap.org/
+|Cuando se sospechan posibles inyecciones SQL o se requiere validar controles sobre consultas dinámicas.
+|Cuando la API no interactúa con bases de datos SQL o se busca un análisis más general que específico de SQLi.
 
-|RestTestGen |Diseño / Pruebas |Crea secuencias de prueba a partir de especificaciones de la API; útil para verificar cobertura y detectar errores de diseño. |Gratuito / Open Source |https://seunivr.github.io/RestTestGen-Wiki/docs/rtg | 
+|RestTestGen
+|Diseño / Pruebas
+|Crea secuencias de prueba a partir de especificaciones de la API; útil para verificar cobertura y detectar errores de diseño.
+|Gratuito / Open Source
+|https://seunivr.github.io/RestTestGen-Wiki/docs/rtg
+|Cuando se tienen especificaciones OpenAPI y se necesitan pruebas automáticas derivadas del diseño.
+|Cuando la API no cuenta con especificaciones o éstas están incompletas.
 
-|Akto |Diseño / Pruebas |Identifica endpoints expuestos y riesgos de sobrecarga; requiere interpretación de resultados. |Comercial / versión gratuita limitada |https://www.akto.io/ | 
+|Akto
+|Diseño / Pruebas
+|Identifica endpoints expuestos y riesgos de sobrecarga; requiere interpretación de resultados.
+|Comercial / versión gratuita limitada
+|https://www.akto.io/
+|Cuando se requieren análisis rápidos sobre exposición de endpoints o inventarios automáticos.
+|Cuando se necesita un análisis completamente detallado sin depender de interpretación manual.
 
-|Apigee |Diseño / Planeación |Permite definir políticas de seguridad, autenticación y monitoreo del tráfico de APIs. |Comercial / Prueba gratis |https://cloud.google.com/apigee | 
+|Apigee
+|Diseño / Planeación
+|Permite definir políticas de seguridad, autenticación y monitoreo del tráfico de APIs.
+|Comercial / Prueba gratis
+|https://cloud.google.com/apigee
+|Cuando se desea gestionar el ciclo de vida completo de la API con políticas centralizadas.
+|Cuando la API es pequeña o no se cuenta con presupuesto para plataformas de gateway empresariales.
 
-|ModSecurity |Diseño / Planeación |Firewall de aplicaciones web configurable con reglas personalizadas; protege contra ataques comunes como inyecciones y XSS. |Gratuito / Open Source |https://modsecurity.org | 
+|ModSecurity
+|Diseño / Planeación
+|Firewall de aplicaciones web configurable con reglas personalizadas; protege contra ataques comunes como inyecciones y XSS.
+|Gratuito / Open Source
+|https://modsecurity.org
+|Cuando se requiere un WAF configurable para protección perimetral de servicios.
+|Cuando no se cuenta con personal técnico para mantener reglas y tunear el firewall.
 
-|bBOXRT |Diseño / Pruebas |Herramienta de prueba de robustez para servicios REST que inyecta entradas inválidas o maliciosas para detectar fallos y vulnerabilidades. |Gratuito / Open Source |https://eden.dei.uc.pt/~cnl/papers/2020-access.zip | 
+|bBOXRT
+|Diseño / Pruebas
+|Herramienta de prueba de robustez para servicios REST que inyecta entradas inválidas o maliciosas para detectar fallos y vulnerabilidades.
+|Gratuito / Open Source
+|https://eden.dei.uc.pt/~cnl/papers/2020-access.zip
+|Para pruebas de robustez o fuzzing controlado en entornos aislados.
+|Cuando se necesita un análisis orientado a lógica de negocio o pruebas específicas más detalladas.
 
-|Fuzzapi |Diseño / Pruebas |Envía datos inesperados a la API para detectar errores de validación o manejo de excepciones; debe emplearse en entornos controlados. |Gratuito / Open Source |https://github.com/Fuzzapi/fuzzapi | 
+|Fuzzapi
+|Diseño / Pruebas
+|Envía datos inesperados a la API para detectar errores de validación o manejo de excepciones; debe emplearse en entornos controlados.
+|Gratuito / Open Source
+|https://github.com/Fuzzapi/fuzzapi
+|Cuando se desean pruebas de fuzzing ligeras y enfocadas en validación de entradas.
+|Cuando la API está en producción o no puede recibir tráfico inesperado.
 
-|Firebase |Diseño / Implementación |Ofrece gestión de tokens y control de acceso a recursos; requiere configuración de roles y permisos. |Gratuito / Planes pagos |https://firebase.google.com | 
+|Firebase
+|Diseño / Implementación
+|Ofrece gestión de tokens y control de acceso a recursos; requiere configuración de roles y permisos.
+|Gratuito / Planes pagos
+|https://firebase.google.com
+|Cuando se necesita autenticación rápida sin implementar un servidor propio.
+|Cuando se requiere compatibilidad avanzada con estándares como OAuth2/OIDC.
 
-|Keycloak |Diseño / Implementación |Implementa OAuth2 y OpenID Connect; útil para autenticación centralizada y federada. |Gratuito / Open Source |https://www.keycloak.org | 
+|Keycloak
+|Diseño / Implementación
+|Implementa OAuth2 y OpenID Connect; útil para autenticación centralizada y federada.
+|Gratuito / Open Source
+|https://www.keycloak.org
+|Cuando se necesita SSO, OAuth2, OIDC o gestión avanzada de identidades.
+|Cuando no se requiere un Identity Provider completo o se buscan soluciones ligeras.
 
-|OWASP ZAP |Diseño / Pruebas |Herramienta mantenida por OWASP para el análisis dinámico de seguridad (DAST); automatiza pruebas contra vulnerabilidades comunes en APIs REST. |Gratuito / Open Source |https://owasp.org/www-project-zap/ |Checkmarx
+|OWASP ZAP
+|Diseño / Pruebas
+|Herramienta mantenida por OWASP para análisis dinámico de seguridad (DAST); automatiza pruebas contra vulnerabilidades comunes en APIs REST.
+|Gratuito / Open Source
+|https://owasp.org/www-project-zap/
+|Cuando se requiere un escáner de seguridad gratuito, confiable y automatizable.
+|Cuando se necesitan escaneos muy avanzados o pruebas de explotación específicas.
 
-|Postman API Security Scanner |Diseño / Pruebas |Extensión de Postman para análisis de vulnerabilidades básicas en colecciones de API, como autenticación débil o exposición de datos. |Gratuito / Comercial (según plan) |https://www.postman.com | 
+|Postman API Security Scanner
+|Diseño / Pruebas
+|Extensión de Postman para análisis de vulnerabilidades básicas en colecciones de API, como autenticación débil o exposición de datos.
+|Gratuito / Comercial (según plan)
+|https://www.postman.com
+|Cuando ya se trabaja con colecciones Postman y se desean verificaciones básicas integradas.
+|Cuando se requieren pruebas de seguridad profundas o pruebas DAST completas.
 
-|42Crunch API Security Platform |Diseño / Pruebas / Monitoreo |Valida especificaciones OpenAPI, detecta configuraciones inseguras y realiza auditorías automatizadas de políticas de seguridad. |Comercial |https://42crunch.com |OWASP API Security Project
+|42Crunch API Security Platform
+|Diseño / Pruebas / Monitoreo
+|Valida especificaciones OpenAPI, detecta configuraciones inseguras y realiza auditorías automatizadas de políticas de seguridad.
+|Comercial
+|https://42crunch.com
+|Cuando se necesita auditoría automatizada continua de especificaciones y políticas.
+|Cuando el proyecto no utiliza OpenAPI o no se requiere monitoreo especializado.
 
-|StackHawk |Implementación / CI-CD |Integra pruebas de seguridad automáticas en pipelines CI/CD, detectando vulnerabilidades en cada despliegue. |Comercial / Prueba gratuita |https://www.stackhawk.com | 
+|StackHawk
+|Implementación / CI-CD
+|Integra pruebas de seguridad automáticas en pipelines CI/CD, detectando vulnerabilidades en cada despliegue.
+|Comercial / Prueba gratuita
+|https://www.stackhawk.com
+|Cuando se desea integrar seguridad en DevSecOps con pruebas automáticas por commit.
+|Cuando no existe un pipeline CI/CD o las pruebas deben ser exclusivamente manuales.
 
-|APIsec |Pruebas / Monitoreo |Plataforma que realiza pruebas automáticas de seguridad en APIs basadas en especificaciones OpenAPI y flujos de autenticación. |Comercial |https://www.apisec.ai | 
+|APIsec
+|Pruebas / Monitoreo
+|Plataforma que realiza pruebas automáticas de seguridad en APIs basadas en especificaciones OpenAPI y flujos de autenticación.
+|Comercial
+|https://www.apisec.ai
+|Cuando se requieren pruebas avanzadas multidimensionales de seguridad basadas en especificaciones.
+|Cuando se busca una herramienta gratuita o evaluaciones manuales.
 
-|OpenAPI-Security-Scanner |Diseño / Pruebas |Analiza definiciones OpenAPI para detectar configuraciones inseguras, endpoints sin autenticación o exposición de datos sensibles. |Gratuito / Open Source |https://github.com/IBM/openapi-security-scanner |IBM Research
+|OpenAPI-Security-Scanner
+|Diseño / Pruebas
+|Analiza definiciones OpenAPI para detectar configuraciones inseguras, endpoints sin autenticación o exposición de datos sensibles.
+|Gratuito / Open Source
+|https://github.com/IBM/openapi-security-scanner
+|Cuando la API tiene un OpenAPI bien definido y se desean validaciones estáticas.
+|Cuando no se cuenta con especificaciones OpenAPI completas.
 
-|OWASP Threat Dragon |Diseño / Modelado de amenazas |Aplicación gratuita y de código abierto para crear modelos de amenazas basados en diagramas de flujo de datos (DFD); facilita la identificación temprana de riesgos. |Gratuito / Open Source |https://www.threatdragon.com/#/ |OWASP Foundation
+|OWASP Threat Dragon
+|Diseño / Modelado de amenazas
+|Aplicación gratuita y de código abierto para crear modelos de amenazas basados en diagramas de flujo de datos (DFD); facilita la identificación temprana de riesgos.
+|Gratuito / Open Source
+|https://www.threatdragon.com/#/
+|Cuando se realiza modelado de amenazas temprano en el diseño.
+|Cuando no se cuenta con diagramas o el alcance no requiere modelado formal.
 
-|Microsoft Threat Modeling Tool |Diseño / Modelado de amenazas |Herramienta oficial del Microsoft Security Development Lifecycle (SDL) para identificar y mitigar posibles problemas de seguridad desde etapas tempranas del diseño. |Gratuito |https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool |Microsoft SDL
+|Microsoft Threat Modeling Tool
+|Diseño / Modelado de amenazas
+|Herramienta oficial del Microsoft SDL para identificar y mitigar posibles problemas de seguridad desde etapas tempranas del diseño.
+|Gratuito
+|https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool
+|Cuando se sigue o desea seguir SDL o se requiere automatizar el modelado.
+|Cuando el equipo no trabaja con modelos DFD o prefiere métodos no estructurados.
 
-|IriusRisk |Diseño / Modelado de amenazas |Plataforma abierta de modelado de amenazas que automatiza la creación de modelos y proporciona recomendaciones de mitigación durante el SDLC. |Comercial / versión gratuita limitada |https://iriusrisk.com/ |OWASP Member Project
+|IriusRisk
+|Diseño / Modelado de amenazas
+|Plataforma abierta de modelado de amenazas que automatiza la creación de modelos y proporciona recomendaciones de mitigación durante el SDLC.
+|Comercial / versión gratuita limitada
+|https://iriusrisk.com/
+|Cuando se necesita modelado de amenazas automatizado a escala empresarial.
+|Cuando se requiere una solución completamente gratuita o muy ligera.
 
-|ThreatModeler |Diseño / Modelado de amenazas |Plataforma continua de modelado de amenazas que automatiza la identificación de riesgos desde la etapa de diseño e integra la seguridad en el ciclo de desarrollo. |Comercial |https://threatmodeler.com/ | 
+|ThreatModeler
+|Diseño / Modelado de amenazas
+|Plataforma continua de modelado de amenazas que automatiza la identificación de riesgos desde la etapa de diseño e integra la seguridad en el ciclo de desarrollo.
+|Comercial
+|https://threatmodeler.com/
+|Cuando se necesita modelado continuo con integración en DevSecOps.
+|Cuando el presupuesto es limitado o el proyecto no amerita modelado continuo.
 
-|SecOps Solution |Diseño / Pruebas |Solución de seguridad para API; incluye análisis de postura y pruebas de runtime. |Comercial |https://secopssolution.com | 
+|SecOps Solution
+|Diseño / Pruebas
+|Solución de seguridad para API; incluye análisis de postura y pruebas de runtime.
+|Comercial
+|https://secopssolution.com
+|Cuando se desea monitoreo y análisis de postura de seguridad en ejecución.
+|Cuando se necesita una solución local ligera o sin costos.
 
-|Equixly |Diseño / Pruebas |Plataforma impulsada por IA para pruebas de seguridad de API. |Comercial |https://equixly.com | 
+|Equixly
+|Diseño / Pruebas
+|Plataforma impulsada por IA para pruebas de seguridad de API.
+|Comercial
+|https://equixly.com
+|Cuando se desea automatizar pruebas y descubrir patrones de ataque no triviales.
+|Cuando no se cuenta con presupuesto o se prefieren herramientas open-source.
 
-|Intruder |Diseño / Pruebas |Permite subir esquemas OpenAPI/Swagger para obtener cobertura completa de los endpoints de la API. |Comercial |https://www.intruder.io | 
+|Intruder
+|Diseño / Pruebas
+|Permite subir esquemas OpenAPI/Swagger para obtener cobertura completa de los endpoints de la API.
+|Comercial
+|https://www.intruder.io
+|Cuando se quiere visibilidad completa de endpoints y análisis automatizado.
+|Cuando no se trabaja con especificaciones Swagger/OpenAPI o se requiere una herramienta gratuita.
 |===

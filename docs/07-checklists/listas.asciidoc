@@ -1,6 +1,6 @@
-== Listas de verificación
+== Lista de verificación
 
-=== Listas para diseño seguro
+Esta sección presenta una lista de verificación práctica para evaluar el nivel de seguridad de una API REST una vez implementada. Su propósito es facilitar la identificación de configuraciones faltantes, controles débiles o riesgos persistentes, y permitir que, en caso de detectar deficiencias, puedan integrarse las prácticas de seguridad previamente descritas en la guía.
 
 === Listas para evaluación de seguridad posterior
 

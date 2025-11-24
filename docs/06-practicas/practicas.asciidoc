@@ -1,5 +1,9 @@
 == Prácticas para seguridad en APIs REST
 
+La seguridad en APIs REST no depende únicamente de identificar vulnerabilidades, sino también de aplicar prácticas concretas que permitan mitigarlas de manera efectiva. Esta sección reúne un conjunto de prácticas que fortalecen la protección de una API frente a amenazas comunes, organizadas a partir de las categorías del modelo STRIDE. Cada subsección aborda un tipo de amenaza específico —como suplantación, manipulación, divulgación de información o elevación de privilegios— y describe las prácticas recomendadas para reducir su impacto en entornos reales de desarrollo.
+
+Estas prácticas incluyen mecanismos de autenticación y autorización robustos, validación y saneamiento de entradas, controles criptográficos, políticas de configuración segura, manejo adecuado de errores, protección de integraciones con terceros y estrategias arquitectónicas que refuerzan la superficie de defensa.
+
 === Spoofing
 ==== Token authentication
 
