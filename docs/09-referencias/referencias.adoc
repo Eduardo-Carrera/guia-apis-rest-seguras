@@ -65,3 +65,4 @@
 [63] Gondosubroto, R. (2025). Azure AI Engineer Associate (AI-102) Study Guide: In-Depth Certification Guide and Practice. (n.p.): O'Reilly Media.
 [64] Manico, J., Detlefsen, A. (2014). Iron-Clad Java: Building Secure Web Applications. United States: McGraw Hill LLC.
 [65] Santos, O., Lazzara, S., & Thurner, W. (2025). Redefining hacking: A comprehensive guide to red teaming and bug bounty hunting in an AI-driven world. Packt Publishing.
+[66] Shannon, M. J. (2025, abril). Non-repudiation (Lección 19.4) [Video]. En CompTIA SecurityX (CAS-005). O’Reilly Learning Platform

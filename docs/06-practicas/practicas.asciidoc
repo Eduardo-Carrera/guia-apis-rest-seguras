@@ -74,7 +74,18 @@ El patrón decorador puede utilizarse para asignar valores predeterminados a los
 Los desarrolladores deben cumplir con las prácticas de seguridad y los estilos de codificación predefinidos, lo que reduce la probabilidad de errores y vulnerabilidades de seguridad. A veces se conocen como estándares de codificación. Las herramientas de linting, como ESLint para JavaScript, se utilizan para detectar y aplicar automáticamente estos estándares mediante el análisis del código a medida que se escribe. Los estándares pueden incluir, por ejemplo, saneamiento de entrada o manejo de errores. El uso de herramientas de linting ayuda a detectar problemas potenciales, como entradas no desinfectadas que podrían provocar ataques de inyección SQL [62].
 
 === Repudiation
-No se encontraron vulnerabilidades en repudation
+
+Aunque no se identificaron vulnerabilidades específicas asociadas a Repudiation en la revisión de la literatura, la ausencia de mecanismos de no repudio puede permitir que los actores nieguen la autoría o ejecución de acciones realizadas en sistemas y APIs.
+
+Para mitigar este riesgo, se recomiendan las siguientes prácticas generales [66]:
+
+- Uso de firmas digitales para vincular de forma inequívoca las acciones con su emisor.
+- Empleo de funciones hash criptográficas seguras para garantizar la integridad de los mensajes.
+- Gestión segura de claves criptográficas mediante infraestructura de clave pública o terceros confiables.
+- Registro de operaciones relevantes en bitácoras de auditoría inmutables con marcas temporales confiables.
+- Complemento del cifrado en tránsito con mecanismos específicos de validación y verificación de acciones.
+
+La aplicación de estas prácticas fortalece la trazabilidad y responsabilidad de las operaciones, reduciendo el riesgo de disputas sobre su legitimidad.
 
 === Information Disclosure
 
