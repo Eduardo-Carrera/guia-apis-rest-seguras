@@ -3,9 +3,9 @@
 
 La presente sección reúne los elementos esenciales que deben considerarse durante la planeación del desarrollo y la definición de requisitos de seguridad. Se abordan actividades fundamentales como la elicitación de requisitos, la evaluación del contexto organizacional, la identificación de amenazas y riesgos, la consulta de marcos normativos aplicables y el uso de técnicas formales de modelado de amenazas.
 
-La planeación constituye la fase inicial del ciclo de vida del desarrollo de una API. En esta etapa, se establece el propósito de la API, así como los casos de uso y los recursos necesarios para su construcción. Se realiza la definición de los requisitos operativos, de negocio y de seguridad, y se identifican los equipos encargados de guiar la API a lo largo de las fases posteriores (Postman, 2023).
+La planeación constituye la fase inicial del ciclo de vida del desarrollo de una API. En esta etapa, se establece el propósito de la API, así como los casos de uso y los recursos necesarios para su construcción. Se realiza la definición de los requisitos operativos, de negocio y de seguridad, y se identifican los equipos encargados de guiar la API a lo largo de las fases posteriores [17].
 
-Según Swagger (2022), una planeación adecuada comprende el mapeo de recursos, operaciones y escenarios de negocio antes de la implementación. Por su parte, Akamai (2022) resalta la importancia de incluir la estrategia de la API, las decisiones arquitectónicas de alto nivel y la creación de contratos que describan el comportamiento esperado de la misma.
+Según [18], una planeación adecuada comprende el mapeo de recursos, operaciones y escenarios de negocio antes de la implementación. Por su parte, [19] resalta la importancia de incluir la estrategia de la API, las decisiones arquitectónicas de alto nivel y la creación de contratos que describan el comportamiento esperado de la misma.
 
 Esta etapa abarca los requisitos tanto funcionales (las funcionalidades que la API debe ofrecer) como los no funcionales (atributos de calidad que determinan su comportamiento). En este último grupo, la seguridad desempeña un papel crítico, al requerir la identificación de posibles riesgos, el establecimiento de mecanismos de autenticación y autorización, el cumplimiento normativo, la selección de herramientas y demás prácticas que acompañan el ciclo de desarrollo.
 
@@ -18,59 +18,58 @@ Las prácticas reportadas en la literatura para esta fase se presentan en la sig
 
 |Análisis del inventario
 |Revisión de las APIs existentes en la organización con el objetivo de verificar el cumplimiento de los requerimientos del nuevo proyecto. Esta práctica permite evitar el desarrollo de funcionalidades redundantes y minimizar la complejidad innecesaria dentro del ecosistema de APIs.
-|Guba, 2025
+|[20]
 
 |Análisis de público objetivo
 |Identificación de los usuarios previstos de la API y de los problemas específicos que se pretende resolver. Este análisis facilita la definición de casos de uso claros y asegura la alineación entre los objetivos técnicos y los objetivos de negocio.
-|Guba, 2025
+|[20]
 
 |Viabilidad técnica
 |Evaluación de los recursos, tecnologías e infraestructura necesarios para el desarrollo, implementación, mantenimiento y operación a largo plazo de la API.
-|Guba, 2025
+|[20]
 
 |Definir políticas y responsabilidades
 |Establecimiento de lineamientos que regulen la seguridad, gobernanza y cumplimiento normativo en el diseño y uso de la API, incluyendo la asignación de responsabilidades a los distintos actores involucrados en su ciclo de vida.
-|Guba, 2025
+|[20]
 
 |Definición de requisitos
 |Documentación clara de los casos de uso y de los usuarios previstos de la API, asegurando que esta incorpore únicamente las funcionalidades necesarias y evitando tanto la sobrecarga como omisiones críticas.
-|(Varga, Pereira de Andrade, de Morais, Bomfim, & Avancini Fraga, 2025)
+|[8]
 
 |Definición inicial de requisitos y preparación del entorno de trabajo
 |Determinación de los requisitos operativos, de negocio y de seguridad de la API, así como identificación de los integrantes del equipo responsables de su desarrollo a lo largo de las fases del ciclo de vida. Esta práctica incluye la recomendación de establecer un entorno de colaboración desde el inicio, como un espacio de trabajo dedicado y un repositorio en GitHub conectado a un pipeline de integración continua (CI).
-|Postman (s.f)
+|[21]
 |===
 
 === Elicitación y definición de requisitos
 
-La elicitación de requisitos es el proceso mediante el cual se identifican las necesidades y restricciones de los distintos actores involucrados en un sistema de software. Este proceso implica descubrir lo que el cliente necesita y desea mediante enfoques bien definidos. Se trata de una actividad activa orientada a extraer los requisitos desde las partes interesadas, lo que puede implicar la formulación de preguntas y la aplicación de escucha activa.
+La elicitación de requisitos es el proceso mediante el cual se identifican las necesidades y restricciones de los distintos actores involucrados en un sistema de software. Este proceso implica descubrir lo que el cliente necesita y desea mediante enfoques bien definidos. Se trata de una actividad activa orientada a extraer los requisitos desde las partes interesadas, lo que puede implicar la formulación de preguntas y la aplicación de escucha activa. [22]
 
 [TIP]
 ====
 El objetivo principal de la elicitación de requisitos es recopilar información que permita definir requisitos claros, concisos, verificables, consistentes, completos y trazables.
 ====
 
-Existen diversas técnicas que pueden emplearse para la elicitación de requisitos, tales como entrevistas, talleres, encuestas y observación directa. La elección de la técnica más adecuada depende del contexto del proyecto y de las características de los actores involucrados. Asimismo, pueden utilizarse herramientas como los casos de uso, las historias de usuario y las especificaciones funcionales, las cuales permiten capturar los requisitos de manera estructurada y facilitar su posterior análisis y validación.
+Existen diversas técnicas que pueden emplearse para la elicitación de requisitos, tales como entrevistas, talleres, encuestas y observación directa. La elección de la técnica más adecuada depende del contexto del proyecto y de las características de los actores involucrados. Asimismo, pueden utilizarse herramientas como los casos de uso, las historias de usuario y las especificaciones funcionales, las cuales permiten capturar los requisitos de manera estructurada y facilitar su posterior análisis y validación. [22]
 
-ref: A Guide to the Project Management Body of Knowledge (PMBOK® Guide) – Seventh Edition and The Standard for Project Management (ENGLISH)
 
 ==== Requisitos funcionales
 
-Los requisitos funcionales constituyen la especificación del comportamiento que un sistema debe exhibir bajo determinadas condiciones. En otras palabras, describen las funcionalidades que el producto debe implementar para permitir que los usuarios realicen sus tareas, satisfaciendo así los objetivos y necesidades del negocio.
+Los requisitos funcionales constituyen la especificación del comportamiento que un sistema debe exhibir bajo determinadas condiciones. En otras palabras, describen las funcionalidades que el producto debe implementar para permitir que los usuarios realicen sus tareas, satisfaciendo así los objetivos y necesidades del negocio [23].
 
-Estos requisitos suelen redactarse en forma de declaraciones utilizando el verbo «deberá». Por ejemplo: «El pasajero deberá poder imprimir las tarjetas de embarque de todos los tramos de vuelo para los que haya realizado la facturación».
+Estos requisitos suelen redactarse en forma de declaraciones utilizando el verbo «deberá». Por ejemplo: «El pasajero deberá poder imprimir las tarjetas de embarque de todos los tramos de vuelo para los que haya realizado la facturación» [23].
 
-En el contexto de la seguridad, un ejemplo de requisito funcional sería: «El cliente de la API deberá poder autenticarse mediante un token de acceso válido antes de consumir cualquier recurso protegido» (Wiegers & Beatty, 2013).
+En el contexto de la seguridad, un ejemplo de requisito funcional sería: «El cliente de la API deberá poder autenticarse mediante un token de acceso válido antes de consumir cualquier recurso protegido» [23].
 
 ==== Requisitos no funcionales
 
-Además de los requisitos funcionales, existen los requisitos no funcionales, también conocidos como atributos o factores de calidad, requisitos de calidad de servicio o restricciones. Estos describen las características del producto en diversas dimensiones que resultan relevantes tanto para los usuarios como para los desarrolladores y el personal de mantenimiento. Entre estas dimensiones se incluyen el rendimiento, la seguridad, la disponibilidad y la portabilidad, entre otros (Wiegers & Beatty, 2013).
+Además de los requisitos funcionales, existen los requisitos no funcionales, también conocidos como atributos o factores de calidad, requisitos de calidad de servicio o restricciones. Estos describen las características del producto en diversas dimensiones que resultan relevantes tanto para los usuarios como para los desarrolladores y el personal de mantenimiento. Entre estas dimensiones se incluyen el rendimiento, la seguridad, la disponibilidad y la portabilidad, entre otros [23].
 
 ===== Requisitos de seguridad asociados
 
 Los requisitos de seguridad forman parte de los requisitos no funcionales. Un requisito de seguridad se define como una declaración que especifica una funcionalidad necesaria para garantizar que se satisfaga alguna de las propiedades de seguridad del software, tales como confidencialidad, integridad o disponibilidad.
 
-Estos requisitos suelen derivarse de estándares de la industria, normativas legales y del análisis de vulnerabilidades previamente identificadas. Los requisitos de seguridad establecen nuevas características o amplían las existentes con el propósito de mitigar riesgos específicos o eliminar posibles vulnerabilidades (OWASP, s.f.).
+Estos requisitos suelen derivarse de estándares de la industria, normativas legales y del análisis de vulnerabilidades previamente identificadas. Los requisitos de seguridad establecen nuevas características o amplían las existentes con el propósito de mitigar riesgos específicos o eliminar posibles vulnerabilidades [24].
 
 Asimismo, los requisitos de seguridad proporcionan una base sólida de funcionalidad validada, que permite estandarizar los controles y las buenas prácticas de protección en el desarrollo de aplicaciones. Este enfoque favorece la reutilización de mecanismos de seguridad probados, en lugar de diseñar soluciones ad hoc para cada proyecto.
 
@@ -98,9 +97,9 @@ La documentación de requisitos constituye un componente esencial del desarrollo
 
 ===== Especificación de requisitos de software (SRS)
 
-La Especificación de Requisitos de Software (SRS) también puede denominarse especificación funcional, especificación del producto, documento de requisitos o especificación del sistema, aunque estos términos no siempre se emplean de manera uniforme en todas las organizaciones.
+La Especificación de Requisitos de Software (SRS) también puede denominarse especificación funcional, especificación del producto, documento de requisitos o especificación del sistema, aunque estos términos no siempre se emplean de manera uniforme en todas las organizaciones [22].
 
-El SRS establece con precisión las funciones, capacidades y restricciones que debe cumplir un sistema de software. Este documento constituye la base para la planificación, el diseño, la codificación, las pruebas del sistema y la elaboración de la documentación para los usuarios. Su contenido debe describir de manera completa el comportamiento del sistema bajo distintas condiciones, evitando incluir detalles de diseño, implementación, pruebas o gestión del proyecto, excepto cuando se trate de restricciones conocidas (Wiegers & Beatty, 2013).
+El SRS establece con precisión las funciones, capacidades y restricciones que debe cumplir un sistema de software. Este documento constituye la base para la planificación, el diseño, la codificación, las pruebas del sistema y la elaboración de la documentación para los usuarios. Su contenido debe describir de manera completa el comportamiento del sistema bajo distintas condiciones, evitando incluir detalles de diseño, implementación, pruebas o gestión del proyecto, excepto cuando se trate de restricciones conocidas [23].
 
 Diversos actores dentro del proceso de desarrollo se benefician del SRS:
 
@@ -120,7 +119,7 @@ No es necesario completar el SRS de todo el producto antes de iniciar el desarro
 
 [TIP]
 ====
-Trabajar a partir de un conjunto de requisitos acordado reduce la posibilidad de malentendidos y de reprocesos innecesarios (Wiegers & Beatty, 2013).
+Trabajar a partir de un conjunto de requisitos acordado reduce la posibilidad de malentendidos y de reprocesos innecesarios [23].
 
 ====
 
@@ -128,9 +127,9 @@ Trabajar a partir de un conjunto de requisitos acordado reduce la posibilidad de
 
 ==== Validación y trazabilidad de requisitos
 
-La trazabilidad de los requisitos constituye un elemento esencial dentro del aseguramiento de la calidad y la gestión de proyectos de software. Según Wiegers (2013), un requisito trazable puede vincularse tanto hacia atrás —hacia su origen— como hacia adelante —hacia los requisitos derivados, los elementos de diseño, el código que lo implementa y las pruebas que verifican su correcta implementación—.  
+La trazabilidad de los requisitos constituye un elemento esencial dentro del aseguramiento de la calidad y la gestión de proyectos de software. Según [23], un requisito trazable puede vincularse tanto hacia atrás —hacia su origen— como hacia adelante —hacia los requisitos derivados, los elementos de diseño, el código que lo implementa y las pruebas que verifican su correcta implementación—.  
 
-Los requisitos trazables se identifican mediante identificadores únicos y persistentes, y se redactan de manera estructurada y granular. Es recomendable evitar la combinación de múltiples requisitos en un solo enunciado, dado que cada requisito puede estar asociado a distintos componentes del desarrollo. Aunque lograr una especificación perfecta es improbable, aplicar estos principios durante la redacción y revisión de requisitos contribuye a generar especificaciones más claras, completas y alineadas con los objetivos del proyecto (Wiegers, 2013).  
+Los requisitos trazables se identifican mediante identificadores únicos y persistentes, y se redactan de manera estructurada y granular. Es recomendable evitar la combinación de múltiples requisitos en un solo enunciado, dado que cada requisito puede estar asociado a distintos componentes del desarrollo. Aunque lograr una especificación perfecta es improbable, aplicar estos principios durante la redacción y revisión de requisitos contribuye a generar especificaciones más claras, completas y alineadas con los objetivos del proyecto [23].  
 
 ===== Beneficios de la trazabilidad de requisitos
 
@@ -147,7 +146,7 @@ El seguimiento de los requisitos a lo largo del ciclo de vida del proyecto ofrec
 
 Si bien muchos de estos beneficios se manifiestan a largo plazo, su implementación contribuye a reducir los costos globales del ciclo de vida del producto. No obstante, también puede incrementar los costos iniciales de desarrollo debido al esfuerzo requerido para recopilar y mantener la información de trazabilidad. En este sentido, la trazabilidad de requisitos debe considerarse una inversión que incrementa la probabilidad de entregar un producto mantenible y conforme a los requisitos del cliente.  
 
-El esfuerzo necesario para establecer la trazabilidad es menor cuando la información se recopila de manera progresiva durante el desarrollo. En cambio, realizar este proceso sobre un sistema ya finalizado puede resultar considerablemente más costoso y laborioso (Wiegers, 2013).  
+El esfuerzo necesario para establecer la trazabilidad es menor cuando la información se recopila de manera progresiva durante el desarrollo. En cambio, realizar este proceso sobre un sistema ya finalizado puede resultar considerablemente más costoso y laborioso [23].  
 
 ===== Matriz de trazabilidad de requisitos
 
@@ -155,7 +154,7 @@ En este contexto, existen diversas herramientas que permiten establecer relacion
 
 La implementación de una matriz de trazabilidad permite garantizar que cada requisito aporte valor al negocio, al vincularlo directamente con los objetivos comerciales y del proyecto. Asimismo, proporciona un medio estructurado para realizar el seguimiento de los requisitos a lo largo del ciclo de vida del proyecto, asegurando que los requisitos aprobados en la documentación inicial se vean reflejados en el producto final.  
 
-De igual manera, la matriz ofrece un marco para gestionar los cambios en el alcance del producto, manteniendo la coherencia y trazabilidad entre los elementos del sistema (Project Management Institute, PMBOK Guide).  
+De igual manera, la matriz ofrece un marco para gestionar los cambios en el alcance del producto, manteniendo la coherencia y trazabilidad entre los elementos del sistema [22].  
 
 Los elementos que pueden ser objeto de trazabilidad incluyen, entre otros:
 
@@ -183,16 +182,13 @@ Adicionalmente, pueden incluirse atributos que contribuyan a verificar la satisf
 
 //TODO: Incluir ejemplo de matriz de trazabilidad
 
-ref: Wiegers, K. & Beatty, J. (2013). *Software Requirements*. Microsoft Press.  
-ref: Project Management Institute (PMI). *A Guide to the Project Management Body of Knowledge (PMBOK Guide)*.  
-
 === Evaluación organizacional y su relación con la seguridad
 
-La seguridad de una API no depende exclusivamente de mecanismos técnicos, sino también de la cultura organizacional que sustenta su desarrollo y operación. La cultura de seguridad se entiende como el conjunto de valores que determinan la forma en que los individuos perciben y abordan la seguridad dentro de la organización. Esta cultura se ve influida por las metas institucionales, la estructura organizativa, las políticas, los procesos y el liderazgo, así como por las relaciones con socios, proveedores y otros actores externos (NCSC, 2021).
+La seguridad de una API no depende exclusivamente de mecanismos técnicos, sino también de la cultura organizacional que sustenta su desarrollo y operación. La cultura de seguridad se entiende como el conjunto de valores que determinan la forma en que los individuos perciben y abordan la seguridad dentro de la organización. Esta cultura se ve influida por las metas institucionales, la estructura organizativa, las políticas, los procesos y el liderazgo, así como por las relaciones con socios, proveedores y otros actores externos [25].
 
-La cultura de ciberseguridad abarca asimismo las actitudes, conocimientos, normas y valores de los empleados en relación con la seguridad. Su efectividad no depende únicamente de políticas o procesos, sino de la alineación entre factores organizacionales (liderazgo, procesos, normas) y factores individuales (actitudes, conocimientos, comportamientos). La inversión en una cultura sólida fortalece la seguridad técnica de las APIs, genera confianza digital, mejora la reputación organizacional y promueve la adopción de comportamientos seguros en el trabajo cotidiano (PA Consulting, s.f.).
+La cultura de ciberseguridad abarca asimismo las actitudes, conocimientos, normas y valores de los empleados en relación con la seguridad. Su efectividad no depende únicamente de políticas o procesos, sino de la alineación entre factores organizacionales (liderazgo, procesos, normas) y factores individuales (actitudes, conocimientos, comportamientos). La inversión en una cultura sólida fortalece la seguridad técnica de las APIs, genera confianza digital, mejora la reputación organizacional y promueve la adopción de comportamientos seguros en el trabajo cotidiano [26].
 
-En entornos con una cultura de seguridad consolidada, los equipos perciben la seguridad como un esfuerzo colectivo y colaborativo que respalda las actividades diarias. Según el NCSC (2021), los principales beneficios incluyen:
+En entornos con una cultura de seguridad consolidada, los equipos perciben la seguridad como un esfuerzo colectivo y colaborativo que respalda las actividades diarias. Según [25], los principales beneficios incluyen:
 
 * Mayor propensión de los empleados a identificar problemas y proponer mejoras, fortaleciendo la resiliencia.
 * Facilita la comunicación abierta sobre incidentes sin temor a represalias.
@@ -200,7 +196,7 @@ En entornos con una cultura de seguridad consolidada, los equipos perciben la se
 
 Para consolidar esta cultura, se recomienda complementar las prácticas organizacionales con certificaciones reconocidas, tales como ISO 27001 y Cyber Essentials, que establecen estándares, procesos y políticas destinados a incrementar la resiliencia cibernética de la organización.
 
-Un enfoque complementario es la estrategia de seguridad Zero Trust, basada en la premisa de que ninguna persona o dispositivo, tanto dentro como fuera de la red organizacional, debe considerarse de confianza de manera automática. Este modelo se fundamenta en tres principios esenciales (Akamai, s.f.):
+Un enfoque complementario es la estrategia de seguridad Zero Trust, basada en la premisa de que ninguna persona o dispositivo, tanto dentro como fuera de la red organizacional, debe considerarse de confianza de manera automática. Este modelo se fundamenta en tres principios esenciales [27]:
 
 * Verificación de la confianza de todas las entidades.
 * Aplicación del principio de privilegios mínimos.
@@ -210,33 +206,33 @@ Estas prácticas organizacionales y modelos, como Zero Trust, resultan especialm
 
 === Identificación de amenazas y riesgos
 
-La identificación de amenazas y riesgos constituye una etapa crítica en el desarrollo seguro de APIs. Una amenaza se define como un evento o conjunto de circunstancias que puede comprometer los objetivos de seguridad de la API. Por ejemplo, un atacante que obtiene nombres y direcciones de la base de datos de clientes representa una amenaza para la confidencialidad de la información (Madden, 2020).
+La identificación de amenazas y riesgos constituye una etapa crítica en el desarrollo seguro de APIs. Una amenaza se define como un evento o conjunto de circunstancias que puede comprometer los objetivos de seguridad de la API. Por ejemplo, un atacante que obtiene nombres y direcciones de la base de datos de clientes representa una amenaza para la confidencialidad de la información [3].
 
 Las APIs se enfrentan a una amplia variedad de amenazas de seguridad, que incluyen ataques deliberados y fugas de datos involuntarias. Los usuarios no autorizados pueden explotar vulnerabilidades para acceder a datos confidenciales, interrumpir servicios o secuestrar sistemas. 
 
-Entre las amenazas más frecuentes se encuentran los ataques de inyección, los ataques de tipo "man-in-the-middle" (MITM) y los ataques de denegación de servicio distribuido (DDoS), diseñados para sobrecargar una API con tráfico malicioso (Akamai, s.f.). Aunque el tipo y la frecuencia de las amenazas pueden variar según el modelo de API, los ataques más comunes deben considerarse para cualquier API que se diseñe o utilice (Chapple & Seidl, 2022).
+Entre las amenazas más frecuentes se encuentran los ataques de inyección, los ataques de tipo "man-in-the-middle" (MITM) y los ataques de denegación de servicio distribuido (DDoS), diseñados para sobrecargar una API con tráfico malicioso [28]. Aunque el tipo y la frecuencia de las amenazas pueden variar según el modelo de API, los ataques más comunes deben considerarse para cualquier API que se diseñe o utilice [29].
 
-La identificación de amenazas implica determinar los riesgos potenciales mediante herramientas y estrategias como listas de verificación, trazabilidad, análisis de puntos de entrada y evaluación de vulnerabilidades (ScienceDirect, s.f.). Este proceso permite relacionar los componentes del sistema con los elementos de la amenaza para su posterior validación y verificación.
+La identificación de amenazas implica determinar los riesgos potenciales mediante herramientas y estrategias como listas de verificación, trazabilidad, análisis de puntos de entrada y evaluación de vulnerabilidades [30]. Este proceso permite relacionar los componentes del sistema con los elementos de la amenaza para su posterior validación y verificación.
 
-Además de la identificación, la búsqueda activa de amenazas, conocida como threat hunting, consiste en la detección proactiva de amenazas desconocidas o previamente no detectadas dentro de la red de una organización. A diferencia del monitoreo de seguridad tradicional, que se enfoca en la detección y respuesta a amenazas conocidas mediante herramientas automatizadas, la búsqueda de amenazas persigue anticiparse a riesgos emergentes, permitiendo mitigarlos antes de que puedan generar daños significativos (Akamai, s.f.).
+Además de la identificación, la búsqueda activa de amenazas, conocida como threat hunting, consiste en la detección proactiva de amenazas desconocidas o previamente no detectadas dentro de la red de una organización. A diferencia del monitoreo de seguridad tradicional, que se enfoca en la detección y respuesta a amenazas conocidas mediante herramientas automatizadas, la búsqueda de amenazas persigue anticiparse a riesgos emergentes, permitiendo mitigarlos antes de que puedan generar daños significativos [28].
 
-Por lo tanto, la labor del diseñador de una API no se limita a garantizar el cumplimiento de sus funciones requeridas, sino que también incluye una vigilancia constante del panorama de seguridad, con el objetivo de prevenir y mitigar posibles amenazas que puedan comprometer la integridad del sistema (Lalonchera, 2025).
+Por lo tanto, la labor del diseñador de una API no se limita a garantizar el cumplimiento de sus funciones requeridas, sino que también incluye una vigilancia constante del panorama de seguridad, con el objetivo de prevenir y mitigar posibles amenazas que puedan comprometer la integridad del sistema.
 
 En secciones posteriores se describen metodologías específicas para el modelado de amenazas, las cuales facilitan la identificación y análisis sistemático de riesgos en el contexto del desarrollo de APIs REST seguras.
 
 === Referencias normativas y técnicas de seguridad para API
 
-Los estándares de seguridad de API constituyen marcos y pautas diseñados para garantizar la protección de las APIs frente a posibles amenazas y vulnerabilidades. Estos estándares permiten a las organizaciones implementar medidas de seguridad consistentes y efectivas (PubNub, 2024).
+Los estándares de seguridad de API constituyen marcos y pautas diseñados para garantizar la protección de las APIs frente a posibles amenazas y vulnerabilidades. Estos estándares permiten a las organizaciones implementar medidas de seguridad consistentes y efectivas [31].
 
-Estos marcos de seguridad abarcan diversos aspectos, incluyendo autenticación, autorización, cifrado de datos y gestión de sesiones. Su aplicación asegura que la comunicación a través de la API se adhiera a principios de seguridad, previniendo accesos no autorizados y posibles violaciones de datos (Pynt, 2024).
+Estos marcos de seguridad abarcan diversos aspectos, incluyendo autenticación, autorización, cifrado de datos y gestión de sesiones. Su aplicación asegura que la comunicación a través de la API se adhiera a principios de seguridad, previniendo accesos no autorizados y posibles violaciones de datos [32].
 
-Por otra parte, los protocolos de API definen los mecanismos de transmisión y protección de datos en la red. Establecen un lenguaje común y procedimientos que deben seguir tanto el emisor como el receptor, garantizando un intercambio seguro de información. Esto incluye el manejo seguro de tokens, cifrado de mensajes y validación de credenciales de identidad (Pynt, 2024).
+Por otra parte, los protocolos de API definen los mecanismos de transmisión y protección de datos en la red. Establecen un lenguaje común y procedimientos que deben seguir tanto el emisor como el receptor, garantizando un intercambio seguro de información. Esto incluye el manejo seguro de tokens, cifrado de mensajes y validación de credenciales de identidad [32].
 
 A continuación, se describen algunos de los principales estándares utilizados en la industria. Se aclara que la lista no es exhaustiva, y la selección del estándar adecuado dependerá del contexto, las necesidades de la aplicación y los requerimientos de la organización.
 
 ==== OAuth 2.0
 
-OAuth 2.0 es uno de los marcos de autorización más utilizados para APIs web. Su objetivo principal es permitir que un usuario otorgue a una aplicación de terceros acceso limitado a sus recursos, sin necesidad de compartir sus credenciales. Este modelo se ha convertido en un estándar en la autorización de APIs y es ampliamente adoptado en entornos web, móviles y en la nube (Varga et al., 2025).
+OAuth 2.0 es uno de los marcos de autorización más utilizados para APIs web. Su objetivo principal es permitir que un usuario otorgue a una aplicación de terceros acceso limitado a sus recursos, sin necesidad de compartir sus credenciales. Este modelo se ha convertido en un estándar en la autorización de APIs y es ampliamente adoptado en entornos web, móviles y en la nube [8].
 
 El funcionamiento básico de OAuth 2.0 consiste en que el usuario se autentica con un proveedor de identidad (por ejemplo, Google o Facebook) y concede permisos a la aplicación de terceros. Posteriormente, la aplicación obtiene un token de acceso, el cual se emplea para realizar solicitudes autorizadas a la API en nombre del usuario. Dicho token contiene scopes o alcances, que determinan el nivel de acceso permitido, como lectura o escritura sobre determinados recursos.
 
@@ -270,7 +266,7 @@ Sin embargo, para aplicaciones internas o entornos con bajo riesgo de exposició
 
 ==== JSON Web Token (JWT) 
 
-Los JSON Web Tokens (JWT) constituyen un formato de token estandarizado por RFC, ampliamente utilizado en protocolos de autorización como OAuth 2.0. Un JWT contiene claims, que son declaraciones con valores asociados, y está estructurado y codificado según estándares que garantizan que el token no pueda ser modificado y que pueda cifrarse adicionalmente (Mastering API Architecture).
+Los JSON Web Tokens (JWT) constituyen un formato de token estandarizado por RFC, ampliamente utilizado en protocolos de autorización como OAuth 2.0. Un JWT contiene claims, que son declaraciones con valores asociados, y está estructurado y codificado según estándares que garantizan que el token no pueda ser modificado y que pueda cifrarse adicionalmente [33].
 
 [TIP]
 ====
@@ -319,7 +315,7 @@ En este token, las claims incluidas son `iss`, `sub`, `aud`, `exp`, `nbf`, `iat`
 
 OAuth 2.0 proporciona un mecanismo para que el cliente acceda a APIs utilizando autenticación y autorización. Sin embargo, un requerimiento común es que el cliente también pueda conocer la identidad del propietario del recurso. Este es el propósito de OpenID Connect (OIDC): añadir una capa de identidad sobre OAuth 2.0.  
 
-OIDC amplía el servidor de autorización OAuth 2.0 para que actúe también como proveedor de identidad, entregando al cliente un *ID token* (un JWT con claims sobre el usuario) cuando se utiliza el scope especial `openid`. Además, se pueden incluir scopes adicionales como `profile`, `email`, `address` o `phone`, permitiendo obtener información más completa sobre el usuario (Gough, Bryant & Auburn, 2022).
+OIDC amplía el servidor de autorización OAuth 2.0 para que actúe también como proveedor de identidad, entregando al cliente un *ID token* (un JWT con claims sobre el usuario) cuando se utiliza el scope especial `openid`. Además, se pueden incluir scopes adicionales como `profile`, `email`, `address` o `phone`, permitiendo obtener información más completa sobre el usuario [33].
 
 Los flujos definidos por OIDC son tres: Authorization Code Flow, Implicit Flow y Hybrid Flow. El recomendado es el Authorization Code Flow junto con PKCE, ya que ofrece mayor seguridad.
 
@@ -351,7 +347,7 @@ Nunca se deben usar los *ID tokens* como si fueran *access tokens*. Los *ID toke
 
 En entornos empresariales es común el uso de SAML 2.0 (Security Assertion Markup Language), un estándar abierto que transfiere *assertions* de identidad. Es ampliamente utilizado en escenarios de *single sign-on (SSO)*, permitiendo que empleados accedan a aplicaciones externas mediante sus credenciales corporativas.  
 
-Aunque SAML no está diseñado para usarse directamente en APIs REST, existe una extensión llamada *SAML 2.0 Profile for OAuth 2.0 Client Authentication and Authorization Grants*, la cual permite a un cliente solicitar un *access token* usando SAML, siempre que el servidor de autorización tenga soporte para esta funcionalidad (Gough, Bryant & Auburn, 2022).  
+Aunque SAML no está diseñado para usarse directamente en APIs REST, existe una extensión llamada *SAML 2.0 Profile for OAuth 2.0 Client Authentication and Authorization Grants*, la cual permite a un cliente solicitar un *access token* usando SAML, siempre que el servidor de autorización tenga soporte para esta funcionalidad [33].  
 
 ===== Ventajas
 
@@ -373,11 +369,11 @@ SAML sigue siendo relevante en migraciones hacia OAuth 2.0 y OIDC, especialmente
 
 ==== Transport Layer Security (TLS)
 
-Transport Layer Security (TLS) es un protocolo que opera sobre TCP/IP y proporciona funciones de seguridad esenciales para permitir la comunicación segura entre un cliente y un servidor. TLS garantiza la confidencialidad, integridad y autenticidad de los datos transmitidos, protegiendo las comunicaciones frente a ataques de tipo man-in-the-middle (MITM) (Madden, s.f.; Chun et al., 2024; Brikman, 2025).
+Transport Layer Security (TLS) es un protocolo que opera sobre TCP/IP y proporciona funciones de seguridad esenciales para permitir la comunicación segura entre un cliente y un servidor. TLS garantiza la confidencialidad, integridad y autenticidad de los datos transmitidos, protegiendo las comunicaciones frente a ataques de tipo man-in-the-middle (MITM) [3, 34, 35 ].
 
-TLS se implementa mediante un handshake inicial en el que el cliente autentica al servidor, garantizando que se conecta a la entidad correcta y no a un atacante. Durante este proceso, se negocian las versiones del protocolo y los algoritmos criptográficos a utilizar, así como las claves de cifrado que se emplearán para el resto de la sesión. La información transmitida posteriormente se cifra y autentica utilizando estas claves, asegurando que no pueda ser leída ni modificada por terceros (Madden, s.f.; Brikman, 2025).
+TLS se implementa mediante un handshake inicial en el que el cliente autentica al servidor, garantizando que se conecta a la entidad correcta y no a un atacante. Durante este proceso, se negocian las versiones del protocolo y los algoritmos criptográficos a utilizar, así como las claves de cifrado que se emplearán para el resto de la sesión. La información transmitida posteriormente se cifra y autentica utilizando estas claves, asegurando que no pueda ser leída ni modificada por terceros [3, 35].
 
-TLS es ampliamente utilizado en protocolos de API basados en HTTP, incluyendo REST y SOAP, para cifrar la comunicación entre clientes y servidores. En algunos casos, además del cifrado de canal que proporciona TLS, puede ser necesario aplicar cifrado adicional a nivel de payload para proteger datos sensibles de manera más granular (Chun et al., 2024).
+TLS es ampliamente utilizado en protocolos de API basados en HTTP, incluyendo REST y SOAP, para cifrar la comunicación entre clientes y servidores. En algunos casos, además del cifrado de canal que proporciona TLS, puede ser necesario aplicar cifrado adicional a nivel de payload para proteger datos sensibles de manera más granular [34].
 
 ===== Ventajas
 
@@ -397,13 +393,13 @@ TLS es ampliamente utilizado en protocolos de API basados en HTTP, incluyendo RE
 
 ==== PASETO
 
-El estándar Platform-Agnostic Security Tokens (PASETO) surge como una alternativa moderna y más segura a JSON Web Tokens (JWT) dentro de los esquemas de autenticación basados en tokens. PASETO fue diseñado para evitar los errores comunes y vulnerabilidades derivados del uso de JSON Object Signing and Encryption (JOSE), ofreciendo un formato más predecible, seguro y menos propenso a configuraciones inseguras (Madden, 2020).  
+El estándar Platform-Agnostic Security Tokens (PASETO) surge como una alternativa moderna y más segura a JSON Web Tokens (JWT) dentro de los esquemas de autenticación basados en tokens. PASETO fue diseñado para evitar los errores comunes y vulnerabilidades derivados del uso de JSON Object Signing and Encryption (JOSE), ofreciendo un formato más predecible, seguro y menos propenso a configuraciones inseguras [3].
 
-A diferencia de JWT, que permite al desarrollador seleccionar entre una amplia variedad de algoritmos criptográficos, PASETO restringe esta elección y define un conjunto fijo de algoritmos por versión. La versión 1 utiliza algoritmos ampliamente adoptados como AES y RSA, mientras que la versión 2 emplea algoritmos modernos y más robustos, como Ed25519 para la firma digital y XChaCha20-Poly1305 para el cifrado autenticado. Este diseño elimina las posibilidades de que un atacante explote configuraciones débiles o confusas, incrementando la fiabilidad criptográfica del token (Madden, 2020).  
+A diferencia de JWT, que permite al desarrollador seleccionar entre una amplia variedad de algoritmos criptográficos, PASETO restringe esta elección y define un conjunto fijo de algoritmos por versión. La versión 1 utiliza algoritmos ampliamente adoptados como AES y RSA, mientras que la versión 2 emplea algoritmos modernos y más robustos, como Ed25519 para la firma digital y XChaCha20-Poly1305 para el cifrado autenticado. Este diseño elimina las posibilidades de que un atacante explote configuraciones débiles o confusas, incrementando la fiabilidad criptográfica del token [3].
 
-Asimismo, PASETO admite tanto cifrado simétrico autenticado como firma con clave pública, cubriendo los mismos casos de uso que JWT, pero con una arquitectura más estricta y segura. Los algoritmos y bibliotecas empleados son conocidos únicamente por el servidor emisor del token, lo que dificulta los intentos de falsificación o manipulación. Además, cada versión del protocolo establece su propio conjunto de reglas y algoritmos, promoviendo la interoperabilidad y la previsibilidad en la implementación (Nugraha, Kabetta, Buana & Hadiprakoso, 2023).  
+Asimismo, PASETO admite tanto cifrado simétrico autenticado como firma con clave pública, cubriendo los mismos casos de uso que JWT, pero con una arquitectura más estricta y segura. Los algoritmos y bibliotecas empleados son conocidos únicamente por el servidor emisor del token, lo que dificulta los intentos de falsificación o manipulación. Además, cada versión del protocolo establece su propio conjunto de reglas y algoritmos, promoviendo la interoperabilidad y la previsibilidad en la implementación [36].  
 
-En cuanto al desempeño, estudios comparativos han demostrado que JWT presenta una mejor eficiencia en tiempo de generación y tamaño de token; sin embargo, PASETO ofrece una resistencia significativamente superior frente a vulnerabilidades críticas. Según Nugraha et al. (2023), las pruebas de seguridad realizadas evidenciaron que JWT es susceptible a ataques como Broken User Authentication y explotación de encabezados, mientras que PASETO mostró solidez ante las principales vulnerabilidades documentadas en el OWASP API Security Top 10 (2019).
+En cuanto al desempeño, estudios comparativos han demostrado que JWT presenta una mejor eficiencia en tiempo de generación y tamaño de token; sin embargo, PASETO ofrece una resistencia significativamente superior frente a vulnerabilidades críticas. Según [36] las pruebas de seguridad realizadas evidenciaron que JWT es susceptible a ataques como Broken User Authentication y explotación de encabezados, mientras que PASETO mostró solidez ante las principales vulnerabilidades documentadas en el OWASP API Security Top 10 (2019).
 
 ===== Ventajas
 
@@ -426,7 +422,7 @@ PASETO representa una evolución hacia mecanismos de autenticación más seguros
 
 ==== CORS
 
-Cross-Origin Resource Sharing (CORS) es un estándar que permite que aplicaciones web realicen solicitudes a APIs alojadas en dominios distintos al de la aplicación cliente. Este mecanismo surge como extensión controlada de la política del mismo origen (Same-Origin Policy), la cual bloquea solicitudes entre dominios diferentes para proteger contra ataques como Cross-Site Request Forgery (CSRF). Lock, A. (2022). ASP.NET Core in Action (2nd ed.). Manning Publications.  
+Cross-Origin Resource Sharing (CORS) es un estándar que permite que aplicaciones web realicen solicitudes a APIs alojadas en dominios distintos al de la aplicación cliente. Este mecanismo surge como extensión controlada de la política del mismo origen (Same-Origin Policy), la cual bloquea solicitudes entre dominios diferentes para proteger contra ataques como Cross-Site Request Forgery (CSRF). [37]  
 
 La política del mismo origen considera que dos recursos comparten origen únicamente si coinciden en esquema (HTTP o HTTPS), dominio y puerto. Por ejemplo:
 
@@ -490,19 +486,19 @@ Evita habilitar CORS de forma global con `allow_origins=["*"]` en producción, y
 
 ==== ISO/IEC 27001: Information Security Management
 
-ISO/IEC 27001 es un estándar internacionalmente reconocido para la gestión de la seguridad de la información. Proporciona un enfoque sistemático para administrar información sensible de la organización, garantizando que se mantenga segura. Esto incluye desde datos financieros, propiedad intelectual y detalles de empleados hasta información confiada por terceros (Edwards & Weaver, 2023).
+ISO/IEC 27001 es un estándar internacionalmente reconocido para la gestión de la seguridad de la información. Proporciona un enfoque sistemático para administrar información sensible de la organización, garantizando que se mantenga segura. Esto incluye desde datos financieros, propiedad intelectual y detalles de empleados hasta información confiada por terceros [38].
 
-El estándar establece la base para un *Information Security Management System (ISMS)*, exigiendo que la organización diseñe e implemente un conjunto coherente y completo de controles de seguridad de la información. Los controles no son prescriptivos, lo que permite a cada organización adaptarlos según sus necesidades y contexto. Entre los aspectos cubiertos se incluyen evaluación de riesgos, políticas de seguridad, gestión de activos, control de accesos y seguridad física y ambiental (Staveley, 2023).
+El estándar establece la base para un *Information Security Management System (ISMS)*, exigiendo que la organización diseñe e implemente un conjunto coherente y completo de controles de seguridad de la información. Los controles no son prescriptivos, lo que permite a cada organización adaptarlos según sus necesidades y contexto. Entre los aspectos cubiertos se incluyen evaluación de riesgos, políticas de seguridad, gestión de activos, control de accesos y seguridad física y ambiental [39].
 
 ISO/IEC 27001 puede aplicarse a cualquier organización, independientemente de su tamaño o industria, aunque resulta especialmente relevante en sectores que manejan información altamente sensible, como instituciones financieras. Su implementación proporciona un marco estructurado para proteger la información, reducir riesgos y demostrar un compromiso con las mejores prácticas de seguridad.
 
 ===== Beneficios de aplicar ISO/IEC 27001 en APIs
 
-* **Gestión integral de la seguridad:** Permite establecer un marco consistente para proteger las APIs y la información que manejan (Staveley, 2023).  
-* **Flexibilidad:** Los controles pueden adaptarse a la complejidad de la organización y a las particularidades de sus servicios API (Edwards & Weaver, 2023).  
-* **Reducción de riesgos:** Al incluir evaluaciones periódicas de riesgo y controles de seguridad, se disminuye la probabilidad de incidentes de seguridad (Staveley, 2023).  
-* **Mejora continua:** El estándar promueve la revisión constante y la actualización de medidas de seguridad, manteniendo las APIs seguras frente a nuevas amenazas (Edwards & Weaver, 2023).  
-* **Confianza y reputación:** Aplicar ISO/IEC 27001 demuestra a clientes y socios un enfoque profesional y estructurado en la protección de datos (Staveley, 2023).  
+* **Gestión integral de la seguridad:** Permite establecer un marco consistente para proteger las APIs y la información que manejan [39].  
+* **Flexibilidad:** Los controles pueden adaptarse a la complejidad de la organización y a las particularidades de sus servicios API [38].  
+* **Reducción de riesgos:** Al incluir evaluaciones periódicas de riesgo y controles de seguridad, se disminuye la probabilidad de incidentes de seguridad [39].  
+* **Mejora continua:** El estándar promueve la revisión constante y la actualización de medidas de seguridad, manteniendo las APIs seguras frente a nuevas amenazas [38].  
+* **Confianza y reputación:** Aplicar ISO/IEC 27001 demuestra a clientes y socios un enfoque profesional y estructurado en la protección de datos [39].  
 
 [TIP]
 ====
@@ -511,7 +507,7 @@ Al implementar APIs seguras dentro de un marco ISO/IEC 27001, las organizaciones
 ==== NIST SP 800-228: Directrices para la protección de APIs en sistemas cloud-native
 
 El NIST Special Publication 800-228 (_Guidelines for API Protection for Cloud-Native Systems_) establece lineamientos específicos para la protección y aseguramiento de APIs en entornos empresariales modernos. 
-Este estándar reconoce que las APIs son el medio principal de comunicación e integración entre sistemas en arquitecturas nativas de la nube, por lo que su seguridad resulta esencial para la postura de seguridad general de las organizaciones (Chandramouli & Butcher, 2025).
+Este estándar reconoce que las APIs son el medio principal de comunicación e integración entre sistemas en arquitecturas nativas de la nube, por lo que su seguridad resulta esencial para la postura de seguridad general de las organizaciones [40].
 
 El documento propone un modelo de protección integral del ciclo de vida de las APIs, basado en los principios de DevSecOps y el paradigma de Zero Trust, considerando controles tanto previos a la ejecución (pre-runtime) como durante la ejecución (runtime). 
 Estos controles se clasifican en básicos y avanzados, lo que permite su adopción de forma incremental y basada en el riesgo, de acuerdo con la madurez de la organización.
@@ -529,11 +525,11 @@ Este estándar resulta relevante para las guías de diseño seguro de APIs REST,
 
 Además de los estándares técnicos y normativos como ISO/IEC 27001 y NIST SP 800-228, existen marcos legales que complementan la seguridad de las APIs desde la perspectiva de la protección de datos personales y la privacidad. Estas regulaciones buscan garantizar que las organizaciones gestionen la información sensible de manera responsable, transparente y conforme a los derechos de los individuos.  
 
-Entre las más relevantes se encuentran el Reglamento General de Protección de Datos (GDPR) en la Unión Europea, la California Consumer Privacy Act (CCPA) en Estados Unidos y la Personal Information Protection and Electronic Documents Act (PIPEDA) en Canadá. Todas ellas establecen obligaciones como obtener consentimiento para el tratamiento de datos, aplicar medidas técnicas de seguridad y permitir a los usuarios ejercer derechos sobre su información (Staveley, 2023).
+Entre las más relevantes se encuentran el Reglamento General de Protección de Datos (GDPR) en la Unión Europea, la California Consumer Privacy Act (CCPA) en Estados Unidos y la Personal Information Protection and Electronic Documents Act (PIPEDA) en Canadá. Todas ellas establecen obligaciones como obtener consentimiento para el tratamiento de datos, aplicar medidas técnicas de seguridad y permitir a los usuarios ejercer derechos sobre su información [39].
 
 ===== GDPR: Reglamento General de Protección de Datos (Unión Europea)
 
-El Reglamento General de Protección de Datos (GDPR) representa el marco más influyente en materia de privacidad a nivel mundial. Su objetivo es proteger los datos personales de los ciudadanos y residentes europeos, fortaleciendo sus derechos y unificando las regulaciones entre los Estados miembros.  
+El Reglamento General de Protección de Datos (GDPR) representa el marco más influyente en materia de privacidad a nivel mundial. Su objetivo es proteger los datos personales de los ciudadanos y residentes europeos, fortaleciendo sus derechos y unificando las regulaciones entre los Estados miembros. [39]
 
 El GDPR establece principios fundamentales de transparencia, responsabilidad y minimización de datos, los cuales pueden integrarse de forma natural en el diseño y operación de APIs REST seguras.  
 Entre sus disposiciones más destacadas se incluyen:
@@ -578,11 +574,11 @@ La integración de estas consideraciones en el ciclo de vida de las APIs refuerz
 
 Además de los estándares técnicos, existen regulaciones legales que establecen requisitos específicos para la protección de datos y la ciberseguridad. Estas regulaciones suelen exigir la implementación de medidas que prevengan el acceso no autorizado, la divulgación indebida o el uso inapropiado de la información.  
 
-Entre las más relevantes se encuentran la Health Insurance Portability and Accountability Act (HIPAA) en Estados Unidos y la Cybersecurity Law de la República Popular de China, que obligan a las organizaciones a implementar controles de seguridad y reportar incidentes relacionados con la protección de datos y sistemas (U.S. Department of Health & Human Services, 2023; National People’s Congress, 2017).
+Entre las más relevantes se encuentran la Health Insurance Portability and Accountability Act (HIPAA) en Estados Unidos y la Cybersecurity Law de la República Popular de China, que obligan a las organizaciones a implementar controles de seguridad y reportar incidentes relacionados con la protección de datos y sistemas [41, 42].
 
 ===== HIPAA (Health Insurance Portability and Accountability Act)
 
-La HIPAA es una regulación estadounidense que establece estándares para la protección de la información médica sensible, conocida como Protected Health Information (PHI). Su objetivo es garantizar la confidencialidad, integridad y disponibilidad de la PHI, al mismo tiempo que facilita la portabilidad del seguro médico y la eficiencia del sistema de salud (U.S. Department of Health & Human Services, 2023).
+La HIPAA es una regulación estadounidense que establece estándares para la protección de la información médica sensible, conocida como Protected Health Information (PHI). Su objetivo es garantizar la confidencialidad, integridad y disponibilidad de la PHI, al mismo tiempo que facilita la portabilidad del seguro médico y la eficiencia del sistema de salud [41].
 
 Uno de los pilares de la HIPAA es la Privacy Rule, que otorga a los pacientes derechos sobre su información médica, incluyendo el acceso, modificación y obtención de registros de uso. Por su parte, la Security Rule define salvaguardas administrativas, físicas y técnicas que las entidades deben aplicar para proteger la PHI electrónica (ePHI), tales como controles de acceso, cifrado, auditorías y planes de contingencia.
 
@@ -623,30 +619,30 @@ Como práctica clave, garantiza que las consideraciones de seguridad se integren
 Pero ¿por qué deberíamos realizar el modelado de amenazas?  
 El Manifiesto de Modelado de Amenazas señala que este proceso permite reconocer lo que puede salir mal en un sistema. Además, ayuda a identificar problemas de diseño e implementación que requieren mitigación, ya sea desde el inicio o a lo largo de la vida útil del sistema. 
 
-El resultado de este análisis —las amenazas— sirve como insumo clave para guiar las decisiones en las fases posteriores de diseño, desarrollo, pruebas y mantenimiento (Threat Modeling Manifesto, 2020).
+El resultado de este análisis —las amenazas— sirve como insumo clave para guiar las decisiones en las fases posteriores de diseño, desarrollo, pruebas y mantenimiento [43].
 
 ==== Propósito del modelado de amenazas
 
-El principal objetivo del modelado de amenazas es proporcionar un marco sistemático que permita identificar, comprender, priorizar y mitigar posibles riesgos (Green, 2022).
+El principal objetivo del modelado de amenazas es proporcionar un marco sistemático que permita identificar, comprender, priorizar y mitigar posibles riesgos [44].
 
-A través de este enfoque, las organizaciones pueden anticipar cómo los atacantes podrían explotar debilidades, entender las motivaciones y capacidades de los actores de amenaza, y establecer estrategias de defensa adecuadas (Green, 2022).
+A través de este enfoque, las organizaciones pueden anticipar cómo los atacantes podrían explotar debilidades, entender las motivaciones y capacidades de los actores de amenaza, y establecer estrategias de defensa adecuadas [44]
 
-* **Identificar:** Descubrir posibles amenazas, vulnerabilidades y debilidades en el sistema o aplicación (Green, 2022).  
-* **Comprender:** Analizar cómo estas amenazas pueden afectar el sistema, incluyendo las motivaciones, capacidades y posibles vectores de ataque (Green, 2022).  
-* **Priorizar:** Evaluar y clasificar las amenazas identificadas según su gravedad, probabilidad de ocurrencia e impacto potencial (Green, 2022).  
-* **Mitigar:** Desarrollar e implementar estrategias para reducir o eliminar los riesgos detectados, lo cual puede implicar rediseñar componentes, fortalecer defensas o establecer mecanismos de monitoreo y respuesta (Green, 2022).
+* **Identificar:** Descubrir posibles amenazas, vulnerabilidades y debilidades en el sistema o aplicación [44].  
+* **Comprender:** Analizar cómo estas amenazas pueden afectar el sistema, incluyendo las motivaciones, capacidades y posibles vectores de ataque [44].  
+* **Priorizar:** Evaluar y clasificar las amenazas identificadas según su gravedad, probabilidad de ocurrencia e impacto potencial [44].  
+* **Mitigar:** Desarrollar e implementar estrategias para reducir o eliminar los riesgos detectados, lo cual puede implicar rediseñar componentes, fortalecer defensas o establecer mecanismos de monitoreo y respuesta [44].
 
 ==== Cuándo realizar el modelado de amenazas
 
-El modelado de amenazas debe integrarse como parte del ciclo de vida del desarrollo de software (SDLC), preferentemente desde las fases tempranas de diseño o definición de requisitos (Green, 2022).
+El modelado de amenazas debe integrarse como parte del ciclo de vida del desarrollo de software (SDLC), preferentemente desde las fases tempranas de diseño o definición de requisitos [44].
 
 Esto permite detectar vulnerabilidades potenciales antes de que se vuelvan costosas o difíciles de corregir.  
 
-Sin embargo, también se recomienda revisarlo y actualizarlo cuando se presenten cambios significativos en la arquitectura, se descubran nuevas amenazas o el sistema migre a una infraestructura diferente (Green, 2022).
+Sin embargo, también se recomienda revisarlo y actualizarlo cuando se presenten cambios significativos en la arquitectura, se descubran nuevas amenazas o el sistema migre a una infraestructura diferente [44].
 
 ==== Elementos fundamentales del modelado de amenazas
 
-El proceso de modelado de amenazas abarca varios componentes esenciales (Green, 2022):
+El proceso de modelado de amenazas abarca varios componentes esenciales [44]:
 
 * **Activos:** Representan los elementos valiosos que requieren protección, como datos sensibles, propiedad intelectual, funcionalidades críticas o la privacidad del usuario.  
 * **Actores de amenaza:** Son individuos o grupos que podrían intentar explotar vulnerabilidades del sistema, como cibercriminales, hacktivistas, actores estatales o amenazas internas.  
@@ -658,7 +654,7 @@ El proceso de modelado de amenazas abarca varios componentes esenciales (Green, 
 [TIP]
 ====
 El modelado de amenazas debe verse como un proceso iterativo y vivo: se adapta con el sistema, sus usuarios y su entorno.  
-Actualizarlo regularmente es una práctica esencial para mantener la resiliencia y la seguridad de los sistemas frente a nuevas amenazas (Green, 2022).
+Actualizarlo regularmente es una práctica esencial para mantener la resiliencia y la seguridad de los sistemas frente a nuevas amenazas [44].
 ====
 
 ==== Proceso de modelado de amenazas
@@ -666,7 +662,7 @@ De igual forma, OWASP menciona que el proceso de modelado de amenazas se puede d
 
 Cada paso se documenta a medida que se lleva a cabo. Esto nos da como resultado un documento, el cual es el modelado de amenazas para la aplicación.  
 
-Se debe tener en cuenta que el trabajo de modelado de amenazas y el trabajo de crear documentos de modelado de amenazas son distintos (OWASP, s.f.).
+Se debe tener en cuenta que el trabajo de modelado de amenazas y el trabajo de crear documentos de modelado de amenazas son distintos [45].
 
 Los cuatro pasos propuestos por OWASP son:
 
@@ -691,12 +687,12 @@ Esta descomposición se lleva a cabo realizando *diagramas de flujo de datos (DF
 ===== Paso 2: Determinar las amenazas
 
 Este paso es una actividad de investigación para encontrar las principales amenazas que pueden dañar el sistema.  
-Para poder identificarlas es fundamental utilizar una metodología de categorización, como STRIDE, PASTA, VAST o SQUARE (OWASP, s.f.; Green, 2022).  
+Para poder identificarlas es fundamental utilizar una metodología de categorización, como STRIDE, PASTA, VAST o SQUARE [44, 45].  
 
 ====== Metodología STRIDE
 
 La metodología **STRIDE** fue desarrollada por Microsoft y es una de las más utilizadas para modelar amenazas.  
-Su nombre proviene del acrónimo de seis categorías de amenazas, que ayudan a los diseñadores a pensar como un atacante e identificar debilidades específicas (Green, 2022):
+Su nombre proviene del acrónimo de seis categorías de amenazas, que ayudan a los diseñadores a pensar como un atacante e identificar debilidades específicas [44]:
 
 
 |===
@@ -736,7 +732,7 @@ Su nombre proviene del acrónimo de seis categorías de amenazas, que ayudan a l
 ====== Ventajas de STRIDE
 
 Una de las ventajas más significativas del modelo STRIDE es su simplicidad y versatilidad, lo que lo hace aplicable a una amplia variedad de sistemas y servicios. Los equipos de seguridad y los desarrolladores pueden utilizar STRIDE para realizar análisis de amenazas de manera sistemática durante la fase de diseño, ayudándoles a comprender y anticipar posibles riesgos.  
-Al categorizar las amenazas mediante STRIDE, los arquitectos de seguridad pueden asegurar una evaluación integral de las preocupaciones de seguridad, abordando desde los mecanismos de autenticación hasta la integridad y disponibilidad de los datos (Green, 2022).
+Al categorizar las amenazas mediante STRIDE, los arquitectos de seguridad pueden asegurar una evaluación integral de las preocupaciones de seguridad, abordando desde los mecanismos de autenticación hasta la integridad y disponibilidad de los datos [44].
 
 ====== Uso de STRIDE en el modelado de amenazas
 
@@ -747,7 +743,7 @@ Cada elemento del DFD se evalúa luego empleando el modelo STRIDE para identific
 [TIP]
 ====
 El uso del modelo STRIDE permite a los equipos de seguridad comprender y anticipar los riesgos de manera estructurada.  
-Su aplicación facilita una evaluación holística de los problemas de seguridad y fomenta la integración temprana de controles de protección durante la fase de diseño (Green, 2022).
+Su aplicación facilita una evaluación holística de los problemas de seguridad y fomenta la integración temprana de controles de protección durante la fase de diseño [44].
 ====
 
 ===== Paso 3: Determinar las contramedidas y la mitigación
@@ -755,7 +751,7 @@ Su aplicación facilita una evaluación holística de los problemas de seguridad
 Después de haber identificado las amenazas, se deben definir las contramedidas adecuadas para mitigar los riesgos y evitar que el sistema se vea comprometido.  
 
 Una vulnerabilidad puede mitigarse mediante la implementación de una contramedida. Dichas contramedidas se pueden identificar mediante listas de asignación de amenazas-contramedidas.  
-Los factores que se incluyen en esta selección son la probabilidad de ataque, el daño potencial y el costo o complejidad de la mitigación (OWASP, s.f.).  
+Los factores que se incluyen en esta selección son la probabilidad de ataque, el daño potencial y el costo o complejidad de la mitigación [45].  
 
 Las opciones para abordar el riesgo incluyen:
 
@@ -768,7 +764,7 @@ Las opciones para abordar el riesgo incluyen:
 
 Al concluir cualquier proyecto o tarea, es crucial hacerse una pregunta fundamental: ¿hicimos un trabajo lo suficientemente bueno?  
 Este paso implica realizar una actividad retrospectiva, analizando de manera detallada y honesta la calidad de los resultados y la viabilidad de las soluciones implementadas.  
-Este proceso de revisión fomenta la mejora continua en la práctica del modelado de amenazas (OWASP, s.f.).
+Este proceso de revisión fomenta la mejora continua en la práctica del modelado de amenazas [45].
 
 ==== Ejemplo práctico
 
@@ -817,7 +813,7 @@ En nuestro ejemplo, se tiene la siguiente información:
 
 Las dependencias externas son elementos ajenos al código de la aplicación que pueden representar una amenaza para ella. Estos elementos suelen estar bajo el control de la organización, aunque posiblemente no bajo el control directo del equipo de desarrollo.
 
-Un aspecto a considerar cuando se analizan las dependencias externas es el entorno de producción y sus requisitos. Por ejemplo, si se espera que la aplicación se ejecute en un servidor y que esté detrás de un firewall, esta información debe documentarse en esta sección (OWASP, s.f.).
+Un aspecto a considerar cuando se analizan las dependencias externas es el entorno de producción y sus requisitos. Por ejemplo, si se espera que la aplicación se ejecute en un servidor y que esté detrás de un firewall, esta información debe documentarse en esta sección [45].
 
 Las dependencias externas deben documentarse de la siguiente manera:
 

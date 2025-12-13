@@ -21,22 +21,22 @@ La autenticación se utiliza para verificar la identidad personal; la verificaci
 ==== Encryption
 
 *Vulnerabilidades*: Poor Data Validation, Lack of data protection +
-Una API REST puede ser una puerta de enlace para transmitir o compartir datos a través de HTTP con otras aplicaciones. Por otra parte, se puede utilizar un cifrado simétrico para proteger los datos durante la transmisión, cifrando el texto sin formato en texto cifrado mediante tres claves únicas y diferentes. Al implementar este enfoque, los usuarios no autorizados o los piratas informáticos tienen dificultades para conocer el mensaje o los datos reales que ha enviado el remitente al destinatario. (EP-19)
+Una API REST puede ser una puerta de enlace para transmitir o compartir datos a través de HTTP con otras aplicaciones. Por otra parte, se puede utilizar un cifrado simétrico para proteger los datos durante la transmisión, cifrando el texto sin formato en texto cifrado mediante tres claves únicas y diferentes. Al implementar este enfoque, los usuarios no autorizados o los piratas informáticos tienen dificultades para conocer el mensaje o los datos reales que ha enviado el remitente al destinatario. [57]
 
 ==== Authentication
 
 *Vulnerabilidades*: Poor Authentication Management, Lack of signature-based authentication +
-La autenticación se utiliza para verificar la identidad personal; la verificación de identidad está relacionada con la verificación de credenciales. El plan determina si la persona es un usuario legítimo. La autorización es un mecanismo que se utiliza para determinar si un servicio concreto está disponible para los usuarios autenticados. Verifica que los usuarios tienen derecho a acceder personalmente a recursos como registros, bases de datos y archivos. Por lo general, la autorización se realiza después de la autenticación para verificar los privilegios del usuario. (EP-24)
+La autenticación se utiliza para verificar la identidad personal; la verificación de identidad está relacionada con la verificación de credenciales. El plan determina si la persona es un usuario legítimo. La autorización es un mecanismo que se utiliza para determinar si un servicio concreto está disponible para los usuarios autenticados. Verifica que los usuarios tienen derecho a acceder personalmente a recursos como registros, bases de datos y archivos. Por lo general, la autorización se realiza después de la autenticación para verificar los privilegios del usuario. [58]
 
 ==== Validación de parámetros.
 
 *Vulnerabilidad*: Lack of parameter validation. +
-El uso de esquemas formales (como JSON Schema, Zod o Pydantic) permite validar y asegurar que los parámetros de las funciones o APIs sean correctos, seguros y tengan la estructura esperada, evitando así errores, solicitudes malformadas o maliciosas. (Albada 2025)
+El uso de esquemas formales (como JSON Schema, Zod o Pydantic) permite validar y asegurar que los parámetros de las funciones o APIs sean correctos, seguros y tengan la estructura esperada, evitando así errores, solicitudes malformadas o maliciosas [59].
 
 ==== Autenticación basada en firma.
 
 *Vulnerabilidad*: Lack of signature-based authentication. + 
-Una firma digital, creada combinando una función hash con cifrado de clave asimétrica, permite garantizar la integridad y autenticidad de un mensaje, asegurando que el mensaje proviene del remitente legítimo y que no ha sido modificado por terceros. (Brikman, 2025)
+Una firma digital, creada combinando una función hash con cifrado de clave asimétrica, permite garantizar la integridad y autenticidad de un mensaje, asegurando que el mensaje proviene del remitente legítimo y que no ha sido modificado por terceros [35].
 
 ==== Blacklist read-only attributes and Define which HTTP parameters are allowed to be mapped.
 
@@ -57,7 +57,7 @@ No se debe poder acceder a un recurso secundario de un recurso principal desde o
 ==== Implement appropriate Cross-Origin Resource Sharing (CORS) policies
 
 *Vulnerabilidad*: Improper use of CORS +
-CORS es un mecanismo de seguridad del navegador que, junto con la Política del Mismo Origen (SOP), permite controlar qué solicitudes de red entre distintos orígenes son permitidas, evitando que scripts maliciosos realicen acciones no autorizadas en otros sitios web y protegiendo contra ataques como CSRF, mientras permite solicitudes cruzadas específicas de manera segura (Hoffman, 2024). 
+CORS es un mecanismo de seguridad del navegador que, junto con la Política del Mismo Origen (SOP), permite controlar qué solicitudes de red entre distintos orígenes son permitidas, evitando que scripts maliciosos realicen acciones no autorizadas en otros sitios web y protegiendo contra ataques como CSRF, mientras permite solicitudes cruzadas específicas de manera segura [60].
 
 ==== Arquitectura integrada como API gateway
 
@@ -67,13 +67,11 @@ API Gateway actúa como un escudo para proteger la aplicación contra accesos no
 ==== Utilizar valores por defecto.
 
 *Vulnerabilidad*: Null References. +
-El patrón decorador puede utilizarse para asignar valores predeterminados a los campos de entrada en una API RESTful, evitando así que los valores null generen comportamientos no deseados (como interpretar null como false). En lugar de añadir lógica adicional en el servidor o en la aplicación, el uso del decorador permite aplicar esta asignación de valores por defecto de forma más limpia y desacoplada del procesamiento principal de la solicitud. (Burns, 2024).
-
+El patrón decorador puede utilizarse para asignar valores predeterminados a los campos de entrada en una API RESTful, evitando así que los valores null generen comportamientos no deseados (como interpretar null como false). En lugar de añadir lógica adicional en el servidor o en la aplicación, el uso del decorador permite aplicar esta asignación de valores por defecto de forma más limpia y desacoplada del procesamiento principal de la solicitud [61].
 ==== Definir estándares de codificación
 
 *Vulnerabilidad*: Improper code +
-Los desarrolladores deben cumplir con las prácticas de seguridad y los estilos de codificación predefinidos, lo que reduce la probabilidad de errores y vulnerabilidades de seguridad. A veces se conocen como estándares de codificación. Las herramientas de linting, como ESLint para JavaScript, se utilizan para detectar y aplicar automáticamente estos estándares mediante el análisis del código a medida que se escribe. Los estándares pueden incluir, por ejemplo, saneamiento de entrada o manejo de errores. El uso de herramientas de linting ayuda a detectar problemas potenciales, como entradas no desinfectadas que podrían provocar ataques de inyección SQL. 
-Birch, M. (2025). CompTIA® SecurityX® CAS-005 Certification Guide: Master Advanced Security Strategies and Confidently Take the New CAS-005 Exam. (n.p.): Packt Publishing.
+Los desarrolladores deben cumplir con las prácticas de seguridad y los estilos de codificación predefinidos, lo que reduce la probabilidad de errores y vulnerabilidades de seguridad. A veces se conocen como estándares de codificación. Las herramientas de linting, como ESLint para JavaScript, se utilizan para detectar y aplicar automáticamente estos estándares mediante el análisis del código a medida que se escribe. Los estándares pueden incluir, por ejemplo, saneamiento de entrada o manejo de errores. El uso de herramientas de linting ayuda a detectar problemas potenciales, como entradas no desinfectadas que podrían provocar ataques de inyección SQL [62].
 
 === Repudiation
 No se encontraron vulnerabilidades en repudation
@@ -95,12 +93,12 @@ Haga un inventario de todos los aspectos importantes de la API, como el entorno 
 *Vulnerabilidad*: Showing the stack trace of the exception. +
 Es importante que sepa qué hacer si hay un error. Esto puede incluir volver a intentar la solicitud, registrar el error o tomar medidas correctivas.
 Por ejemplo, una respuesta 400 Bad Request a menudo incluye un mensaje detallado que explica qué salió mal (por ejemplo, faltan parámetros requeridos, formatos de datos incorrectos) y solicita al usuario que corrija el formato o los datos de la solicitud. Un código de estado 401 no autorizado indica problemas con la autenticación y, por lo tanto, sugiere que el usuario debe verificar las claves de API o los tokens de autenticación. Una respuesta 503 Servicio no disponible podría implicar que el servicio está temporalmente sobrecargado o inactivo por mantenimiento, en cuyo caso el usuario normalmente implementaría la lógica de reintento con retroceso exponencial.
-Cada respuesta de error de los servicios suele ir acompañada de un cuerpo JSON que incluye un código de error y un mensaje que proporciona contexto adicional. Puede deserializar esta información para determinar la causa raíz, informar al usuario o desencadenar acciones correctivas en la aplicación. También es una buena práctica registrar estas respuestas, ya que a menudo revelan posibles vulnerabilidades de seguridad que pueden surgir durante el proceso de desarrollo y proporcionan un mecanismo para depurar directamente los problemas. (Gondosubroto, 2025). 
+Cada respuesta de error de los servicios suele ir acompañada de un cuerpo JSON que incluye un código de error y un mensaje que proporciona contexto adicional. Puede deserializar esta información para determinar la causa raíz, informar al usuario o desencadenar acciones correctivas en la aplicación. También es una buena práctica registrar estas respuestas, ya que a menudo revelan posibles vulnerabilidades de seguridad que pueden surgir durante el proceso de desarrollo y proporcionan un mecanismo para depurar directamente los problemas [63].
 
 ==== Política de masking de datos sensibles.
 
 *Vulnerabilidad*: Showing the Stack trace of the exception. +
-El enmascaramiento de datos reemplaza los valores originales con alternativas ficticias pero realistas, que a menudo se utilizan en entornos de prueba, por ejemplo, dando a los pacientes seudónimos en los datos de ensayos médicos. (Birch, 2025)
+El enmascaramiento de datos reemplaza los valores originales con alternativas ficticias pero realistas, que a menudo se utilizan en entornos de prueba, por ejemplo, dando a los pacientes seudónimos en los datos de ensayos médicos [62].
 
 ==== Design proper exception handling logic for third-party code.
 
@@ -140,12 +138,12 @@ Edad mínima Esta configuración impide que los usuarios vuelvan a cambiar su co
 
 * Historial de contraseñas: Muchos usuarios adquieren el hábito de rotar entre dos contraseñas. Un historial de contraseñas recuerda un cierto número de contraseñas anteriores e impide que los usuarios reutilicen contraseñas. Combinado con una antigüedad mínima de uno o más días, evita que los usuarios cambien su contraseña varias veces de una sola vez hasta que vuelvan a su contraseña original.
 Recomendaciones de contraseñas autorizadas
-Las recomendaciones de contraseñas están cambiando y, hasta ahora, no hay un consenso que todos estén siguiendo. Dependiendo de la fuente que utilice, encontrará diferentes sugerencias de contraseñas. (Chapple et al, 2024)
+Las recomendaciones de contraseñas están cambiando y, hasta ahora, no hay un consenso que todos estén siguiendo. Dependiendo de la fuente que utilice, encontrará diferentes sugerencias de contraseñas [29].
 
 ==== Control de acceso robusto. 
 
 *Vulnerabilidad*: Insecure Direct Object Reference (IDOR) +
-El control de CCESS, o autorización, es el proceso de limitar a los usuarios para que accedan solo a la funcionalidad y los datos que se les permite usar específicamente. El Principio de Privilegio Mínimo, o POLP, define la esencia de lo que debe ofrecer un buen mecanismo de control de acceso. Como dijo Jerome Saltzer en 1974, "Cada programa y cada usuario privilegiado del sistema debe operar utilizando la menor cantidad de privilegios necesarios para completar el trabajo". (Manico & Detlefsen, 2014)
+El control de CCESS, o autorización, es el proceso de limitar a los usuarios para que accedan solo a la funcionalidad y los datos que se les permite usar específicamente. El Principio de Privilegio Mínimo, o POLP, define la esencia de lo que debe ofrecer un buen mecanismo de control de acceso. Como dijo Jerome Saltzer en 1974, "Cada programa y cada usuario privilegiado del sistema debe operar utilizando la menor cantidad de privilegios necesarios para completar el trabajo" [64]
 
 
 === Denial of Service

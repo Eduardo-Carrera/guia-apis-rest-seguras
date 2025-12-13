@@ -6,23 +6,23 @@ A lo largo de esta sección se abordan elementos clave del diseño seguro, tales
 
 === Zero Trust
 
-También llamada seguridad de red sin perímetro es un concepto que, cuando se aplica a las operaciones de conectividad, significa que no se confía en ningún usuario o dispositivo, incluso si se han autenticado previamente. Cada solicitud de acceso a los datos debe autenticarse dinámicamente para garantizar el acceso con privilegios mínimos a los recursos. (Lammle & Buhagiar 2024).  
+También llamada seguridad de red sin perímetro es un concepto que, cuando se aplica a las operaciones de conectividad, significa que no se confía en ningún usuario o dispositivo, incluso si se han autenticado previamente. Cada solicitud de acceso a los datos debe autenticarse dinámicamente para garantizar el acceso con privilegios mínimos a los recursos [48].  
 
 === Principio de menor privilegio
 
-Cada vez que un administrador concede a un usuario el derecho a hacer algo que normalmente hace el administrador, como administrar una impresora o cambiar permisos, se denomina acceso privilegiado. La concesión de todos los derechos y permisos, especialmente el acceso con privilegios mínimos a los recursos. (Lammle & Buhagiar 2024). 
+Cada vez que un administrador concede a un usuario el derecho a hacer algo que normalmente hace el administrador, como administrar una impresora o cambiar permisos, se denomina acceso privilegiado. La concesión de todos los derechos y permisos, especialmente el acceso con privilegios mínimos a los recursos [48]. 
 
 === Datos sensibles
 
-PII (Personally Identifiable Information) es “Cualquier información sobre un individuo mantenida por una entidad, la cual incluye”: Cualquier información que pueda usarse para distinguir o rastrear la identidad de un individuo, como el nombre, número de seguro social, fecha y lugar de nacimiento, apellido de soltera de la madre o registros biométricos; y cualquier otra información que esté vinculada o sea vinculable a un individuo, como la información médica, educativa, financiera o laboral. (McCallister et al. 2010)
+PII (Personally Identifiable Information) es “Cualquier información sobre un individuo mantenida por una entidad, la cual incluye”: Cualquier información que pueda usarse para distinguir o rastrear la identidad de un individuo, como el nombre, número de seguro social, fecha y lugar de nacimiento, apellido de soltera de la madre o registros biométricos; y cualquier otra información que esté vinculada o sea vinculable a un individuo, como la información médica, educativa, financiera o laboral [49]
 
-Distinguir a un individuo significa identificarlo. Algunos ejemplos de información que podrían identificar a una persona incluyen, entre otros, nombre completo, número de pasaporte, número de seguro social o datos biométricos. (McCallister et al. 2010)
+Distinguir a un individuo significa identificarlo. Algunos ejemplos de información que podrían identificar a una persona incluyen, entre otros, nombre completo, número de pasaporte, número de seguro social o datos biométricos [49].
 
-Rastrear a un individuo significa procesar suficiente información para determinar un aspecto específico de las actividades o el estado de una persona. Por ejemplo, un registro de auditoría que contenga las acciones de los usuarios podrían utilizarse para rastrear actividades las actividades de un individuo. (McCallister et al. 2010)
+Rastrear a un individuo significa procesar suficiente información para determinar un aspecto específico de las actividades o el estado de una persona. Por ejemplo, un registro de auditoría que contenga las acciones de los usuarios podrían utilizarse para rastrear actividades las actividades de un individuo [49].
 
-Por otra parte, la información vinculada es aquella que trata sobre un individuo o se relaciona con él, y que está lógicamente asociada con otra información sobre esa persona. En contraste, la información vinculable es aquella que trata sobre un individuo o se relaciona con él, pero existe la posibilidad de asociarla lógicamente con otra información sobre ese mismo individuo. (McCallister et al. 2010)
+Por otra parte, la información vinculada es aquella que trata sobre un individuo o se relaciona con él, y que está lógicamente asociada con otra información sobre esa persona. En contraste, la información vinculable es aquella que trata sobre un individuo o se relaciona con él, pero existe la posibilidad de asociarla lógicamente con otra información sobre ese mismo individuo [49].
 
-Por ejemplo, si dos bases de datos contienen diferentes elementos de PII, una persona con acceso a ambas podría vincular la información de las dos fuentes e identificar individuos, así como acceder a información adicional relacionada con ellos. Si la fuente de información secundaria está presente en el mismo sistema o en un sistema estrechamente relacionado y no existen controles de seguridad que separen eficazmente las fuentes de información, entonces los datos se consideran vinculados. Si la fuente de información secundaria se mantiene de forma más remota, por ejemplo: en un sistema no relacionado dentro de la organización, disponible en registros públicos o fácilmente obtenible, entonces los datos se consideran vinculables. (McCallister et al. 2010)
+Por ejemplo, si dos bases de datos contienen diferentes elementos de PII, una persona con acceso a ambas podría vincular la información de las dos fuentes e identificar individuos, así como acceder a información adicional relacionada con ellos. Si la fuente de información secundaria está presente en el mismo sistema o en un sistema estrechamente relacionado y no existen controles de seguridad que separen eficazmente las fuentes de información, entonces los datos se consideran vinculados. Si la fuente de información secundaria se mantiene de forma más remota, por ejemplo: en un sistema no relacionado dentro de la organización, disponible en registros públicos o fácilmente obtenible, entonces los datos se consideran vinculables [49].
 
 La siguiente lista contiene ejemplos de información que puede considerarse PII
 
@@ -34,42 +34,42 @@ La siguiente lista contiene ejemplos de información que puede considerarse PII
 * Información que identifica propiedad personal, como el número de registro o título de un vehículo y la información relacionada. 
 * Información sobre un individuo que está vinculada o puede vincularse, por ejemplo, fecha de nacimiento, lugar de nacimiento, raza, religión, peso, actividades, indicadores geográficos, información laboral, médica, educativa o financiera. 
 
-Una de las mejores prácticas es clasificar los datos, lo que proporciona una manera de categorizar y controlar los datos de la organización en función de los niveles de confidencialidad. (Shrivastava et al, 2024)
+Una de las mejores prácticas es clasificar los datos, lo que proporciona una manera de categorizar y controlar los datos de la organización en función de los niveles de confidencialidad [50].
 
-Según la sensibilidad de los datos, puede planificar los requisitos de protección de datos, cifrado de datos y acceso a los datos. (Shrivastava et al, 2024)
+Según la sensibilidad de los datos, puede planificar los requisitos de protección de datos, cifrado de datos y acceso a los datos [50].
 
-Al administrar la clasificación de datos según los requisitos de carga de trabajo de su sistema, puede crear los controles de datos y el nivel de acceso necesarios para los datos. Por ejemplo, el contenido, como la calificación y la reseña de un usuario, suele ser público, y está bien proporcionar acceso público, pero la información de la tarjeta de crédito del usuario es un dato altamente confidencial que debe cifrarse y someterse a un acceso muy restringido. (Shrivastava et al, 2024)
+Al administrar la clasificación de datos según los requisitos de carga de trabajo de su sistema, puede crear los controles de datos y el nivel de acceso necesarios para los datos. Por ejemplo, el contenido, como la calificación y la reseña de un usuario, suele ser público, y está bien proporcionar acceso público, pero la información de la tarjeta de crédito del usuario es un dato altamente confidencial que debe cifrarse y someterse a un acceso muy restringido [50].
 
 En un nivel alto, puede clasificar los datos en las siguientes categorías:
 
-* Datos restringidos: Contiene información que podría perjudicar directamente al cliente si se viera comprometido. El mal manejo de datos restringidos puede dañar la reputación de una empresa y afectar negativamente a un negocio. Los datos restringidos pueden incluir datos de PII del cliente, como números de seguro social, detalles de pasaporte, números de tarjetas de crédito e información de pago. (Shrivastava et al, 2024)
-* Datos privados: los datos se pueden clasificar como privados si contienen información confidencial del cliente que un atacante puede usar para planificar la obtención de sus datos restringidos. Los datos privados pueden incluir ID de correo electrónico de clientes, números de teléfono, nombres completos y direcciones. (Shrivastava et al, 2024)
-* Datos públicos: están disponibles y accesibles para todos y requieren una protección mínima, por ejemplo, las calificaciones y reseñas de los clientes, la ubicación del cliente y el nombre de usuario del cliente si el usuario lo hizo público. (Shrivastava et al, 2024)
+* Datos restringidos: Contiene información que podría perjudicar directamente al cliente si se viera comprometido. El mal manejo de datos restringidos puede dañar la reputación de una empresa y afectar negativamente a un negocio. Los datos restringidos pueden incluir datos de PII del cliente, como números de seguro social, detalles de pasaporte, números de tarjetas de crédito e información de pago [50].
+* Datos privados: los datos se pueden clasificar como privados si contienen información confidencial del cliente que un atacante puede usar para planificar la obtención de sus datos restringidos. Los datos privados pueden incluir ID de correo electrónico de clientes, números de teléfono, nombres completos y direcciones [50].
+* Datos públicos: están disponibles y accesibles para todos y requieren una protección mínima, por ejemplo, las calificaciones y reseñas de los clientes, la ubicación del cliente y el nombre de usuario del cliente si el usuario lo hizo público [50].
 
 
 === Triada CIA
 
-La triada de la CIA es un modelo fundamental en seguridad que describe los tres principios básicos de la seguridad de la información: Confidencialidad, integridad y disponibilidad. (Chow, 2024).
-La tríada de la CIA sirve como marco de referencia para que las organizaciones desarrollen e implementen políticas y prácticas de seguridad efectivas. Estos tres principios ayudan a las organizaciones a crear un enfoque integral para la seguridad de la información y proteger el negocio de diversas amenazas y vulnerabilidades. (Chow, 2024).
+La triada de la CIA es un modelo fundamental en seguridad que describe los tres principios básicos de la seguridad de la información: Confidencialidad, integridad y disponibilidad [51].
+La tríada de la CIA sirve como marco de referencia para que las organizaciones desarrollen e implementen políticas y prácticas de seguridad efectivas. Estos tres principios ayudan a las organizaciones a crear un enfoque integral para la seguridad de la información y proteger el negocio de diversas amenazas y vulnerabilidades [51].
 
 ==== Confidencialidad
 
-El primer principio de la Tríada de la CIA es la confidencialidad. La confidencialidad es el concepto de las medidas utilizadas para garantizar la protección del secreto de los datos, objetos o recursos. El objetivo de la protección de la confidencialidad es prevenir o minimizar el acceso no autorizado a los datos. Las protecciones de confidencialidad evitan la divulgación al tiempo que protegen el acceso autorizado. (Chapple et al. 2024)
+El primer principio de la Tríada de la CIA es la confidencialidad. La confidencialidad es el concepto de las medidas utilizadas para garantizar la protección del secreto de los datos, objetos o recursos. El objetivo de la protección de la confidencialidad es prevenir o minimizar el acceso no autorizado a los datos. Las protecciones de confidencialidad evitan la divulgación al tiempo que protegen el acceso autorizado [52].
 
-Garantiza que la información confidencial solo sea accesible para personas o sistemas autorizados. Esto incluye mantener los datos alejados de los malos actores con intenciones maliciosas. Las personas dentro de una organización también están sujetas a límites en Acceso a los datos. (Chow, 2024).
+Garantiza que la información confidencial solo sea accesible para personas o sistemas autorizados. Esto incluye mantener los datos alejados de los malos actores con intenciones maliciosas. Las personas dentro de una organización también están sujetas a límites en Acceso a los datos [51].
 
-Las violaciones de la confidencialidad no se limitan a los ataques intencionales dirigidos. Muchos casos de divulgación no autorizada de información sensible o confidencial son el resultado de un error humano, descuido o ineptitud. Las violaciones de confidencialidad pueden resultar de las acciones de un usuario final o un administrador del sistema. También pueden ocurrir debido a un descuido en una política de seguridad o un control de seguridad mal configurado. (Chapple et al. 2024)
+Las violaciones de la confidencialidad no se limitan a los ataques intencionales dirigidos. Muchos casos de divulgación no autorizada de información sensible o confidencial son el resultado de un error humano, descuido o ineptitud. Las violaciones de confidencialidad pueden resultar de las acciones de un usuario final o un administrador del sistema. También pueden ocurrir debido a un descuido en una política de seguridad o un control de seguridad mal configurado [52].
 
-Numerosas contramedidas pueden ayudar a garantizar la confidencialidad frente a posibles amenazas. Estos incluyen cifrado, relleno de tráfico de red, control de acceso estricto, procedimientos de autenticación rigurosos, clasificación de datos y amplia capacitación del personal. (Chapple et al. 2024)
+Numerosas contramedidas pueden ayudar a garantizar la confidencialidad frente a posibles amenazas. Estos incluyen cifrado, relleno de tráfico de red, control de acceso estricto, procedimientos de autenticación rigurosos, clasificación de datos y amplia capacitación del personal [52].
 
-Los métodos comunes para mantener la confidencialidad incluyen. (Chapple et al. 2024)
+Los métodos comunes para mantener la confidencialidad incluyen [52]:
 
 * Autenticación 
 * Autorización 
 * Cifrado 
 * Redacción. 
 
-Los conceptos, condiciones y aspectos de la confidencialidad incluyen los siguientes: (Chow, 2024).
+Los conceptos, condiciones y aspectos de la confidencialidad incluyen los siguientes [51]:
 
 * Sensibilidad: La sensibilidad se refiere a la calidad de la información que podría causar daño o perjuicio si se divulga.
 * Discreción: La discreción es una decisión en la que un operador puede influir o controlar la divulgación para minimizar el daño o el daño.
@@ -82,94 +82,94 @@ Los conceptos, condiciones y aspectos de la confidencialidad incluyen los siguie
 
 ==== Integridad
 
-La integridad es el concepto de proteger la confiabilidad y corrección de los datos. La protección de la integridad evita alteraciones no autorizadas de los datos. La protección de integridad implementada correctamente proporciona un medio para realizar cambios autorizados al tiempo que protege contra actividades no autorizadas intencionadas y maliciosas (como virus e intrusiones) y errores cometidos por usuarios autorizados (como accidentes o descuidos). (Chapple et al. 2024)
+La integridad es el concepto de proteger la confiabilidad y corrección de los datos. La protección de la integridad evita alteraciones no autorizadas de los datos. La protección de integridad implementada correctamente proporciona un medio para realizar cambios autorizados al tiempo que protege contra actividades no autorizadas intencionadas y maliciosas (como virus e intrusiones) y errores cometidos por usuarios autorizados (como accidentes o descuidos) [52].
 
 De igual forma, la integridad se refiere a la precisión y consistencia de los datos a lo largo de su ciclo de vida. Este principio garantiza que la información no sea alterada o manipulada por usuarios no autorizados y que siga siendo precisa, confiable y fidedigna. (Chow, 2024).
 La integridad se puede examinar desde tres perspectivas:
 
-* Evitar que sujetos no autorizados realicen modificaciones. (Chapple et al. 2024)
-* Evitar que los sujetos autorizados realicen modificaciones no autorizadas, como errores. (Chapple et al. 2024)
+* Evitar que sujetos no autorizados realicen modificaciones [52].
+* Evitar que los sujetos autorizados realicen modificaciones no autorizadas, como errores [52].
 
-* Mantener la coherencia interna y externa de los objetos para que sus datos sean un reflejo correcto y verdadero del mundo real y cualquier relación con cualquier otro objeto sea válida, coherente y verificable (Chapple et al. 2024)
+* Mantener la coherencia interna y externa de los objetos para que sus datos sean un reflejo correcto y verdadero del mundo real y cualquier relación con cualquier otro objeto sea válida, coherente y verificable [52].
 
 Las técnicas comunes para garantizar la integridad incluyen: 
 
-* Sumas de comprobación y funciones hash: Una cadena de longitud fija calculada a partir de los datos por un algoritmo. Las sumas de comprobación o los valores hash suelen venir con los propios datos. Cualquier manipulación de los datos produciría una suma de comprobación (o valor hash) diferente de la suma de comprobación original, por lo que el sistema la detecat como datos dañados.  (Chow, 2024).
+* Sumas de comprobación y funciones hash: Una cadena de longitud fija calculada a partir de los datos por un algoritmo. Las sumas de comprobación o los valores hash suelen venir con los propios datos. Cualquier manipulación de los datos produciría una suma de comprobación (o valor hash) diferente de la suma de comprobación original, por lo que el sistema la detecat como datos dañados [51].
 
-* Firmas digitales: Un documento está firmado por un valor hash generado por una clave privada del remitente. El destinatario recibe el documento junto con la firma digital. El destinatario calcula el valor hash del documento utilizando el mismo algoritmo. El destinatario descifra la firma digital utilizando la clave pública del remitente y recupera el valor hash original. Dos valores hash idénticos confirman que el documento no ha sido modificado. Las claves privada y pública del remitente forman un par, mientras que la clave privada solo es conocida por el remitente y la clave pública está disponible para cualquiera. (Chow, 2024).
+* Firmas digitales: Un documento está firmado por un valor hash generado por una clave privada del remitente. El destinatario recibe el documento junto con la firma digital. El destinatario calcula el valor hash del documento utilizando el mismo algoritmo. El destinatario descifra la firma digital utilizando la clave pública del remitente y recupera el valor hash original. Dos valores hash idénticos confirman que el documento no ha sido modificado. Las claves privada y pública del remitente forman un par, mientras que la clave privada solo es conocida por el remitente y la clave pública está disponible para cualquiera [51].
 
-Para que se mantenga la integridad en un sistema, deben existir controles para restringir el acceso a datos, objetos y recursos. Mantener y validar la integridad de los objetos en el almacenamiento, el transporte y el procesamiento requiere numerosas variaciones de controles y supervisión. (Chapple et al. 2024)
+Para que se mantenga la integridad en un sistema, deben existir controles para restringir el acceso a datos, objetos y recursos. Mantener y validar la integridad de los objetos en el almacenamiento, el transporte y el procesamiento requiere numerosas variaciones de controles y supervisión [52].
 
-Numerosos ataques se centran en la violación de la integridad. Estos incluyen virus, bombas lógicas, acceso no autorizado, errores en la codificación y las aplicaciones, modificación maliciosa, reemplazo intencional y puertas traseras del sistema. (Chapple et al. 2024)
+Numerosos ataques se centran en la violación de la integridad. Estos incluyen virus, bombas lógicas, acceso no autorizado, errores en la codificación y las aplicaciones, modificación maliciosa, reemplazo intencional y puertas traseras del sistema [52].
 
-El error humano, la supervisión o la ineptitud representan muchos casos de alteración no autorizada de información confidencial. También pueden ocurrir debido a un descuido en una política de seguridad o un control de seguridad mal configurado. (Chapple et al. 2024)
+El error humano, la supervisión o la ineptitud representan muchos casos de alteración no autorizada de información confidencial. También pueden ocurrir debido a un descuido en una política de seguridad o un control de seguridad mal configurado [52].
 
 
 ==== Disponibilidad
 
-La disponibilidad significa que los sujetos autorizados tienen acceso oportuno e ininterrumpido a los objetos. A menudo, los controles de protección de disponibilidad admiten suficiente ancho de banda y puntualidad de procesamiento según lo considere necesario la organización o la situación. La disponibilidad incluye un acceso eficiente e interrumpido a los objetos y la prevención de ataques de denegación de servicio. La disponibilidad también implica que la infraestructura de soporte, incluidos los servicios de red, las comunicaciones y los mecanismos de control de acceso, sea funcional y permita que los usuarios autorizados obtengan acceso. (Chapple et al. 2024)
+La disponibilidad significa que los sujetos autorizados tienen acceso oportuno e ininterrumpido a los objetos. A menudo, los controles de protección de disponibilidad admiten suficiente ancho de banda y puntualidad de procesamiento según lo considere necesario la organización o la situación. La disponibilidad incluye un acceso eficiente e interrumpido a los objetos y la prevención de ataques de denegación de servicio. La disponibilidad también implica que la infraestructura de soporte, incluidos los servicios de red, las comunicaciones y los mecanismos de control de acceso, sea funcional y permita que los usuarios autorizados obtengan acceso [52].
 
-Garantiza que la información y los recursos sean accesible para los usuarios autorizados cuando sea necesario. Este principio se centra en mantener la funcionalidad del sistema y minimizar el tiempo de inactividad debido a ataques, fallas u otras interrupciones. (Chow, 2024).
+Garantiza que la información y los recursos sean accesible para los usuarios autorizados cuando sea necesario. Este principio se centra en mantener la funcionalidad del sistema y minimizar el tiempo de inactividad debido a ataques, fallas u otras interrupciones [51].
 
 Las estrategias para mejorar la disponibilidad incluyen los siguientes. 
 
 *	Redundancia: evite un único punto de falla al tener componentes adicionales y rutas alternativas para garantizar las operaciones continuas y la integridad de los datos en caso de falla. 
 *	Equilibrio de carga: distribuya el tráfico entrante entre varios servidores para garantizar que se atiendan las solicitudes entrantes. 
 *	Copias de seguridad periódicas: mantenga copias de base de datos, el almacenamiento de archivos y el almacén de mensajería en varios servidores o ubicaciones para garantizar la disponibilidad de los datos y recuperarse de los problemas de datos. 
-*	Planificación y simulacros de recuperación ante desastres: describa los pasos específicos a seguir durante un desastre para que el sistema vuelva a funcionar y funcione. (Chow, 2024).
+*	Planificación y simulacros de recuperación ante desastres: describa los pasos específicos a seguir durante un desastre para que el sistema vuelva a funcionar y funcione [51].
 
-Para que se mantenga la disponibilidad en un sistema, deben existir controles para garantizar el acceso autorizado y un nivel aceptable de rendimiento, para manejar rápidamente las interrupciones, proporcionar redundancia, mantener copias de seguridad confiables y evitar la pérdida o destrucción de datos. (Chapple et al. 2024)
+Para que se mantenga la disponibilidad en un sistema, deben existir controles para garantizar el acceso autorizado y un nivel aceptable de rendimiento, para manejar rápidamente las interrupciones, proporcionar redundancia, mantener copias de seguridad confiables y evitar la pérdida o destrucción de datos [52].
 
-Existen numerosas amenazas a la disponibilidad. Estos incluyen fallas en el dispositivo, errores de software y problemas ambientales (calor, electricidad estática, inundaciones, pérdida de energía, etc.). Algunas formas de ataque se centran en la violación de la disponibilidad, incluidos los ataques DoS, la destrucción de objetos y las interrupciones de la comunicación. (Chapple et al. 2024)
+Existen numerosas amenazas a la disponibilidad. Estos incluyen fallas en el dispositivo, errores de software y problemas ambientales (calor, electricidad estática, inundaciones, pérdida de energía, etc.). Algunas formas de ataque se centran en la violación de la disponibilidad, incluidos los ataques DoS, la destrucción de objetos y las interrupciones de la comunicación [52].
 
-Muchas infracciones de disponibilidad son causadas por errores humanos, descuido o ineptitud. También pueden ocurrir debido a un descuido en una política de seguridad o un control de seguridad mal configurado. (Chapple et al. 2024)
+Muchas infracciones de disponibilidad son causadas por errores humanos, descuido o ineptitud. También pueden ocurrir debido a un descuido en una política de seguridad o un control de seguridad mal configurado [52].
 
 Los conceptos, condiciones y aspectos de la disponibilidad incluyen los siguientes:
 
 
 *	Usabilidad: El estado de ser fácil de usar o aprender o poder ser entendido y controlado por un sujeto
 *	Accesibilidad: La garantía de que la más amplia gama de sujetos puede interactuar con un recurso independientemente de sus capacidades o limitaciones
-*	Puntualidad: Ser rápido, puntual, dentro de un plazo razonable o proporcionar una respuesta de baja latencia (Chapple et al. 2024)
+*	Puntualidad: Ser rápido, puntual, dentro de un plazo razonable o proporcionar una respuesta de baja latencia [52].
 
 
 === Cómo validar entradas
 
-Los profesionales de la ciberseguridad y los desarrolladores de aplicaciones tienen varias herramientas a su disposición para ayudar a protegerse contra las vulnerabilidades de las aplicaciones. Uno de los más importantes es la validación de entradas. Las aplicaciones que permiten la entrada del usuario deben realizar la validación de esa entrada para reducir la probabilidad de que contenga un ataque. Las prácticas inadecuadas de manejo de entradas pueden exponer las aplicaciones a ataques de inyección, ataques de secuencias de comandos entre sitios y otras vulnerabilidades. (McCallister et al. 2010)
+Los profesionales de la ciberseguridad y los desarrolladores de aplicaciones tienen varias herramientas a su disposición para ayudar a protegerse contra las vulnerabilidades de las aplicaciones. Uno de los más importantes es la validación de entradas. Las aplicaciones que permiten la entrada del usuario deben realizar la validación de esa entrada para reducir la probabilidad de que contenga un ataque. Las prácticas inadecuadas de manejo de entradas pueden exponer las aplicaciones a ataques de inyección, ataques de secuencias de comandos entre sitios y otras vulnerabilidades [49].
 
-La forma más efectiva de Validación de entrada Utiliza la lista de permitidos, en la que el desarrollador describe el tipo exacto de entrada que se espera del usuario y, a continuación, comprueba que la entrada coincide con esa especificación antes de pasar la entrada a otros procesos o servidores. Por ejemplo, si un formulario de entrada solicita a un usuario que introduzca su edad, la lista de permitidos podría comprobar que el usuario ha proporcionado un valor entero dentro del intervalo de 0 a 125. A continuación, la aplicación rechazaría cualquier valor fuera de ese intervalo. (McCallister et al. 2010)
+La forma más efectiva de Validación de entrada Utiliza la lista de permitidos, en la que el desarrollador describe el tipo exacto de entrada que se espera del usuario y, a continuación, comprueba que la entrada coincide con esa especificación antes de pasar la entrada a otros procesos o servidores. Por ejemplo, si un formulario de entrada solicita a un usuario que introduzca su edad, la lista de permitidos podría comprobar que el usuario ha proporcionado un valor entero dentro del intervalo de 0 a 125. A continuación, la aplicación rechazaría cualquier valor fuera de ese intervalo [49].
 
-Recuerda que Validación de entrada ayuda a prevenir una amplia gama de problemas, desde secuencias de comandos entre sitios (XSS) hasta ataques de inyección SQL. (McCallister et al. 2010)
+Recuerda que Validación de entrada ayuda a prevenir una amplia gama de problemas, desde secuencias de comandos entre sitios (XSS) hasta ataques de inyección SQL [49].
 
-Al realizar Validación de entrada, es muy importante asegurarse de que la validación se produce en el lado del servidor en lugar de dentro del navegador del cliente. La validación del lado cliente es útil para proporcionar a los usuarios comentarios sobre su entrada, pero nunca se debe confiar en ella como un control de seguridad. Es fácil para los piratas informáticos y los probadores de penetración eludir los navegadores entrada validación. (McCallister et al. 2010)
+Al realizar Validación de entrada, es muy importante asegurarse de que la validación se produce en el lado del servidor en lugar de dentro del navegador del cliente. La validación del lado cliente es útil para proporcionar a los usuarios comentarios sobre su entrada, pero nunca se debe confiar en ella como un control de seguridad. Es fácil para los piratas informáticos y los probadores de penetración eludir los navegadores entrada validación [49].
 
 
 === Disponibilidad: rate limiting
 
-La disponibilidad es uno de los pilares fundamentales de la seguridad en APIs REST, asegurando que los usuarios autorizados puedan acceder a los recursos de manera oportuna y continua. Una estrategia crítica para mantener la disponibilidad es la limitación de la tasa de solicitudes (rate limiting), la cual controla la frecuencia de interacción de un usuario o cliente con la API dentro de un intervalo de tiempo determinado. Esta medida previene la sobrecarga de los recursos del sistema y protege contra ataques de denegación de servicio (DoS) y fuerza bruta (Preuveneers, 2019; Abdurrahman & Husni, 2024).
+La disponibilidad es uno de los pilares fundamentales de la seguridad en APIs REST, asegurando que los usuarios autorizados puedan acceder a los recursos de manera oportuna y continua. Una estrategia crítica para mantener la disponibilidad es la limitación de la tasa de solicitudes (rate limiting), la cual controla la frecuencia de interacción de un usuario o cliente con la API dentro de un intervalo de tiempo determinado. Esta medida previene la sobrecarga de los recursos del sistema y protege contra ataques de denegación de servicio (DoS) y fuerza bruta [53, 54].
 
 ==== Conceptos Fundamentales
 
-El rate limiting es un mecanismo que restringe el número máximo de solicitudes que un usuario, cliente o dirección IP puede realizar durante un período de tiempo definido. En caso de excederse el límite, la API devuelve un error 429 (Too Many Requests). Este control garantiza un uso equitativo de los recursos y contribuye a la estabilidad del sistema (Building Generative AI Services with FastAPI, 2024; Mastering API Architecture, 2022).
+El rate limiting es un mecanismo que restringe el número máximo de solicitudes que un usuario, cliente o dirección IP puede realizar durante un período de tiempo definido. En caso de excederse el límite, la API devuelve un error 429 (Too Many Requests). Este control garantiza un uso equitativo de los recursos y contribuye a la estabilidad del sistema [4, 33].
 
-Por otro lado, el throttling es una técnica complementaria que reduce temporalmente la velocidad de procesamiento de solicitudes para estabilizar el rendimiento del servidor cuando la demanda se aproxima a su capacidad máxima (Building Generative AI Services with FastAPI, 2024).
+Por otro lado, el throttling es una técnica complementaria que reduce temporalmente la velocidad de procesamiento de solicitudes para estabilizar el rendimiento del servidor cuando la demanda se aproxima a su capacidad máxima [4].
 
 ==== Beneficios del Rate Limiting
 
 1. Prevención de abusos: Impide que usuarios maliciosos o bots saturen la API mediante scraping de datos o ataques de fuerza bruta.  
 2. Equidad en el acceso: Asegura que la capacidad del servidor se distribuya de manera justa entre todos los usuarios, evitando que unos pocos consuman desproporcionadamente los recursos.  
-3. Estabilidad del sistema: Regula el tráfico entrante para mantener un rendimiento consistente y reducir la probabilidad de fallas durante picos de carga (Building Generative AI Services with FastAPI, 2024).
+3. Estabilidad del sistema: Regula el tráfico entrante para mantener un rendimiento consistente y reducir la probabilidad de fallas durante picos de carga [4].
 
 ==== Implementación
 
-* La limitación de solicitudes se puede implementar en frameworks como Spring Boot, utilizando bibliotecas como Resilience4J (Abdurrahman, 2024).  
-* En arquitecturas modernas, es recomendable aplicar el rate limiting en el API Gateway, identificando al origen de las solicitudes mediante propiedades tales como dirección IP, geolocalización o client ID (Mastering API Architecture, 2022).  
-* Es fundamental definir políticas de fail open o fail closed de acuerdo con la criticidad del servicio. Por ejemplo, APIs financieras suelen requerir fail closed, mientras que servicios públicos de información pueden optar por fail open (Mastering API Architecture, 2022).
+* La limitación de solicitudes se puede implementar en frameworks como Spring Boot, utilizando bibliotecas como Resilience4J [54].
+* En arquitecturas modernas, es recomendable aplicar el rate limiting en el API Gateway, identificando al origen de las solicitudes mediante propiedades tales como dirección IP, geolocalización o client ID [33].
+* Es fundamental definir políticas de fail open o fail closed de acuerdo con la criticidad del servicio. Por ejemplo, APIs financieras suelen requerir fail closed, mientras que servicios públicos de información pueden optar por fail open [33].
 
 ==== Consideraciones
 
-* Realizar pruebas de carga permite identificar límites operativos, puntos de falla y el comportamiento del sistema frente a picos de tráfico (Mastering API Architecture, 2022).  
-* La implementación de rate limiting también es recomendable para llamadas internas de APIs, ya que sistemas internos pueden generar accidentalmente condiciones de DoS debido a dependencias circulares (Mastering API Architecture, 2022).  
-* Los límites de interacción deben ajustarse en función de los requisitos del negocio, equilibrando la protección del sistema con la experiencia del usuario (Abdurrahman 2024).
+* Realizar pruebas de carga permite identificar límites operativos, puntos de falla y el comportamiento del sistema frente a picos de tráfico [33].
+* La implementación de rate limiting también es recomendable para llamadas internas de APIs, ya que sistemas internos pueden generar accidentalmente condiciones de DoS debido a dependencias circulares [33].
+* Los límites de interacción deben ajustarse en función de los requisitos del negocio, equilibrando la protección del sistema con la experiencia del usuario [54].
 
 ==== Algoritmos de rate limiting
 Es necesario definir cómo se calcula la tasa de solicitudes dentro del sistema. Para implementar rate limiting de forma consistente y segura, un servicio distribuido debe contar con mecanismos claros para medir y controlar el ritmo de las solicitudes realizadas por cada consumidor. 
@@ -327,11 +327,11 @@ Su precisión puede verse afectada en entornos **distribuidos** debido a problem
 Puede **subestimar ligeramente** el número real de solicitudes, ya que no se consideran las solicitudes de la subventana más antigua parcialmente superpuesta.
 
 ==== Cuando no hacer rate limiting
-El *rate limiting* es una técnica fundamental para mitigar abusos y proteger la disponibilidad de una API. Sin embargo, no siempre es la solución adecuada para todos los escenarios relacionados con el uso excesivo por parte del cliente. Es importante comprender sus limitaciones para evitar aplicar mecanismos que resulten contraproducentes para la experiencia del usuario o para el cumplimiento de requisitos empresariales (Tan, 2024).
+El *rate limiting* es una técnica fundamental para mitigar abusos y proteger la disponibilidad de una API. Sin embargo, no siempre es la solución adecuada para todos los escenarios relacionados con el uso excesivo por parte del cliente. Es importante comprender sus limitaciones para evitar aplicar mecanismos que resulten contraproducentes para la experiencia del usuario o para el cumplimiento de requisitos empresariales [55]
 
-En primer lugar, existen situaciones en las que el cliente necesita recibir retroalimentación explícita sobre su comportamiento. Por ejemplo, en un servicio de redes sociales donde los usuarios pueden suscribirse a notificaciones asociadas a un hashtag, es posible que un usuario realice demasiadas solicitudes de suscripción en un corto periodo. En estos casos, el servicio debe informar al usuario que ha superado el límite permitido dentro de ese intervalo. Si se aplicara *rate limiting* de forma estricta, la API simplemente descartaría las solicitudes y devolvería un código 429 (*Too Many Requests*) o incluso ninguna respuesta, lo que podría ser interpretado por el cliente como un error 500. Este comportamiento generaría una mala experiencia de usuario, especialmente en aplicaciones web o móviles que podrían ofrecer mensajes más claros y útiles si contaran con una respuesta explícita por parte del servicio (Tan, 2024).
+En primer lugar, existen situaciones en las que el cliente necesita recibir retroalimentación explícita sobre su comportamiento. Por ejemplo, en un servicio de redes sociales donde los usuarios pueden suscribirse a notificaciones asociadas a un hashtag, es posible que un usuario realice demasiadas solicitudes de suscripción en un corto periodo. En estos casos, el servicio debe informar al usuario que ha superado el límite permitido dentro de ese intervalo. Si se aplicara *rate limiting* de forma estricta, la API simplemente descartaría las solicitudes y devolvería un código 429 (*Too Many Requests*) o incluso ninguna respuesta, lo que podría ser interpretado por el cliente como un error 500. Este comportamiento generaría una mala experiencia de usuario, especialmente en aplicaciones web o móviles que podrían ofrecer mensajes más claros y útiles si contaran con una respuesta explícita por parte del servicio [55]
 
-En segundo lugar, existen modelos de negocio donde los límites de uso forman parte de un esquema de suscripción. Servicios que cobran tarifas basadas en tasas de solicitudes (por ejemplo, planes que permiten 1,000 o 10,000 solicitudes por hora) requieren controlar de forma precisa cuándo un cliente ha alcanzado su cuota. Si un cliente excede el límite contratado, las solicitudes posteriores deben rechazarse hasta el siguiente intervalo de facturación. Este control de cuotas es un requerimiento empresarial y no debe delegarse en un servicio compartido de *rate limiting*, ya que este tipo de servicios está diseñado para casos simples y no para escenarios complejos donde cada cliente posee un límite personalizado (Tan, 2024).
+En segundo lugar, existen modelos de negocio donde los límites de uso forman parte de un esquema de suscripción. Servicios que cobran tarifas basadas en tasas de solicitudes (por ejemplo, planes que permiten 1,000 o 10,000 solicitudes por hora) requieren controlar de forma precisa cuándo un cliente ha alcanzado su cuota. Si un cliente excede el límite contratado, las solicitudes posteriores deben rechazarse hasta el siguiente intervalo de facturación. Este control de cuotas es un requerimiento empresarial y no debe delegarse en un servicio compartido de *rate limiting*, ya que este tipo de servicios está diseñado para casos simples y no para escenarios complejos donde cada cliente posee un límite personalizado [55]
 
 
 
@@ -465,7 +465,7 @@ POST /orders
 
 El desarrollo de software y las API web requieren cambios constantes, pero modificarlas sin afectar a los usuarios es un desafío. Dado que las API son públicas y difíciles de alterar de forma segura, nunca cambiarla no es una opción viable, especialmente ante problemas legales o de seguridad. Por ello, se introduce el concepto de versionado de API, que permite realizar modificaciones controladas mediante distintas estrategias que equilibran la evolución y la compatibilidad.
 
-Implemente el control de versiones en sus API. Si se detecta un problema de seguridad en una versión de la API, se puede abordar sin afectar a otras versiones, lo que garantiza la continuidad del servicio para las aplicaciones que utilizan las versiones no afectadas. Por ejemplo, supongamos que tiene una aplicación móvil que se basa en una API para obtener datos de usuario. Al implementar el control de versiones (por ejemplo, v1, v2, v3), si se descubre una vulnerabilidad de seguridad en v2, puede abordar rápidamente el problema en esa versión mientras las versiones anteriores (v1) y más recientes (v3) continúan funcionando de forma segura y sin interrupciones. Este enfoque permite a su equipo de desarrollo aplicar parches o actualizar versiones específicas de la API, minimizando el impacto en los usuarios finales. (Shrivastava et al, 2024)
+Implemente el control de versiones en sus API. Si se detecta un problema de seguridad en una versión de la API, se puede abordar sin afectar a otras versiones, lo que garantiza la continuidad del servicio para las aplicaciones que utilizan las versiones no afectadas. Por ejemplo, supongamos que tiene una aplicación móvil que se basa en una API para obtener datos de usuario. Al implementar el control de versiones (por ejemplo, v1, v2, v3), si se descubre una vulnerabilidad de seguridad en v2, puede abordar rápidamente el problema en esa versión mientras las versiones anteriores (v1) y más recientes (v3) continúan funcionando de forma segura y sin interrupciones. Este enfoque permite a su equipo de desarrollo aplicar parches o actualizar versiones específicas de la API, minimizando el impacto en los usuarios finales [50].
 
 El control de versiones en una API permite realizar cambios sin afectar a los usuarios existentes, creando versiones separadas para nuevas implementaciones. No obstante, va más allá de solo etiquetar versiones: implica decidir en qué nivel aplicarlo (cliente, servidor o protocolo) y qué política seguir. No existe una única forma correcta, ya que depende de las necesidades de los desarrolladores y usuarios. Su objetivo principal es maximizar la funcionalidad y minimizar los inconvenientes, garantizando compatibilidad entre versiones.
 
@@ -693,21 +693,19 @@ El proceso consiste en que el usuario genera un par de claves, registra su clave
 
 === Antipatrones
 
-Por lo contrario, existen diseños o enfoques de pueden parecer bueno pero finalmente llevarnos a problemas y dificultades. Estos son conocidos como antipatrones. (Fundamental of Software Architecture, Mark Richards)
+Por lo contrario, existen diseños o enfoques de pueden parecer bueno pero finalmente llevarnos a problemas y dificultades. Estos son conocidos como antipatrones [2].
 
 A continuación se presentan algunos antipatrones comunes en el diseño de API:
 
 ==== ¡No más métodos “No llames a este método”!
 
-Es común encontrar APIs que incluyen métodos marcados en la documentación con frases como “No me llames, soy parte de la implementación” o “Solo para uso interno”. Este tipo de métodos son uno de los peores antipatrones de diseño, ya que hacen que la API parezca menos profesional y distraen al usuario con detalles de implementación innecesarios.
+Es común encontrar APIs que incluyen métodos marcados en la documentación con frases como “No me llames, soy parte de la implementación” o “Solo para uso interno”. Este tipo de métodos son uno de los peores antipatrones de diseño, ya que hacen que la API parezca menos profesional y distraen al usuario con detalles de implementación innecesarios [56].
 
 Estos métodos suelen indicar que partes de la implementación ubicadas en paquetes separados necesitan acceso privilegiado a funcionalidades del paquete principal. Precisamente para este caso fue inventado el patrón de acceso amigo (friend accessor pattern).
 
 Aunque algunos argumentan que este patrón puede ser complejo de implementar, en realidad se trata solo de un detalle interno invisible para el usuario de la API. Además, permite que los usuarios interactúen con menos métodos, reduciendo errores y promoviendo un uso más intuitivo.
 
 Por lo tanto, evita incluir métodos del tipo *“soy un detalle de implementación”* en tus APIs.
-
-ref: Practical API Design, Jaroslav Tulach. Apress.
 
 ==== Antipatrón: “Una solución sirve para todos” en autenticación
 

@@ -8,7 +8,7 @@ La tabla incluye, además de su descripción y fase de uso, recomendaciones prá
 
 |Burp Suite
 |Diseño / Revisión temprana
-|Plataforma de pruebas de seguridad en aplicaciones web que funciona como proxy de intercepción, permitiendo analizar y manipular el tráfico HTTP/HTTPS. Incluye herramientas como Spider, Intruder, Repeater y Scanner. (Santos, Lazzara, & Thurner, 2025)
+|Plataforma de pruebas de seguridad en aplicaciones web que funciona como proxy de intercepción, permitiendo analizar y manipular el tráfico HTTP/HTTPS. Incluye herramientas como Spider, Intruder, Repeater y Scanner. [65]
 |Comercial / versión comunitaria gratuita
 |https://portswigger.net/burp
 |Cuando se requiere una inspección profunda del tráfico, pruebas manuales o validación temprana de seguridad.
