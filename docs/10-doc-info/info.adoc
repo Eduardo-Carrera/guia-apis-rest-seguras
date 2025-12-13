@@ -11,7 +11,7 @@ Si deseas referenciar esta guía en trabajos académicos, proyectos o documentac
 
 [quote]
 ____
-Moreno, A. M. (2025). *Guía para el Diseño de APIs REST Seguras* (versión 0.1).  
+Moreno, A. M. & Carrera, E. C. (2025). *Guía para el Diseño de APIs REST Seguras* (versión 0.1).  
 Disponible en: https://eduardo-carrera.github.io/guia-apis-rest-seguras/
 ____
 
