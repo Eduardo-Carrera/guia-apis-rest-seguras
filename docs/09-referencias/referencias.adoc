@@ -1,68 +1,133 @@
 == Referencias
 
 [1] ISO, IEC, & IEEE. (2011). ISO/IEC/IEEE 24765:2011 Systems and software engineering — Vocabulary. International Organization for Standardization.
+
 [2] Richards, M., & Ford, N. (2020). Fundamentals of software architecture: An engineering approach. O’Reilly Media.
+
 [3] Madden, N. (2020). API Security in Action. Manning Publications.
+
 [4] Parandeh, A. (2025). Building Generative AI Services with FastAPI. O’Reilly Media.
+
 [5] Newman, S. (2021). Building microservices (2nd ed.). O’Reilly Media.
+
 [6] Copeland, M. (2017). Cyber Security on Azure. Springer.
+
 [7] Johnsson, D. B., Deogun, D., & Sawano, D. (2019). Secure by Design. Manning Publications.
+
 [8] Varga, M., Pereira de Andrade, P. H., de Morais, S., Bomfim, T., & Avancini Fraga, I. (2025). Mastering RESTful Web Services with Java. Packt Publishing.
+
 [9] Sweigart, A. (2025). Automate the boring stuff with Python (3rd ed.). No Starch Press.
+
 [10] Shevchenko, N., Chick, T. A., O'riordan, P., Scanlon, T. P., & Woody, C. (2018). Threat modeling: a summary of available methods (No. AFLCMCAZS).
+
 [11] Akamai. (s.f.). What is OWASP? Akamai Glossary. https://www.akamai.com/es/glossary/what-is-owasp
+
 [12] Shvets, A. (2018). Dive into design patterns. Refactoring. Guru, 22-29.
+
 [13] Xesquevixos, W. (2025). Software Architecture with Spring. Packt Publishing Ltd.
+
 [14] Dowd, M., McDonald, J., & Schuh, J. (2006). The art of software security assessment: Identifying and preventing software vulnerabilities. Pearson Education.
+
 [15] Kosinski, M. (2024, junio 28). Autenticación o autorización: ¿cuál es la diferencia? IBM. https://www.ibm.com/es-es/think/topics/authentication-vs-authorization
+
 [16] Cloudflare, Inc. (2025). ¿Por qué el HTTP no es seguro? | HTTP vs. HTTPS: ¿Cuáles son las diferencias? Cloudflare. https://www.cloudflare.com/es-es/learning/ssl/why-is-http-not-secure/
+
 [17] Postman. (2023). 2023 State of the API report. https://voyager.postman.com/pdf/2023-state-of-the-api-report-postman.pdf
+
 [18] Vasudevan, K. (2017, March 29). What is API lifecycle management? Swagger Blog. https://swagger.io/blog/api-strategy/what-is-api-lifecycle-management/
+
 [19] Akamai. (s.f.). What is the API lifecycle? https://www.akamai.com/glossary/what-is-the-api-lifecycle
+
 [20] Guba, M. (2025, July 2). Mastering the API lifecycle management. Lobster. https://www.lobster-world.com/en/blog/mastering-the-api-lifecycle-management/
+
 [21] Postman. (s.f.). API lifecycle. https://www.postman.com/api-platform/api-lifecycle/
+
 [22] Project Management Institute. (2021). A guide to the project management body of knowledge (PMBOK® guide) – Seventh edition and The standard for project management. Project Management Institute.
+
 [23] Wiegers, K., & Beatty, J. (2013). Software requirements (3rd ed.). Microsoft Press.
+
 [24] OWASP. (s.f.). Define security requirements. OWASP Developer Guide. https://devguide.owasp.org/es/04-design/02-web-app-checklist/01-define-security-requirements/
+
 [25] National Cyber Security Centre. (s.f.). Developing a positive cyber-security culture. https://www.ncsc.gov.uk/collection/board-toolkit/principle-c-people/developing-a-positive-cyber-security-culture
+
 [26] Everard, T. (s.f.). What is cyber-security culture and why does it matter for your organisation? PA Consulting. https://www.paconsulting.com/insights/what-is-cyber-security-culture-and-why-does-it-matter-for-your-organisation
+
 [27] Akamai. (s.f.). What is zero-trust? Akamai Glossary. https://www.akamai.com/glossary/what-is-zero-trust
+
 [28] Akamai. (s.f.). What are API security risks? Akamai Glossary. https://www.akamai.com/es/glossary/what-are-api-security-risks
+
 [29] Chapple, M., & Seidl, D. (2022). (ISC)² CCSP Certified Cloud Security Professional Official Study Guide (3rd ed.). Wiley.
+
 [30] ScienceDirect. (s.f.). Threat identification. https://www.sciencedirect.com/topics/computer-science/threat-identification
+
 [31] PubNub. (s.f.). API security guide. https://www.pubnub.com/guides/api-security/
+
 [32] Yosef, G. (2024, December 30). 10 API security standards and protocols you must know. Pynt. https://www.pynt.io/learning-hub/api-security-guide/10-api-security-standards-and-protocols-you-must-know
+
 [33] Gough, J., Bryant, D., & Auburn, M. (2022). Mastering API Architecture. O’Reilly Media.
+
 [34] Chun, A. S. E., Gallagher, A., Shah, A. A., Jackson, C., Tagliabue, C., Dimitrov, I., Blackburn, J., Gomez, J., Clark, K., Gavin, L., Menendez, M., Evans, M., Alreedi, M., Sitaraman, M., Glowacki, N., Narain, S., Quigly, T., Curcio, T., Cubuk, U., & Gucer, V. (2020). Accelerating modernization with agile integration. IBM Redbooks.
+
 [35] Brikman, Y. (2025). Fundamentals of DevOps and Software Delivery. O’Reilly Media.
+
 [36] Nugraha, A. F., Kabetta, H., Buana, I. K. S., & Hadiprakoso, R. B. (2023, August). Performance and security comparison of json web tokens (jwt) and platform agnostic security tokens (paseto) on restful apis. In 2023 IEEE International Conference on Cryptography, Informatics, and Cybersecurity (ICoCICs) (pp. 15-22). IEEE.
+
 [37] Lock, A. (2022). ASP.NET Core in action (2nd ed.). Manning Publications.
+
 [38] Edwards, J., & Weaver, G. (2024). The cybersecurity guide to governance, risk, and compliance. Wiley.
+
 [39] Staveley, C. (2024). API security for white hat hackers. Packt Publishing.
+
 [40] Chandramouli, R., & Butcher, Z. (2025). Guidelines for API protection for cloud-native systems (NIST Special Publication 800-228). National Institute of Standards and Technology. https://doi.org/10.6028/NIST.SP.800-228
+
 [41] U.S. Department of Health & Human Services. (1996). Health Insurance Portability and Accountability Act of 1996 (HIPAA). https://www.hhs.gov/hipaa
+
 [42] National People’s Congress. (2016). Cybersecurity Law of the People’s Republic of China (promulgated November 7, 2016; effective June 1, 2017). https://cyrilla.org/api/files/1728279331485nksctogz35.pdf
+
 [43] Threat Modeling Manifesto. (s.f.). Threat Modeling Manifesto. https://www.threatmodelingmanifesto.org/
+
 [44] Green, J. (2025). Security Architecture. BCS, The Chartered Institute for IT.
+
 [45] OWASP. (s.f.). OWASP Threat Modeling Project. https://owasp.org/www-project-threat-model/
+
 [46] Greene, S. (2023, septiembre). CompTIA Security+ SY0-701 [Curso bajo demanda].
+
 [47] OWASP. (2023). OWASP API Security Top 10 – 2023. https://owasp.org/API-Security/editions/2023/en/0x11-t10/
+
 [48] Lammle, T., & Buhagiar, J. (2024). CompTIA Network+ study guide (6th ed.). Sybex.
+
 [49] McCallister, E., Grance, T., & Scarfone, K. (2010). Guide to protecting the confidentiality of personally identifiable information (PII) (NIST Special Publication 800-122). National Institute of Standards and Technology. https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-122.pdf 
+
 [50] Shrivastava, S., & Srivastav, N. (2024). Solutions Architect's Handbook (3rd ed.). Packt Publishing.
+
 [51] Chow, J. (2024). Software architecture with Kotlin: Combine various architectural styles to create sustainable and scalable software solutions. Packt Publishing.
+
 [52] Chapple, M., Stewart, J. M., Gibson, D., & Seidl, D. (2024). ISC2 CISSP certified information systems security professional official study guide & practice tests bundle (Sybex Study Guide). Wiley.
+
 [53] Preuveneers, D., & Joosen, W. (2019, November). TATIS: trustworthy APIs for threat intelligence sharing with UMA and CP-ABE. In International Symposium on Foundations and Practice of Security (pp. 172-188). Cham: Springer International Publishing.
+
 [54] Abdurrahman, A. M., & Husni, E. (2024, September). A Secure Digital Image Marketplace: Microservices and OWASP API Security Using Spring Boot. In 2024 International Conference on ICT for Smart Society (ICISS) (pp. 1-8). IEEE.
+
 [55] Tan, Z. (2024). Acing the system design interview. Manning Publications.
+
 [56] Tulach, J. (2008). Practical API design: Confessions of a Java framework architect. Apress.
+
 [57] Yusof, M. K., Man, M., Hamzah, W. M. A. F. W., Safei, S., Haryani, M. T., & Shah, N. A. A. A. (2023, September). A Secure Model Based on Symmetric Encryption for REST API in Data Integration. In 2023 27th International Computer Science and Engineering Conference (ICSEC) (pp. 402-406). IEEE.
+
 [58] Chatterjee, A., Gerdes, M. W., Khatiwada, P., & Prinz, A. (2022). Sftsdh: Applying spring security framework with TSD-based oauth2 to protect microservice architecture apis. IEEE Access, 10, 41914-41934.
+
 [59] Albada, M. (2025). Building applications with AI agents: Designing and implementing multiagent systems. O’Reilly Media, Incorporated.
+
 [60] Hoffman, A. (2024). Web Application Security: Exploitation and Countermeasures for Modern Web Applications. China: O'Reilly Media.
+
 [61] Burns, B. (2024). Designing Distributed Systems. United States: O'Reilly Media.
+
 [62] Birch, M. (2025). CompTIA® SecurityX® CAS-005 Certification Guide: Master Advanced Security Strategies and Confidently Take the New CAS-005 Exam. (n.p.): Packt Publishing.
+
 [63] Gondosubroto, R. (2025). Azure AI Engineer Associate (AI-102) Study Guide: In-Depth Certification Guide and Practice. (n.p.): O'Reilly Media.
+
 [64] Manico, J., Detlefsen, A. (2014). Iron-Clad Java: Building Secure Web Applications. United States: McGraw Hill LLC.
+
 [65] Santos, O., Lazzara, S., & Thurner, W. (2025). Redefining hacking: A comprehensive guide to red teaming and bug bounty hunting in an AI-driven world. Packt Publishing.
+
 [66] Shannon, M. J. (2025, abril). Non-repudiation (Lección 19.4) [Video]. En CompTIA SecurityX (CAS-005). O’Reilly Learning Platform
