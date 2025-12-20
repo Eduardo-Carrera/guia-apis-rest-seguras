@@ -2,9 +2,9 @@
 
 El diseño seguro constituye uno de los pilares fundamentales para garantizar la confiabilidad y resistencia de una API REST frente a amenazas internas y externas. Mientras que las etapas de planeación y análisis permiten identificar riesgos, el diseño define las decisiones arquitectónicas y los mecanismos técnicos que determinarán el nivel de protección del sistema durante toda su vida útil. Por ello, esta sección reúne los principios, enfoques y prácticas esenciales que deben incorporarse desde la concepción misma de la API para minimizar vulnerabilidades, limitar superficies de exposición y asegurar un comportamiento coherente y robusto ante escenarios adversos.
 
-A lo largo de esta sección se abordan elementos clave del diseño seguro, tales como modelos de confianza modernos (Zero Trust), principios de autorización (menor privilegio), clasificación y tratamiento de datos sensibles, y la aplicación de la tríada CIA como marco estructurante de decisiones de seguridad. Además, se incluyen lineamientos esenciales como la validación de entradas, mecanismos de disponibilidad como rate limiting, consistencia en contratos y endpoints, versionado, patrones y antipatrones de diseño, así como la identificación de casos de uso y casos de abuso.
+A lo largo de esta sección se abordan elementos clave del diseño seguro, tales como modelos de confianza modernos (Zero Trust), principios de autorización (menor privilegio), clasificación y tratamiento de datos sensibles, y la aplicación de la tríada CIA como marco estructurante de decisiones de seguridad. Además, se incluyen lineamientos esenciales como la validación de entradas, mecanismos de disponibilidad como limitación de tasa (rate limiting), consistencia en contratos y endpoints, versionado, patrones y antipatrones de diseño, así como la identificación de casos de uso y casos de abuso.
 
-=== Zero Trust
+=== Confianza cero (Zero Trust)
 
 También llamada seguridad de red sin perímetro es un concepto que, cuando se aplica a las operaciones de conectividad, significa que no se confía en ningún usuario o dispositivo, incluso si se han autenticado previamente. Cada solicitud de acceso a los datos debe autenticarse dinámicamente para garantizar el acceso con privilegios mínimos a los recursos [48].  
 
@@ -14,7 +14,7 @@ Cada vez que un administrador concede a un usuario el derecho a hacer algo que n
 
 === Datos sensibles
 
-PII (Personally Identifiable Information) es “Cualquier información sobre un individuo mantenida por una entidad, la cual incluye”: Cualquier información que pueda usarse para distinguir o rastrear la identidad de un individuo, como el nombre, número de seguro social, fecha y lugar de nacimiento, apellido de soltera de la madre o registros biométricos; y cualquier otra información que esté vinculada o sea vinculable a un individuo, como la información médica, educativa, financiera o laboral [49]
+Información de Identificación Personal (Personally Identifiable Information, PII) es “Cualquier información sobre un individuo mantenida por una entidad, la cual incluye”: Cualquier información que pueda usarse para distinguir o rastrear la identidad de un individuo, como el nombre, número de seguro social, fecha y lugar de nacimiento, apellido de soltera de la madre o registros biométricos; y cualquier otra información que esté vinculada o sea vinculable a un individuo, como la información médica, educativa, financiera o laboral [49]
 
 Distinguir a un individuo significa identificarlo. Algunos ejemplos de información que podrían identificar a una persona incluyen, entre otros, nombre completo, número de pasaporte, número de seguro social o datos biométricos [49].
 
@@ -78,7 +78,6 @@ Los conceptos, condiciones y aspectos de la confidencialidad incluyen los siguie
 * Secreto: El secreto es el acto de mantener algo en secreto o evitar la divulgación de información.
 * Privacidad: La privacidad se refiere a mantener la confidencialidad de la información que es personalmente identificable o que podría causar daño, vergüenza o desgracia a alguien si se revela.
 * Aislamiento: El aislamiento implica almacenar algo en un lugar apartado, probablemente con estrictos controles de acceso.
-* Aislamiento: El aislamiento es el acto de mantener algo separado de los demás.
 
 ==== Integridad
 
@@ -94,7 +93,7 @@ La integridad se puede examinar desde tres perspectivas:
 
 Las técnicas comunes para garantizar la integridad incluyen: 
 
-* Sumas de comprobación y funciones hash: Una cadena de longitud fija calculada a partir de los datos por un algoritmo. Las sumas de comprobación o los valores hash suelen venir con los propios datos. Cualquier manipulación de los datos produciría una suma de comprobación (o valor hash) diferente de la suma de comprobación original, por lo que el sistema la detecat como datos dañados [51].
+* Sumas de comprobación y funciones hash: Una cadena de longitud fija calculada a partir de los datos por un algoritmo. Las sumas de comprobación o los valores hash suelen venir con los propios datos. Cualquier manipulación de los datos produciría una suma de comprobación (o valor hash) diferente de la suma de comprobación original, por lo que el sistema la detecta como datos dañados [51].
 
 * Firmas digitales: Un documento está firmado por un valor hash generado por una clave privada del remitente. El destinatario recibe el documento junto con la firma digital. El destinatario calcula el valor hash del documento utilizando el mismo algoritmo. El destinatario descifra la firma digital utilizando la clave pública del remitente y recupera el valor hash original. Dos valores hash idénticos confirman que el documento no ha sido modificado. Las claves privada y pública del remitente forman un par, mientras que la clave privada solo es conocida por el remitente y la clave pública está disponible para cualquiera [51].
 
@@ -143,17 +142,17 @@ Recuerda que Validación de entrada ayuda a prevenir una amplia gama de problema
 Al realizar Validación de entrada, es muy importante asegurarse de que la validación se produce en el lado del servidor en lugar de dentro del navegador del cliente. La validación del lado cliente es útil para proporcionar a los usuarios comentarios sobre su entrada, pero nunca se debe confiar en ella como un control de seguridad. Es fácil para los piratas informáticos y los probadores de penetración eludir los navegadores entrada validación [49].
 
 
-=== Disponibilidad: rate limiting
+=== Disponibilidad: limitación de la tasa de solicitudes (rate limiting)
 
 La disponibilidad es uno de los pilares fundamentales de la seguridad en APIs REST, asegurando que los usuarios autorizados puedan acceder a los recursos de manera oportuna y continua. Una estrategia crítica para mantener la disponibilidad es la limitación de la tasa de solicitudes (rate limiting), la cual controla la frecuencia de interacción de un usuario o cliente con la API dentro de un intervalo de tiempo determinado. Esta medida previene la sobrecarga de los recursos del sistema y protege contra ataques de denegación de servicio (DoS) y fuerza bruta [53, 54].
 
 ==== Conceptos Fundamentales
 
-El rate limiting es un mecanismo que restringe el número máximo de solicitudes que un usuario, cliente o dirección IP puede realizar durante un período de tiempo definido. En caso de excederse el límite, la API devuelve un error 429 (Too Many Requests). Este control garantiza un uso equitativo de los recursos y contribuye a la estabilidad del sistema [4, 33].
+La limitación de la tasa de solicitudes (rate limiting) es un mecanismo que restringe el número máximo de solicitudes que un usuario, cliente o dirección IP puede realizar durante un período de tiempo definido. En caso de excederse el límite, la API devuelve un error 429 (demasiadas solicitudes, Too Many Requests) Este control garantiza un uso equitativo de los recursos y contribuye a la estabilidad del sistema [4, 33].
 
-Por otro lado, el throttling es una técnica complementaria que reduce temporalmente la velocidad de procesamiento de solicitudes para estabilizar el rendimiento del servidor cuando la demanda se aproxima a su capacidad máxima [4].
+Por otro lado, el limitación de solicitudes (throttling) es una técnica complementaria que reduce temporalmente la velocidad de procesamiento de solicitudes para estabilizar el rendimiento del servidor cuando la demanda se aproxima a su capacidad máxima [4].
 
-==== Beneficios del Rate Limiting
+==== Beneficios de la limitación de la tasa de solicitudes (rate limiting)
 
 1. Prevención de abusos: Impide que usuarios maliciosos o bots saturen la API mediante scraping de datos o ataques de fuerza bruta.  
 2. Equidad en el acceso: Asegura que la capacidad del servidor se distribuya de manera justa entre todos los usuarios, evitando que unos pocos consuman desproporcionadamente los recursos.  
@@ -161,26 +160,26 @@ Por otro lado, el throttling es una técnica complementaria que reduce temporalm
 
 ==== Implementación
 
-* La limitación de solicitudes se puede implementar en frameworks como Spring Boot, utilizando bibliotecas como Resilience4J [54].
-* En arquitecturas modernas, es recomendable aplicar el rate limiting en el API Gateway, identificando al origen de las solicitudes mediante propiedades tales como dirección IP, geolocalización o client ID [33].
-* Es fundamental definir políticas de fail open o fail closed de acuerdo con la criticidad del servicio. Por ejemplo, APIs financieras suelen requerir fail closed, mientras que servicios públicos de información pueden optar por fail open [33].
+* La limitación de solicitudes (throttling) se puede implementar en frameworks como Spring Boot, utilizando bibliotecas como Resilience4J [54].
+* En arquitecturas modernas, es recomendable aplicar el la limitación de la tasa de solicitudes (rate limiting) en el API Gateway, identificando al origen de las solicitudes mediante propiedades tales como dirección IP, geolocalización o client ID [33].
+* Es fundamental definir políticas de fallo abierto (fail open) o fallo cerrado (fail closed) de acuerdo con la criticidad del servicio. Por ejemplo, APIs financieras suelen requerir fallo cerrado (fail closed), mientras que servicios públicos de información pueden optar por fallo abierto (fail open) [33].
 
 ==== Consideraciones
 
 * Realizar pruebas de carga permite identificar límites operativos, puntos de falla y el comportamiento del sistema frente a picos de tráfico [33].
-* La implementación de rate limiting también es recomendable para llamadas internas de APIs, ya que sistemas internos pueden generar accidentalmente condiciones de DoS debido a dependencias circulares [33].
+* La implementación de limitación de la tasa de solicitudes (rate limiting) también es recomendable para llamadas internas de APIs, ya que sistemas internos pueden generar accidentalmente condiciones de DoS debido a dependencias circulares [33].
 * Los límites de interacción deben ajustarse en función de los requisitos del negocio, equilibrando la protección del sistema con la experiencia del usuario [54].
 
-==== Algoritmos de rate limiting
-Es necesario definir cómo se calcula la tasa de solicitudes dentro del sistema. Para implementar rate limiting de forma consistente y segura, un servicio distribuido debe contar con mecanismos claros para medir y controlar el ritmo de las solicitudes realizadas por cada consumidor. 
+==== Algoritmos de limitación de la tasa de solicitudes (rate limiting)
+Es necesario definir cómo se calcula la tasa de solicitudes dentro del sistema. Para implementar la limitación de la tasa de solicitudes (rate limiting) de forma consistente y segura, un servicio distribuido debe contar con mecanismos claros para medir y controlar el ritmo de las solicitudes realizadas por cada consumidor. 
 
 Los algoritmos de limitaciones de tasa más utilizados en arquitecturas distribuidas incluyen:
 
-- Token Bucket (Cubo de fichas o tokens)
-- Leaky Bucket (Cubo con fugas)
-- Fixed Window Counter (Contador de ventana fija)
-- Sliding Window Log (Registro de ventana deslizante / tronco de ventana deslizante)
-- Sliding Window Counter (Contador de ventana deslizante)
+- Cubo de tokens (Token Bucket)
+- Cubo con fugas (Leaky Bucket)
+- Contador de ventana fija (Fixed Window Counter)
+- Registro de ventana deslizante / tronco de ventana deslizante (Sliding Window Log)
+- Contador de ventana deslizante (Sliding Window Counter)
 
 Cada uno de estos enfoques presenta diferentes compromisos entre precisión, consumo de memoria, consistencia en entornos distribuidos y facilidad de implementación. Por ello, es importante seleccionar el algoritmo que mejor se ajuste a los requisitos de seguridad, rendimiento y disponibilidad de la API.
 
@@ -195,8 +194,8 @@ La elección del algoritmo y la forma en que se calcula la tasa de solicitudes i
 - Inequidad en el consumo entre diferentes usuarios.
 - Sobrecarga de recursos del servidor.
 
-===== Token bucket
-El algoritmo Token Bucket se basa en una analogía de una cubo lleno de tokens. Un cubo tiene tres características:
+===== Cubo de tokens (Token bucket)
+El algoritmo Cubo de tokens (Token Bucket) se basa en una analogía de una cubo lleno de tokens. Un cubo tiene tres características:
 
 - Un número máximo de tokens.
 - El número de tokens disponible actualmente.
@@ -217,7 +216,7 @@ Cada vez que llega una solicitud, sacamos un token del cubo. Si no hay tokens, l
 - Bajo consumo de memoria.
 - Permite manejar ráfagas de tráfico, ya que los tokens pueden acumularse.
 
-====== Consideraciones de implementar el algoritmo Token bucket
+====== Consideraciones de implementar el algoritmo Cubo de tokens (Token bucket)
 
 En entornos distribuidos o con almacenamiento externo, actualizar los contadores de tokens para millones de usuarios puede generar: 
 
@@ -228,18 +227,18 @@ Es necesario un mecanismo para eliminar usuarios inactivos, ya que el algoritmo 
 
 Si múltiples servidores procesan solicitudes sin sincronización inmediata, un usuario podría hacer más solicitudes de las permitidas (cada servidor podría gastar tokens localmente antes de sincronizar).
 
-===== Leaky bucket
-El algoritmo Leaky Bucket controla el flujo de solicitudes asegurando que se procesen a una tasa constante, evitando ráfagas bruscas y manteniendo un ritmo estable. 
+===== Cubo con fugas (Leaky bucket)
+El algoritmo Cubo con fugas (Leaky Bucket) controla el flujo de solicitudes asegurando que se procesen a una tasa constante, evitando ráfagas bruscas y manteniendo un ritmo estable. 
 
 ====== Implementación
 
-1. El bucket tiene una capacidad máxima (por ejemplo 10 tokens)
-2. Las solicitudes agregan un token al bucket
-3. El bucket “gotea” (se va vaciando) a una tasa fija (por ejemplo, 1 token por segundo).
-4. Si llega una solicitud y el bucket ya está lleno, la petición se rechaza o se considera que excede el límite.
-5. Cuando el bucket está vacío, deja de gotear
+1. El cubo (bucket) tiene una capacidad máxima (por ejemplo 10 tokens)
+2. Las solicitudes agregan un token al cubo (bucket)
+3. El cubo (bucket) “gotea” (se va vaciando) a una tasa fija (por ejemplo, 1 token por segundo).
+4. Si llega una solicitud y el cubo (bucket) ya está lleno, la petición se rechaza o se considera que excede el límite.
+5. Cuando el cubo (bucket) está vacío, deja de gotear
 
-Una implementación común usa una cola FIFO de tamaño fijo que se vacía periódicamente. 
+Una implementación común usa una cola, el primero en entrar, primero en salir (First-In, First-Out, FIFO) de tamaño fijo que se vacía periódicamente. 
 
 ====== Ventajas
 
@@ -248,7 +247,7 @@ Una implementación común usa una cola FIFO de tamaño fijo que se vacía peri�
 
 ====== Consideraciones
 
-Requiere más memoria que Token Bucket ya que utiliza una cola completa por usuarrio. 
+Requiere más memoria que el cubo de tokens (Token Bucket) ya que utiliza una cola completa por usuarrio. 
 
 En sistemas distribuidos pueden ocurrir incosistencias, por ejemplo:
 
@@ -259,12 +258,12 @@ Es necesario un mecanismo adicional para eliminar usuarios inactivos.
 
 Vaciar cada cola periódicamente puede ser costoso en términos de rendimiento.
 
-===== Fixed Window Counter.
-Fixed Window Counter es uno de los algoritmos más simples para aplicar rate limiting. Su funcionamiento se basa en dividir el tiempo en ventanas fijas (por ejemplo, cada minuto, cada 10 segundos, etc.) y contar cuántas solicitudes hace un cliente dentro de cada ventana. 
+===== Contador de ventana fija (Fixed Window Counter).
+Contador de ventana fija (Fixed Window Counter) es uno de los algoritmos más simples para aplicar limitación de tasa (rate limiting). Su funcionamiento se basa en dividir el tiempo en ventanas fijas (por ejemplo, cada minuto, cada 10 segundos, etc.) y contar cuántas solicitudes hace un cliente dentro de cada ventana. 
 
 ====== Funcionamiento.
 
-1. Cada cliente tiene una clave asociada a la ventana actual. La clave puede incluir su ID y la marca de tiempo de la ventana (por ejemplo user123_1628825241)
+1. Cada cliente tiene una clave asociada a la ventana actual. La clave puede incluir su identificador (ID) y la marca de tiempo de la ventana (por ejemplo user123_1628825241)
 2. Cada vez que llega una solicitud:
     - Si la calve existe, se incrementa su contador.
     - Si no existe, se crea con valor 1.
@@ -285,9 +284,9 @@ Por ejemplo, si el límite es 5 solicitudes por minuto:
 
 En menos de un minuto real habrá enviado 10 solicitudes.
 
-===== Sliding Window Log 
+===== Registro de ventana deslizante (Sliding Window Log) 
 
-Sliding Window Log es un algortimo que ofrece una medición muy precisa de cuántas solicitudes ha realizado un cliente en un intervalo de tiempo móvil (por ejempo, los últimos 10 segundos).
+Registro de ventana deslizante (Sliding Window Log) es un algortimo que ofrece una medición muy precisa de cuántas solicitudes ha realizado un cliente en un intervalo de tiempo móvil (por ejempo, los últimos 10 segundos).
 
 ====== Funcionamiento.
 1. Cada cliente tiene una única clave. El valor asociado es una lista ordenada de marcas de tiempo, una por cada solicitud realizada. 
@@ -307,8 +306,8 @@ Sliding Window Log es un algortimo que ofrece una medición muy precisa de cuán
 
 Su precisión puede verse afectada en entornos **distribuidos** debido a problemas de sincronización entre nodos.
 
-===== Sliding Window Counter
-*Sliding Window Counter* es una versión mejorada del contador de ventana fija. Divide la ventana de tiempo total (por ejemplo, 1 hora) en **múltiples ventanas pequeñas**, todas del mismo tamaño. Cada una funciona como un contador independiente.
+===== Contador de ventana deslizante (Sliding Window Counter)
+Contador de ventana deslizante (Sliding Window Counter) es una versión mejorada del contador de ventana fija. Divide la ventana de tiempo total (por ejemplo, 1 hora) en **múltiples ventanas pequeñas**, todas del mismo tamaño. Cada una funciona como un contador independiente.
 
 ====== Funcionamiento
 
@@ -319,32 +318,32 @@ Su precisión puede verse afectada en entornos **distribuidos** debido a problem
 
 ====== Ventajas
 
-- Es **más preciso** que el Fixed Window Counter porque no permite picos tan altos justo en el cambio de ventana.
-- Consume menos memoria que un Sliding Window Log.
+- Es **más preciso** que el contador de ventana fija (Fixed Window Counter) porque no permite picos tan altos justo en el cambio de ventana.
+- Consume menos memoria que un contador de ventana deslizante (Sliding Window Counter).
 
 ====== Consideraciones
 
 Puede **subestimar ligeramente** el número real de solicitudes, ya que no se consideran las solicitudes de la subventana más antigua parcialmente superpuesta.
 
-==== Cuando no hacer rate limiting
-El *rate limiting* es una técnica fundamental para mitigar abusos y proteger la disponibilidad de una API. Sin embargo, no siempre es la solución adecuada para todos los escenarios relacionados con el uso excesivo por parte del cliente. Es importante comprender sus limitaciones para evitar aplicar mecanismos que resulten contraproducentes para la experiencia del usuario o para el cumplimiento de requisitos empresariales [55]
+==== Cuando no hacer limitación de tasa (rate limiting)
+El limitación de tasa (rate limiting) es una técnica fundamental para mitigar abusos y proteger la disponibilidad de una API. Sin embargo, no siempre es la solución adecuada para todos los escenarios relacionados con el uso excesivo por parte del cliente. Es importante comprender sus limitaciones para evitar aplicar mecanismos que resulten contraproducentes para la experiencia del usuario o para el cumplimiento de requisitos empresariales [55]
 
-En primer lugar, existen situaciones en las que el cliente necesita recibir retroalimentación explícita sobre su comportamiento. Por ejemplo, en un servicio de redes sociales donde los usuarios pueden suscribirse a notificaciones asociadas a un hashtag, es posible que un usuario realice demasiadas solicitudes de suscripción en un corto periodo. En estos casos, el servicio debe informar al usuario que ha superado el límite permitido dentro de ese intervalo. Si se aplicara *rate limiting* de forma estricta, la API simplemente descartaría las solicitudes y devolvería un código 429 (*Too Many Requests*) o incluso ninguna respuesta, lo que podría ser interpretado por el cliente como un error 500. Este comportamiento generaría una mala experiencia de usuario, especialmente en aplicaciones web o móviles que podrían ofrecer mensajes más claros y útiles si contaran con una respuesta explícita por parte del servicio [55]
+En primer lugar, existen situaciones en las que el cliente necesita recibir retroalimentación explícita sobre su comportamiento. Por ejemplo, en un servicio de redes sociales donde los usuarios pueden suscribirse a notificaciones asociadas a un hashtag, es posible que un usuario realice demasiadas solicitudes de suscripción en un corto periodo. En estos casos, el servicio debe informar al usuario que ha superado el límite permitido dentro de ese intervalo. Si se aplicara limitación de tasa (rate limiting) de forma estricta, la API simplemente descartaría las solicitudes y devolvería un código 429 (*Too Many Requests*) o incluso ninguna respuesta, lo que podría ser interpretado por el cliente como un error 500. Este comportamiento generaría una mala experiencia de usuario, especialmente en aplicaciones web o móviles que podrían ofrecer mensajes más claros y útiles si contaran con una respuesta explícita por parte del servicio [55]
 
-En segundo lugar, existen modelos de negocio donde los límites de uso forman parte de un esquema de suscripción. Servicios que cobran tarifas basadas en tasas de solicitudes (por ejemplo, planes que permiten 1,000 o 10,000 solicitudes por hora) requieren controlar de forma precisa cuándo un cliente ha alcanzado su cuota. Si un cliente excede el límite contratado, las solicitudes posteriores deben rechazarse hasta el siguiente intervalo de facturación. Este control de cuotas es un requerimiento empresarial y no debe delegarse en un servicio compartido de *rate limiting*, ya que este tipo de servicios está diseñado para casos simples y no para escenarios complejos donde cada cliente posee un límite personalizado [55]
-
-
+En segundo lugar, existen modelos de negocio donde los límites de uso forman parte de un esquema de suscripción. Servicios que cobran tarifas basadas en tasas de solicitudes (por ejemplo, planes que permiten 1,000 o 10,000 solicitudes por hora) requieren controlar de forma precisa cuándo un cliente ha alcanzado su cuota. Si un cliente excede el límite contratado, las solicitudes posteriores deben rechazarse hasta el siguiente intervalo de facturación. Este control de cuotas es un requerimiento empresarial y no debe delegarse en un servicio compartido de limitación de tasa (*rate limiting*), ya que este tipo de servicios está diseñado para casos simples y no para escenarios complejos donde cada cliente posee un límite personalizado [55]
 
 
-=== Consistencia en el diseño de los endpoints y los contratos
 
-La consistencia en el diseño de endpoints de una API REST es fundamental para garantizar que todos los consumidores puedan interpretar, usar y mantener la API de manera efectiva. Una API consistente permite:
 
-* Reducir errores de integración y malentendidos sobre la funcionalidad de los endpoints.
+=== Consistencia en el diseño de los puntos de acceso (endpoints) y los contratos
+
+La consistencia en el diseño de puntos de acceso (endpoints) de una API REST es fundamental para garantizar que todos los consumidores puedan interpretar, usar y mantener la API de manera efectiva. Una API consistente permite:
+
+* Reducir errores de integración y malentendidos sobre la funcionalidad de los puntos de acceso (endpoints).
 * Facilitar la automatización de pruebas, documentación y generación de clientes.
 * Mejorar la mantenibilidad y escalabilidad del sistema, especialmente en sistemas distribuidos.
 
-El diseño consistente de endpoints no solo implica nombrar correctamente las rutas, sino también mapear de manera uniforme operaciones, ubicación de datos, status codes y recursos, considerando tanto operaciones típicas (CRUD) como operaciones “do” o no-CRUD derivadas de casos de uso específicos.
+El diseño consistente de puntos de acceso (endpoints) no solo implica nombrar correctamente las rutas, sino también mapear de manera uniforme operaciones, ubicación de datos, status codes y recursos, considerando tanto operaciones típicas (CRUD) como operaciones “do” o no-CRUD derivadas de casos de uso específicos.
 
 ==== Recursos y operaciones CRUD
 
@@ -369,9 +368,9 @@ El patrón más común y ampliamente aceptado consiste en mapear operaciones CRU
 |Eliminar |DELETE |/resources/{id} |Path parameter |Ningún contenido (204 No Content)
 |===
 
-Este mapeo uniforme permite a los consumidores predecir el comportamiento de cada endpoint según el método HTTP y la estructura del path.
+Este mapeo uniforme permite a los consumidores predecir el comportamiento de cada punto de acceso (endpoint) según el método HTTP y la estructura del path.
 
-==== Casos de uso y mapeo a endpoints
+==== Casos de uso y mapeo a punto de acceso (endpoint)
 
 Los casos de uso representan la interacción del usuario o sistema con la API, y deben traducirse a recursos y métodos HTTP de forma consistente.
 
@@ -428,15 +427,15 @@ POST /orders
 ==== Ubicación consistente de los datos
 
 *Datos de entrada:*
-* Path parameters: identificadores únicos de recurso (`/products/{id}`)
-* Query parameters: filtros o modificadores que no identifican recursos
-* Body: representación completa o parcial de recursos para crear o actualizar
-* Headers: información estándar (autenticación, tipo de contenido)
+* Parámetros de ruta (Path parameters): identificadores únicos de recurso (`/products/{id}`)
+* Parámetros de consulta (Query parameters): filtros o modificadores que no identifican recursos
+* Cuerpo (Body): representación completa o parcial de recursos para crear o actualizar
+* Encabezados (Headers): información estándar (autenticación, tipo de contenido)
 
 *Datos de salida:*
-* Body: representa recursos, listas de recursos, resultados de operaciones y errores
-* Headers: solo para metadatos estándar (Location en `201 Created`)
-* Errores: siempre en body, con status code según la responsabilidad
+* Cuerpo (Body): representa recursos, listas de recursos, resultados de operaciones y errores
+* Encabezados (Headers): solo para metadatos estándar (Location en `201 Created`)
+* Errores: siempre en el cuerpo (body), con un código de estado (status code) según la responsabilidad
 
 [cols="1,1", options="header"]
 |===
@@ -469,7 +468,7 @@ Implemente el control de versiones en sus API. Si se detecta un problema de segu
 
 El control de versiones en una API permite realizar cambios sin afectar a los usuarios existentes, creando versiones separadas para nuevas implementaciones. No obstante, va más allá de solo etiquetar versiones: implica decidir en qué nivel aplicarlo (cliente, servidor o protocolo) y qué política seguir. No existe una única forma correcta, ya que depende de las necesidades de los desarrolladores y usuarios. Su objetivo principal es maximizar la funcionalidad y minimizar los inconvenientes, garantizando compatibilidad entre versiones.
 
-Al diseñar una API, es importante decidir si las versiones existentes podrán ampliarse con nuevas funcionalidades o si deben mantenerse completamente estables. Esta decisión depende del tipo de usuarios: algunos, como los bancos, pueden requerir versiones congeladas, mientras que otros, como startups, pueden priorizar las nuevas características.
+Al diseñar una API, es importante decidir si las versiones existentes podrán ampliarse con nuevas funcionalidades o si deben mantenerse completamente estables. Esta decisión depende del tipo de usuarios: algunos, como los bancos, pueden requerir versiones congeladas, mientras que otros, como empresas emergentes (startups), pueden priorizar las nuevas características.
 
 Si se permiten cambios dentro de una versión, deben evaluarse sus impactos: agregar campos puede afectar a sistemas con recursos limitados, como dispositivos IoT; nuevos recursos o métodos pueden generar incompatibilidades o dependencias inesperadas.
 
@@ -492,7 +491,7 @@ El proceso general para implementar esta estrategia incluye:
 
 * Identificar cualquier cambio incompatible y construirlo dentro de `Versión N+1`.  
   Esto aplica a modificaciones que puedan romper integraciones actuales, como eliminar campos, cambiar estructuras o modificar reglas de validación.  
-  En el API de salud, un cambio incompatible sería reemplazar el campo `birthDate` por `dateOfBirth`, o cambiar el formato de respuestas del endpoint `/appointments`.
+  En el API de salud, un cambio incompatible sería reemplazar el campo `birthDate` por `dateOfBirth`, o cambiar el formato de respuestas del punto de acceso (endpoint) `/appointments`.
 
 * Una vez que se acumula suficiente funcionalidad incompatible para justificar una nueva versión, se libera oficialmente `Versión N+1`.  
   Ejemplo: se publica `Versión 2` del API de salud, incorporando nuevos modelos de citas médicas y un esquema actualizado de pacientes.
@@ -516,7 +515,7 @@ Este enfoque favorece la innovación continua y la agilidad, aunque requiere que
 Para ilustrar esta estrategia, consideremos el ejemplo de la API utilizada para registrar signos vitales y consultar historiales clínicos.
 
 **Fase 1 — Versión 1 en Vista previa**
-La primera versión (v1) se publica como vista previa. Solo incluye dos endpoints:
+La primera versión (v1) se publica como vista previa. Solo incluye dos puntos de acceso (endpoints):
 
 - `GET /v1/patients/{id}/vitals` — obtener signos vitales.
 - `POST /v1/patients/{id}/vitals` — registrar un nuevo conjunto de signos vitales.
@@ -531,7 +530,7 @@ Una vez que v1 se estabiliza, se promueve a actual. Esto congela su funcionalida
 - No se agregan nuevas funciones.
 
 **Fase 3 — Creación de la Versión 2 como Vista previa**
-El equipo necesita agregar un endpoint para historial clínico detallado. Como es una adición potencialmente incompatible con el modelo previo, se crea la versión 2 como vista previa (v2-preview):
+El equipo necesita agregar un punto de acceso (endpoint) para historial clínico detallado. Como es una adición potencialmente incompatible con el modelo previo, se crea la versión 2 como vista previa (v2-preview):
 
 - `GET /v2/patients/{id}/records` — historial clínico.
 - `PATCH /v2/patients/{id}/vitals` — nueva operación que no existía en v1.
@@ -573,7 +572,7 @@ consultar información de pacientes, resultados de laboratorio y programación d
 
 *Versión 1.0.0 — Lanzamiento inicial*
 
-La primera versión del API incluye tres endpoints básicos:
+La primera versión del API incluye tres puntos de acceso (endpoints) básicos:
 - GET /pacientes/{id}
 - GET /laboratorios/{id}
 - POST /citas
@@ -591,7 +590,7 @@ Por ello, la versión pasa de:
 
 *Versión 1.1.1 — Corrección de errores*
 
-Se detecta un error menor en la validación de fechas del endpoint `/citas`.
+Se detecta un error menor en la validación de fechas del punto de acceso (endpoint) `/citas`.
 Como es una corrección compatible, solo se incrementa el parche:
 
 `1.1.0 → 1.1.1`
@@ -617,7 +616,7 @@ Si observamos que el diseño de software se refiere a la estructura o el diseño
 
 Por lo cual, un patrón de diseño de API es simplemente un patrón de diseño de software aplicado a una API en lugar de a todo el software en general. Esto significa que los patrones de diseño de API, al igual que los patrones de diseño regulares, son simplemente planos para formas de diseñar y estructurar API. Dado que la atención se centra en la interfaz en lugar de la implementación, en la mayoría de los casos, un patrón de diseño de API se centrará exclusivamente en la interfaz, sin necesariamente construir la implementación. Si bien la mayoría de los patrones de diseño de API a menudo permanecerán en silencio sobre la implementación subyacente de esas interfaces, a veces dictan ciertos aspectos del comportamiento del API. 
 
-Por otra parte las API son interfaces rígidas y públicas, lo que dificulta realizar cambios sin afectar a sus usuarios. A diferencia de las interfaces gráficas, incluso una pequeña modificación puede causar fallos. Por eso, aplicar un enfoque ágil resulta complicado. Los patrones de diseño de API ayudan a planificar y estructurar mejor desde el inicio, reduciendo problemas al modificar o escalar la API.
+Por otra parte las API son interfaces rígidas y públicas, lo que dificulta realizar cambios sin afectar a sus usuarios. A diferencia de las interfaces gráficas, incluso una pequeña modificación puede causar fallos. Por eso, aplicar un enfoque ágil resulta complicado. Los patrones de diseño de API ayudan a planificar y estrucdturar mejor desde el inicio, reduciendo problemas al modificar o escalar la API.
 
 A continuación se mostrarán algunos patrones de diseño que pueden ser aplicados en APIs. 
 

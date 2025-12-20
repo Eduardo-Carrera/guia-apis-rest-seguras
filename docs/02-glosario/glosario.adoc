@@ -5,15 +5,15 @@ El glosario constituye un recurso destinado a unificar el significado de los té
 Este apartado tiene la función de servir como referencia de consulta durante la lectura. Su propósito es garantizar la consistencia terminológica en todo el documento y facilitar la correcta aplicación de las recomendaciones presentadas.
 
 === Abreviaturas
-* API: Application Programming Interface
-* REST: Representational State Transfer
+* API: Interfaz de programación de aplicaciones (Application Programming Interface)
+* REST: Transferencia de estado representativo (Representational State Transfer)
 * JWT: JSON Web Token
-* TLS: Transport Layer Security
-* HTTP: Hypertext Transfer Protocol
-* HTTPS: Hypertext Transfer Protocol Secure
-* STRIDE: Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege
-* CORS: Cross-Origin Resource Sharing
-* OWASP: Open Worldwide Application Security Project
+* TLS: Seguridad de la capa de transporte (Transport Layer Security)
+* HTTP: Protocolo de transferencia de hipertexto (Hypertext Transfer Protocol)
+* HTTPS: Protocolo seguro de transferencia de hipertexto (Hypertext Transfer Protocol Secure)
+* STRIDE: Suplantación de identidad (Spoofing), manipulación (Tampering), repudio (Repudiation), divulgación de información (Information disclosure), denegación de servicio (Denial of service), elevación de privilegios (Elevation of privilege)
+* CORS: Intercambio de recursos de origen cruzado (Cross-Origin Resource Sharing)
+* OWASP: Proyecto abierto mundial sobre seguridad de las aplicaciones (Open Worldwide Application Security Project)
 * NIST: Instituto Nacional de Estándares y Tecnología
 
 === Definición de términos técnicos
@@ -24,7 +24,7 @@ Este apartado tiene la función de servir como referencia de consulta durante la
 * *Autorización*: mecanismo mediante el cual se asigna, a partir de un principal, la acción que se le permite realizar. A menudo, cuando un principal está autenticado, se nos proporciona información sobre él que nos ayuda a decidir qué acciones se le deben permitir. [5]
 * *Debilidad*: imperfección en el código, diseño, arquitectura o despliegue del software que se convierte en una vulnerabilidad o contribuye a una vulnerabilidad. Puede ser un fallo físico o digital en la aplicación, el sistema operativo o el hardware [6]
 * *Diseño Seguro*: el enfoque del diseño seguro es la proactividad de incluirlo desde el inicio del proceso de desarrollo, en lugar de añadirlo como una capa adicional. Ayuda a evitar la necesidad corregir tardíamente y aumentar los costos en el desarrollo [7].
-* *Endpoint*: URI específico que permite a los clientes interactuar con un servidor a través de una API para realizar una función determinada. Representa una operación que puede ejecutarse utilizando una ruta única y el método HTTP correspondiente. [8]
+* *Punto de acceso (Endpoint)*: URI específico que permite a los clientes interactuar con un servidor a través de una API para realizar una función determinada. Representa una operación que puede ejecutarse utilizando una ruta única y el método HTTP correspondiente. [8]
 * *HTTPS*: HTTPS es una versión cifrada de HTTP, por lo que protege tu privacidad mientras usas internet. [9]
 * *Modelado de amenazas*: los métodos de modelado de amenazas se utilizan para crear una abstracción del sistema; perfiles de posibles atacantes, incluidos sus objetivos y métodos; y un catálogo de posibles amenazas que puedan surgir. Se han desarrollado muchos métodos de modelado de amenazas. Los métodos de modelado de amenazas pueden combinarse para crear una visión más sólida y completa de las posibles amenazas. [10]
 * *OWASP*: Fundación sin fines de lucro dedicada a mejorar la seguridad de software. Coordina una serie de proyectos de software de código abierto liderados por la comunidad, así como conferencias educativas y de capacitación reconocidas en la industria. Los proyectos, herramientas, documentos, foros y capítulos de la organización son gratuitos y accesibles para cualquier persona interesada en mejorar la seguridad de las aplicaciones. [11]
@@ -48,4 +48,4 @@ El protocolo HTTPS ofrece un mayor nivel de seguridad que HTTP, al incorporar me
 Estos términos no son sinónimos, aunque suelen utilizarse de manera indistinta. Una debilidad corresponde a un defecto presente en el sistema, sin que necesariamente sea explotado. Una vulnerabilidad surge cuando dicha debilidad puede ser aprovechada para causar un daño. Por su parte, una amenaza se refiere a un agente o circunstancia con la capacidad o intención de explotar la vulnerabilidad, sin que necesariamente deba tratarse de un actor humano.
 
 * *Patrones vs. Antipatrones*  
-Los patrones y antipatrones no se restringen únicamente al ámbito del código, sino que también se aplican al diseño arquitectónico. Un ejemplo ampliamente difundido de patrón arquitectónico es REST (Representational State Transfer), el cual establece principios y restricciones que permiten la construcción de APIs escalables, interoperables y mantenibles [2, 12]
+Los patrones y antipatrones no se restringen únicamente al ámbito del código, sino que también se aplican al diseño arquitectónico. Un ejemplo ampliamente difundido de patrón arquitectónico es REST, el cual establece principios y restricciones que permiten la construcción de APIs escalables, interoperables y mantenibles [2, 12]

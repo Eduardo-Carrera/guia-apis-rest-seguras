@@ -5,77 +5,78 @@ La seguridad en APIs REST no depende únicamente de identificar vulnerabilidades
 Estas prácticas incluyen mecanismos de autenticación y autorización robustos, validación y saneamiento de entradas, controles criptográficos, políticas de configuración segura, manejo adecuado de errores, protección de integraciones con terceros y estrategias arquitectónicas que refuerzan la superficie de defensa.
 
 === Spoofing
-==== Token authentication
+==== Token de autenticación (Token authentication)
 
-*Vulnerabilidades*: Broken Authentication, Lack of Authentication, Allow Unauthorized Access, broken access control +
+*Vulnerabilidades*: autenticación deficiente (Broken Authentication), falta de autenticación (Lack of Authentication), permitir acceso no autorizado (Allow Unauthorized Access), control de acceso deficiente (Broken Access Control) +
 La autenticación basada en tokens consiste en que el usuario introduzca sus credenciales y reciba una versión cifrada de las mismas, que luego utilizará para acceder a sus cuentas o áreas seguras. Las tecnologías de autenticación basada en tokens permiten a los usuarios introducir sus credenciales una sola vez y recibir a cambio una cadena única y cifrada de caracteres aleatorios. A continuación, los usuarios pueden utilizar este token para acceder a sistemas protegidos sin necesidad de volver a introducir sus credenciales repetidamente. 
 El token digital sirve como prueba de que el usuario ya tiene permiso de acceso. La autenticación basada en tokens se utiliza habitualmente en escenarios como las API RESTful, que son utilizadas por múltiples marcos y clientes.
 
-==== Autenticación 
+==== Autenticación (Authentication)
 
-*Vulnerabilidad*: Improper Access management +
+*Vulnerabilidad*: Gestión inadecuada del acceso (Improper Access management) +
 La autenticación se utiliza para verificar la identidad personal; la verificación de identidad está relacionada con la verificación de credenciales. El plan determina si la persona es un usuario legítimo. La autorización es un mecanismo que se utiliza para determinar si un servicio concreto está disponible para los usuarios autenticados. Verifica que los usuarios tienen derecho a acceder personalmente a recursos como registros, bases de datos y archivos. Por lo general, la autorización se realiza después de la autenticación para verificar los privilegios del usuario. El cifrado utiliza un algoritmo para cifrar y encriptar los datos y, a continuación, utiliza una clave para descifrarlos, que es la información del grupo receptor. Las amenazas externas son la posibilidad de que personas ajenas al sistema utilicen software malicioso, piratería informática, interrupciones o ingeniería social para explotar las vulnerabilidades del sistema.
 
-=== Tampering
+=== Manipulación (Tampering)
 
-==== Encryption
+==== Cifrado (Encryption)
 
-*Vulnerabilidades*: Poor Data Validation, Lack of data protection +
+*Vulnerabilidades*: Validación de datos deficiente (Poor Data Validation), falta de protección de datos (Lack of Data Protection) +
 Una API REST puede ser una puerta de enlace para transmitir o compartir datos a través de HTTP con otras aplicaciones. Por otra parte, se puede utilizar un cifrado simétrico para proteger los datos durante la transmisión, cifrando el texto sin formato en texto cifrado mediante tres claves únicas y diferentes. Al implementar este enfoque, los usuarios no autorizados o los piratas informáticos tienen dificultades para conocer el mensaje o los datos reales que ha enviado el remitente al destinatario. [57]
 
-==== Authentication
+==== Autenticación (Authentication)
 
-*Vulnerabilidades*: Poor Authentication Management, Lack of signature-based authentication +
+*Vulnerabilidades*: Gestión deficiente de la autenticación (Poor Authentication Management), falta de autenticación basada en firma (Lack of signature-based authentication) +
 La autenticación se utiliza para verificar la identidad personal; la verificación de identidad está relacionada con la verificación de credenciales. El plan determina si la persona es un usuario legítimo. La autorización es un mecanismo que se utiliza para determinar si un servicio concreto está disponible para los usuarios autenticados. Verifica que los usuarios tienen derecho a acceder personalmente a recursos como registros, bases de datos y archivos. Por lo general, la autorización se realiza después de la autenticación para verificar los privilegios del usuario. [58]
 
 ==== Validación de parámetros.
 
-*Vulnerabilidad*: Lack of parameter validation. +
+*Vulnerabilidad*: Falta de validación de parámetros (Lack of parameter validation) +
 El uso de esquemas formales (como JSON Schema, Zod o Pydantic) permite validar y asegurar que los parámetros de las funciones o APIs sean correctos, seguros y tengan la estructura esperada, evitando así errores, solicitudes malformadas o maliciosas [59].
 
 ==== Autenticación basada en firma.
 
-*Vulnerabilidad*: Lack of signature-based authentication. + 
+*Vulnerabilidad*: Falta de autenticación basada en firmas (Lack of signature-based authentication) + 
 Una firma digital, creada combinando una función hash con cifrado de clave asimétrica, permite garantizar la integridad y autenticidad de un mensaje, asegurando que el mensaje proviene del remitente legítimo y que no ha sido modificado por terceros [35].
 
-==== Blacklist read-only attributes and Define which HTTP parameters are allowed to be mapped.
+==== Poner en lista negra los atributos de solo lectura y definir qué parámetros HTTP se pueden asignar (Blacklist read-only attributes and Define which HTTP parameters are allowed to be mapped)
 
-*Vulnerabilidad*: Mass assignment. +
+*Vulnerabilidad*: Asignación masiva (Mass assignment) +
 Para evitar la asignación masiva, los desarrolladores deben incluir en una lista negra los atributos de solo lectura para que no se vinculen automáticamente a la representación interna de datos de la API.
 La vinculación automática aumenta la productividad al liberar a los desarrolladores de la configuración manual de los parámetros de entrada/salida y la representación interna de los datos. Sin embargo, el uso indiscriminado de esta función suele dar lugar a vulnerabilidades de asignación masiva. Los marcos de API REST actuales ofrecen una forma de mitigar esta vulnerabilidad, ya que permiten a los desarrolladores definir explícitamente qué parámetros de entrada HTTP se pueden asignar a la representación interna de datos. No obstante, los desarrolladores deben ser conscientes de las vulnerabilidades de asignación masiva para aplicar esta mitigación correctamente. De hecho, la vulnerabilidad de asignación masiva sigue estando muy extendida y figura entre las vulnerabilidades más comunes en las API REST.
 
-==== Sanitizing user input y validación de entradas.
+==== Sanitización de entradas (Sanitizing user input) y validación de entradas.
 
-*Vulnerabilidades*: Poor data validation, Convertion issues, Arithmetic Overflow. +
+*Vulnerabilidades*: Validación de datos deficiente (Poor Data Validation), problemas de conversión (Conversion Issues), desbordamiento aritmético (Arithmetic Overflow) +
 Los desarrolladores pueden evitar que esto suceda limpiando las entradas del usuario en la página y analizando el cuerpo de la página antes de volver a servirla. Aunque las API no tienen un lugar visible para recibir las entradas de los usuarios, los usuarios malintencionados pueden utilizar los campos del encabezado de las solicitudes HTTP como puntos de entrada para inyectar código malicioso, que a su vez puede ser ejecutado por el navegador.
 
-==== Resource-hierarchy rule.
+==== Regla de jerarquía de recursos (Resource-hierarchy rule).
 
-*Vulnerabilidad*: Missing hierarchy validation. +
+*Vulnerabilidad*: Falta de validación de jerarquía (Missing Hierarchy Validation +
 No se debe poder acceder a un recurso secundario de un recurso principal desde otro recurso principal.
 
 ==== Implement appropriate Cross-Origin Resource Sharing (CORS) policies
 
-*Vulnerabilidad*: Improper use of CORS +
+*Vulnerabilidad*: Uso inadecuado de CORS (Improper use of CORS) +
 CORS es un mecanismo de seguridad del navegador que, junto con la Política del Mismo Origen (SOP), permite controlar qué solicitudes de red entre distintos orígenes son permitidas, evitando que scripts maliciosos realicen acciones no autorizadas en otros sitios web y protegiendo contra ataques como CSRF, mientras permite solicitudes cruzadas específicas de manera segura [60].
 
 ==== Arquitectura integrada como API gateway
 
-*Vulnerabilidad*: Lack of integration between security components +
+*Vulnerabilidad*: Falta de integración entre los componentes de seguridad (Lack of integration between security components) +
 API Gateway actúa como un escudo para proteger la aplicación contra accesos no autorizados, accesos no autenticados, diversos ataques web, etc. En la arquitectura de microservicios, se desarrollan múltiples servicios que se ejecutan de forma independiente y API Gateway es el punto inicial para que todos estos microservicios accedan.
 
 ==== Utilizar valores por defecto.
 
-*Vulnerabilidad*: Null References. +
-El patrón decorador puede utilizarse para asignar valores predeterminados a los campos de entrada en una API RESTful, evitando así que los valores null generen comportamientos no deseados (como interpretar null como false). En lugar de añadir lógica adicional en el servidor o en la aplicación, el uso del decorador permite aplicar esta asignación de valores por defecto de forma más limpia y desacoplada del procesamiento principal de la solicitud [61].
+*Vulnerabilidad*: Referencias nulas (Null References) +
+El patrón decorador puede utilizarse para asignar valores predeterminados a los campos de entrada en una API RESTful, evitando así que los valores nulos (null) generen comportamientos no deseados (como interpretar null como false). En lugar de añadir lógica adicional en el servidor o en la aplicación, el uso del decorador permite aplicar esta asignación de valores por defecto de forma más limpia y desacoplada del procesamiento principal de la solicitud [61].
+
 ==== Definir estándares de codificación
 
-*Vulnerabilidad*: Improper code +
-Los desarrolladores deben cumplir con las prácticas de seguridad y los estilos de codificación predefinidos, lo que reduce la probabilidad de errores y vulnerabilidades de seguridad. A veces se conocen como estándares de codificación. Las herramientas de linting, como ESLint para JavaScript, se utilizan para detectar y aplicar automáticamente estos estándares mediante el análisis del código a medida que se escribe. Los estándares pueden incluir, por ejemplo, saneamiento de entrada o manejo de errores. El uso de herramientas de linting ayuda a detectar problemas potenciales, como entradas no desinfectadas que podrían provocar ataques de inyección SQL [62].
+*Vulnerabilidad*: Códiog inadecuado (Improper code) +
+Los desarrolladores deben cumplir con las prácticas de seguridad y los estilos de codificación predefinidos, lo que reduce la probabilidad de errores y vulnerabilidades de seguridad. A veces se conocen como estándares de codificación. Las herramientas de análisisde código (linting), como ESLint para JavaScript, se utilizan para detectar y aplicar automáticamente estos estándares mediante el análisis del código a medida que se escribe. Los estándares pueden incluir, por ejemplo, saneamiento de entrada o manejo de errores. El uso de herramientas de herramientas de análisisde código (linting) ayuda a detectar problemas potenciales, como entradas no desinfectadas que podrían provocar ataques de inyección SQL [62].
 
-=== Repudiation
+=== Repudio (Repudiation)
 
-Aunque no se identificaron vulnerabilidades específicas asociadas a Repudiation en la revisión de la literatura, la ausencia de mecanismos de no repudio puede permitir que los actores nieguen la autoría o ejecución de acciones realizadas en sistemas y APIs.
+Aunque no se identificaron vulnerabilidades específicas asociadas a repudio (Repudiation) en la revisión de la literatura, la ausencia de mecanismos de no repudio puede permitir que los actores nieguen la autoría o ejecución de acciones realizadas en sistemas y APIs.
 
 Para mitigar este riesgo, se recomiendan las siguientes prácticas generales [66]:
 
@@ -87,54 +88,54 @@ Para mitigar este riesgo, se recomiendan las siguientes prácticas generales [66
 
 La aplicación de estas prácticas fortalece la trazabilidad y responsabilidad de las operaciones, reduciendo el riesgo de disputas sobre su legitimidad.
 
-=== Information Disclosure
+=== Divulgación de información (Information Disclosure)
 
-==== Ensure the security level of service providers.
+==== Garantizar el nivel de seguridad de los proveedores de servicios (Ensure the security level of service providers).
 
-*Vulnerabilidad*: Unsafe Consumption of APIs. +
+*Vulnerabilidad*: Consumo inseguro de APIs (Unsafe Consumption of APIs) +
 Cuando se pretenda integrar un proveedor de servicios, hay que asegurarse de que cuenta con un nivel de seguridad adecuado
 
-==== Inventory all integrated services
+==== Inventario de todo los servicios integrados (Inventory all integrated services)
 
-*Vulnerabilidad*: Unsafe Consumption of APIs. +
+*Vulnerabilidad*: Consumo inseguro de APIs (Unsafe Consumption of APIs) +
 Haga un inventario de todos los aspectos importantes de la API, como el entorno (es decir, desarrollo, puesta en escena o producción) y la versión de la API.
 
 ==== Manejador de errores
 
-*Vulnerabilidad*: Showing the stack trace of the exception. +
+*Vulnerabilidad*: Mostrar la pila de excepción (Show the stack trace of the exception) +
 Es importante que sepa qué hacer si hay un error. Esto puede incluir volver a intentar la solicitud, registrar el error o tomar medidas correctivas.
-Por ejemplo, una respuesta 400 Bad Request a menudo incluye un mensaje detallado que explica qué salió mal (por ejemplo, faltan parámetros requeridos, formatos de datos incorrectos) y solicita al usuario que corrija el formato o los datos de la solicitud. Un código de estado 401 no autorizado indica problemas con la autenticación y, por lo tanto, sugiere que el usuario debe verificar las claves de API o los tokens de autenticación. Una respuesta 503 Servicio no disponible podría implicar que el servicio está temporalmente sobrecargado o inactivo por mantenimiento, en cuyo caso el usuario normalmente implementaría la lógica de reintento con retroceso exponencial.
+Por ejemplo, una respuesta 400 Solicitud incorrecta (Bad Request) a menudo incluye un mensaje detallado que explica qué salió mal (por ejemplo, faltan parámetros requeridos, formatos de datos incorrectos) y solicita al usuario que corrija el formato o los datos de la solicitud. Un código de estado 401 no autorizado indica problemas con la autenticación y, por lo tanto, sugiere que el usuario debe verificar las claves de API o los tokens de autenticación. Una respuesta 503 Servicio no disponible podría implicar que el servicio está temporalmente sobrecargado o inactivo por mantenimiento, en cuyo caso el usuario normalmente implementaría la lógica de reintento con retroceso exponencial.
 Cada respuesta de error de los servicios suele ir acompañada de un cuerpo JSON que incluye un código de error y un mensaje que proporciona contexto adicional. Puede deserializar esta información para determinar la causa raíz, informar al usuario o desencadenar acciones correctivas en la aplicación. También es una buena práctica registrar estas respuestas, ya que a menudo revelan posibles vulnerabilidades de seguridad que pueden surgir durante el proceso de desarrollo y proporcionan un mecanismo para depurar directamente los problemas [63].
 
-==== Política de masking de datos sensibles.
+==== Política de enmascaramiento (masking) de datos sensibles.
 
-*Vulnerabilidad*: Showing the Stack trace of the exception. +
+*Vulnerabilidad*: Mostrar la pila de excepción (Show the stack trace of the exception) +
 El enmascaramiento de datos reemplaza los valores originales con alternativas ficticias pero realistas, que a menudo se utilizan en entornos de prueba, por ejemplo, dando a los pacientes seudónimos en los datos de ensayos médicos [62].
 
-==== Design proper exception handling logic for third-party code.
+==== Diseñar una lógica adecuada para el manejo de excepciones en código de terceros (Design proper exception handling logic for third-party code)
 
-*Vulnerabilidad*: Bugs in third-party code. +
+*Vulnerabilidad*: Errores en el código de terceros (Bugs in third-party code). +
 Es recomendable que los desarrolladores que capturen el tráfico de las aplicaciones y apliquen Leif para probar las API de terceros que no sean de confianza. Además, deben diseñar una lógica adecuada para el manejo de excepciones en el código de terceros y actualizar oportunamente a las últimas versiones de las API con los errores conocidos corregidos.
 
 ====  Revisar y actualizar las configuraciones
 
-*Vulnerabilidad*: Configuration errores. +
-Una tarea para revisar y actualizar las configuraciones en toda la pila de API. La revisión debe incluir: archivos de orquestación, componentes de API y servicios en la nube API8:2023 Security Misconfiguration - OWASP API Security Top 10
+*Vulnerabilidad*: Errores de configuración (Configuration errores). +
+Una tarea para revisar y actualizar las configuraciones en toda la pila de API. La revisión debe incluir: archivos de orquestación, componentes de API y servicios en la nube API8:2023 Configuración incorrecta de la seguridad (Security Misconfiguration) - OWASP API Security Top 10
 
-==== Encryption
+==== Cifrado (Encryption)
 
-*Vulnerabilidad*: Lack of encryption. +
+*Vulnerabilidad*: Falta de cifrado (Lack of encryption). +
 Una API REST puede ser una puerta de enlace para transmitir o compartir datos a través de HTTP con otras aplicaciones. Por otra parte, se puede utilizar un cifrado simétrico para proteger los datos durante la transmisión, cifrando el texto sin formato en texto cifrado mediante tres claves únicas y diferentes. Al implementar este enfoque, los usuarios no autorizados o los piratas informáticos tienen dificultades para conocer el mensaje o los datos reales que ha enviado el remitente al destinatario
 
-==== Secure connection (TLS)
+==== Conección segura (Secure connection) (TLS)
 
-*Vulnerabilidad*: unsecured connection, fraudulent data exchange and data transmission leaks. +
+*Vulnerabilidad*: Conección insegura (unsecured connection), intercambio fraudulento de datos y fugas en la transmisión de datos (fraudulent data exchange and data transmission leaks). +
 Asegurar de que todas las comunicaciones API desde el cliente al servidor API y cualquier componente descendente/ascendente se realicen a través de un canal de comunicación cifrado (TLS), independientemente de si se trata de una API interna o pública.
 Utilice comunicaciones cifradas, asegúrese de que todas las interacciones con la API se produzcan dentro de una ruta de comunicación segura. Esto se aplica a todos los procesos de comunicación entre el cliente y el servidor, y es especialmente importante cuando se integra un proveedor de servicios.
 
 ==== Políticas de contraseñas.
 
-*Vulnerabilidad*: Poor password. +
+*Vulnerabilidad*: Contraseñas débiles (Poor password) +
 El personal de TI ha estado tratando de obligar a los usuarios a crear y mantener contraseñas seguras utilizando políticas de contraseñas. Sin embargo, los usuarios siempre parecen encontrar una forma de eludir estas políticas, creando contraseñas que los atacantes pueden descifrar fácilmente. Como resultado, el personal de seguridad a menudo buscar nuevas soluciones. En las secciones siguientes se identifican varios componentes básicos de la directiva de contraseñas, seguidos de algunas de las recomendaciones de diferentes entidades.
 
 Componentes de la política de contraseñas +
@@ -153,29 +154,29 @@ Las recomendaciones de contraseñas están cambiando y, hasta ahora, no hay un c
 
 ==== Control de acceso robusto. 
 
-*Vulnerabilidad*: Insecure Direct Object Reference (IDOR) +
+*Vulnerabilidad*: Referencia insegura directa a objetos (Insecure Direct Object Reference, IDOR) +
 El control de CCESS, o autorización, es el proceso de limitar a los usuarios para que accedan solo a la funcionalidad y los datos que se les permite usar específicamente. El Principio de Privilegio Mínimo, o POLP, define la esencia de lo que debe ofrecer un buen mecanismo de control de acceso. Como dijo Jerome Saltzer en 1974, "Cada programa y cada usuario privilegiado del sistema debe operar utilizando la menor cantidad de privilegios necesarios para completar el trabajo" [64]
 
 
-=== Denial of Service
+=== Denegación de servicio (Denial of Service)
 
-==== Monitoring the traffic
+==== Monitoreo del tráfico (Monitoring the traffic)
 
-*Vulnerabilidad*: Lack of rate limiting or not blocking malicious request. +
+*Vulnerabilidad*: Falta de limitación de tasa o no bloqueo de solicitudes maliciosas (Lack of rate limiting or not blocking malicious requests) +
 Los ataques automatizados pueden detectarse mediante la supervisión del tráfico y el uso de la gestión de cuotas, las listas blancas y la limitación del tráfico; sin embargo, el lugar y la forma en que se realiza la solicitud pueden seguir siendo problemáticos, ya que la propia solicitud puede contener contenido no válido o malicioso.
 
-==== Machine learning to learn the traffic and identify patterns
+==== Aprendizaje automático para analizar el tráfico e identificar patrones (Machine Learning to learn the traffic and identify patterns)
 
-*Vulnerabilidad*: Lack of rate limiting or not blocking malicious request. +
+*Vulnerabilidad*: Falta de limitación de tasa o no bloqueo de solicitudes maliciosas (Lack of rate limiting or not blocking malicious requests) +
 Este enfoque permite detectar ataques y comportamientos sospechosos en tiempo real aprendiendo de los patrones normales de tráfico y comportamiento de las APIs. A diferencia de los métodos basados en reglas o patrones predefinidos, el machine learning analiza datos históricos y contextuales para identificar anomalías sin necesidad de políticas escritas o conocimiento previo de ataques, mejorando su precisión con el tiempo gracias al aprendizaje continuo.
 
-==== Monitor all the the requests and responses Rate limiting. 
+==== Monitorear todas las solicitudes y respuestas, y limitar la tasa (Monitor all the requests and responses, Rate Limiting)
 
-*Vulnerabilidad*: Lack of rate limiting or not blocking malicious request +
+*Vulnerabilidad*: Falta de limitación de tasa o no bloqueo de solicitudes maliciosas (Lack of rate limiting or not blocking malicious requests) +
 Un interceptor dedicado en el algoritmo que supervisa todas las solicitudes y respuestas y, por lo tanto, previene ataques.
 
 ==== Mantener dependencias actualizadas
-*Vulnerabilidad*: Using Vulnerable componentes. +
+*Vulnerabilidad*: Usar componentes vulnerables (Using Vulnerable componentes) +
 La mayoría de los proyectos de software se basan en una gran cantidad de dependencias: otros paquetes de software y bibliotecas que usa el código. Hay muchos tipos de dependencias:
 
 * Código en el mismo repositorio. +
@@ -201,21 +202,21 @@ Puede terminar usando API privadas (ya que puede acceder a esos archivos localme
 Cada dependencia que copia en su VCS lo hace más grande y más lento.
 La mejor manera de usar las dependencias es con una herramienta de administración de dependencias. La mayoría de los sistemas de compilación tienen administración de dependencias herramientas integradas. Normalmente, las dependencias se definen como código en la configuración de compilación, incluyendo la versión de la dependencia que está usando, y la herramienta de administración de dependencias es responsable de descargar esa dependencia, más las dependencias transitivas, y hacer que todas las dependencias estén disponibles para el código. (Brikman, 2025)
 
-==== Restrictions on payload sizes.
+==== Restricciones en el tamaño de las cargas útiles (Restrictions on payload sizes).
 
-*Vulnerabilidad*: Unrestricted Resource Consumption. +
+*Vulnerabilidad*: Falta de restricción en el consume de recursos (Unrestricted Resource Consumption) +
 Establezca límites para el tamaño máximo de las cargas útiles, como la longitud máxima de las cadenas, el número de elementos de la matriz y el tamaño máximo de los archivos.
 
-==== Resource-leak rule
+==== Regla de fuga de recursos (Resource-leak rule)
 
-*Vulnerabilidad*: resource-leak violation. + 
+*Vulnerabilidad*: Violación de fuga de recursos (resource-leak violation) + 
 Un recurso que no se haya creado correctamente no debe ser accesible y no debe «filtrar» ningún efecto secundario en el estado del servicio backend.
 
 
-=== Elevation of Privilege
+=== Elevación de privilegios (Elevation of Privilege)
 
-==== Authentication 
+==== Autenticación (Authentication) 
 
-*Vulnerabilidad*: Poor account lockout policy +
+*Vulnerabilidad*: Política de bloqueo de cuentas deficiente (Poor Account Lockout Policy) +
 La autenticación se utiliza para verificar la identidad personal; la verificación de identidad está relacionada con la verificación de credenciales. El plan determina si la persona es un usuario legítimo. La autorización es un mecanismo que se utiliza para determinar si un servicio concreto está disponible para los usuarios autenticados. Verifica que los usuarios tienen derecho a acceder personalmente a recursos como registros, bases de datos y archivos. Por lo general, la autorización se realiza después de la autenticación para verificar los privilegios del usuario. El cifrado utiliza un algoritmo para cifrar y encriptar los datos y, a continuación, utiliza una clave para descifrarlos, que es la información del grupo receptor. Las amenazas externas son la posibilidad de que personas ajenas al sistema utilicen software malicioso, piratería informática, interrupciones o ingeniería social para explotar las vulnerabilidades del sistema.
 

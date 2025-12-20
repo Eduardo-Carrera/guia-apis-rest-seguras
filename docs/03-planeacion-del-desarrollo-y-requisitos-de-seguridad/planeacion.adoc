@@ -73,7 +73,7 @@ Estos requisitos suelen derivarse de estándares de la industria, normativas leg
 
 Asimismo, los requisitos de seguridad proporcionan una base sólida de funcionalidad validada, que permite estandarizar los controles y las buenas prácticas de protección en el desarrollo de aplicaciones. Este enfoque favorece la reutilización de mecanismos de seguridad probados, en lugar de diseñar soluciones ad hoc para cada proyecto.
 
-Entre los estándares disponibles, destaca el Application Security Verification Standard (ASVS) de OWASP, el cual ofrece un catálogo estructurado de requisitos y criterios de verificación de seguridad. Dicho estándar puede emplearse como una fuente de referencia para definir requisitos de seguridad detallados durante el desarrollo de software.
+Entre los estándares disponibles, destaca la Norma de verificación de seguridad de aplicaciones  (Application Security Verification Standard, ASVS) de OWASP, el cual ofrece un catálogo estructurado de requisitos y criterios de verificación de seguridad. Dicho estándar puede emplearse como una fuente de referencia para definir requisitos de seguridad detallados durante el desarrollo de software.
 
 A continuación, se presentan ejemplos de requisitos funcionales y su correspondiente relación con requisitos de seguridad.
 
@@ -103,7 +103,7 @@ El SRS establece con precisión las funciones, capacidades y restricciones que d
 
 Diversos actores dentro del proceso de desarrollo se benefician del SRS:
 
-* Los clientes, el área de marketing y el personal de ventas lo utilizan para conocer el producto que se espera entregar.  
+* Los clientes, el área de mercadotecnia (marketing) y el personal de ventas lo utilizan para conocer el producto que se espera entregar.  
 * Los gerentes de proyecto lo emplean para estimar el calendario, el esfuerzo y los recursos necesarios.  
 * El equipo de desarrollo lo usa como guía principal para la construcción del sistema.  
 * El equipo de pruebas lo utiliza para diseñar planes, casos y procedimientos de prueba.  
@@ -194,15 +194,15 @@ En entornos con una cultura de seguridad consolidada, los equipos perciben la se
 * Facilita la comunicación abierta sobre incidentes sin temor a represalias.
 * Mejora del bienestar y la retención del personal, al fomentar la inclusión y explicar claramente el propósito de las medidas de seguridad.
 
-Para consolidar esta cultura, se recomienda complementar las prácticas organizacionales con certificaciones reconocidas, tales como ISO 27001 y Cyber Essentials, que establecen estándares, procesos y políticas destinados a incrementar la resiliencia cibernética de la organización.
+Para consolidar esta cultura, se recomienda complementar las prácticas organizacionales con certificaciones reconocidas, tales como ISO 27001 y Fundamentos cibernéticos (Cyber Essentials), que establecen estándares, procesos y políticas destinados a incrementar la resiliencia cibernética de la organización.
 
-Un enfoque complementario es la estrategia de seguridad Zero Trust, basada en la premisa de que ninguna persona o dispositivo, tanto dentro como fuera de la red organizacional, debe considerarse de confianza de manera automática. Este modelo se fundamenta en tres principios esenciales [27]:
+Un enfoque complementario es la estrategia de seguridad confianza cero (Zero Trust), basada en la premisa de que ninguna persona o dispositivo, tanto dentro como fuera de la red organizacional, debe considerarse de confianza de manera automática. Este modelo se fundamenta en tres principios esenciales [27]:
 
 * Verificación de la confianza de todas las entidades.
 * Aplicación del principio de privilegios mínimos.
 * Implementación de una supervisión continua de la seguridad.
 
-Estas prácticas organizacionales y modelos, como Zero Trust, resultan especialmente relevantes en el diseño y operación de APIs REST, dado que la exposición directa a internet incrementa la superficie de ataque y exige la alineación entre los aspectos técnicos y humanos dentro de una misma estrategia de seguridad.
+Estas prácticas organizacionales y modelos, como confianza cero (Zero Trust), resultan especialmente relevantes en el diseño y operación de APIs REST, dado que la exposición directa a internet incrementa la superficie de ataque y exige la alineación entre los aspectos técnicos y humanos dentro de una misma estrategia de seguridad.
 
 === Identificación de amenazas y riesgos
 
@@ -210,11 +210,11 @@ La identificación de amenazas y riesgos constituye una etapa crítica en el des
 
 Las APIs se enfrentan a una amplia variedad de amenazas de seguridad, que incluyen ataques deliberados y fugas de datos involuntarias. Los usuarios no autorizados pueden explotar vulnerabilidades para acceder a datos confidenciales, interrumpir servicios o secuestrar sistemas. 
 
-Entre las amenazas más frecuentes se encuentran los ataques de inyección, los ataques de tipo "man-in-the-middle" (MITM) y los ataques de denegación de servicio distribuido (DDoS), diseñados para sobrecargar una API con tráfico malicioso [28]. Aunque el tipo y la frecuencia de las amenazas pueden variar según el modelo de API, los ataques más comunes deben considerarse para cualquier API que se diseñe o utilice [29].
+Entre las amenazas más frecuentes se encuentran los ataques de inyección, los ataques de tipo «hombre en medio» (man-in-the-middle, MITM) y los ataques de denegación de servicio distribuido (DDoS), diseñados para sobrecargar una API con tráfico malicioso [28]. Aunque el tipo y la frecuencia de las amenazas pueden variar según el modelo de API, los ataques más comunes deben considerarse para cualquier API que se diseñe o utilice [29].
 
 La identificación de amenazas implica determinar los riesgos potenciales mediante herramientas y estrategias como listas de verificación, trazabilidad, análisis de puntos de entrada y evaluación de vulnerabilidades [30]. Este proceso permite relacionar los componentes del sistema con los elementos de la amenaza para su posterior validación y verificación.
 
-Además de la identificación, la búsqueda activa de amenazas, conocida como threat hunting, consiste en la detección proactiva de amenazas desconocidas o previamente no detectadas dentro de la red de una organización. A diferencia del monitoreo de seguridad tradicional, que se enfoca en la detección y respuesta a amenazas conocidas mediante herramientas automatizadas, la búsqueda de amenazas persigue anticiparse a riesgos emergentes, permitiendo mitigarlos antes de que puedan generar daños significativos [28].
+Además de la identificación, la búsqueda activa de amenazas, conocida como  búsqueda de amenazas (threat hunting), consiste en la detección proactiva de amenazas desconocidas o previamente no detectadas dentro de la red de una organización. A diferencia del monitoreo de seguridad tradicional, que se enfoca en la detección y respuesta a amenazas conocidas mediante herramientas automatizadas, la búsqueda de amenazas persigue anticiparse a riesgos emergentes, permitiendo mitigarlos antes de que puedan generar daños significativos [28].
 
 Por lo tanto, la labor del diseñador de una API no se limita a garantizar el cumplimiento de sus funciones requeridas, sino que también incluye una vigilancia constante del panorama de seguridad, con el objetivo de prevenir y mitigar posibles amenazas que puedan comprometer la integridad del sistema.
 
@@ -241,7 +241,7 @@ El funcionamiento básico de OAuth 2.0 consiste en que el usuario se autentica c
 Al implementar OAuth 2.0, se deben tener en cuenta medidas de seguridad específicas para mitigar riesgos comunes asociados al manejo de tokens:
 
 * Utilizar exclusivamente conexiones seguras (HTTPS) para la transmisión de tokens.
-* Preferir tokens de corta duración acompañados de refresh tokens, a fin de reducir el riesgo en caso de robo de un token.
+* Preferir tokens de corta duración acompañados de tokens de actualización (refresh tokens), a fin de reducir el riesgo en caso de robo de un token.
 * Implementar mecanismos de revocación para invalidar tokens cuando sea necesario.
 
 ===== Ventajas
@@ -288,7 +288,7 @@ A continuación se presenta un ejemplo de un JWT que podría ser utilizado en un
 }
 ----
 
-En este token, las claims incluidas son `iss`, `sub`, `aud`, `exp`, `nbf`, `iat` y `jti`. Estas son claims reservadas definidas en el RFC de JWT. Aunque no son obligatorias, proporcionan un conjunto mínimo de información útil para la autenticación y autorización.
+En este token, las declaraciones (claims) incluidas son `iss`, `sub`, `aud`, `exp`, `nbf`, `iat` y `jti`. Estas son declaraciones (claims) reservadas definidas en el RFC de JWT. Aunque no son obligatorias, proporcionan un conjunto mínimo de información útil para la autenticación y autorización.
 
 * `iss` (Issuer): Autoridad que emite el token, normalmente un proveedor de identidad.  
 * `sub` (Subject): Identificador único del sujeto al que representa el token, por ejemplo, un usuario o una aplicación.  
@@ -302,22 +302,22 @@ En este token, las claims incluidas son `iss`, `sub`, `aud`, `exp`, `nbf`, `iat`
 
 * La autenticación sin estado (stateless) escala adecuadamente en sistemas distribuidos.  
 * No requiere almacenar información de sesión en el servidor.  
-* Permite control granular de los derechos de acceso mediante las claims del token.  
+* Permite control granular de los derechos de acceso mediante las declaraciones (claims) del token.  
 * Facilita la interoperabilidad entre servicios y aplicaciones heterogéneas.
 
 ===== Desventajas
 
 * Si un token es robado, puede ser utilizado para suplantar al usuario.  
-* La gestión de la expiración de tokens y los ciclos de renovación añade complejidad a la aplicación, tanto en frontend como en backend.  
+* La gestión de la expiración de tokens y los ciclos de renovación añade complejidad a la aplicación, tanto en la interfaz de usuario  (frontend) como en la parte del servidor (backend).  
 * Se requiere cuidado en la implementación de la validación y revocación de tokens para evitar vulnerabilidades.
 
 ==== OpenID Connect (OIDC)
 
 OAuth 2.0 proporciona un mecanismo para que el cliente acceda a APIs utilizando autenticación y autorización. Sin embargo, un requerimiento común es que el cliente también pueda conocer la identidad del propietario del recurso. Este es el propósito de OpenID Connect (OIDC): añadir una capa de identidad sobre OAuth 2.0.  
 
-OIDC amplía el servidor de autorización OAuth 2.0 para que actúe también como proveedor de identidad, entregando al cliente un *ID token* (un JWT con claims sobre el usuario) cuando se utiliza el scope especial `openid`. Además, se pueden incluir scopes adicionales como `profile`, `email`, `address` o `phone`, permitiendo obtener información más completa sobre el usuario [33].
+OIDC amplía el servidor de autorización OAuth 2.0 para que actúe también como proveedor de identidad, entregando al cliente un *ID token* (un JWT con claims sobre el usuario) cuando se utiliza el alcance (scope) especial `openid`. Además, se pueden incluir alcances (scopes) adicionales como `profile`, `email`, `address` o `phone`, permitiendo obtener información más completa sobre el usuario [33].
 
-Los flujos definidos por OIDC son tres: Authorization Code Flow, Implicit Flow y Hybrid Flow. El recomendado es el Authorization Code Flow junto con PKCE, ya que ofrece mayor seguridad.
+Los flujos definidos por OIDC son tres: flujo del código de autorización (Authorization Code Flow), flujo implícito (Implicit Flow) y flujo híbrido (Hybrid Flow). El recomendado es el flujo del código de autorización (Authorization Code Flow) junto con PKCE, ya que ofrece mayor seguridad.
 
 [TIP]
 ====
@@ -326,13 +326,13 @@ OIDC y OAuth 2.0 no son lo mismo. OAuth 2.0 gestiona autorización para acceder 
 
 [WARNING]
 ====
-Nunca se deben usar los *ID tokens* como si fueran *access tokens*. Los *ID tokens* son de mayor duración y están diseñados únicamente para proporcionar información de identidad, no para acceder a recursos.
+Nunca se deben usar los tokens de identificación (*ID tokens*) como si fueran tokens de acceso (*access tokens*). Los tokens de identificación (*ID tokens*) son de mayor duración y están diseñados únicamente para proporcionar información de identidad, no para acceder a recursos.
 ====
 
 ===== Ventajas
 
 * Añade una capa de identidad estándar sobre OAuth 2.0.  
-* Permite obtener información verificada del usuario mediante scopes adicionales.  
+* Permite obtener información verificada del usuario mediante alcances (scopes) adicionales.  
 * Compatible con JWT, lo que facilita la interoperabilidad.  
 * Amplia adopción en entornos web y móviles.  
 
@@ -345,9 +345,9 @@ Nunca se deben usar los *ID tokens* como si fueran *access tokens*. Los *ID toke
 
 ==== SAML 2.0
 
-En entornos empresariales es común el uso de SAML 2.0 (Security Assertion Markup Language), un estándar abierto que transfiere *assertions* de identidad. Es ampliamente utilizado en escenarios de *single sign-on (SSO)*, permitiendo que empleados accedan a aplicaciones externas mediante sus credenciales corporativas.  
+En entornos empresariales es común el uso de Marcado para Aserciones de Seguridad (Security Assertion Markup Language, SAML 2.0), un estándar abierto que transfiere afirmaciones (*assertions*) de identidad. Es ampliamente utilizado en escenarios de  inicio de sesión único (*single sign-on, SSO*), permitiendo que empleados accedan a aplicaciones externas mediante sus credenciales corporativas.  
 
-Aunque SAML no está diseñado para usarse directamente en APIs REST, existe una extensión llamada *SAML 2.0 Profile for OAuth 2.0 Client Authentication and Authorization Grants*, la cual permite a un cliente solicitar un *access token* usando SAML, siempre que el servidor de autorización tenga soporte para esta funcionalidad [33].  
+Aunque SAML no está diseñado para usarse directamente en APIs REST, existe una extensión llamada Perfil de SAML 2.0 para la Autenticación de Clientes y la Concesión de Autorización en OAuth 2.0 (*SAML 2.0 Profile for OAuth 2.0 Client Authentication and Authorization Grants*), la cual permite a un cliente solicitar un token de acceso (*access token*) usando SAML, siempre que el servidor de autorización tenga soporte para esta funcionalidad [33].  
 
 ===== Ventajas
 
@@ -367,13 +367,13 @@ SAML sigue siendo relevante en migraciones hacia OAuth 2.0 y OIDC, especialmente
 ====
 
 
-==== Transport Layer Security (TLS)
+==== Seguridad de la capa de transporte (Transport Layer Security, TLS)
 
-Transport Layer Security (TLS) es un protocolo que opera sobre TCP/IP y proporciona funciones de seguridad esenciales para permitir la comunicación segura entre un cliente y un servidor. TLS garantiza la confidencialidad, integridad y autenticidad de los datos transmitidos, protegiendo las comunicaciones frente a ataques de tipo man-in-the-middle (MITM) [3, 34, 35 ].
+LA Seguridad de la capa de transporte (Transport Layer Security, TLS) es un protocolo que opera sobre TCP/IP y proporciona funciones de seguridad esenciales para permitir la comunicación segura entre un cliente y un servidor. TLS garantiza la confidencialidad, integridad y autenticidad de los datos transmitidos, protegiendo las comunicaciones frente a ataques de tipo hombre en el medio (man-in-the-middle, MITM) [3, 34, 35 ].
 
-TLS se implementa mediante un handshake inicial en el que el cliente autentica al servidor, garantizando que se conecta a la entidad correcta y no a un atacante. Durante este proceso, se negocian las versiones del protocolo y los algoritmos criptográficos a utilizar, así como las claves de cifrado que se emplearán para el resto de la sesión. La información transmitida posteriormente se cifra y autentica utilizando estas claves, asegurando que no pueda ser leída ni modificada por terceros [3, 35].
+TLS se implementa mediante un apretón de manos (handshake) inicial en el que el cliente autentica al servidor, garantizando que se conecta a la entidad correcta y no a un atacante. Durante este proceso, se negocian las versiones del protocolo y los algoritmos criptográficos a utilizar, así como las claves de cifrado que se emplearán para el resto de la sesión. La información transmitida posteriormente se cifra y autentica utilizando estas claves, asegurando que no pueda ser leída ni modificada por terceros [3, 35].
 
-TLS es ampliamente utilizado en protocolos de API basados en HTTP, incluyendo REST y SOAP, para cifrar la comunicación entre clientes y servidores. En algunos casos, además del cifrado de canal que proporciona TLS, puede ser necesario aplicar cifrado adicional a nivel de payload para proteger datos sensibles de manera más granular [34].
+TLS es ampliamente utilizado en protocolos de API basados en HTTP, incluyendo REST y SOAP, para cifrar la comunicación entre clientes y servidores. En algunos casos, además del cifrado de canal que proporciona TLS, puede ser necesario aplicar cifrado adicional a nivel de la carga útil (payload) para proteger datos sensibles de manera más granular [34].
 
 ===== Ventajas
 
@@ -393,13 +393,13 @@ TLS es ampliamente utilizado en protocolos de API basados en HTTP, incluyendo RE
 
 ==== PASETO
 
-El estándar Platform-Agnostic Security Tokens (PASETO) surge como una alternativa moderna y más segura a JSON Web Tokens (JWT) dentro de los esquemas de autenticación basados en tokens. PASETO fue diseñado para evitar los errores comunes y vulnerabilidades derivados del uso de JSON Object Signing and Encryption (JOSE), ofreciendo un formato más predecible, seguro y menos propenso a configuraciones inseguras [3].
+El estándar Tokens de seguridad independientes de la plataforma (Platform-Agnostic Security Tokens, PASETO) surge como una alternativa moderna y más segura a JSON Web Tokens (JWT) dentro de los esquemas de autenticación basados en tokens. PASETO fue diseñado para evitar los errores comunes y vulnerabilidades derivados del uso de Firma y cifrado de objetos JSON (JSON Object Signing and Encryption, JOSE), ofreciendo un formato más predecible, seguro y menos propenso a configuraciones inseguras [3].
 
 A diferencia de JWT, que permite al desarrollador seleccionar entre una amplia variedad de algoritmos criptográficos, PASETO restringe esta elección y define un conjunto fijo de algoritmos por versión. La versión 1 utiliza algoritmos ampliamente adoptados como AES y RSA, mientras que la versión 2 emplea algoritmos modernos y más robustos, como Ed25519 para la firma digital y XChaCha20-Poly1305 para el cifrado autenticado. Este diseño elimina las posibilidades de que un atacante explote configuraciones débiles o confusas, incrementando la fiabilidad criptográfica del token [3].
 
 Asimismo, PASETO admite tanto cifrado simétrico autenticado como firma con clave pública, cubriendo los mismos casos de uso que JWT, pero con una arquitectura más estricta y segura. Los algoritmos y bibliotecas empleados son conocidos únicamente por el servidor emisor del token, lo que dificulta los intentos de falsificación o manipulación. Además, cada versión del protocolo establece su propio conjunto de reglas y algoritmos, promoviendo la interoperabilidad y la previsibilidad en la implementación [36].  
 
-En cuanto al desempeño, estudios comparativos han demostrado que JWT presenta una mejor eficiencia en tiempo de generación y tamaño de token; sin embargo, PASETO ofrece una resistencia significativamente superior frente a vulnerabilidades críticas. Según [36] las pruebas de seguridad realizadas evidenciaron que JWT es susceptible a ataques como Broken User Authentication y explotación de encabezados, mientras que PASETO mostró solidez ante las principales vulnerabilidades documentadas en el OWASP API Security Top 10 (2019).
+En cuanto al desempeño, estudios comparativos han demostrado que JWT presenta una mejor eficiencia en tiempo de generación y tamaño de token; sin embargo, PASETO ofrece una resistencia significativamente superior frente a vulnerabilidades críticas. Según [36] las pruebas de seguridad realizadas evidenciaron que JWT es susceptible a ataques como Autenticación de usuarios deficiente (Broken User Authentication) y explotación de encabezados, mientras que PASETO mostró solidez ante las principales vulnerabilidades documentadas en los 10 principales riesgos de seguridad en APIs según OWASP (OWASP API Security Top 10) (2019).
 
 ===== Ventajas
 
@@ -422,7 +422,7 @@ PASETO representa una evolución hacia mecanismos de autenticación más seguros
 
 ==== CORS
 
-Cross-Origin Resource Sharing (CORS) es un estándar que permite que aplicaciones web realicen solicitudes a APIs alojadas en dominios distintos al de la aplicación cliente. Este mecanismo surge como extensión controlada de la política del mismo origen (Same-Origin Policy), la cual bloquea solicitudes entre dominios diferentes para proteger contra ataques como Cross-Site Request Forgery (CSRF). [37]  
+El Intercambio de recursos de origen cruzado (Cross-Origin Resource Sharing, CORS) es un estándar que permite que aplicaciones web realicen solicitudes a APIs alojadas en dominios distintos al de la aplicación cliente. Este mecanismo surge como extensión controlada de la política del mismo origen (Same-Origin Policy), la cual bloquea solicitudes entre dominios diferentes para proteger contra ataques como Falsificación de solicitudes entre sitios (Cross-Site Request Forgery, CSRF) (CSRF). [37]  
 
 La política del mismo origen considera que dos recursos comparten origen únicamente si coinciden en esquema (HTTP o HTTPS), dominio y puerto. Por ejemplo:
 
@@ -433,7 +433,7 @@ La política del mismo origen considera que dos recursos comparten origen única
 
 CORS funciona mediante encabezados HTTP especiales que el servidor devuelve para indicar qué orígenes están autorizados, qué métodos HTTP se permiten y si se pueden enviar credenciales (cookies o cabeceras de autorización). En algunos casos, el navegador realiza primero una solicitud preliminar (preflight request) usando el método OPTIONS para verificar que la solicitud real está permitida. Si el servidor responde con los encabezados correctos, se ejecuta la solicitud principal.  
 
-Este estándar permite configurar políticas de CORS a nivel global para toda la aplicación o de manera selectiva por endpoint. Las políticas pueden definir qué dominios, métodos y cabeceras están permitidos, manteniendo la seguridad de la política del mismo origen al tiempo que habilitan la interoperabilidad entre aplicaciones y servicios en distintos dominios.  
+Este estándar permite configurar políticas de CORS a nivel global para toda la aplicación o de manera selectiva por el punto de acceso (endpoint). Las políticas pueden definir qué dominios, métodos y cabeceras están permitidos, manteniendo la seguridad de la política del mismo origen al tiempo que habilitan la interoperabilidad entre aplicaciones y servicios en distintos dominios.  
 
 ===== Ventajas
 
@@ -488,7 +488,7 @@ Evita habilitar CORS de forma global con `allow_origins=["*"]` en producción, y
 
 ISO/IEC 27001 es un estándar internacionalmente reconocido para la gestión de la seguridad de la información. Proporciona un enfoque sistemático para administrar información sensible de la organización, garantizando que se mantenga segura. Esto incluye desde datos financieros, propiedad intelectual y detalles de empleados hasta información confiada por terceros [38].
 
-El estándar establece la base para un *Information Security Management System (ISMS)*, exigiendo que la organización diseñe e implemente un conjunto coherente y completo de controles de seguridad de la información. Los controles no son prescriptivos, lo que permite a cada organización adaptarlos según sus necesidades y contexto. Entre los aspectos cubiertos se incluyen evaluación de riesgos, políticas de seguridad, gestión de activos, control de accesos y seguridad física y ambiental [39].
+El estándar establece la base para un Sistema de Gestión de Seguridad de la Información (*Information Security Management System, ISMS*), exigiendo que la organización diseñe e implemente un conjunto coherente y completo de controles de seguridad de la información. Los controles no son prescriptivos, lo que permite a cada organización adaptarlos según sus necesidades y contexto. Entre los aspectos cubiertos se incluyen evaluación de riesgos, políticas de seguridad, gestión de activos, control de accesos y seguridad física y ambiental [39].
 
 ISO/IEC 27001 puede aplicarse a cualquier organización, independientemente de su tamaño o industria, aunque resulta especialmente relevante en sectores que manejan información altamente sensible, como instituciones financieras. Su implementación proporciona un marco estructurado para proteger la información, reducir riesgos y demostrar un compromiso con las mejores prácticas de seguridad.
 
@@ -509,7 +509,7 @@ Al implementar APIs seguras dentro de un marco ISO/IEC 27001, las organizaciones
 El NIST Special Publication 800-228 (_Guidelines for API Protection for Cloud-Native Systems_) establece lineamientos específicos para la protección y aseguramiento de APIs en entornos empresariales modernos. 
 Este estándar reconoce que las APIs son el medio principal de comunicación e integración entre sistemas en arquitecturas nativas de la nube, por lo que su seguridad resulta esencial para la postura de seguridad general de las organizaciones [40].
 
-El documento propone un modelo de protección integral del ciclo de vida de las APIs, basado en los principios de DevSecOps y el paradigma de Zero Trust, considerando controles tanto previos a la ejecución (pre-runtime) como durante la ejecución (runtime). 
+El documento propone un modelo de protección integral del ciclo de vida de las APIs, basado en los principios de DevSecOps y el paradigma de confianza cero (Zero Trust), considerando controles tanto previos a la ejecución (pre-runtime) como durante la ejecución (runtime). 
 Estos controles se clasifican en básicos y avanzados, lo que permite su adopción de forma incremental y basada en el riesgo, de acuerdo con la madurez de la organización.
 
 Entre sus principales aportaciones destacan:
@@ -556,7 +556,7 @@ Para alinear el diseño de APIs REST con los principios del GDPR, se recomiendan
 * **Gestión del consentimiento:** implementar mecanismos para obtener, registrar y revocar el consentimiento de los usuarios.  
 * **Cifrado:** proteger la información personal mediante cifrado de extremo a extremo en tránsito y en reposo.  
 * **Control de acceso:** restringir el uso de las APIs únicamente a usuarios o sistemas autenticados y autorizados.  
-* **Derechos de los interesados:** habilitar endpoints que permitan ejercer derechos como acceso, rectificación o eliminación de datos.  
+* **Derechos de los interesados:** habilitar puntos de entrada (endpoints) que permitan ejercer derechos como acceso, rectificación o eliminación de datos.  
 * **Evaluaciones de impacto (DPIA):** analizar riesgos asociados al tratamiento de datos personales mediante APIs.  
 * **Acuerdos de procesamiento de datos:** definir responsabilidades y obligaciones contractuales entre las partes que procesan datos.  
 * **Notificación de brechas:** establecer procedimientos para detectar, registrar y notificar incidentes de seguridad.  
@@ -574,19 +574,19 @@ La integración de estas consideraciones en el ciclo de vida de las APIs refuerz
 
 Además de los estándares técnicos, existen regulaciones legales que establecen requisitos específicos para la protección de datos y la ciberseguridad. Estas regulaciones suelen exigir la implementación de medidas que prevengan el acceso no autorizado, la divulgación indebida o el uso inapropiado de la información.  
 
-Entre las más relevantes se encuentran la Health Insurance Portability and Accountability Act (HIPAA) en Estados Unidos y la Cybersecurity Law de la República Popular de China, que obligan a las organizaciones a implementar controles de seguridad y reportar incidentes relacionados con la protección de datos y sistemas [41, 42].
+Entre las más relevantes se encuentran la Ley de Portabilidad y Responsabilidad del Seguro de Salud (Health Insurance Portability and Accountability Act, HIPAA) en Estados Unidos y la Ley de Ciberseguridad (Cybersecurity Law) de la República Popular de China, que obligan a las organizaciones a implementar controles de seguridad y reportar incidentes relacionados con la protección de datos y sistemas [41, 42].
 
-===== HIPAA (Health Insurance Portability and Accountability Act)
+===== Ley de Portabilidad y Responsabilidad del Seguro de Salud (Health Insurance Portability and Accountability Act, HIPAA)
 
-La HIPAA es una regulación estadounidense que establece estándares para la protección de la información médica sensible, conocida como Protected Health Information (PHI). Su objetivo es garantizar la confidencialidad, integridad y disponibilidad de la PHI, al mismo tiempo que facilita la portabilidad del seguro médico y la eficiencia del sistema de salud [41].
+La HIPAA es una regulación estadounidense que establece estándares para la protección de la información médica sensible, conocida como Información de Salud Protegida (Protected Health Information, PHI). Su objetivo es garantizar la confidencialidad, integridad y disponibilidad de la PHI, al mismo tiempo que facilita la portabilidad del seguro médico y la eficiencia del sistema de salud [41].
 
-Uno de los pilares de la HIPAA es la Privacy Rule, que otorga a los pacientes derechos sobre su información médica, incluyendo el acceso, modificación y obtención de registros de uso. Por su parte, la Security Rule define salvaguardas administrativas, físicas y técnicas que las entidades deben aplicar para proteger la PHI electrónica (ePHI), tales como controles de acceso, cifrado, auditorías y planes de contingencia.
+Uno de los pilares de la HIPAA es la Regla de privacidad (Privacy Rule), que otorga a los pacientes derechos sobre su información médica, incluyendo el acceso, modificación y obtención de registros de uso. Por su parte, la Regla de seguridad (Security Rule) define salvaguardas administrativas, físicas y técnicas que las entidades deben aplicar para proteger la PHI electrónica (ePHI), tales como controles de acceso, cifrado, auditorías y planes de contingencia.
 
 Asimismo, la HIPAA requiere que las entidades cubiertas establezcan acuerdos con sus asociados comerciales para asegurar el cumplimiento de las normas de privacidad y seguridad, siendo ambos responsables ante las autoridades reguladoras.
 
 [WARNING]
 ====
-El incumplimiento de la HIPAA puede derivar en sanciones económicas severas, además de planes obligatorios de acción correctiva supervisados por la Office for Civil Rights (OCR) del U.S. Department of Health & Human Services.
+El incumplimiento de la HIPAA puede derivar en sanciones económicas severas, además de planes obligatorios de acción correctiva supervisados por la Oficina de Derechos Civiles (Office for Civil Rights, OCR) del Departamento de Salud y Servicios Humanos de los Estados Unidos (U.S. Department of Health & Human Services, HHS)
 ====
 
 ===== Consideraciones de la HIPAA en el diseño de APIs
@@ -598,7 +598,7 @@ Al desarrollar o integrar APIs que manejen información médica o datos sensible
 * **Registros de auditoría:** Mantener trazabilidad de accesos y transacciones realizadas mediante la API.  
 * **Minimización de datos:** Limitar la transmisión y exposición de PHI únicamente a lo necesario.  
 * **Comunicación segura:** Emplear canales protegidos para evitar interceptaciones o alteraciones.  
-* **Verificación de autorización:** Comprobar permisos en cada endpoint antes de exponer recursos.  
+* **Verificación de autorización:** Comprobar permisos en cada punto de acceso (endpoint) antes de exponer recursos.  
 * **Almacenamiento seguro:** Proteger los datos almacenados mediante cifrado y controles de acceso.  
 * **Documentación de cumplimiento:** Registrar políticas, controles y medidas de seguridad adoptadas.  
 
@@ -612,7 +612,7 @@ Aunque su aplicación es obligatoria solo en Estados Unidos, sus principios pued
 
 El modelado de amenazas es un enfoque de seguridad proactivo y estructurado que se utiliza para identificar, evaluar y mitigar posibles riesgos dentro de la arquitectura de un sistema antes de que puedan ser explotados. Permite visualizar cómo un atacante podría aprovechar vulnerabilidades mediante la identificación de activos críticos, como datos sensibles; la evaluación de vectores de ataque; el análisis de posibles actores de amenaza; y la definición de estrategias de mitigación para cada riesgo.
 
-Como práctica clave, garantiza que las consideraciones de seguridad se integren desde las etapas iniciales de diseño hasta la implementación y operación, en consonancia con los principios de Shift Left y Secure by Design. Al anticipar vulnerabilidades de forma temprana, ayuda a tomar decisiones de diseño informadas, reducir costos de retrabajo y fomentar la creación de sistemas inherentemente seguros.
+Como práctica clave, garantiza que las consideraciones de seguridad se integren desde las etapas iniciales de diseño hasta la implementación y operación, en consonancia con los principios de desplazamiento a la izquierda (Shift Left) y seguridad desde el diseño (Secure by Design) Al anticipar vulnerabilidades de forma temprana, ayuda a tomar decisiones de diseño informadas, reducir costos de retrabajo y fomentar la creación de sistemas inherentemente seguros.
 
 ==== Importancia del modelado de amenazas
 
@@ -646,9 +646,9 @@ El proceso de modelado de amenazas abarca varios componentes esenciales [44]:
 
 * **Activos:** Representan los elementos valiosos que requieren protección, como datos sensibles, propiedad intelectual, funcionalidades críticas o la privacidad del usuario.  
 * **Actores de amenaza:** Son individuos o grupos que podrían intentar explotar vulnerabilidades del sistema, como cibercriminales, hacktivistas, actores estatales o amenazas internas.  
-* **Amenazas:** Acciones o eventos potencialmente negativos que podrían comprometer un activo, como brechas de datos, ataques DoS o campañas de phishing.  
+* **Amenazas:** Acciones o eventos potencialmente negativos que podrían comprometer un activo, como brechas de datos, ataques DoS o campañas de suplantación de identidad (phishing).  
 * **Vulnerabilidades:** Debilidades o fallos en el diseño, implementación o configuración del sistema que pueden ser explotados.  
-* **Vectores de ataque:** Rutas o métodos empleados por un atacante para obtener acceso o explotar una vulnerabilidad, como correos de phishing, puertos abiertos o bibliotecas comprometidas.  
+* **Vectores de ataque:** Rutas o métodos empleados por un atacante para obtener acceso o explotar una vulnerabilidad, como correos de suplantación de identidad (phishing), puertos abiertos o bibliotecas comprometidas.  
 * **Contramedidas:** Controles o mecanismos implementados para mitigar o eliminar las amenazas identificadas, que pueden ser técnicos (cifrado, autenticación), procedimentales (políticas de seguridad, capacitación) o físicos (acceso restringido a servidores).
 
 [TIP]
@@ -698,32 +698,32 @@ Su nombre proviene del acrónimo de seis categorías de amenazas, que ayudan a l
 |===
 | Categoría | Descripción | Ejemplo de ataque | Contramedida típica
 
-| **S**poofing (Suplantación de identidad)
+| Suplantación de identidad (**S**poofing)
 | Ocurre cuando un atacante se hace pasar por alguien o algo que no es para obtener acceso no autorizado a los recursos.
 | Robo de credenciales de inicio de sesión para suplantar a un usuario legítimo o la creación de un sitio web falso que engaña a las víctimas para que revelen información confidencial.
 | Autenticación fuerte, MFA, validación de identidad.
 
-| **T**ampering (Manipulación de datos)
+| Manipulación de datos (**T**ampering)
 | Modificación no autorizada de datos, ya sea en tránsito o en reposo.
 | Interceptar y modificar las comunicaciones entre sistemas o alterar datos almacenados.
 | Cifrado de datos, uso de hash en archivos y datos, controles de acceso robustos para garantizar la integridad de los datos.
 
-| **R**epudiation (Repudio)
+| Repudio (**R**epudiation)
 | Un usuario niega haber realizado una acción y el sistema carece de la capacidad de demostrar lo contrario.
 | Un usuario niega haber realizado una transacción financiera.
 | Auditoría, bitácoras de eventos, firmas digitales y uso de frameworks de logging.
 
-| **I**nformation Disclosure (Divulgación de información)
+| Divulgación de información (**I**nformation Disclosure)
 | Fuga de datos confidenciales hacia partes no autorizadas.
 | Puede manifestarse cuando los atacantes espían las comunicaciones de la red, acceden a archivos no protegidos o aprovechan vulnerabilidades para obtener acceso no autorizado a los datos.
 | Cifrado de datos, control de acceso, procesos de clasificación y manejo de datos.
 
-| **D**enial of Service (Denegación de servicio)
+| Denegación de servicio (**D**enial of Service)
 | Su objetivo es hacer que un sistema o servicio no esté disponible para sus usuarios previstos.
 | Saturación con tráfico excesivo o explotación de vulnerabilidades para provocar su caída.
 | Limitación de tasa (rate limiting), uso de WAF, diseñar sistemas con capacidad de redundancia y recuperación ante fallos.
 
-| **E**levation of Privilege (Elevación de privilegios)
+|Elevación de privilegios (**E**levation of Privilege)
 | Un atacante obtiene permisos superiores a los que debería tener, lo que le permite realizar acciones no autorizadas.
 | Usuario aprovecha una vulnerabilidad para obtener privilegios administrativos podría tener acceso sin restricciones a datos confidenciales o funciones críticas del sistema.
 | Principio del mínimo privilegio, auditorías periodicas de privilegios y corrección de vulnerabilidades.
@@ -813,11 +813,11 @@ En nuestro ejemplo, se tiene la siguiente información:
 
 Las dependencias externas son elementos ajenos al código de la aplicación que pueden representar una amenaza para ella. Estos elementos suelen estar bajo el control de la organización, aunque posiblemente no bajo el control directo del equipo de desarrollo.
 
-Un aspecto a considerar cuando se analizan las dependencias externas es el entorno de producción y sus requisitos. Por ejemplo, si se espera que la aplicación se ejecute en un servidor y que esté detrás de un firewall, esta información debe documentarse en esta sección [45].
+Un aspecto a considerar cuando se analizan las dependencias externas es el entorno de producción y sus requisitos. Por ejemplo, si se espera que la aplicación se ejecute en un servidor y que esté detrás de un corta fuegos(firewall), esta información debe documentarse en esta sección [45].
 
 Las dependencias externas deben documentarse de la siguiente manera:
 
-* ID: Un identificador único asignado a la dependencia externa.
+* Identficador (ID): Un identificador único asignado a la dependencia externa.
 
 * Descripción: Una descripción textual de la dependencia externa.
 
@@ -832,7 +832,7 @@ En nuestro ejemplo, se tienen las siguientes dependencias externas:
 | DE-2 | El servidor de base de datos usará PostgreSQL y se ejecutará en una instancia Linux separada. Será reforzado siguiendo el estándar de seguridad de la organización e incluirá actualizaciones periódicas y monitoreo de la actividad de la base de datos.
 | DE-3 | La comunicación entre el servidor de la API y el servidor de base de datos se realizará a través de una red privada, aislada de Internet pública.
 | DE-4 | La API dependerá de un proveedor externo de autenticación (OAuth 2.0) para la gestión segura del acceso de usuarios. La integración se realizará mediante HTTPS y autenticación basada en tokens.
-| DE-5 | El servidor web que aloja la puerta de enlace (API Gateway) se encuentra detrás de un firewall, y toda comunicación externa está restringida únicamente a conexiones TLS (HTTPS).
+| DE-5 | El servidor web que aloja la puerta de enlace (API Gateway) se encuentra detrás de un cortafuegos (firewall), y toda comunicación externa está restringida únicamente a conexiones TLS (HTTPS).
 |===
 
 ====== Puntos de entrada
@@ -843,7 +843,7 @@ Los puntos de entrada muestran dónde se ingresan los datos al sistema, por ejem
 
 Los puntos de entrada deben documentarse de la siguiente manera:
 
-* ID: Un identificador único asignado al punto de entrada. Este se utilizará para hacer referencia cruzada entre el punto de entrada y cualquier amenaza o vulnerabilidad identificada. En el caso de puntos de entrada organizados en capas, se debe usar una notación mayor.menor.
+* Identificador (ID): Un identificador único asignado al punto de entrada. Este se utilizará para hacer referencia cruzada entre el punto de entrada y cualquier amenaza o vulnerabilidad identificada. En el caso de puntos de entrada organizados en capas, se debe usar una notación mayor.menor.
 
 * Nombre: Un nombre descriptivo que identifique el punto de entrada y su propósito.
 
@@ -873,7 +873,7 @@ En nuestro ejemplo, se tienen los siguientes puntos de entrada:
 
 ====== Puntos de salida
 
-Mientras que los puntos de entrads muestran dónde se ingresan los datos al sistema, los puntos de salida indican dónde los datos salen del sistema. Estos puntos son igualmente críticos, ya que al momento de atacar el lado del cliente, las vulnerabilidades de cross-site scripting (XSS) y las de divulgación de información requieren un punto de salida para que el ataque se complete.
+Mientras que los puntos de entrads muestran dónde se ingresan los datos al sistema, los puntos de salida indican dónde los datos salen del sistema. Estos puntos son igualmente críticos, ya que al momento de atacar el lado del cliente, las vulnerabilidades de secuencias de comandos entre sitios (Cross-Site Scripting, XSS) y las de divulgación de información requieren un punto de salida para que el ataque se complete.
 
 En muchos casos, las amenazas habilitadas por los puntos de salida están relacionadas con las amenazas de los correspondientes puntos de entrada. En el ejemplo del inicio de sesión, los mensajes de error devueltos al usuario a través del punto de salida (la página de inicio de sesión) podrían permitir ataques en el punto de entrada, como recolección de cuentas (por ejemplo, “nombre de usuario no encontrado”).
 
@@ -906,7 +906,7 @@ Por ejemplo, un activo físico podría ser la lista de registros de pacientes, m
 
 Los activos deben documentarse de la siguiente manera:
 
-* ID: Se asigna un identificador único a cada activo. Este ID se usa para hacer referencias cruzadas con las amenazas o vulnerabilidades identificadas.
+* Identificador (ID): Se asigna un identificador único a cada activo. Este identificador se usa para hacer referencias cruzadas con las amenazas o vulnerabilidades identificadas.
 
 * Nombre: Un nombre descriptivo que identifique claramente el activo.
 
@@ -967,7 +967,7 @@ Los niveles de confianza representan los derechos de acceso que la aplicación o
 
 Los niveles de confianza se documentan en el modelo de amenazas de la siguiente manera:
 
-* ID: Se asigna un número único a cada nivel de confianza. Este se utiliza para hacer referencia cruzada con los puntos de entrada y los activos.
+* Identificador (ID): Se asigna un número único a cada nivel de confianza. Este se utiliza para hacer referencia cruzada con los puntos de entrada y los activos.
 
 * Nombre: Un nombre descriptivo que permite identificar las entidades externas a las que se les ha otorgado este nivel de confianza.
 
@@ -1126,12 +1126,12 @@ Aplicar STRIDE sobre los componentes del sistema permite identificar amenazas es
 
 Por ejemplo:
 
-* **Spoofing:** aplicar autenticación fuerte, MFA y validación de tokens.  
-* **Tampering:** cifrar datos en tránsito y validar integridad.  
-* **Repudiation:** habilitar registro de auditoría con trazabilidad.  
-* **Information Disclosure:** implementar controles de acceso y clasificación de datos.  
-* **Denial of Service:** limitar la tasa de peticiones y usar sistemas de detección de anomalías.  
-* **Elevation of Privilege:** revisar roles, permisos y aplicar el principio de mínimo privilegio.
+* Suplantación de identidad (**Spoofing**) aplicar autenticación fuerte, MFA y validación de tokens.  
+* Manipulación de datos (**Tampering:**) cifrar datos en tránsito y validar integridad.  
+* Repudio (**Repudiation:**) habilitar registro de auditoría con trazabilidad.  
+* Divulgación de información (**Information Disclosure:**) implementar controles de acceso y clasificación de datos.  
+* Denegación de información (**Denial of Service:**) limitar la tasa de peticiones y usar sistemas de detección de anomalías.  
+* Elevación de privilegios (**Elevation of Privilege:**) revisar roles, permisos y aplicar el principio de mínimo privilegio.
 
 Una vez que se han identificado las amenazas y las contramedidas correspondientes, es posible derivar un perfil de amenazas con los siguientes criterios:
 
