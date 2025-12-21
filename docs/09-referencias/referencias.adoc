@@ -131,3 +131,19 @@
 [65] Santos, O., Lazzara, S., & Thurner, W. (2025). Redefining hacking: A comprehensive guide to red teaming and bug bounty hunting in an AI-driven world. Packt Publishing.
 
 [66] Shannon, M. J. (2025, abril). Non-repudiation (Lección 19.4) [Video]. En CompTIA SecurityX (CAS-005). O’Reilly Learning Platform
+
+[67] Ali, M. L., Thakur, K., & Obaidat, M. A. (2024, July). The Application of Layered Authentication in Cybersecurity. In 2024 International Conference on Computing, Internet of Things and Microwave Systems (ICCIMS) (pp. 1-5). IEEE.
+
+[68] Chatterjee, A., Gerdes, M. W., Khatiwada, P., & Prinz, A. (2022). Sftsdh: Applying spring security framework with TSD-based oauth2 to protect microservice architecture apis. IEEE Access, 10, 41914-41934.
+
+[69] Mazidi, A., Corradini, D., & Ghafari, M. (2024, June). Mining REST APIs for Potential Mass Assignment Vulnerabilities. In Proceedings of the 28th International Conference on Evaluation and Assessment in Software Engineering (pp. 369-374).
+
+[70] Corradini, D., Pasqua, M., & Ceccato, M. (2023, May). Automated black-box testing of mass assignment vulnerabilities in RESTful APIs. In 2023 IEEE/ACM 45th International Conference on Software Engineering (ICSE) (pp. 2553-2564). IEEE.
+
+[71] Sharieh, S., & Ferworn, A. (2021, October). Securing apis and chaos engineering. In 2021 IEEE Conference on Communications and Network Security (CNS) (pp. 290-294). IEEE.
+
+[72] Atlidakis, V., Godefroid, P., & Polishchuk, M. (2020, October). Checking security properties of cloud service REST APIs. In 2020 IEEE 13th International Conference on Software Testing, Validation and Verification (ICST) (pp. 387-397). IEEE.
+
+[73] Sharma, K. (2023, June). Voteroid Secure API Gateway Based on Spring boot Microservices Architecture. In 2023 International Conference on Computational Intelligence for Information, Security and Communication Applications (CIISCA) (pp. 109-115). IEEE.
+
+[74] Chen, Y., Yang, Y., Lei, Z., Xia, M., & Qi, Z. (2021, March). Bootstrapping automated testing for RESTful web services. In International Conference on Fundamental Approaches to Software Engineering (pp. 46-66). Cham: Springer International Publishing.
