@@ -173,7 +173,7 @@ Por otro lado, el limitación de solicitudes (throttling) es una técnica comple
 ==== Algoritmos de limitación de la tasa de solicitudes (rate limiting)
 Es necesario definir cómo se calcula la tasa de solicitudes dentro del sistema. Para implementar la limitación de la tasa de solicitudes (rate limiting) de forma consistente y segura, un servicio distribuido debe contar con mecanismos claros para medir y controlar el ritmo de las solicitudes realizadas por cada consumidor. 
 
-Los algoritmos de limitaciones de tasa más utilizados en arquitecturas distribuidas incluyen:
+Los algoritmos de limitaciones de tasa más utilizados en arquitecturas distribuidas incluyen [55]:
 
 - Cubo de tokens (Token Bucket)
 - Cubo con fugas (Leaky Bucket)
