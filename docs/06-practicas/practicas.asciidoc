@@ -120,7 +120,7 @@ Es recomendable que los desarrolladores que capturen el tráfico de las aplicaci
 ====  Revisar y actualizar las configuraciones
 
 *Vulnerabilidad*: Errores de configuración (Configuration errores). +
-Una tarea para revisar y actualizar las configuraciones en toda la pila de API. La revisión debe incluir: archivos de orquestación, componentes de API y servicios en la nube https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/ 
+Una tarea para revisar y actualizar las configuraciones en toda la pila de API. La revisión debe incluir: archivos de orquestación, componentes de API y servicios en la nube [76].
 
 ==== Cifrado (Encryption)
 
@@ -173,7 +173,7 @@ Este enfoque permite detectar ataques y comportamientos sospechosos en tiempo re
 ==== Monitorear todas las solicitudes y respuestas, y limitar la tasa (Monitor all the requests and responses, Rate Limiting)
 
 *Vulnerabilidad*: Falta de limitación de tasa o no bloqueo de solicitudes maliciosas (Lack of rate limiting or not blocking malicious requests) +
-Un interceptor dedicado en el algoritmo que supervisa todas las solicitudes y respuestas y, por lo tanto, previene ataques.
+Un interceptor dedicado en el algoritmo que supervisa todas las solicitudes y respuestas y, por lo tanto, previene ataques [75].
 
 ==== Mantener dependencias actualizadas
 *Vulnerabilidad*: Usar componentes vulnerables (Using Vulnerable componentes) +
