@@ -148,5 +148,9 @@
 
 [74] Chen, Y., Yang, Y., Lei, Z., Xia, M., & Qi, Z. (2021, March). Bootstrapping automated testing for RESTful web services. In International Conference on Fundamental Approaches to Software Engineering (pp. 46-66). Cham: Springer International Publishing.
 
-[75] OWASP. (2019). OWASP API Security Top 10 – 2019. https://owasp.org/API-Security/editions/2019/en/0x11-t10/
 
+[75] Beer, M. I., & Hassan, M. F. (2018). Adaptive security architecture for protecting RESTful web services in enterprise computing environment. Service Oriented Computing and Applications, 12(2), 111-121.
+
+[76] Open Web Application Security Project. (2023). API8:2023 Security Misconfiguration. OWASP API Security Top 10 – 2023. https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/
+
+[77] OWASP. (2019). OWASP API Security Top 10 – 2019. https://owasp.org/API-Security/editions/2019/en/0x11-t10/
