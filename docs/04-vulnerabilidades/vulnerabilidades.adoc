@@ -3,7 +3,7 @@
 
 Para poder hablar de las vulnerabilidades, primero, debemos definir lo que es una vulnerabilidad. Una vulnerabilidad es una falla o debilidad potencial en el diseño o la implementación de software que puede ejercerse (activarse accidentalmente o explotarse intencionalmente) y provocar daños en el sistema (Search Results). Ahora, la vulnerabilidad en sí misma no representa el peligro inminente. Más bien, la vulnerabilidad es la puerta de entrada a un exploit. El hecho de que nuestro sistema contenga alguna vulnerabilidad significa que tenemos una puerta de entrada para que una amenaza pueda explotarnos [46]. 
 
-Aquí se presentan los conceptos fundamentales para comprender qué constituye una vulnerabilidad y por qué su presencia abre la posibilidad de explotación por parte de amenazas. Posteriormente, se describe el conjunto de vulnerabilidades más comunes reconocido por la comunidad de seguridad, tomando como referencia el OWASP API Security Top 10, considerado el estándar principal para evaluar riesgos en interfaces de programación de aplicaciones.
+Aquí se presentan los conceptos fundamentales para comprender qué constituye una vulnerabilidad y por qué su presencia abre la posibilidad de explotación por parte de amenazas. Posteriormente, se describe el conjunto de vulnerabilidades más comunes reconocido por la comunidad de seguridad, tomando como referencia el OWASP API Security Top 10, considerado el estándar principal para evaluar riesgos en interfaces de programación de aplicaciones [47].
 
 El objetivo de esta sección es ofrecer al lector un marco claro y actualizado sobre los riesgos prioritarios en APIs REST, de modo que pueda reconocer, anticipar y mitigar aquellas debilidades que comprometen la confidencialidad, integridad, disponibilidad y continuidad operativa de los sistemas.
 
@@ -37,7 +37,7 @@ A continuación, se presentan las principales vulnerabilidades identificadas en 
 | Las API vulnerables a este riesgo exponen un flujo comercial, como comprar un boleto o publicar un comentario, sin compensar cómo la funcionalidad podría dañar el negocio si se usa excesivamente de manera automatizada. Esto no proviene necesariamente de errores de implementación.
 
 | Falsificación de solicitudes del lado del servidor (Server Side Request Forgery, SSRF)
-| La Falsificación de solicitudes del lado del servidor (SSRF) pueden ocurrir cuando una API obtiene un recurso remoto sin validar el URI proporcionado por el usuario. Esto permite a un atacante forzar a la aplicación para que envíe una solicitud manipulada a un destino inesperado, incluso cuando está protegida por un cortafuegos (firewall) o una VPN.
+| La Falsificación de solicitudes del lado del servidor (SSRF) pueden ocurrir cuando una API obtiene un recurso remoto sin validar el URI proporcionado por el usuario. Esto permite a un atacante forzar a la aplicación para que envíe una solicitud manipulada a un destino inesperado, incluso cuando está protegida por un _firewall_ o una VPN.
 
 | Configuración de seguridad incorrecta (Security Misconfiguration)
 | Las API y los sistemas que las soportan suelen contener configuraciones complejas, destinadas a hacer que las API sean más personalizables. Los ingenieros de software y DevOps pueden pasar por alto estas configuraciones o no seguir las mejores prácticas de seguridad en lo que respecta a la configuración, lo que abre la puerta a diferentes tipos de ataques.

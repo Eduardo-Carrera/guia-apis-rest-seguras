@@ -2,9 +2,9 @@
 
 El diseño seguro constituye uno de los pilares fundamentales para garantizar la confiabilidad y resistencia de una API REST frente a amenazas internas y externas. Mientras que las etapas de planeación y análisis permiten identificar riesgos, el diseño define las decisiones arquitectónicas y los mecanismos técnicos que determinarán el nivel de protección del sistema durante toda su vida útil. Por ello, esta sección reúne los principios, enfoques y prácticas esenciales que deben incorporarse desde la concepción misma de la API para minimizar vulnerabilidades, limitar superficies de exposición y asegurar un comportamiento coherente y robusto ante escenarios adversos.
 
-A lo largo de esta sección se abordan elementos clave del diseño seguro, tales como modelos de confianza modernos (Zero Trust), principios de autorización (menor privilegio), clasificación y tratamiento de datos sensibles, y la aplicación de la tríada CIA como marco estructurante de decisiones de seguridad. Además, se incluyen lineamientos esenciales como la validación de entradas, mecanismos de disponibilidad como limitación de tasa (rate limiting), consistencia en contratos y endpoints, versionado, patrones y antipatrones de diseño, así como la identificación de casos de uso y casos de abuso.
+A lo largo de esta sección se abordan elementos clave del diseño seguro, tales como modelos de confianza modernos (_Zero Trust_), principios de autorización (menor privilegio), clasificación y tratamiento de datos sensibles, y la aplicación de la tríada CIA como marco estructurante de decisiones de seguridad. Además, se incluyen lineamientos esenciales como la validación de entradas, mecanismos de disponibilidad como _rate limiting_, consistencia en contratos y _endpoints_, versionado, patrones y antipatrones de diseño, así como la identificación de casos de uso y casos de abuso.
 
-=== Confianza cero (Zero Trust)
+=== _Zero Trust_
 
 También llamada seguridad de red sin perímetro es un concepto que, cuando se aplica a las operaciones de conectividad, significa que no se confía en ningún usuario o dispositivo, incluso si se han autenticado previamente. Cada solicitud de acceso a los datos debe autenticarse dinámicamente para garantizar el acceso con privilegios mínimos a los recursos [48].  
 
@@ -83,7 +83,7 @@ Los conceptos, condiciones y aspectos de la confidencialidad incluyen los siguie
 
 La integridad es el concepto de proteger la confiabilidad y corrección de los datos. La protección de la integridad evita alteraciones no autorizadas de los datos. La protección de integridad implementada correctamente proporciona un medio para realizar cambios autorizados al tiempo que protege contra actividades no autorizadas intencionadas y maliciosas (como virus e intrusiones) y errores cometidos por usuarios autorizados (como accidentes o descuidos) [52].
 
-De igual forma, la integridad se refiere a la precisión y consistencia de los datos a lo largo de su ciclo de vida. Este principio garantiza que la información no sea alterada o manipulada por usuarios no autorizados y que siga siendo precisa, confiable y fidedigna. (Chow, 2024).
+De igual forma, la integridad se refiere a la precisión y consistencia de los datos a lo largo de su ciclo de vida. Este principio garantiza que la información no sea alterada o manipulada por usuarios no autorizados y que siga siendo precisa, confiable y fidedigna [51].
 La integridad se puede examinar desde tres perspectivas:
 
 * Evitar que sujetos no autorizados realicen modificaciones [52].
@@ -133,18 +133,21 @@ Los conceptos, condiciones y aspectos de la disponibilidad incluyen los siguient
 
 === Cómo validar entradas
 
-Los profesionales de la ciberseguridad y los desarrolladores de aplicaciones tienen varias herramientas a su disposición para ayudar a protegerse contra las vulnerabilidades de las aplicaciones. Uno de los más importantes es la validación de entradas. Las aplicaciones que permiten la entrada del usuario deben realizar la validación de esa entrada para reducir la probabilidad de que contenga un ataque. Las prácticas inadecuadas de manejo de entradas pueden exponer las aplicaciones a ataques de inyección, ataques de secuencias de comandos entre sitios y otras vulnerabilidades [49].
+Los profesionales de la ciberseguridad y desarrolladores de aplicaciones cuentan con diferentes herramientas para proteger los sistemas frente a vulnerabilidades. Una de las más importantes es la validación de entradas. Las aplicaciones que permiten datos proporcionados por el usuario deben validar rigurosamente dicha información para reducir la probabilidad de que contenga un ataque. Las prácticas inadecuadas de manejo de entradas pueden exponer las aplicaciones a ataques de inyección, ataques de secuencias de comandos entre sitios, entre otras vulnerabilidades [49].
 
-La forma más efectiva de Validación de entrada Utiliza la lista de permitidos, en la que el desarrollador describe el tipo exacto de entrada que se espera del usuario y, a continuación, comprueba que la entrada coincide con esa especificación antes de pasar la entrada a otros procesos o servidores. Por ejemplo, si un formulario de entrada solicita a un usuario que introduzca su edad, la lista de permitidos podría comprobar que el usuario ha proporcionado un valor entero dentro del intervalo de 0 a 125. A continuación, la aplicación rechazaría cualquier valor fuera de ese intervalo [49].
+La forma más efectiva de validación de entrada es el uso de listas de permitidos (allowlists), en la que el desarrollador describe el tipo exacto de entrada que se espera del usuario y, a continuación, comprueba que la entrada coincide con esa especificación antes de pasar la entrada a otros procesos o servidores. Por ejemplo, si un formulario de entrada solicita a un usuario que introduzca su edad, la _allowlist_ podría comprobar que el usuario ha proporcionado un valor entero dentro del intervalo de 0 a 125. A continuación, la aplicación rechazaría cualquier valor fuera de ese intervalo [49].
 
-Recuerda que Validación de entrada ayuda a prevenir una amplia gama de problemas, desde secuencias de comandos entre sitios (XSS) hasta ataques de inyección SQL [49].
+[TIP]
+====
+La validación de entrada ayuda a prevenir una amplia gama de problemas, desde secuencias de comandos entre sitios (XSS) hasta ataques de inyección SQL [49].
+====
 
-Al realizar Validación de entrada, es muy importante asegurarse de que la validación se produce en el lado del servidor en lugar de dentro del navegador del cliente. La validación del lado cliente es útil para proporcionar a los usuarios comentarios sobre su entrada, pero nunca se debe confiar en ella como un control de seguridad. Es fácil para los piratas informáticos y los probadores de penetración eludir los navegadores entrada validación [49].
+Al realizar Validación de entrada, es muy importante asegurarse de que la validación se produce en el lado del servidor en lugar de dentro del navegador del cliente. La validación del lado cliente es útil para proporcionar a los usuarios comentarios sobre su entrada, pero nunca se debe confiar en ella como un control de seguridad. Para los atacantes y especialistas en pruebas de penetración resulta relativamente sencillo eludir los mecanismos de validación de entradas implementadas en el navegados [49].
 
 
-=== Disponibilidad: limitación de la tasa de solicitudes (rate limiting)
+=== Disponibilidad: _rate limiting_
 
-La disponibilidad es uno de los pilares fundamentales de la seguridad en APIs REST, asegurando que los usuarios autorizados puedan acceder a los recursos de manera oportuna y continua. Una estrategia crítica para mantener la disponibilidad es la limitación de la tasa de solicitudes (rate limiting), la cual controla la frecuencia de interacción de un usuario o cliente con la API dentro de un intervalo de tiempo determinado. Esta medida previene la sobrecarga de los recursos del sistema y protege contra ataques de denegación de servicio (DoS) y fuerza bruta [53, 54].
+La disponibilidad es uno de los pilares fundamentales de la seguridad en APIs REST, asegurando que los usuarios autorizados puedan acceder a los recursos de manera oportuna y continua. Una estrategia crítica para mantener la disponibilidad es el _rate limiting_, la cual controla la frecuencia de interacción de un usuario o cliente con la API dentro de un intervalo de tiempo determinado. Esta medida previene la sobrecarga de los recursos del sistema y protege contra ataques de denegación de servicio (DoS) y fuerza bruta [53, 54].
 
 ==== Conceptos Fundamentales
 
@@ -160,18 +163,18 @@ Por otro lado, el limitación de solicitudes (throttling) es una técnica comple
 
 ==== Implementación
 
-* La limitación de solicitudes (throttling) se puede implementar en frameworks como Spring Boot, utilizando bibliotecas como Resilience4J [54].
-* En arquitecturas modernas, es recomendable aplicar el la limitación de la tasa de solicitudes (rate limiting) en el API Gateway, identificando al origen de las solicitudes mediante propiedades tales como dirección IP, geolocalización o client ID [33].
-* Es fundamental definir políticas de fallo abierto (fail open) o fallo cerrado (fail closed) de acuerdo con la criticidad del servicio. Por ejemplo, APIs financieras suelen requerir fallo cerrado (fail closed), mientras que servicios públicos de información pueden optar por fallo abierto (fail open) [33].
+* El _throttling_ se puede implementar en frameworks como Spring Boot, utilizando bibliotecas como Resilience4J [54].
+* En arquitecturas modernas, es recomendable aplicar el la limitación de _rate limiting_ en el _API Gateway_, identificando al origen de las solicitudes mediante propiedades tales como dirección IP, geolocalización o client ID [33].
+* Es fundamental definir políticas de fallo abierto (fail open) o fallo cerrado (fail closed) de acuerdo con la criticidad del servicio. Por ejemplo, APIs financieras suelen requerir _fail closed_, mientras que servicios públicos de información pueden optar por _fail open_ [33].
 
 ==== Consideraciones
 
 * Realizar pruebas de carga permite identificar límites operativos, puntos de falla y el comportamiento del sistema frente a picos de tráfico [33].
-* La implementación de limitación de la tasa de solicitudes (rate limiting) también es recomendable para llamadas internas de APIs, ya que sistemas internos pueden generar accidentalmente condiciones de DoS debido a dependencias circulares [33].
+* La implementación de _rate limiting_ también es recomendable para llamadas internas de APIs, ya que sistemas internos pueden generar accidentalmente condiciones de DoS debido a dependencias circulares [33].
 * Los límites de interacción deben ajustarse en función de los requisitos del negocio, equilibrando la protección del sistema con la experiencia del usuario [54].
 
-==== Algoritmos de limitación de la tasa de solicitudes (rate limiting)
-Es necesario definir cómo se calcula la tasa de solicitudes dentro del sistema. Para implementar la limitación de la tasa de solicitudes (rate limiting) de forma consistente y segura, un servicio distribuido debe contar con mecanismos claros para medir y controlar el ritmo de las solicitudes realizadas por cada consumidor. 
+==== Algoritmos de _rate limiting_
+Es necesario definir cómo se calcula la tasa de solicitudes dentro del sistema. Para implementar _rate limiting_ de forma consistente y segura, un servicio distribuido debe contar con mecanismos claros para medir y controlar el ritmo de las solicitudes realizadas por cada consumidor. 
 
 Los algoritmos de limitaciones de tasa más utilizados en arquitecturas distribuidas incluyen [55]:
 
@@ -194,8 +197,8 @@ La elección del algoritmo y la forma en que se calcula la tasa de solicitudes i
 - Inequidad en el consumo entre diferentes usuarios.
 - Sobrecarga de recursos del servidor.
 
-===== Cubo de tokens (Token bucket)
-El algoritmo Cubo de tokens (Token Bucket) se basa en una analogía de una cubo lleno de tokens. Un cubo tiene tres características:
+===== _Token bucket_
+_Token Bucket_ se basa en una analogía de una cubo lleno de tokens. Un cubo tiene tres características:
 
 - Un número máximo de tokens.
 - El número de tokens disponible actualmente.
@@ -216,7 +219,7 @@ Cada vez que llega una solicitud, sacamos un token del cubo. Si no hay tokens, l
 - Bajo consumo de memoria.
 - Permite manejar ráfagas de tráfico, ya que los tokens pueden acumularse.
 
-====== Consideraciones de implementar el algoritmo Cubo de tokens (Token bucket)
+====== Consideraciones de implementar el algoritmo _Token bucket_
 
 En entornos distribuidos o con almacenamiento externo, actualizar los contadores de tokens para millones de usuarios puede generar: 
 
@@ -227,16 +230,16 @@ Es necesario un mecanismo para eliminar usuarios inactivos, ya que el algoritmo 
 
 Si múltiples servidores procesan solicitudes sin sincronización inmediata, un usuario podría hacer más solicitudes de las permitidas (cada servidor podría gastar tokens localmente antes de sincronizar).
 
-===== Cubo con fugas (Leaky bucket)
-El algoritmo Cubo con fugas (Leaky Bucket) controla el flujo de solicitudes asegurando que se procesen a una tasa constante, evitando ráfagas bruscas y manteniendo un ritmo estable. 
+===== _Leaky bucket_
+El algoritmo _Leaky Bucket_ controla el flujo de solicitudes asegurando que se procesen a una tasa constante, evitando ráfagas bruscas y manteniendo un ritmo estable. 
 
 ====== Implementación
 
-1. El cubo (bucket) tiene una capacidad máxima (por ejemplo 10 tokens)
-2. Las solicitudes agregan un token al cubo (bucket)
-3. El cubo (bucket) “gotea” (se va vaciando) a una tasa fija (por ejemplo, 1 token por segundo).
-4. Si llega una solicitud y el cubo (bucket) ya está lleno, la petición se rechaza o se considera que excede el límite.
-5. Cuando el cubo (bucket) está vacío, deja de gotear
+1. El _bucket_ tiene una capacidad máxima (por ejemplo 10 tokens)
+2. Las solicitudes agregan un token al _bucket_
+3. El _bucket_ “gotea” (se va vaciando) a una tasa fija (por ejemplo, 1 token por segundo).
+4. Si llega una solicitud y el _bucket_ ya está lleno, la petición se rechaza o se considera que excede el límite.
+5. Cuando el _bucket_ está vacío, deja de gotear
 
 Una implementación común usa una cola, el primero en entrar, primero en salir (First-In, First-Out, FIFO) de tamaño fijo que se vacía periódicamente. 
 
@@ -258,12 +261,12 @@ Es necesario un mecanismo adicional para eliminar usuarios inactivos.
 
 Vaciar cada cola periódicamente puede ser costoso en términos de rendimiento.
 
-===== Contador de ventana fija (Fixed Window Counter).
-Contador de ventana fija (Fixed Window Counter) es uno de los algoritmos más simples para aplicar limitación de tasa (rate limiting). Su funcionamiento se basa en dividir el tiempo en ventanas fijas (por ejemplo, cada minuto, cada 10 segundos, etc.) y contar cuántas solicitudes hace un cliente dentro de cada ventana. 
+===== _Fixed Window Counter_.
+_Fixed Window Counter_ es uno de los algoritmos más simples para aplicar _rate limiting_. Su funcionamiento se basa en dividir el tiempo en ventanas fijas (por ejemplo, cada minuto, cada 10 segundos, etc.) y contar cuántas solicitudes hace un cliente dentro de cada ventana. 
 
 ====== Funcionamiento.
 
-1. Cada cliente tiene una clave asociada a la ventana actual. La clave puede incluir su identificador (ID) y la marca de tiempo de la ventana (por ejemplo user123_1628825241)
+1. Cada cliente tiene una clave asociada a la ventana actual. La clave puede incluir su ID y la marca de tiempo de la ventana (por ejemplo user123_1628825241)
 2. Cada vez que llega una solicitud:
     - Si la calve existe, se incrementa su contador.
     - Si no existe, se crea con valor 1.
@@ -284,9 +287,9 @@ Por ejemplo, si el límite es 5 solicitudes por minuto:
 
 En menos de un minuto real habrá enviado 10 solicitudes.
 
-===== Registro de ventana deslizante (Sliding Window Log) 
+===== _Sliding Window Log_ 
 
-Registro de ventana deslizante (Sliding Window Log) es un algortimo que ofrece una medición muy precisa de cuántas solicitudes ha realizado un cliente en un intervalo de tiempo móvil (por ejempo, los últimos 10 segundos).
+_Sliding Window Log_ es un algortimo que ofrece una medición muy precisa de cuántas solicitudes ha realizado un cliente en un intervalo de tiempo móvil (por ejempo, los últimos 10 segundos).
 
 ====== Funcionamiento.
 1. Cada cliente tiene una única clave. El valor asociado es una lista ordenada de marcas de tiempo, una por cada solicitud realizada. 
@@ -306,8 +309,8 @@ Registro de ventana deslizante (Sliding Window Log) es un algortimo que ofrece u
 
 Su precisión puede verse afectada en entornos **distribuidos** debido a problemas de sincronización entre nodos.
 
-===== Contador de ventana deslizante (Sliding Window Counter)
-Contador de ventana deslizante (Sliding Window Counter) es una versión mejorada del contador de ventana fija. Divide la ventana de tiempo total (por ejemplo, 1 hora) en **múltiples ventanas pequeñas**, todas del mismo tamaño. Cada una funciona como un contador independiente.
+===== _Sliding Window Counter_
+_Sliding Window Counter_ es una versión mejorada del contador de ventana fija. Divide la ventana de tiempo total (por ejemplo, 1 hora) en **múltiples ventanas pequeñas**, todas del mismo tamaño. Cada una funciona como un contador independiente.
 
 ====== Funcionamiento
 
@@ -318,32 +321,29 @@ Contador de ventana deslizante (Sliding Window Counter) es una versión mejorada
 
 ====== Ventajas
 
-- Es **más preciso** que el contador de ventana fija (Fixed Window Counter) porque no permite picos tan altos justo en el cambio de ventana.
-- Consume menos memoria que un contador de ventana deslizante (Sliding Window Counter).
+- Es **más preciso** que _Fixed Window Counter_ porque no permite picos tan altos justo en el cambio de ventana.
+- Consume menos memoria que _Sliding Window Counter_.
 
 ====== Consideraciones
 
 Puede **subestimar ligeramente** el número real de solicitudes, ya que no se consideran las solicitudes de la subventana más antigua parcialmente superpuesta.
 
-==== Cuando no hacer limitación de tasa (rate limiting)
-El limitación de tasa (rate limiting) es una técnica fundamental para mitigar abusos y proteger la disponibilidad de una API. Sin embargo, no siempre es la solución adecuada para todos los escenarios relacionados con el uso excesivo por parte del cliente. Es importante comprender sus limitaciones para evitar aplicar mecanismos que resulten contraproducentes para la experiencia del usuario o para el cumplimiento de requisitos empresariales [55]
+==== Cuando no hacer _rate limiting_
+_Rate limiting_ es una técnica fundamental para mitigar abusos y proteger la disponibilidad de una API. Sin embargo, no siempre es la solución adecuada para todos los escenarios relacionados con el uso excesivo por parte del cliente. Es importante comprender sus limitaciones para evitar aplicar mecanismos que resulten contraproducentes para la experiencia del usuario o para el cumplimiento de requisitos empresariales [55]
 
-En primer lugar, existen situaciones en las que el cliente necesita recibir retroalimentación explícita sobre su comportamiento. Por ejemplo, en un servicio de redes sociales donde los usuarios pueden suscribirse a notificaciones asociadas a un hashtag, es posible que un usuario realice demasiadas solicitudes de suscripción en un corto periodo. En estos casos, el servicio debe informar al usuario que ha superado el límite permitido dentro de ese intervalo. Si se aplicara limitación de tasa (rate limiting) de forma estricta, la API simplemente descartaría las solicitudes y devolvería un código 429 (*Too Many Requests*) o incluso ninguna respuesta, lo que podría ser interpretado por el cliente como un error 500. Este comportamiento generaría una mala experiencia de usuario, especialmente en aplicaciones web o móviles que podrían ofrecer mensajes más claros y útiles si contaran con una respuesta explícita por parte del servicio [55]
+En primer lugar, existen situaciones en las que el cliente necesita recibir retroalimentación explícita sobre su comportamiento. Por ejemplo, en un servicio de redes sociales donde los usuarios pueden suscribirse a notificaciones asociadas a un hashtag, es posible que un usuario realice demasiadas solicitudes de suscripción en un corto periodo. En estos casos, el servicio debe informar al usuario que ha superado el límite permitido dentro de ese intervalo. Si se aplicara _rate limiting_ de forma estricta, la API simplemente descartaría las solicitudes y devolvería un código 429 (*Too Many Requests*) o incluso ninguna respuesta, lo que podría ser interpretado por el cliente como un error 500. Este comportamiento generaría una mala experiencia de usuario, especialmente en aplicaciones web o móviles que podrían ofrecer mensajes más claros y útiles si contaran con una respuesta explícita por parte del servicio [55]
 
-En segundo lugar, existen modelos de negocio donde los límites de uso forman parte de un esquema de suscripción. Servicios que cobran tarifas basadas en tasas de solicitudes (por ejemplo, planes que permiten 1,000 o 10,000 solicitudes por hora) requieren controlar de forma precisa cuándo un cliente ha alcanzado su cuota. Si un cliente excede el límite contratado, las solicitudes posteriores deben rechazarse hasta el siguiente intervalo de facturación. Este control de cuotas es un requerimiento empresarial y no debe delegarse en un servicio compartido de limitación de tasa (*rate limiting*), ya que este tipo de servicios está diseñado para casos simples y no para escenarios complejos donde cada cliente posee un límite personalizado [55]
+En segundo lugar, existen modelos de negocio donde los límites de uso forman parte de un esquema de suscripción. Servicios que cobran tarifas basadas en tasas de solicitudes (por ejemplo, planes que permiten 1,000 o 10,000 solicitudes por hora) requieren controlar de forma precisa cuándo un cliente ha alcanzado su cuota. Si un cliente excede el límite contratado, las solicitudes posteriores deben rechazarse hasta el siguiente intervalo de facturación. Este control de cuotas es un requerimiento empresarial y no debe delegarse en un servicio compartido de _*rate limiting*_, ya que este tipo de servicios está diseñado para casos simples y no para escenarios complejos donde cada cliente posee un límite personalizado [55]
 
+=== Consistencia en el diseño de _endpoints_ y los contratos
 
+La consistencia en el diseño de _endpoints_ de una API REST es fundamental para garantizar que todos los consumidores puedan interpretar, usar y mantener la API de manera efectiva. Una API consistente permite:
 
-
-=== Consistencia en el diseño de los puntos de acceso (endpoints) y los contratos
-
-La consistencia en el diseño de puntos de acceso (endpoints) de una API REST es fundamental para garantizar que todos los consumidores puedan interpretar, usar y mantener la API de manera efectiva. Una API consistente permite:
-
-* Reducir errores de integración y malentendidos sobre la funcionalidad de los puntos de acceso (endpoints).
+* Reducir errores de integración y malentendidos sobre la funcionalidad de los _endpoints_.
 * Facilitar la automatización de pruebas, documentación y generación de clientes.
 * Mejorar la mantenibilidad y escalabilidad del sistema, especialmente en sistemas distribuidos.
 
-El diseño consistente de puntos de acceso (endpoints) no solo implica nombrar correctamente las rutas, sino también mapear de manera uniforme operaciones, ubicación de datos, status codes y recursos, considerando tanto operaciones típicas (CRUD) como operaciones “do” o no-CRUD derivadas de casos de uso específicos.
+El diseño consistente de _endpoints_ no solo implica nombrar correctamente las rutas, sino también mapear de manera uniforme operaciones, ubicación de datos, status codes y recursos, considerando tanto operaciones típicas (CRUD) como operaciones “do” o no-CRUD derivadas de casos de uso específicos.
 
 ==== Recursos y operaciones CRUD
 
@@ -368,9 +368,9 @@ El patrón más común y ampliamente aceptado consiste en mapear operaciones CRU
 |Eliminar |DELETE |/resources/{id} |Path parameter |Ningún contenido (204 No Content)
 |===
 
-Este mapeo uniforme permite a los consumidores predecir el comportamiento de cada punto de acceso (endpoint) según el método HTTP y la estructura del path.
+Este mapeo uniforme permite a los consumidores predecir el comportamiento de _endpoint_ según el método HTTP y la estructura del path.
 
-==== Casos de uso y mapeo a punto de acceso (endpoint)
+==== Casos de uso y mapeo a _endpoint_
 
 Los casos de uso representan la interacción del usuario o sistema con la API, y deben traducirse a recursos y métodos HTTP de forma consistente.
 
@@ -427,15 +427,15 @@ POST /orders
 ==== Ubicación consistente de los datos
 
 *Datos de entrada:*
-* Parámetros de ruta (Path parameters): identificadores únicos de recurso (`/products/{id}`)
-* Parámetros de consulta (Query parameters): filtros o modificadores que no identifican recursos
-* Cuerpo (Body): representación completa o parcial de recursos para crear o actualizar
-* Encabezados (Headers): información estándar (autenticación, tipo de contenido)
+* Path parameters: identificadores únicos de recurso (`/products/{id}`)
+* Query parameters: filtros o modificadores que no identifican recursos
+* Body: representación completa o parcial de recursos para crear o actualizar
+* Headers: información estándar (autenticación, tipo de contenido)
 
 *Datos de salida:*
-* Cuerpo (Body): representa recursos, listas de recursos, resultados de operaciones y errores
-* Encabezados (Headers): solo para metadatos estándar (Location en `201 Created`)
-* Errores: siempre en el cuerpo (body), con un código de estado (status code) según la responsabilidad
+* Body: representa recursos, listas de recursos, resultados de operaciones y errores
+* Headers: solo para metadatos estándar (Location en `201 Created`)
+* Errores: siempre en el body, con un status code según la responsabilidad
 
 [cols="1,1", options="header"]
 |===
@@ -718,15 +718,15 @@ Este antipatrón evidencia los riesgos del enfoque *“una solución sirve para 
 
 ref: Cloud Identity Patterns and Strategies, Giuseppe Di Federico, Fabrizio Barcaroli. Packt Publishing.
 
-==== API Gateway monolítico
+==== _API Gateway_ monolítico
 
-Este antipatrón ocurre cuando el API Gateway se utiliza como capa principal de integración o composición de servicios, concentrando en él la lógica de negocio que debería distribuirse entre los microservicios. En lugar de limitarse a funciones de enrutamiento, autenticación o control de tráfico, el gateway asume responsabilidades de orquestación, agregación de datos y coordinación entre servicios, convirtiéndose en un componente monolítico dentro de una arquitectura que originalmente buscaba la independencia y escalabilidad.
+Este antipatrón ocurre cuando el _API Gateway_ se utiliza como capa principal de integración o composición de servicios, concentrando en él la lógica de negocio que debería distribuirse entre los microservicios. En lugar de limitarse a funciones de enrutamiento, autenticación o control de tráfico, el gateway asume responsabilidades de orquestación, agregación de datos y coordinación entre servicios, convirtiéndose en un componente monolítico dentro de una arquitectura que originalmente buscaba la independencia y escalabilidad.
 
-El problema central radica en que al incluir la lógica de integración dentro del API Gateway, se pierde la capacidad de escalar, desplegar o mantener los servicios de manera independiente. Además, se introduce un punto único de fallo que compromete la disponibilidad general del sistema y dificulta la adopción de prácticas de despliegue continuo. Este enfoque reproduce los mismos inconvenientes de las aplicaciones monolíticas tradicionales, como la falta de aislamiento de fallos, la dependencia entre componentes y la pérdida de autonomía de los equipos.
+El problema central radica en que al incluir la lógica de integración dentro del _API Gateway_, se pierde la capacidad de escalar, desplegar o mantener los servicios de manera independiente. Además, se introduce un punto único de fallo que compromete la disponibilidad general del sistema y dificulta la adopción de prácticas de despliegue continuo. Este enfoque reproduce los mismos inconvenientes de las aplicaciones monolíticas tradicionales, como la falta de aislamiento de fallos, la dependencia entre componentes y la pérdida de autonomía de los equipos.
 
-Desde el punto de vista arquitectónico, la orquestación o composición de servicios debe implementarse en microservicios específicos —denominados composite services— encargados de coordinar las interacciones entre servicios de menor granularidad. El API Gateway, en cambio, debe permanecer como un componente ligero, dedicado exclusivamente a tareas de intermediación técnica.
+Desde el punto de vista arquitectónico, la orquestación o composición de servicios debe implementarse en microservicios específicos —denominados composite services— encargados de coordinar las interacciones entre servicios de menor granularidad. El _API Gateway_, en cambio, debe permanecer como un componente ligero, dedicado exclusivamente a tareas de intermediación técnica.
 
-El antipatrón del API Gateway monolítico surge al sobrecargar este componente con responsabilidades de negocio que comprometen la naturaleza distribuida y desacoplada del modelo de microservicios. La solución adecuada consiste en separar claramente las funciones de integración, reservando el gateway para la gestión del tráfico y delegando la lógica de composición a servicios especializados.
+El antipatrón del _API Gateway_ monolítico surge al sobrecargar este componente con responsabilidades de negocio que comprometen la naturaleza distribuida y desacoplada del modelo de microservicios. La solución adecuada consiste en separar claramente las funciones de integración, reservando el _gateway_ para la gestión del tráfico y delegando la lógica de composición a servicios especializados.
 
 ref: Microservices for the Enterprise, Kasun Indrasiri, Prabath Siriwardena. Apress.
 

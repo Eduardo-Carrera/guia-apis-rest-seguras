@@ -147,3 +147,6 @@
 [73] Sharma, K. (2023, June). Voteroid Secure API Gateway Based on Spring boot Microservices Architecture. In 2023 International Conference on Computational Intelligence for Information, Security and Communication Applications (CIISCA) (pp. 109-115). IEEE.
 
 [74] Chen, Y., Yang, Y., Lei, Z., Xia, M., & Qi, Z. (2021, March). Bootstrapping automated testing for RESTful web services. In International Conference on Fundamental Approaches to Software Engineering (pp. 46-66). Cham: Springer International Publishing.
+
+[75] OWASP. (2019). OWASP API Security Top 10 – 2019. https://owasp.org/API-Security/editions/2019/en/0x11-t10/
+

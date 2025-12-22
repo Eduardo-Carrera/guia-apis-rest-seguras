@@ -25,14 +25,14 @@ La tabla incluye, además de su descripción y fase de uso, recomendaciones prá
 |RestTestGen
 |Diseño / Pruebas
 |Crea secuencias de prueba a partir de especificaciones de la API; útil para verificar cobertura y detectar errores de diseño.
-|Gratuito / Código abierto (Open Source)
+|Gratuito / _Open Source_
 |https://seunivr.github.io/RestTestGen-Wiki/docs/rtg
 |Cuando se tienen especificaciones OpenAPI y se necesitan pruebas automáticas derivadas del diseño.
 |Cuando la API no cuenta con especificaciones o éstas están incompletas.
 
 |Akto
 |Diseño / Pruebas
-|Identifica puntos de acceso (endpoints) expuestos y riesgos de sobrecarga; requiere interpretación de resultados.
+|Identifica _endpoints_ expuestos y riesgos de sobrecarga; requiere interpretación de resultados.
 |Comercial / versión gratuita limitada
 |https://www.akto.io/
 |Cuando se requieren análisis rápidos sobre exposición de puntos de acceso (endpoints) o inventarios automáticos.
@@ -48,16 +48,16 @@ La tabla incluye, además de su descripción y fase de uso, recomendaciones prá
 
 |ModSecurity
 |Diseño / Planeación
-|Cortafuegos (Firewall) de aplicaciones web configurable con reglas personalizadas; protege contra ataques comunes como inyecciones y XSS.
-|Gratuito / Código abierto (Open Source)
+|_Firewall_ de aplicaciones web configurable con reglas personalizadas; protege contra ataques comunes como inyecciones y XSS.
+|Gratuito / _Open Source_
 |https://modsecurity.org
 |Cuando se requiere un WAF configurable para protección perimetral de servicios.
-|Cuando no se cuenta con personal técnico para mantener reglas y tunear el cortafuegos (firewall).
+|Cuando no se cuenta con personal técnico para mantener reglas y tunear el _firewall_.
 
 |bBOXRT
 |Diseño / Pruebas
 |Herramienta de prueba de robustez para servicios REST que inyecta entradas inválidas o maliciosas para detectar fallos y vulnerabilidades.
-|Gratuito / Código abierto (Open Source)
+|Gratuito / _Open Source_
 |https://eden.dei.uc.pt/~cnl/papers/2020-access.zip
 |Para pruebas de robustez o fuzzing controlado en entornos aislados.
 |Cuando se necesita un análisis orientado a lógica de negocio o pruebas específicas más detalladas.
@@ -65,7 +65,7 @@ La tabla incluye, además de su descripción y fase de uso, recomendaciones prá
 |Fuzzapi
 |Diseño / Pruebas
 |Envía datos inesperados a la API para detectar errores de validación o manejo de excepciones; debe emplearse en entornos controlados.
-|Gratuito / Código abierto (Open Source)
+|Gratuito / _Open Source_
 |https://github.com/Fuzzapi/fuzzapi
 |Cuando se desean pruebas de fuzzing ligeras y enfocadas en validación de entradas.
 |Cuando la API está en producción o no puede recibir tráfico inesperado.
@@ -81,7 +81,7 @@ La tabla incluye, además de su descripción y fase de uso, recomendaciones prá
 |Keycloak
 |Diseño / Implementación
 |Implementa OAuth2 y OpenID Connect; útil para autenticación centralizada y federada.
-|Gratuito / Código abierto (Open Source)
+|Gratuito / _Open Source_
 |https://www.keycloak.org
 |Cuando se necesita SSO, OAuth2, OIDC o gestión avanzada de identidades.
 |Cuando no se requiere un Identity Provider completo o se buscan soluciones ligeras.
@@ -89,7 +89,7 @@ La tabla incluye, además de su descripción y fase de uso, recomendaciones prá
 |OWASP ZAP
 |Diseño / Pruebas
 |Herramienta mantenida por OWASP para análisis dinámico de seguridad (DAST); automatiza pruebas contra vulnerabilidades comunes en APIs REST.
-|Gratuito / Código abierto (Open Source)
+|Gratuito / _Open Source_
 |https://owasp.org/www-project-zap/
 |Cuando se requiere un escáner de seguridad gratuito, confiable y automatizable.
 |Cuando se necesitan escaneos muy avanzados o pruebas de explotación específicas.
@@ -129,7 +129,7 @@ La tabla incluye, además de su descripción y fase de uso, recomendaciones prá
 |OpenAPI-Security-Scanner
 |Diseño / Pruebas
 |Analiza definiciones OpenAPI para detectar configuraciones inseguras, puntos de acceso (endpoints) sin autenticación o exposición de datos sensibles.
-|Gratuito / Código abierto (Open Source)
+|Gratuito / _Open Source_
 |https://github.com/IBM/openapi-security-scanner
 |Cuando la API tiene un OpenAPI bien definido y se desean validaciones estáticas.
 |Cuando no se cuenta con especificaciones OpenAPI completas.
@@ -137,7 +137,7 @@ La tabla incluye, además de su descripción y fase de uso, recomendaciones prá
 |OWASP Threat Dragon
 |Diseño / Modelado de amenazas
 |Aplicación gratuita y de código abierto para crear modelos de amenazas basados en diagramas de flujo de datos (DFD); facilita la identificación temprana de riesgos.
-|Gratuito / Código abierto (Open Source)
+|Gratuito / _Open Source_
 |https://www.threatdragon.com/#/
 |Cuando se realiza modelado de amenazas temprano en el diseño.
 |Cuando no se cuenta con diagramas o el alcance no requiere modelado formal.
@@ -184,9 +184,9 @@ La tabla incluye, además de su descripción y fase de uso, recomendaciones prá
 
 |Intruder
 |Diseño / Pruebas
-|Permite subir esquemas OpenAPI/Swagger para obtener cobertura completa de los puntos de acceso (endpoints) de la API.
+|Permite subir esquemas OpenAPI/Swagger para obtener cobertura completa de los _endpoints_ de la API.
 |Comercial
 |https://www.intruder.io
-|Cuando se quiere visibilidad completa de puntos de acceso (endpoints) y análisis automatizado.
+|Cuando se quiere visibilidad completa de _endpoints_ y análisis automatizado.
 |Cuando no se trabaja con especificaciones Swagger/OpenAPI o se requiere una herramienta gratuita.
 |===
