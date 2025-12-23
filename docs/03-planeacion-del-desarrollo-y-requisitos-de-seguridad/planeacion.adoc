@@ -1079,10 +1079,35 @@ A continuación se presentan varios ejemplos de árboles de amenazas aplicados a
 
 En los diagramas, las vulnerabilidades identificadas se muestran en color rojo, mientras que las contramedidas o mitigaciones propuestas se representan en color verde. Este enfoque permite visualizar de forma clara los posibles vectores de ataque, así como las acciones necesarias para reducir el riesgo y fortalecer la seguridad del sistema.
 
+*Árbol de amenazas 1 – Acceso no autorizado*
+
+Este árbol de amenazas representa el escenario en el que un atacante podría obtener acceso no autorizado a la API REST del sistema de salud. Se identifican vulnerabilidades asociadas a debilidades en los mecanismos de autenticación y autorización, así como al manejo de credenciales y tokens de acceso. Las mitigaciones propuestas buscan reforzar los controles de acceso y reducir el riesgo de suplantación de identidad.
+
 image::arbol1.png[Árbol de amenazas – Acceso no autorizado]
+
+
+*Árbol de amenazas 2 – Divulgación de información clínica*
+
+En este árbol se analiza la posibilidad de que un atacante divulgue información clínica sensible de pacientes o empleados. Las vulnerabilidades identificadas están relacionadas con fallas en el control de acceso, manejo inseguro de las respuestas del API y ausencia de cifrado adecuado en la comunicación. Las medidas de mitigación se enfocan en preservar la confidencialidad de los datos.
+
 image::arbol2.png[Árbol de amenazas – Divulgación de información clínica]
+
+*Árbol de amenazas 3 – Manipulación de datos clínicos*
+
+Este árbol describe el riesgo de que un atacante modifique información clínica sin autorización, comprometiendo la integridad de los datos del sistema. Las vulnerabilidades consideradas incluyen validación insuficiente de entradas y controles de permisos inadecuados. Las mitigaciones propuestas buscan asegurar la integridad y consistencia de la información clínica.
+
 image::arbol3.png[Árbol de amenazas – Manipulación de datos clínicos]
+
+*Árbol de amenazas 4 – Denegación de servicio*
+
+El presente árbol de amenazas modela el escenario en el que un atacante podría provocar la indisponibilidad de la API REST, afectando la continuidad del servicio clínico. Las vulnerabilidades identificadas se asocian con la falta de control sobre el volumen de solicitudes y el consumo excesivo de recursos. Las mitigaciones planteadas buscan garantizar la disponibilidad del sistema.
+
 image::arbol4.png[Árbol de amenazas – Denegación de servicio]
+
+*Árbol de amenazas 5 – Repudio de acciones*
+
+Este árbol analiza el riesgo de que un atacante o usuario malicioso niegue la realización de acciones dentro del sistema, afectando la trazabilidad y la auditoría. Las vulnerabilidades se centran en la ausencia o debilidad de los mecanismos de registro de eventos. Las mitigaciones propuestas están orientadas a fortalecer la auditoría y la generación de evidencia confiable.
+
 image::arbol5.png[Árbol de amenazas – Repudio de acciones]
 
 //TODO: Incluir un ejemplo de árbol de amenazas para el caso de estudio.
