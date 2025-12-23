@@ -1075,13 +1075,15 @@ En este enfoque, las amenazas se representan de manera jerárquica en forma de �
 
 Este método proporciona una visión integral de los posibles vectores de ataque y facilita la planificación de medidas de mitigación apropiadas, contribuyendo a un análisis de amenazas más completo y sistemático.
 
-A continuación se muestran varios ejemplos simplificados de árboles de amenazas para la API REST del sistema de salud, donde se identificaron las vulnerabilidades (de color rojo) y su posible mitigación (de color verde).
+A continuación se presentan varios ejemplos de árboles de amenazas aplicados a la API REST del sistema de salud. Cada árbol representa un objetivo potencial del atacante, modelado como el nodo raíz, y muestra de manera jerárquica las vulnerabilidades que podrían ser explotadas para alcanzar dicho objetivo, así como las medidas de mitigación asociadas.
 
-image::arbol1.png[Árbol de amenazas - Ejemplo 1]
-image::arbol2.png[Árbol de amenazas - Ejemplo 2]
-image::arbol3.png[Árbol de amenazas - Ejemplo 3]
-image::arbol4.png[Árbol de amenazas - Ejemplo 4]
-image::arbol5.png[Árbol de amenazas - Ejemplo 5]
+En los diagramas, las vulnerabilidades identificadas se muestran en color rojo, mientras que las contramedidas o mitigaciones propuestas se representan en color verde. Este enfoque permite visualizar de forma clara los posibles vectores de ataque, así como las acciones necesarias para reducir el riesgo y fortalecer la seguridad del sistema.
+
+image::arbol1.png[Árbol de amenazas – Acceso no autorizado]
+image::arbol2.png[Árbol de amenazas – Divulgación de información clínica]
+image::arbol3.png[Árbol de amenazas – Manipulación de datos clínicos]
+image::arbol4.png[Árbol de amenazas – Denegación de servicio]
+image::arbol5.png[Árbol de amenazas – Repudio de acciones]
 
 //TODO: Incluir un ejemplo de árbol de amenazas para el caso de estudio.
 
