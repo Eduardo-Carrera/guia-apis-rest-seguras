@@ -1110,11 +1110,87 @@ Este árbol analiza el riesgo de que un atacante o usuario malicioso niegue la r
 
 image::arbol5.png[Árbol de amenazas – Repudio de acciones]
 
-//TODO: Incluir un ejemplo de árbol de amenazas para el caso de estudio.
-
 A partir del análisis de amenazas y el árbol de amenazas, se documentan las amenazas identificadas en una tabla como la siguiente:
 
 //TODO: Incluir tabla de amenazas identificadas para el caso de estudio con el elemento del DFD, el riesgo, la categoría de STRIDE, la amenaza y su descripción.
+
+[cols="1,1,1,1,3", options="header"]
+|===
+|Elemento del DFD |Riesgo |Categoría STRIDE |Amenaza |Descripción
+
+|Heal REST API (Proceso)
+|Indisponibilidad del servicio
+|Denial of Service
+|Saturación del API
+|Un atacante podría enviar un alto volumen de solicitudes simultáneas al API REST, provocando la indisponibilidad del sistema para usuarios legítimos.
+
+|Login / Autenticación (Proceso)
+|Acceso no autorizado
+|Spoofing
+|Suplantación de identidad
+|Un atacante podría autenticarse utilizando credenciales robadas o mediante ataques de fuerza bruta, obteniendo acceso no autorizado al sistema.
+
+|Login / Autenticación (Proceso)
+|Escalada de privilegios
+|Elevation of Privilege
+|Uso indebido de tokens
+|Una gestión insegura de tokens de autenticación podría permitir que un atacante reutilice o manipule tokens para acceder a funcionalidades no autorizadas.
+
+|Gestión de Pacientes (Proceso)
+|Modificación indebida de datos
+|Tampering
+|Manipulación de información de pacientes
+|Un usuario con permisos insuficientes podría modificar o desactivar registros de pacientes explotando fallas en la validación de permisos.
+
+|Gestión de Historial Clínico (Proceso)
+|Divulgación de información sensible
+|Information Disclosure
+|Exposición de historiales clínicos
+|Fallas en los controles de acceso podrían permitir la consulta no autorizada de historiales clínicos que contienen información médica sensible.
+
+|Gestión de Historial Clínico (Proceso)
+|Pérdida de trazabilidad
+|Repudiation
+|Negación de modificaciones
+|La ausencia de mecanismos de auditoría adecuados podría permitir que un usuario niegue haber creado o modificado información clínica.
+
+|Gestión de Consultas Médicas (Proceso)
+|Alteración de información clínica
+|Tampering
+|Manipulación de consultas médicas
+|Un atacante podría modificar o eliminar consultas médicas sin autorización, afectando la integridad de la información clínica.
+
+|Gestión de Citas (Proceso)
+|Alteración de agenda médica
+|Tampering
+|Manipulación de citas
+|Un atacante podría modificar fechas, estados o médicos asignados a citas médicas, afectando la operación del sistema.
+
+|Gestión de Empleados (Proceso)
+|Acceso administrativo indebido
+|Elevation of Privilege
+|Escalada de privilegios
+|Fallas en la validación de roles podrían permitir a un usuario obtener privilegios administrativos de forma indebida.
+
+|Flujo de datos HTTP(S) (Flujo de datos)
+|Intercepción de información
+|Information Disclosure
+|Exposición de datos en tránsito
+|Las solicitudes y respuestas del API podrían ser interceptadas si no se emplea cifrado TLS adecuado en la comunicación.
+
+|Base de Datos Clínica (Data Store)
+|Acceso no autorizado a la información
+|Elevation of Privilege
+|Ejecución de consultas SQL no autorizadas
+|Un atacante podría explotar vulnerabilidades de la aplicación para ejecutar consultas SQL con permisos elevados sobre la base de datos.
+
+|Trust Boundary Usuario–API
+|Inyección de datos maliciosos
+|Tampering
+|Manipulación de datos en frontera de confianza
+|Los datos que cruzan la frontera de confianza podrían contener payloads maliciosos si no se valida adecuadamente la información de entrada.
+|===
+
 
 ====== Valoración de amenazas
 
