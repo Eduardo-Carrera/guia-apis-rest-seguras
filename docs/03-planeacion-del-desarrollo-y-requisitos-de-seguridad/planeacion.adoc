@@ -1051,7 +1051,8 @@ image::privilege_boundary.png[Límite de Privilegio / Confianza]
 
 A continuación se muestra un ejemplo de un Diagrama de Flujo de Datos para la API REST del sistema de salud descrito anteriormente.
 
-//TODO: Mostrar diagrama DFD del ejemplo.
+image::dfd_heal_rest.png[Diagrama de Flujo de Datos para la API REST del sistema de salud]
+
 
 ===== Paso 2 — Determinar las amenazas (Aplicación de STRIDE)
 
