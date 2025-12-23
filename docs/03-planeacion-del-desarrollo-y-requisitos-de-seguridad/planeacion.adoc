@@ -1051,6 +1051,7 @@ image::privilege_boundary.png[Límite de Privilegio / Confianza]
 
 A continuación se muestra un ejemplo de un Diagrama de Flujo de Datos para la API REST del sistema de salud descrito anteriormente.
 
+.Figura X. Diagrama de Flujo de Datos para la API REST del sistema de salud
 image::dfd_heal_rest.png[Diagrama de Flujo de Datos para la API REST del sistema de salud]
 
 
@@ -1074,7 +1075,13 @@ En este enfoque, las amenazas se representan de manera jerárquica en forma de �
 
 Este método proporciona una visión integral de los posibles vectores de ataque y facilita la planificación de medidas de mitigación apropiadas, contribuyendo a un análisis de amenazas más completo y sistemático.
 
-A continuación se muestra un ejemplo simplificado de un árbol de amenazas para la API REST del sistema de salud:
+A continuación se muestran varios ejemplos simplificados de árboles de amenazas para la API REST del sistema de salud, donde se identificaron las vulnerabilidades (de color rojo) y su posible mitigación (de color verde).
+
+image::arbol1.png[Árbol de amenazas - Ejemplo 1]
+image::arbol2.png[Árbol de amenazas - Ejemplo 2]
+image::arbol3.png[Árbol de amenazas - Ejemplo 3]
+image::arbol4.png[Árbol de amenazas - Ejemplo 4]
+image::arbol5.png[Árbol de amenazas - Ejemplo 5]
 
 //TODO: Incluir un ejemplo de árbol de amenazas para el caso de estudio.
 
