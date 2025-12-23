@@ -1112,11 +1112,9 @@ image::arbol5.png[Árbol de amenazas – Repudio de acciones]
 
 A partir del análisis de amenazas y el árbol de amenazas, se documentan las amenazas identificadas en una tabla como la siguiente:
 
-//TODO: Incluir tabla de amenazas identificadas para el caso de estudio con el elemento del DFD, el riesgo, la categoría de STRIDE, la amenaza y su descripción.
-
 [cols="1,1,1,1,3", options="header"]
 |===
-|Elemento del DFD |Riesgo |Categoría STRIDE |Amenaza |Descripción
+|Elemento |Riesgo |Categoría STRIDE |Amenaza |Descripción
 
 |Heal REST API (Proceso)
 |Indisponibilidad del servicio
